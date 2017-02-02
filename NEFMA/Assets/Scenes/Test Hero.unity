@@ -380,6 +380,7 @@ MonoBehaviour:
   movespeed: 10
   jumpForce: 8
   groundCheck: {fileID: 1710381776}
+  playerNumber: 0
 --- !u!61 &2012407064
 BoxCollider2D:
   m_ObjectHideFlags: 0
