@@ -9,6 +9,8 @@ public class HeroMovement : MonoBehaviour {
     [HideInInspector] public bool attack = false;
     [HideInInspector]public bool inRange = false;
 
+    public string playerNumber;
+
     public float moveForce = 365f;
     public float maxSpeed = 5f;
     public float jumpForce = 1000f;
@@ -30,7 +32,7 @@ public class HeroMovement : MonoBehaviour {
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
-        if (Input.GetButtonDown("Jump_1") && grounded)
+        if (Input.GetButtonDown("Jump_"+playerNumber) && grounded)
         {
             jump = true;
         }
@@ -45,7 +47,7 @@ public class HeroMovement : MonoBehaviour {
     //Does the actions during the frame the hero has to do, in this case jumping, flipping and attacking
     void FixedUpdate()
     {
-        float h = Input.GetAxis("Horizontal_1");
+        float h = Input.GetAxis("Horizontal_"+playerNumber);
 
         //anim.SetFloat("Speed", Mathf.Abs(h));
 
