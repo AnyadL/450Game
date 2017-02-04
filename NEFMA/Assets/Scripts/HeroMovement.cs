@@ -65,7 +65,8 @@ public class HeroMovement : MonoBehaviour {
         if (jump)
         {
             //anim.SetTrigger("Jump");
-            rb2d.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
+            //rb2d.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
+            rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }
         if (attack && inRange)

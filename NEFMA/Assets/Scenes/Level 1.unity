@@ -768,11 +768,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4471370496574032, guid: f7f17cd426f64914aa0d19222d9bd013, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -11.1
+      value: -11.49
       objectReference: {fileID: 0}
     - target: {fileID: 4471370496574032, guid: f7f17cd426f64914aa0d19222d9bd013, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.7
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 4471370496574032, guid: f7f17cd426f64914aa0d19222d9bd013, type: 2}
       propertyPath: m_LocalPosition.z
@@ -797,36 +797,6 @@ Prefab:
     - target: {fileID: 4471370496574032, guid: f7f17cd426f64914aa0d19222d9bd013, type: 2}
       propertyPath: m_RootOrder
       value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 50819749917092670, guid: f7f17cd426f64914aa0d19222d9bd013,
-        type: 2}
-      propertyPath: m_Mass
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 50819749917092670, guid: f7f17cd426f64914aa0d19222d9bd013,
-        type: 2}
-      propertyPath: m_AngularDrag
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 50819749917092670, guid: f7f17cd426f64914aa0d19222d9bd013,
-        type: 2}
-      propertyPath: m_GravityScale
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114182064150416616, guid: f7f17cd426f64914aa0d19222d9bd013,
-        type: 2}
-      propertyPath: moveForce
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 114182064150416616, guid: f7f17cd426f64914aa0d19222d9bd013,
-        type: 2}
-      propertyPath: jumpForce
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114182064150416616, guid: f7f17cd426f64914aa0d19222d9bd013,
-        type: 2}
-      propertyPath: maxSpeed
-      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7f17cd426f64914aa0d19222d9bd013, type: 2}
