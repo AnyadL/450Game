@@ -21,6 +21,6 @@ public class DeathLine : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
             //Application.LoadLevel(Application.loadedLevel);
-            SceneManager.LoadScene("Level 1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
