@@ -8,7 +8,6 @@
  ***********************************************************/
 using System.Collections;
 using UnityEngine;
-using Pathfinding;
 
 [RequireComponent (typeof (Rigidbody2D))]
 public class EnemyAI : MonoBehaviour {
@@ -41,6 +40,8 @@ public class EnemyAI : MonoBehaviour {
         // Check to see if there's ground in front of us before moving forward
         Debug.DrawLine(lineCastPos, lineCastPos + Vector2.down);
         bool isGrounded = Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down, enemyMask);
+        Debug.Log("Current Pos: " + transform.position);
+        Debug.Log("LineCastPos: " + lineCastPos);
         Debug.Log("Grounded: " + isGrounded);
 
         // Check to see if there's a wall in front of us before moving forward
