@@ -202,7 +202,7 @@ MonoBehaviour:
   jump: 0
   attack: 0
   inRange: 0
-  playerNumber: 0
+  playerNumber: -1
   moveForce: 400
   maxSpeed: 12
   jumpForce: 1800
