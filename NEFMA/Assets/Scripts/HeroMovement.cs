@@ -47,7 +47,7 @@ public class HeroMovement : MonoBehaviour {
     //Does the actions during the frame the hero has to do, in this case jumping, flipping and attacking
     void FixedUpdate()
     {
-        float h = Input.GetAxis("Horizontal_"+playerNumber);
+        float h = Input.GetAxisRaw("Horizontal_"+playerNumber);
 
         //anim.SetFloat("Speed", Mathf.Abs(h));
 
