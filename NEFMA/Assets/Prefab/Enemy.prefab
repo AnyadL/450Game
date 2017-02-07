@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 50588658694121126}
   - component: {fileID: 61405318141346362}
   - component: {fileID: 114029218032258490}
+  - component: {fileID: 114340048299960162}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -146,17 +147,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15b395c9a93e374ba5906ce8d556bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 256
-  myDirection: {x: 1, y: 0}
-  speed: 100
-  forceMode: 0
   groundCheck: {fileID: 4821684112757508}
   wallCheck: {fileID: 4843638211050368}
   moveForce: 365
   maxSpeed: 5
   facingRight: 1
+--- !u!114 &114340048299960162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321060816576830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692b94a5dbc7bee4b9f6f62af6c3cd0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!212 &212462925183830840
 SpriteRenderer:
   m_ObjectHideFlags: 1

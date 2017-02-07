@@ -8,9 +8,7 @@ public class littleFireballScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
  
-
     }
-
 
     private void OnBecameInvisible()
     {
