@@ -7,8 +7,8 @@ public class AgniAttack : MonoBehaviour
     public GameObject littleBulletPrefab;
     public GameObject bigBulletPrefab;
     
-    public float littleBulletVelocity = -20;
-    public float bigBulletVelocity = -10;
+    public float littleBulletVelocity = 20;
+    public float bigBulletVelocity = 10;
     private HeroMovement hm; 
 
     float attackSpeed = 2f;
@@ -17,7 +17,7 @@ public class AgniAttack : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        hm = gameObject.GetComponent<HeroMovement>();
     }
 
     // Update is called once per frame
@@ -39,15 +39,28 @@ public class AgniAttack : MonoBehaviour
     // Fire a bullet
     void RegularFire()
     {
+        float velocityDirection = littleBulletVelocity;
+
+        if (!hm.facingRight)
+        {
+            velocityDirection = -velocityDirection;
+        }
         GameObject newBullet = Instantiate(littleBulletPrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;
         newBullet.transform.rotation = gameObject.transform.rotation; //Rotate the same direction as the ship it is fired from
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(20, 0);
+        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
     }
     void BigFire()
     {
+        float velocityDirection = bigBulletVelocity;
+
+        if (!hm.facingRight)
+        {
+            velocityDirection = -velocityDirection;
+        }
+
         GameObject newBullet = Instantiate(bigBulletPrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;
         newBullet.transform.rotation = gameObject.transform.rotation; //Rotate the same direction as the ship it is fired from
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bigBulletVelocity, 0);
+        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
     }
 
 }
