@@ -14,8 +14,38 @@ public class AttributeController : MonoBehaviour {
         }
 	}
 
-    void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        health = health - 1; 
+        if (gameObject.tag == "Enemy")
+        {
+            //Debug.Log(collision.gameObject.tag);
+            enemyCollisions(collision);
+        }
+        if (gameObject.tag == "Player"){
+            playerCollisions(collision);
+        }
+    }
+    void playerCollisions(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+        Debug.Log(health);
+        if (collision.gameObject.tag == "Enemy")
+        {
+            health = health - 1; 
+        }
+    }
+
+    void enemyCollisions(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "LittleAttack")
+        {
+            Debug.Log("here");
+            health = health - 1;
+        }
+        else if(collision.gameObject.tag == "BigAttack")
+        {
+            health = health - 3;
+        }
     }
 }

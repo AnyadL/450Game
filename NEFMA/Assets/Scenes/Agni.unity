@@ -117,11 +117,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 249660520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.397365, y: 2.9787261, z: -21.27}
-  m_LocalScale: {x: 0.28566748, y: 0.64494026, z: 1}
+  m_LocalPosition: {x: -0.12571095, y: -0.53810817, z: -21.27}
+  m_LocalScale: {x: 4.876453, y: 11.097057, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 2068628858}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &249660522
 AudioListener:
@@ -191,7 +191,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4776075685292272, guid: f4fd4d4a7176cf94dbe991af96777567, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.1
+      value: 3.07
       objectReference: {fileID: 0}
     - target: {fileID: 4776075685292272, guid: f4fd4d4a7176cf94dbe991af96777567, type: 2}
       propertyPath: m_LocalPosition.z
@@ -223,7 +223,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4776075685292272, guid: f4fd4d4a7176cf94dbe991af96777567, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.6394562
+      value: 0.6253356
+      objectReference: {fileID: 0}
+    - target: {fileID: 114340048299960162, guid: f4fd4d4a7176cf94dbe991af96777567,
+        type: 2}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 61405318141346362, guid: f4fd4d4a7176cf94dbe991af96777567,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4fd4d4a7176cf94dbe991af96777567, type: 2}
@@ -242,7 +252,7 @@ GameObject:
   - component: {fileID: 862539756}
   m_Layer: 8
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,6 +370,25 @@ Transform:
   m_Father: {fileID: 2068628858}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1948846146 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1321060816576830, guid: f4fd4d4a7176cf94dbe991af96777567,
+    type: 2}
+  m_PrefabInternal: {fileID: 615273952}
+--- !u!61 &1948846153
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1948846146}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0.108388685}
+  serializedVersion: 2
+  m_Size: {x: 4.2, y: 2.8451443}
 --- !u!1 &2068628853
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +402,7 @@ GameObject:
   - component: {fileID: 2068628855}
   - component: {fileID: 2068628854}
   - component: {fileID: 2068628859}
+  - component: {fileID: 2068628860}
   m_Layer: 0
   m_Name: Agni
   m_TagString: Player
@@ -480,6 +510,7 @@ Transform:
   m_LocalScale: {x: 0.058581002, y: 0.05811814, z: 1}
   m_Children:
   - {fileID: 1440264396}
+  - {fileID: 249660521}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -500,3 +531,15 @@ MonoBehaviour:
     type: 2}
   littleBulletVelocity: 20
   bigBulletVelocity: 10
+--- !u!114 &2068628860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2068628853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692b94a5dbc7bee4b9f6f62af6c3cd0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
