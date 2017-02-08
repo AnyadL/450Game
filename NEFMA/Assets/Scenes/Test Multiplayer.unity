@@ -328,11 +328,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114539795941029842, guid: 8f3b871b52a79fa49a641d1700387c80,
         type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114539795941029842, guid: 8f3b871b52a79fa49a641d1700387c80,
-        type: 2}
       propertyPath: targets.Array.data[0]
       value: 
       objectReference: {fileID: 66228201}
