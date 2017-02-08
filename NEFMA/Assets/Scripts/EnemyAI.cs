@@ -31,7 +31,6 @@ public class EnemyAI : MonoBehaviour {
     private bool isBlocked = false;
     public int facingRight = 1;
 
-
     void Start() {
         myBody = this.GetComponent<Rigidbody2D>();
         //SpriteRenderer mySprite = this.GetComponent<SpriteRenderer>();
