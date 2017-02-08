@@ -40,10 +40,20 @@ namespace UnityStandardAssets._2D
         {
             float x = 0f;
             float y = 0f;
+            int deadCount = 0;
             for (int i = 0; i < targets.Count; i++)
             {
+                if (targets[i] == null)
+                {
+                    ++deadCount;
+                    continue;
+                }
                 x += targets[i].position.x;
                 y += targets[i].position.y;
+            }
+            if (deadCount == targets.Count)
+            {
+                return;
             }
             target.x = x / targets.Count;
             target.y = y / targets.Count;

@@ -350,7 +350,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1440264396}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ground check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 2068628854}
   - component: {fileID: 2068628859}
   - component: {fileID: 2068628860}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Agni
   m_TagString: Player
   m_Icon: {fileID: 0}

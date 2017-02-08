@@ -27,7 +27,7 @@ public class EnemyAI : MonoBehaviour {
     public Transform wallCheck;
     public float moveForce = 365f;
     public float maxSpeed = 5f;
-    private bool isGrounded = false;
+    private bool isGrounded = true;
     private bool isBlocked = false;
     public int facingRight = 1;
 
