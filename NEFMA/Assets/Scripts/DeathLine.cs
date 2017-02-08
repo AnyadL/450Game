@@ -20,7 +20,13 @@ public class DeathLine : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
+        {
             //Application.LoadLevel(Application.loadedLevel);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
