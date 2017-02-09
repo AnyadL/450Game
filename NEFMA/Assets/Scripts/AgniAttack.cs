@@ -10,6 +10,7 @@ public class AgniAttack : MonoBehaviour
     public float littleBulletVelocity = 20;
     public float bigBulletVelocity = 10;
 
+    private string playerNumber;
 
     private HeroMovement hm;
     public float littleCooldown = 0.3f;
@@ -32,7 +33,7 @@ public class AgniAttack : MonoBehaviour
         if (Time.time >= nextLittleFire)
         {
             //Fire little fireballs
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1_" + hm.playerNumber))
             {
                 nextLittleFire = Time.time + littleCooldown;
                 RegularFire();
@@ -41,7 +42,7 @@ public class AgniAttack : MonoBehaviour
 
         if(Time.time >= nextBigFire) { 
             //Fire Big Fireballs
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire2_" + hm.playerNumber))
             {
                 nextBigFire = Time.time + bigCooldown;
                 BigFire();

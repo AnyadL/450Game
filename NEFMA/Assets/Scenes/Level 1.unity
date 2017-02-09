@@ -1274,11 +1274,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4120247364456308, guid: 8f3b871b52a79fa49a641d1700387c80, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -15.59
+      value: -16.25
       objectReference: {fileID: 0}
     - target: {fileID: 4120247364456308, guid: 8f3b871b52a79fa49a641d1700387c80, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.804
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 4120247364456308, guid: 8f3b871b52a79fa49a641d1700387c80, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6294,7 +6294,7 @@ MonoBehaviour:
   jump: 0
   attack: 0
   inRange: 0
-  playerNumber: 02
+  playerNumber: 1
   moveForce: 400
   maxSpeed: 12
   jumpForce: 1800
