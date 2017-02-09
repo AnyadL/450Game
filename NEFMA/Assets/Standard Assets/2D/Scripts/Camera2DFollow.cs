@@ -21,10 +21,16 @@ namespace UnityStandardAssets._2D
         // Use this for initialization
         private void Start()
         {
-            float x = 0f;
-            float y = 0f;
+            float x = 0;
+            float y = 0;
             for (int i = 0; i < targets.Count; i++)
             {
+                if (targets[i] == null)
+                {
+                    x = gameObject.transform.position.x;
+                    y = gameObject.transform.position.y;
+                    continue;
+                }
                 x += targets[i].position.x;
                 y += targets[i].position.y;
             }
@@ -34,24 +40,27 @@ namespace UnityStandardAssets._2D
             transform.parent = null;
         }
 
-
         // Update is called once per frame
         private void Update()
         {
+            if (targets.Count == 0)
+            {
+                return;
+            }
             float x = 0f;
             float y = 0f;
-            int deadCount = 0;
             for (int i = 0; i < targets.Count; i++)
             {
                 if (targets[i] == null)
                 {
-                    ++deadCount;
                     continue;
                 }
                 x += targets[i].position.x;
                 y += targets[i].position.y;
             }
-            if (deadCount == targets.Count)
+
+            targets.RemoveAll(T => T == null);
+            if (targets.Count == 0)
             {
                 return;
             }

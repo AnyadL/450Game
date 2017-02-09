@@ -37,6 +37,10 @@ public class AttributeController : MonoBehaviour {
 
     void enemyCollisions(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Platform")
+        {
+            return;
+        }
         Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "LittleAttack")
         {
