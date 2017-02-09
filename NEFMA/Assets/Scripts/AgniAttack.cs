@@ -11,12 +11,12 @@ public class AgniAttack : MonoBehaviour
     public float bigBulletVelocity = 10;
 
 
-    private HeroMovement hm; 
-    float littleCooldown= 0.3f;
-    float nextLittleFire;
+    private HeroMovement hm;
+    public float littleCooldown = 0.3f;
+    public float nextLittleFire;
 
-    float bigCooldown = 10f;
-    float nextBigFire;
+    public float bigCooldown = 10f;
+    public float nextBigFire;
 
     // Use this for initialization
     void Start()

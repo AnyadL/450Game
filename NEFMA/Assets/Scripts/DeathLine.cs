@@ -25,7 +25,8 @@ public class DeathLine : MonoBehaviour {
         if (other.gameObject.CompareTag("Player"))
         {
             //Application.LoadLevel(Application.loadedLevel);
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<AttributeController>().health = 0;
+            other.gameObject.GetComponent<SetPlayerUI>().Update();
             ++dead;
             if (dead >= numPlayers)
             {
