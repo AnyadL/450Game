@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class DeathLine : MonoBehaviour {
 
+    public int numPlayers; // Todo: Remove this
+    private int dead = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -22,7 +25,12 @@ public class DeathLine : MonoBehaviour {
         if (other.gameObject.CompareTag("Player"))
         {
             //Application.LoadLevel(Application.loadedLevel);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Destroy(other.gameObject);
+            ++dead;
+            if (dead >= numPlayers)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
         else
         {
