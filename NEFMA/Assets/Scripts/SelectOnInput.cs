@@ -20,6 +20,11 @@ public class SelectOnInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!buttonSelected)
+        {
+            eventSystem.SetSelectedGameObject(selectedObject);
+            buttonSelected = true;
+        }
     }
 
     private void OnDisable()
