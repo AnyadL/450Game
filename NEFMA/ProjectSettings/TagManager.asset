@@ -8,6 +8,7 @@ TagManager:
   - Platform
   - BigAttack
   - LittleAttack
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Enemy
   - Camera Walls
   - Player
-  - 
+  - Background
   - 
   - 
   - 

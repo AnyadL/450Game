@@ -1221,24 +1221,6 @@ Prefab:
       propertyPath: targets.Array.data[0]
       value: 
       objectReference: {fileID: 145366280}
-    - target: {fileID: 4102626228141704, guid: 8f3b871b52a79fa49a641d1700387c80, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4472376093586652, guid: 8f3b871b52a79fa49a641d1700387c80, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
-        type: 2}
-      propertyPath: m_OcclusionCulling
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
-        type: 2}
-      propertyPath: m_HDR
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114539795941029842, guid: 8f3b871b52a79fa49a641d1700387c80,
         type: 2}
       propertyPath: targets.Array.data[1]
@@ -4159,7 +4141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1568422078}
   - component: {fileID: 1568422077}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Background (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4324,7 +4306,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1642660784}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Backgrounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4825,7 +4807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1881948799}
   - component: {fileID: 1881948798}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
