@@ -1,0 +1,110 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 960M (ID=0x139b)
+    Vendor:   NVIDIA
+    VRAM:     2018 MB
+    Driver:   20.19.15.4531
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  0.023 seconds
+Platform assembly: D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\dayna\Documents\School\450\450Game\Demo1_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 5.165306 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.759699 ms
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 383.
+Total: 0.261914 ms (FindLiveObjects: 0.025849 ms CreateObjectMapping: 0.020527 ms MarkObjects: 0.198431 ms  DeleteObjects: 0.016726 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.446661 ms
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 1088.
+Total: 0.374055 ms (FindLiveObjects: 0.062722 ms CreateObjectMapping: 0.025469 ms MarkObjects: 0.258873 ms  DeleteObjects: 0.026609 ms)
+
+Untagged
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Untagged
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.506864 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1088.
+Total: 0.561462 ms (FindLiveObjects: 0.095414 ms CreateObjectMapping: 0.054739 ms MarkObjects: 0.402945 ms  DeleteObjects: 0.007982 ms)
+
+Player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Enemy
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Enemy
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Player
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Enemy
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Untagged
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 61b4 -> priority: 1 
+  Thread -> id: 3f34 -> priority: 1 
