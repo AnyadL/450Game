@@ -109,7 +109,7 @@ public class EnemyAI : MonoBehaviour {
         //Checks the direction and sets the bullet velocity to that direction
         float velocityDirection = projectileVelocity;
 
-        velocityDirection = velocityDirection * facingRight;
+        velocityDirection = velocityDirection * -facingRight;
 
         //Creates the bullet and makes it move
         GameObject newBullet = Instantiate(projectilePrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;

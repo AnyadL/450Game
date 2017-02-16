@@ -10,6 +10,14 @@ public class littleFireballScript : MonoBehaviour {
  
     }
 
+    private void Update()
+    {
+        if (!gameObject.GetComponent<Renderer>().isVisible)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
