@@ -6,6 +6,8 @@ public class Globals : MonoBehaviour {
 
     static public int numPlayers = 2;
     static public int livingPlayers = 2;
+    static public float musicVolume = 0.5f;
+    static public float soundFXVolume = 0.5f;
 
 	// Use this for initialization
 	void Start () {
