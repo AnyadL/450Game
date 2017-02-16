@@ -13,18 +13,16 @@ public class AgniAttack : MonoBehaviour
     private string playerNumber;
 
     private HeroMovement hm;
+    private AttributeController myAttribute;
     public float littleCooldown = 0.3f;
     public float nextLittleFire;
-
-    public float bigCooldown = 10f;
-    public float nextBigFire;
 
     // Use this for initialization
     void Start()
     {
-
         //In order to figure out which way the character is facing I need to access the HeroMovement script
         hm = gameObject.GetComponent<HeroMovement>();
+        myAttribute = gameObject.GetComponent<AttributeController>();
     }
 
     // Update is called once per frame
@@ -40,15 +38,16 @@ public class AgniAttack : MonoBehaviour
             }
         }
 
-        if(Time.time >= nextBigFire) { 
+        if(Time.time >= myAttribute.nextBigFire) { 
             //Fire Big Fireballs
             if (Input.GetButtonDown("Fire2_" + hm.playerNumber))
             {
-                nextBigFire = Time.time + bigCooldown;
+                myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
                 BigFire();
             }
         }
     }
+
     // Fire a bullet
     void RegularFire()
     {
@@ -81,6 +80,5 @@ public class AgniAttack : MonoBehaviour
         newBullet.transform.rotation = gameObject.transform.rotation; //Rotate the same direction as the ship it is fired from
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
     }
-
 }
 

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class SetPlayerUI : MonoBehaviour {
 
+    private AttributeController myAttribute;
+
     public Slider healthSlider;
     public Slider powerSlider;
 
@@ -14,14 +16,15 @@ public class SetPlayerUI : MonoBehaviour {
 
     void Start()
     {
+        myAttribute = gameObject.GetComponent<AttributeController>();
         if (healthSlider != null)
         {
-            health = gameObject.GetComponent<AttributeController>().health;
+            health = myAttribute.health;
             healthSlider.value = health;
         }
         if (powerSlider != null)
         {
-            powerSlider.value = gameObject.GetComponent<AgniAttack>().bigCooldown;
+            powerSlider.value = myAttribute.bigCooldown;
             oldFire = 0;
         }
     }
@@ -30,17 +33,17 @@ public class SetPlayerUI : MonoBehaviour {
     {
         if (healthSlider != null)
         {
-            if (gameObject.GetComponent<AttributeController>().health != health) {
-                health = gameObject.GetComponent<AttributeController>().health;
+            if (myAttribute.health != health) {
+                health = myAttribute.health;
                 healthSlider.value = health;
             }
         }
         if (powerSlider != null)
         {
-            currentFire = gameObject.GetComponent<AgniAttack>().nextBigFire;
+            currentFire = myAttribute.nextBigFire;
             if ((currentFire != oldFire) || (Time.time <= currentFire)) // potentiall add 0.000001 to time to avoid time = 0
             {
-                powerSlider.value = gameObject.GetComponent<AgniAttack>().bigCooldown - (currentFire - Time.time);
+                powerSlider.value = myAttribute.bigCooldown - (currentFire - Time.time);
             }
             oldFire = currentFire;
         }
