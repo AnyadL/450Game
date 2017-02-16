@@ -4048,7 +4048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal_-1
-  m_VerticalAxis: Vertical
+  m_VerticalAxis: Vertical_-1
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -6296,7 +6296,7 @@ MonoBehaviour:
   jump: 0
   attack: 0
   inRange: 0
-  playerNumber: 02
+  playerNumber: 1
   moveForce: 400
   maxSpeed: 12
   jumpForce: 1800

@@ -27,7 +27,8 @@ public class PlayerSelectorMovement : MonoBehaviour {
     string agniText;
     string rykerText;
     string kittyText;
-
+    [HideInInspector] float nextMovement = 0;
+    [HideInInspector] float nextMovementCooldown = 0.25f;
 
     // Use this for initialization
     void Start () {
@@ -64,77 +65,81 @@ public class PlayerSelectorMovement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (playerNumber == 0)
+        if (Input.GetButtonDown("Submit"))
         {
-            if (Input.GetKeyDown("space"))
+            SceneManager.LoadScene(2);
+        }
+        float vertical = Input.GetAxisRaw("Vertical_" + playerNumber);
+        if (vertical > 0 && Time.time >= nextMovement)
+        {
+            nextMovement = Time.time + nextMovementCooldown;
+            if (!(GetComponent<RectTransform>().localPosition.y == topY))
             {
-                SceneManager.LoadScene(2);
-            }
-            if (Input.GetKeyDown("up"))
-            {
-                if (!(GetComponent<RectTransform>().localPosition.y == topY))
-                {
-                    position.y = topY;
-                    if (position.x == bottomX)
-                        position.x = topX;
-                    else if (position.x == -bottomX)
-                        position.x = -topX;
+                position.y = topY;
+                if (position.x == bottomX)
+                    position.x = topX;
+                else if (position.x == -bottomX)
+                    position.x = -topX;
 
+                GetComponent<RectTransform>().localPosition = position;
+            }
+        }
+        else if (vertical < 0 && Time.time >= nextMovement)
+        {
+            nextMovement = Time.time + nextMovementCooldown;
+            if (!(GetComponent<RectTransform>().localPosition.y == bottomY))
+            {
+                position.y = bottomY;
+                if (position.x == topX)
+                    position.x = bottomX;
+                else if (position.x == -topX)
+                    position.x = -bottomX;
+
+                GetComponent<RectTransform>().localPosition = position;
+            }
+        }
+        float horizontal = Input.GetAxisRaw("Horizontal_" + playerNumber);
+        if (horizontal < 0 && Time.time >= nextMovement)
+        {
+            nextMovement = Time.time + nextMovementCooldown;
+            if ((GetComponent<RectTransform>().localPosition.y == topY))
+            {
+                if (!(GetComponent<RectTransform>().localPosition.x == -topX))
+                {
+                    position.x = GetComponent<RectTransform>().localPosition.x - topX;
                     GetComponent<RectTransform>().localPosition = position;
                 }
             }
-            else if (Input.GetKeyDown("down"))
+            else
             {
-                if (!(GetComponent<RectTransform>().localPosition.y == bottomY))
+                if (!(GetComponent<RectTransform>().localPosition.x == -bottomX))
                 {
-                    position.y = bottomY;
-                    if (position.x == topX)
-                        position.x = bottomX;
-                    else if (position.x == -topX)
-                        position.x = -bottomX;
-
+                    position.x = GetComponent<RectTransform>().localPosition.x - bottomX;
                     GetComponent<RectTransform>().localPosition = position;
-                }
-            }
-            else if (Input.GetKeyDown("left"))
-            {
-                if ((GetComponent<RectTransform>().localPosition.y == topY))
-                {
-                    if (!(GetComponent<RectTransform>().localPosition.x == -topX))
-                    {
-                        position.x = GetComponent<RectTransform>().localPosition.x - topX;
-                        GetComponent<RectTransform>().localPosition = position;
-                    }
-                }
-                else
-                {
-                    if (!(GetComponent<RectTransform>().localPosition.x == -bottomX))
-                    {
-                        position.x = GetComponent<RectTransform>().localPosition.x - bottomX;
-                        GetComponent<RectTransform>().localPosition = position;
-                    }
-                }
-            }
-            else if (Input.GetKeyDown("right"))
-            {
-                if ((GetComponent<RectTransform>().localPosition.y == topY))
-                {
-                    if (!(GetComponent<RectTransform>().localPosition.x == topX))
-                    {
-                        position.x = GetComponent<RectTransform>().localPosition.x + topX;
-                        GetComponent<RectTransform>().localPosition = position;
-                    }
-                }
-                else
-                {
-                    if (!(GetComponent<RectTransform>().localPosition.x == bottomX))
-                    {
-                        position.x = GetComponent<RectTransform>().localPosition.x + bottomX;
-                        GetComponent<RectTransform>().localPosition = position;
-                    }
                 }
             }
         }
+        else if (horizontal > 0 && Time.time >= nextMovement)
+        {
+            nextMovement = Time.time + nextMovementCooldown;
+            if ((GetComponent<RectTransform>().localPosition.y == topY))
+            {
+                if (!(GetComponent<RectTransform>().localPosition.x == topX))
+                {
+                    position.x = GetComponent<RectTransform>().localPosition.x + topX;
+                    GetComponent<RectTransform>().localPosition = position;
+                }
+            }
+            else
+            {
+                if (!(GetComponent<RectTransform>().localPosition.x == bottomX))
+                {
+                    position.x = GetComponent<RectTransform>().localPosition.x + bottomX;
+                    GetComponent<RectTransform>().localPosition = position;
+                }
+            }
+        }
+
         setPlayerPanel();
     }
 
