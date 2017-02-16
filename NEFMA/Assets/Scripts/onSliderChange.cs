@@ -36,5 +36,15 @@ public class onSliderChange : MonoBehaviour {
                 sounds[i].volume = slider.value;
             }
         }
+
+        // change globals
+        if (music)
+        {
+            Globals.musicVolume = slider.value;
+        }
+        else
+        {
+            Globals.soundFXVolume = slider.value;
+        }
     }
 }
