@@ -7,7 +7,7 @@ public class HeroMovement : MonoBehaviour {
     [HideInInspector] public bool facingRight = true;
     [HideInInspector] public bool jump = false;
     [HideInInspector] public bool attack = false;
-    [HideInInspector]public bool inRange = false;
+    [HideInInspector] public bool inRange = false;
 
     public string playerNumber;
 
@@ -16,7 +16,7 @@ public class HeroMovement : MonoBehaviour {
     public float jumpForce = 1000f;
     public Transform groundCheck;
 
-    private bool grounded = false;
+    [HideInInspector] public bool grounded = false;
     //private Animator anim;
     private Rigidbody2D rb2d;
 

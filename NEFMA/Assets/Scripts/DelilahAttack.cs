@@ -27,7 +27,12 @@ public class DelilahAttack : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if ((Input.GetButtonDown("Fire1_" + myMovement.playerNumber)) && (Time.time >= nextLittleFire) && (Time.time >= myAttribute.nextBigFire))
+        if (hasWall && !myMovement.grounded)
+        {
+            hasWall = false;
+            Destroy(wall);
+        }
+        if ((Input.GetButtonDown("Fire1_" + myMovement.playerNumber)) && (Time.time >= nextLittleFire) && (Time.time >= myAttribute.nextBigFire) && myMovement.grounded)
         {
             nextLittleFire = Time.time + littleCooldown;
             RegularFire();
