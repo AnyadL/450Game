@@ -20,6 +20,10 @@ public class AttributeController : MonoBehaviour {
                 gameObject.GetComponent<SetPlayerUI>().Update();
                 --Globals.livingPlayers;
                 //Debug.Log("living players = " + Globals.livingPlayers);
+                if (gameObject.name == "Delilah")
+                {
+                    Destroy(gameObject.GetComponent<DelilahAttack>().wall);
+                }
                 if (Globals.livingPlayers <= 0)
                 {
                     Globals.livingPlayers = 2;
