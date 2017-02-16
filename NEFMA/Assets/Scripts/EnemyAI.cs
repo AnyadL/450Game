@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour {
 
     public Transform groundCheck;
     public Transform wallCheck;
+    public Transform crushedCheck;
     public float moveForce = 365f;
     public float maxSpeed = 5f;
     [HideInInspector] private bool isGrounded = true;
@@ -41,11 +42,24 @@ public class EnemyAI : MonoBehaviour {
 
     void Update()
     {
-        isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         isBlocked = Physics2D.Linecast(transform.position, wallCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
+        if (isBlocked)
+        {
+            bool crushed = Physics2D.Linecast(transform.position, crushedCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+            if (crushed)
+            {
+                myAttributes.health = 0;
+            }
+            else
+            {
+                Flip();
+            }
+        }
+
+        isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         // If theres no ground, turn around. Or if I hit a wall, turn around
-        if (!isGrounded || isBlocked)
+        if (!isBlocked && !isGrounded)
         {
             Flip();
         }
