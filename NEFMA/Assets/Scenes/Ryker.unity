@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 1777888516}
   - component: {fileID: 1777888515}
   m_Layer: 0
-  m_Name: Test Hero (1)
+  m_Name: Ryker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,9 +323,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.113038756, y: -0.385654}
+  m_Offset: {x: -0.8, y: -0.385654}
   serializedVersion: 2
-  m_Size: {x: 13.469295, y: 25.026165}
+  m_Size: {x: 15, y: 27.36}
 --- !u!114 &1777888516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +397,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 93baa0ab204c5ab48b936617f7f062fe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a0ea05e8a90c084bb2d89f69befbea9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -408,7 +408,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1777888514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.82, y: 3.9, z: 0}
+  m_LocalPosition: {x: -6.843, y: 3.32, z: 0}
   m_LocalScale: {x: 0.07955193, y: 0.07433419, z: 1}
   m_Children:
   - {fileID: 1776208691}
