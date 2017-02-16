@@ -10,6 +10,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent (typeof (Rigidbody2D))]
+[RequireComponent(typeof(AttributeController))]
 public class EnemyAI : MonoBehaviour {
 
     // Cache vars
@@ -20,17 +21,22 @@ public class EnemyAI : MonoBehaviour {
     public Transform wallCheck;
     public float moveForce = 365f;
     public float maxSpeed = 5f;
-    private bool isGrounded = true;
-    private bool isBlocked = false;
-    public int facingRight = 1;
+    [HideInInspector] private bool isGrounded = true;
+    [HideInInspector] private bool isBlocked = false;
+    [HideInInspector] public int facingRight = 1;
     public float projectileVelocity = 20;
-    public float nextProjectileFire;
+    public float nextProjectileFire = 0;
     public float projectileCooldown = 0.3f;
     public GameObject projectilePrefab;
 
     void Start() {
         myBody = this.GetComponent<Rigidbody2D>();
-        myAttributes = this.GetComponent<AttributeController>(); ;
+        myAttributes = this.GetComponent<AttributeController>();
+
+        if (this.GetComponent<SpriteRenderer>().flipX)
+        {
+            facingRight = -1;
+        }
     }
 
     void Update()
@@ -38,9 +44,14 @@ public class EnemyAI : MonoBehaviour {
         isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         isBlocked = Physics2D.Linecast(transform.position, wallCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
+        // If theres no ground, turn around. Or if I hit a wall, turn around
+        if (!isGrounded || isBlocked)
+        {
+            Flip();
+        }
+
         if (myAttributes.isRanged == 1)
         {
-            //Fire little fireballs
             if (Time.time >= nextProjectileFire)
             {
                 nextProjectileFire = Time.time + projectileCooldown;
@@ -52,11 +63,6 @@ public class EnemyAI : MonoBehaviour {
     // Great for physics updates, use FixedUpdate instead of Update!
     void FixedUpdate()
     {
-        // If theres no ground, turn around. Or if I hit a wall, turn around
-        if (!isGrounded || isBlocked) {
-            Flip();
-        }
-
         if (moveForce == 0)
         {
             return;
