@@ -16,7 +16,7 @@ public class AttributeController : MonoBehaviour {
             {
                 gameObject.GetComponent<SetPlayerUI>().Update();
                 --Globals.livingPlayers;
-                Debug.Log("living players = " + Globals.livingPlayers);
+                //Debug.Log("living players = " + Globals.livingPlayers);
                 if (Globals.livingPlayers <= 0)
                 {
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -39,8 +39,8 @@ public class AttributeController : MonoBehaviour {
     }
     void playerCollisions(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
-        Debug.Log(health);
+        //Debug.Log(collision.gameObject.tag);
+        //Debug.Log(health);
         if (collision.gameObject.tag == "Enemy")
         {
             health = health - 1; 
@@ -65,10 +65,10 @@ public class AttributeController : MonoBehaviour {
         {
             return;
         }
-        Debug.Log(collision.gameObject.tag);
+        //Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "LittleAttack")
         {
-            Debug.Log("here");
+            //Debug.Log("here");
             health = health - 1;
         }
         else if(collision.gameObject.tag == "BigAttack")

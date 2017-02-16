@@ -37,7 +37,7 @@ public class HeroMovement : MonoBehaviour {
             jump = true;
         }
 
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2_" + playerNumber))
         {
             attack = true;
         }

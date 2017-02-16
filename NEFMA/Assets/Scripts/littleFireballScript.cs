@@ -21,5 +21,12 @@ public class littleFireballScript : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if (gameObject.tag == "LittleAttack")
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
