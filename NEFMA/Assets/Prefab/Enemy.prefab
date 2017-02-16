@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 4821684112757508}
   wallCheck: {fileID: 4813805045592524}
-  crushedCheck: {fileID: 0}
+  crushedCheck: {fileID: 4843638211050368}
   moveForce: 365
   maxSpeed: 5
   facingRight: 1
