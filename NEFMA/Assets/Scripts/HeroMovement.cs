@@ -71,7 +71,7 @@ public class HeroMovement : MonoBehaviour {
         }
         if (attack && inRange)
         {
-            Debug.Log("attack");
+            //Debug.Log("attack");
             attack = false;
         }
     }
