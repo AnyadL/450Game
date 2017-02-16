@@ -22,6 +22,7 @@ public class AttributeController : MonoBehaviour {
                 //Debug.Log("living players = " + Globals.livingPlayers);
                 if (Globals.livingPlayers <= 0)
                 {
+                    Globals.livingPlayers = 2;
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 }
             }
