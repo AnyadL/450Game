@@ -7,9 +7,12 @@ public class AttributeController : MonoBehaviour {
 
     public float health;
     public int isRanged = 0;
-    
-	// Update is called once per frame
-	void Update () {
+
+    public float bigCooldown = 10f;
+    public float nextBigFire;
+
+    // Update is called once per frame
+    void Update () {
 		if (health <= 0)
         {
             if (gameObject.tag == "Player")
