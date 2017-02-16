@@ -57,6 +57,11 @@ public class EnemyAI : MonoBehaviour {
             Flip();
         }
 
+        if (moveForce == 0)
+        {
+            return;
+        }
+
         if (facingRight * myBody.velocity.x < maxSpeed)
         {
             myBody.AddForce(Vector2.right * facingRight * moveForce);
