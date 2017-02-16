@@ -642,6 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  isRanged: 0
 --- !u!114 &145366275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4302,6 +4303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  isRanged: 0
 --- !u!61 &1326460363
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5062,7 +5064,7 @@ GameObject:
   - component: {fileID: 1546551334}
   m_Layer: 0
   m_Name: Death Line
-  m_TagString: Untagged
+  m_TagString: DeathLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5073,12 +5075,11 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1546551333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6918eceb9827c8247a89293fb6b665c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numPlayers: 2
 --- !u!33 &1546551335
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6244,6 +6245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  isRanged: 0
 --- !u!114 &1977701063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6294,7 +6296,7 @@ MonoBehaviour:
   jump: 0
   attack: 0
   inRange: 0
-  playerNumber: 1
+  playerNumber: 02
   moveForce: 400
   maxSpeed: 12
   jumpForce: 1800

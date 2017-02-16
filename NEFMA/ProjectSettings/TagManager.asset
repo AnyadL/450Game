@@ -10,6 +10,7 @@ TagManager:
   - LittleAttack
   - Ground
   - EnemyAttack
+  - DeathLine
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AttributeController : MonoBehaviour {
 
@@ -11,6 +12,16 @@ public class AttributeController : MonoBehaviour {
 	void Update () {
 		if (health <= 0)
         {
+            if (gameObject.tag == "Player")
+            {
+                gameObject.GetComponent<SetPlayerUI>().Update();
+                --Globals.livingPlayers;
+                Debug.Log("living players = " + Globals.livingPlayers);
+                if (Globals.livingPlayers <= 0)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
+            }
             Destroy(gameObject);
         }
 	}
@@ -34,9 +45,13 @@ public class AttributeController : MonoBehaviour {
         {
             health = health - 1; 
         }
-        if (collision.gameObject.tag == "EnemyAttack")
+        else if (collision.gameObject.tag == "EnemyAttack")
         {
             health = health - 1;
+        }
+        else if (collision.gameObject.tag == "DeathLine")
+        {
+            health = 0;
         }
     }
 
@@ -46,7 +61,7 @@ public class AttributeController : MonoBehaviour {
         {
             return;
         }
-        if (collision.gameObject.tag == "EnemyAttack")
+        else if (collision.gameObject.tag == "EnemyAttack")
         {
             return;
         }
@@ -59,6 +74,10 @@ public class AttributeController : MonoBehaviour {
         else if(collision.gameObject.tag == "BigAttack")
         {
             health = health - 3;
+        }
+        else if (collision.gameObject.tag == "DeathLine")
+        {
+            health = 0;
         }
     }
 }
