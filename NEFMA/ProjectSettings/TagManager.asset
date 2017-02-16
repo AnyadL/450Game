@@ -11,6 +11,8 @@ TagManager:
   - Ground
   - EnemyAttack
   - DeathLine
+  - Music
+  - SoundFX
   layers:
   - Default
   - TransparentFX
