@@ -9,6 +9,7 @@ TagManager:
   - BigAttack
   - LittleAttack
   - Ground
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX

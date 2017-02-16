@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttributeController : MonoBehaviour {
 
     public float health;
+    public int isRanged = 0;
     
 	// Update is called once per frame
 	void Update () {
@@ -33,11 +34,19 @@ public class AttributeController : MonoBehaviour {
         {
             health = health - 1; 
         }
+        if (collision.gameObject.tag == "EnemyAttack")
+        {
+            health = health - 1;
+        }
     }
 
     void enemyCollisions(Collider2D collision)
     {
         if (collision.gameObject.tag == "Platform")
+        {
+            return;
+        }
+        if (collision.gameObject.tag == "EnemyAttack")
         {
             return;
         }
