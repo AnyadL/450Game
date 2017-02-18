@@ -58,6 +58,18 @@ public class AttributeController : MonoBehaviour {
         }
 	}
 
+    private void knockback(float x)
+    {
+        if (x < gameObject.transform.position.x)
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(20, 10, 0), ForceMode2D.Impulse);
+        }
+        else
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(-20, 10, 0), ForceMode2D.Impulse);
+        }
+    }
+
     private void takenDamage()
     {
         gameObject.layer = 13;
@@ -86,11 +98,13 @@ public class AttributeController : MonoBehaviour {
         {
             health = health - 1;
             takenDamage();
+            knockback(collision.gameObject.transform.position.x);
         }
         else if (collision.gameObject.tag == "EnemyAttack")
         {
             health = health - 1;
             takenDamage();
+            knockback(collision.gameObject.transform.position.x);
         }
         else if (collision.gameObject.tag == "DeathLine")
         {
@@ -114,11 +128,13 @@ public class AttributeController : MonoBehaviour {
             //Debug.Log("here");
             health = health - 1;
             takenDamage();
+            knockback(collision.gameObject.transform.position.x);
         }
         else if(collision.gameObject.tag == "BigAttack")
         {
             health = health - 3;
             takenDamage();
+            knockback(collision.gameObject.transform.position.x);
         }
         else if (collision.gameObject.tag == "DeathLine")
         {
