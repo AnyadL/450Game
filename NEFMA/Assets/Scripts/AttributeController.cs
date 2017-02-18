@@ -9,7 +9,17 @@ public class AttributeController : MonoBehaviour {
     public int isRanged = 0;
 
     public float bigCooldown = 10f;
-    public float nextBigFire;
+    [HideInInspector] public float nextBigFire;
+
+    [HideInInspector] public int myLayer;
+    [HideInInspector] public string myTag;
+    [HideInInspector] public float nextVulnerable;
+
+    private void Start()
+    {
+        myLayer = gameObject.layer;
+        myTag = gameObject.tag;
+    }
 
     // Update is called once per frame
     void Update () {
@@ -32,7 +42,29 @@ public class AttributeController : MonoBehaviour {
             }
             Destroy(gameObject);
         }
+
+        if (gameObject.layer == 13)
+        {
+            if (nextVulnerable <= Time.time)
+            {
+                gameObject.layer = myLayer;
+                gameObject.tag = myTag;
+                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            else
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(1, Mathf.Sin(2 * Mathf.PI * 5 * (nextVulnerable - Time.time) + 0), Mathf.Sin(2 * Mathf.PI * 5 * (nextVulnerable - Time.time) + 0), 0.75f);
+            }
+        }
 	}
+
+    private void takenDamage()
+    {
+        gameObject.layer = 13;
+        gameObject.tag = "Invincible";
+        nextVulnerable = Time.time + 2.0f;
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.75f);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -45,17 +77,20 @@ public class AttributeController : MonoBehaviour {
             playerCollisions(collision);
         }
     }
+
     void playerCollisions(Collider2D collision)
     {
         //Debug.Log(collision.gameObject.tag);
         //Debug.Log(health);
         if (collision.gameObject.tag == "Enemy")
         {
-            health = health - 1; 
+            health = health - 1;
+            takenDamage();
         }
         else if (collision.gameObject.tag == "EnemyAttack")
         {
             health = health - 1;
+            takenDamage();
         }
         else if (collision.gameObject.tag == "DeathLine")
         {
@@ -78,10 +113,12 @@ public class AttributeController : MonoBehaviour {
         {
             //Debug.Log("here");
             health = health - 1;
+            takenDamage();
         }
         else if(collision.gameObject.tag == "BigAttack")
         {
             health = health - 3;
+            takenDamage();
         }
         else if (collision.gameObject.tag == "DeathLine")
         {

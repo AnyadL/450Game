@@ -13,6 +13,7 @@ TagManager:
   - DeathLine
   - Music
   - SoundFX
+  - Invincible
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Camera Walls
   - Player
   - Background
-  - 
+  - Invincible
   - 
   - 
   - 
