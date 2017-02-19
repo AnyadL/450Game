@@ -63,6 +63,7 @@ public class AttributeController : MonoBehaviour {
     private void knockback(float x)
     {
         knockbacked = true;
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         if (x < gameObject.transform.position.x)
         {
             gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(20, 10, 0), ForceMode2D.Impulse);
