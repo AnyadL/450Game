@@ -14,6 +14,8 @@ public class AttributeController : MonoBehaviour {
     [HideInInspector] public int myLayer;
     [HideInInspector] public string myTag;
     [HideInInspector] public float nextVulnerable;
+    [HideInInspector] public bool knockbacked;
+    public float invincibiltyLength = 2.0f;
 
     private void Start()
     {
@@ -60,6 +62,7 @@ public class AttributeController : MonoBehaviour {
 
     private void knockback(float x)
     {
+        knockbacked = true;
         if (x < gameObject.transform.position.x)
         {
             gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(20, 10, 0), ForceMode2D.Impulse);
@@ -74,7 +77,7 @@ public class AttributeController : MonoBehaviour {
     {
         gameObject.layer = 13;
         gameObject.tag = "Invincible";
-        nextVulnerable = Time.time + 2.0f;
+        nextVulnerable = Time.time + invincibiltyLength;
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.75f);
     }
 

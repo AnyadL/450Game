@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 61183141974903798}
   - component: {fileID: 114608651482724496}
   - component: {fileID: 114244758743622684}
+  - component: {fileID: 114895260963106988}
   m_Layer: 11
   m_Name: Agni
   m_TagString: Player
@@ -123,6 +124,10 @@ MonoBehaviour:
   isRanged: 0
   bigCooldown: 10
   nextBigFire: 0
+  myLayer: 0
+  myTag: 
+  nextVulnerable: 0
+  knockbacked: 0
 --- !u!114 &114392560673639600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,6 +168,19 @@ MonoBehaviour:
   bigBulletVelocity: 10
   littleCooldown: 0.3
   nextLittleFire: 0
+--- !u!114 &114895260963106988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1880801342426786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03aab4c3cff95a34babe4415e74a5a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  powerSlider: {fileID: 0}
 --- !u!212 &212085618491722214
 SpriteRenderer:
   m_ObjectHideFlags: 1
