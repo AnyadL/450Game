@@ -14,6 +14,7 @@ TagManager:
   - Music
   - SoundFX
   - Invincible
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
