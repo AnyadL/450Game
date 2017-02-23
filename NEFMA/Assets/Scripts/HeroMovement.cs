@@ -6,7 +6,9 @@ public class HeroMovement : MonoBehaviour {
 
     [HideInInspector] public bool facingRight = true;
     [HideInInspector] public bool jump = false;
+    [HideInInspector] public bool punchRange = false;
     [HideInInspector] public bool attack = false;
+
     [HideInInspector] public bool inRange = false;
 
     public string playerNumber;
@@ -15,12 +17,13 @@ public class HeroMovement : MonoBehaviour {
     public float maxSpeed = 5f;
     public float jumpForce = 1000f;
     public Transform groundCheck;
+   // public Transform punchCheck;
 
     [HideInInspector] public bool grounded = false;
     //private Animator anim;
     private Rigidbody2D rb2d;
     private AttributeController myAttributes;
-
+    
     // Use this for initialization
     void Awake()
     {
@@ -44,7 +47,7 @@ public class HeroMovement : MonoBehaviour {
             jump = true;
         }
 
-        if (Input.GetButtonDown("Fire2_" + playerNumber))
+        if (Input.GetButtonDown("Fire3"))
         {
             attack = true;
         }
@@ -76,9 +79,11 @@ public class HeroMovement : MonoBehaviour {
             rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }
-        if (attack && inRange)
+
+       // punchRange = Physics2D.Linecast(transform.position, punchCheck.position, 1 << LayerMask.NameToLayer("Enemy"));
+        if (attack && punchRange)
         {
-            //Debug.Log("attack");
+            Debug.Log("attack");
             attack = false;
         }
     }

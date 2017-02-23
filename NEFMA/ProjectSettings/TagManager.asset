@@ -15,6 +15,7 @@ TagManager:
   - SoundFX
   - Invincible
   - Checkpoint
+  - Stun
   layers:
   - Default
   - TransparentFX

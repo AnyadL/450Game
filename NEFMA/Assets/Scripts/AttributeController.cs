@@ -144,5 +144,9 @@ public class AttributeController : MonoBehaviour {
         {
             health = 0;
         }
+        else if (collision.gameObject.tag == "Stun")
+        {
+            knockback(collision.gameObject.transform.position.x);
+        }
     }
 }
