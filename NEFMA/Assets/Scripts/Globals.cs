@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Globals : MonoBehaviour {
 
@@ -11,11 +12,15 @@ public class Globals : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        livingPlayers = numPlayers; // doesnt do anything, function not called
+        livingPlayers = numPlayers;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (livingPlayers <= 0)
+        {
+            livingPlayers = numPlayers;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 }

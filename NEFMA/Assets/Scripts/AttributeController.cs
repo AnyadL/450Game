@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AttributeController : MonoBehaviour {
 
@@ -27,22 +26,17 @@ public class AttributeController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if (health <= 0)
+        if (health <= 0)
         {
-            if (gameObject.tag == "Player")
+            if (myTag == "Player")
             {
-                gameObject.GetComponent<SetPlayerUI>().Update();
                 --Globals.livingPlayers;
                 //Debug.Log("living players = " + Globals.livingPlayers);
                 if (gameObject.name == "Delilah")
                 {
                     Destroy(gameObject.GetComponent<DelilahAttack>().wall);
                 }
-                if (Globals.livingPlayers <= 0)
-                {
-                    Globals.livingPlayers = 2;
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                }
+                gameObject.GetComponent<SetPlayerUI>().Update();
             }
             Destroy(gameObject);
         }
@@ -86,12 +80,12 @@ public class AttributeController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameObject.tag == "Enemy")
+        if (myTag == "Enemy")
         {
             //Debug.Log(collision.gameObject.tag);
             enemyCollisions(collision);
         }
-        if (gameObject.tag == "Player"){
+        if (myTag == "Player"){
             playerCollisions(collision);
         }
     }
@@ -100,7 +94,7 @@ public class AttributeController : MonoBehaviour {
     {
         //Debug.Log(collision.gameObject.tag);
         //Debug.Log(health);
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.GetComponent<AttributeController>().myTag == "Enemy")
         {
             health = health - 1;
             takenDamage();
