@@ -8,9 +8,13 @@ public class Globals : MonoBehaviour {
     static public int livingPlayers = 2;
     static public float musicVolume = 0.5f;
     static public float soundFXVolume = 0.5f;
+    static public int player1 = 0;
+    static public int player2 = 1;
+    static public int player3 = 2;
+    static public int player4 = 3;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         livingPlayers = numPlayers; // doesnt do anything, function not called
     }
 	
