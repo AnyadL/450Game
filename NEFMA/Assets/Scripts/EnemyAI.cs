@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour {
             bool crushed = Physics2D.Linecast(transform.position, crushedCheck.position, 1 << LayerMask.NameToLayer("Ground"));
             if (crushed)
             {
-                myAttributes.health = 0;
+                myAttributes.decreaseHealth(myAttributes.maxHealth);
             }
             else
             {

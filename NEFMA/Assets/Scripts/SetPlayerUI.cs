@@ -19,7 +19,7 @@ public class SetPlayerUI : MonoBehaviour {
         myAttribute = gameObject.GetComponent<AttributeController>();
         if (healthSlider != null)
         {
-            health = myAttribute.health;
+            health = myAttribute.getHealth();
             healthSlider.value = health;
         }
         if (powerSlider != null)
@@ -33,8 +33,8 @@ public class SetPlayerUI : MonoBehaviour {
     {
         if (healthSlider != null)
         {
-            if (myAttribute.health != health) {
-                health = myAttribute.health;
+            if (myAttribute.getHealth() != health) {
+                health = myAttribute.getHealth();
                 healthSlider.value = health;
             }
         }

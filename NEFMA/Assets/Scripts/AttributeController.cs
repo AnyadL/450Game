@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttributeController : MonoBehaviour {
 
-    [HideInInspector] public float health = 1;
+    [HideInInspector] private float health = 1;
     public float maxHealth = 1;
     public int isRanged = 0;
 
@@ -12,7 +12,6 @@ public class AttributeController : MonoBehaviour {
     [HideInInspector] public float nextBigFire;
 
     [HideInInspector] public int myLayer;
-    //[HideInInspector] public string myTag;
     [HideInInspector] public float nextVulnerable;
     [HideInInspector] public bool knockbacked;
     public float invincibiltyLength = 2.0f;
@@ -20,7 +19,6 @@ public class AttributeController : MonoBehaviour {
     private void Start()
     {
         myLayer = gameObject.layer;
-        //myTag = gameObject.tag;
         health = maxHealth;
     }
 
@@ -31,7 +29,6 @@ public class AttributeController : MonoBehaviour {
             if (gameObject.tag == "Player")
             {
                 --Globals.livingPlayers;
-                //Debug.Log("living players = " + Globals.livingPlayers);
                 if (gameObject.name == "Delilah")
                 {
                     Destroy(gameObject.GetComponent<DelilahAttack>().wall);
@@ -46,7 +43,6 @@ public class AttributeController : MonoBehaviour {
             if (nextVulnerable <= Time.time)
             {
                 gameObject.layer = myLayer;
-                //gameObject.tag = myTag;
                 gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             }
             else
@@ -70,10 +66,24 @@ public class AttributeController : MonoBehaviour {
         }
     }
 
+    public bool decreaseHealth(float damage)
+    {
+        if (gameObject.layer == 13)
+        {
+            return false;
+        }
+        health = health - damage;
+        return true;
+    }
+
+    public float getHealth()
+    {
+        return health;
+    }
+
     private void takenDamage()
     {
         gameObject.layer = 13;
-        //gameObject.tag = "Invincible";
         nextVulnerable = Time.time + invincibiltyLength;
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.75f);
     }
@@ -82,7 +92,6 @@ public class AttributeController : MonoBehaviour {
     {
         if (gameObject.tag == "Enemy")
         {
-            //Debug.Log(collision.gameObject.tag);
             enemyCollisions(collision);
         }
         if (gameObject.tag == "Player"){
@@ -92,19 +101,21 @@ public class AttributeController : MonoBehaviour {
 
     void playerCollisions(Collider2D collision)
     {
-        //Debug.Log(collision.gameObject.tag);
-        //Debug.Log(health);
         if (collision.gameObject.tag == "Enemy")
         {
-            health = health - 1;
-            takenDamage();
-            knockback(collision.gameObject.transform.position.x);
+            if (decreaseHealth(1.0f))
+            {
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
+            }
         }
         else if (collision.gameObject.tag == "EnemyAttack")
         {
-            health = health - 1;
-            takenDamage();
-            knockback(collision.gameObject.transform.position.x);
+            if (decreaseHealth(1.0f))
+            {
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
+            }
         }
         else if (collision.gameObject.tag == "DeathLine")
         {
@@ -126,19 +137,21 @@ public class AttributeController : MonoBehaviour {
         {
             return;
         }
-        //Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag == "LittleAttack")
+        else if (collision.gameObject.tag == "LittleAttack")
         {
-            //Debug.Log("here");
-            health = health - 1;
-            takenDamage();
-            knockback(collision.gameObject.transform.position.x);
+            if (decreaseHealth(1.0f))
+            {
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
+            }
         }
         else if(collision.gameObject.tag == "BigAttack")
         {
-            health = health - 3;
-            takenDamage();
-            knockback(collision.gameObject.transform.position.x);
+            if (decreaseHealth(3.0f))
+            {
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
+            }
         }
         else if (collision.gameObject.tag == "DeathLine")
         {
