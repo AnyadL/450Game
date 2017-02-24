@@ -213,9 +213,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  maxHealth: 1
   isRanged: 0
   bigCooldown: 10
   nextBigFire: 0
+  myLayer: 0
+  myTag: 
+  nextVulnerable: 0
+  knockbacked: 0
+  invincibiltyLength: 2
 --- !u!212 &212462925183830840
 SpriteRenderer:
   m_ObjectHideFlags: 1

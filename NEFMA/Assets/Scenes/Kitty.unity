@@ -147,7 +147,6 @@ MonoBehaviour:
   maxSpeed: 8
   jumpForce: 1000
   groundCheck: {fileID: 1116546805}
-  punchCheck: {fileID: 0}
   grounded: 0
 --- !u!50 &397033312
 Rigidbody2D:
@@ -246,6 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  maxHealth: 3
   isRanged: 0
   bigCooldown: 10
   nextBigFire: 0

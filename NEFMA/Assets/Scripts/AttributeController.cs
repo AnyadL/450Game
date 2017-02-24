@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class AttributeController : MonoBehaviour {
 
-    public float health;
+    [HideInInspector] public float health = 1;
+    public float maxHealth = 1;
     public int isRanged = 0;
 
     public float bigCooldown = 10f;
@@ -21,6 +22,7 @@ public class AttributeController : MonoBehaviour {
     {
         myLayer = gameObject.layer;
         myTag = gameObject.tag;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -113,6 +115,10 @@ public class AttributeController : MonoBehaviour {
         else if (collision.gameObject.tag == "DeathLine")
         {
             health = 0;
+        }
+        else if (collision.gameObject.tag == "Checkpoint")
+        {
+            health = maxHealth;
         }
     }
 

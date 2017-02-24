@@ -201,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   jump: 0
+  punchRange: 0
   attack: 0
   inRange: 0
   playerNumber: -1
@@ -208,6 +209,7 @@ MonoBehaviour:
   maxSpeed: 12
   jumpForce: 1800
   groundCheck: {fileID: 4169049955147884}
+  grounded: 0
 --- !u!114 &114197408979053204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +222,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  maxHealth: 3
   isRanged: 0
+  bigCooldown: 10
+  nextBigFire: 0
+  myLayer: 0
+  myTag: 
+  nextVulnerable: 0
+  knockbacked: 0
+  invincibiltyLength: 2
 --- !u!124 &124311265633043650
 Behaviour:
   m_ObjectHideFlags: 1
