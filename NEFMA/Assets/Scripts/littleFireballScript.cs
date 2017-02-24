@@ -29,14 +29,11 @@ public class littleFireballScript : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        if (collision.gameObject.GetComponent<AttributeController>())
+        if (collision.gameObject.tag == "Enemy")
         {
-            if (collision.gameObject.GetComponent<AttributeController>().myTag == "Enemy")
+            if (gameObject.tag == "LittleAttack")
             {
-                if (gameObject.tag == "LittleAttack")
-                {
-                    Destroy(gameObject);
-                }
+                Destroy(gameObject);
             }
         }
     }
