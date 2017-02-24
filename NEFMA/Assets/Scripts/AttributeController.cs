@@ -94,11 +94,14 @@ public class AttributeController : MonoBehaviour {
     {
         //Debug.Log(collision.gameObject.tag);
         //Debug.Log(health);
-        if (collision.gameObject.GetComponent<AttributeController>().myTag == "Enemy")
+        if (collision.gameObject.GetComponent<AttributeController>())
         {
-            health = health - 1;
-            takenDamage();
-            knockback(collision.gameObject.transform.position.x);
+            if (collision.gameObject.GetComponent<AttributeController>().myTag == "Enemy")
+            {
+                health = health - 1;
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
+            }
         }
         else if (collision.gameObject.tag == "EnemyAttack")
         {
