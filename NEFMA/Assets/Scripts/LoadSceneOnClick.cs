@@ -9,10 +9,10 @@ public class LoadSceneOnClick : MonoBehaviour
         if (!(Input.GetKeyDown("return") || Input.GetKeyDown("enter") || Input.GetKeyDown("space")))
         {
             // Player 1 is controller
-            Globals.player1 = 1;
-            Globals.player2 = 2;
-            Globals.player3 = 3;
-            Globals.player4 = 4;
+            Globals.player1.Number = 1;
+            Globals.player2.Number = 2;
+            Globals.player3.Number = 3;
+            Globals.player4.Number = 4;
         }
     }
 

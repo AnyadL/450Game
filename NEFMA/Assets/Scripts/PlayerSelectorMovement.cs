@@ -46,23 +46,29 @@ public class PlayerSelectorMovement : MonoBehaviour {
         {
             case 0:
                 position = new Vector3(-topX, topY, 0);
-                playerNumber = Globals.player1;
+                playerNumber = Globals.player1.Number;
                 print("Player number is " + playerNumber);
                 print("Vertical_" + playerNumber);
                 break;
             case 1:
                 position = new Vector3(0, topY, 0);
-                //playerNumber = Globals.player2;
+                playerNumber = Globals.player2.Number;
+                print("Player number is " + playerNumber);
+                print("Vertical_" + playerNumber);
                 break;
 
             case 2:
                 position = new Vector3(topX, topY, 0);
-                playerNumber = Globals.player3;
+                playerNumber = Globals.player3.Number;
+                print("Player number is " + playerNumber);
+                print("Vertical_" + playerNumber);
                 break;
 
             case 3:
                 position = new Vector3(-bottomX, bottomY, 0);
-                playerNumber = Globals.player4;
+                playerNumber = Globals.player4.Number;
+                print("Player number is " + playerNumber);
+                print("Vertical_" + playerNumber);
                 break;
         }
         GetComponent<RectTransform>().localPosition = position;
