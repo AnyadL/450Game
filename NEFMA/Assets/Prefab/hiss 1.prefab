@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61089799286724332}
   - component: {fileID: 114795459985875112}
   m_Layer: 0
-  m_Name: hiss
+  m_Name: hiss 1
   m_TagString: Stun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

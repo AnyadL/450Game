@@ -46,17 +46,23 @@ public class PlayerSelectorMovement : MonoBehaviour {
         {
             case 0:
                 position = new Vector3(-topX, topY, 0);
+                playerNumber = Globals.player1;
+                print("Player number is " + playerNumber);
+                print("Vertical_" + playerNumber);
                 break;
             case 1:
                 position = new Vector3(0, topY, 0);
+                //playerNumber = Globals.player2;
                 break;
 
             case 2:
                 position = new Vector3(topX, topY, 0);
+                playerNumber = Globals.player3;
                 break;
 
             case 3:
                 position = new Vector3(-bottomX, bottomY, 0);
+                playerNumber = Globals.player4;
                 break;
         }
         GetComponent<RectTransform>().localPosition = position;
@@ -70,6 +76,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
             SceneManager.LoadScene(2);
         }
         float vertical = Input.GetAxisRaw("Vertical_" + playerNumber);
+        
         if (vertical > 0 && Time.time >= nextMovement)
         {
             nextMovement = Time.time + nextMovementCooldown;
