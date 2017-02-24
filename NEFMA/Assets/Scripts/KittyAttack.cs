@@ -19,8 +19,9 @@ public class KittyAttack : MonoBehaviour
     {
         //In order to figure out which way the character is facing I need to access the HeroMovement script
         hm = gameObject.GetComponent<HeroMovement>();
-        if (hm) ;
         myAttribute = gameObject.GetComponent<AttributeController>();
+        if (hm)
+            return;
     }
 
     // Update is called once per frame
@@ -51,14 +52,16 @@ public class KittyAttack : MonoBehaviour
     void Hiss()
     {
         GameObject newBullet = Instantiate(HissPrefab, (transform.position + (transform.forward / 10)), Quaternion.identity) as GameObject;
-        if (newBullet) ;
+        if (newBullet)
+            return;
     }
 
     //Creates claw attack which persists for a second and then disappears
     void ClawAttack()
     {
         GameObject newBullet = Instantiate(ClawPrefab, (transform.position + (transform.forward /10)), Quaternion.identity) as GameObject;
-        if (newBullet) ;
+        if (newBullet)
+            return;
     }
 }
 
