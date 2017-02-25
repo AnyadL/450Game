@@ -3703,6 +3703,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114462253976316184, guid: 325a7915afdd96a499bc45fc481afd20,
+        type: 2}
+      propertyPath: OVERRIDE
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114462253976316184, guid: 325a7915afdd96a499bc45fc481afd20,
+        type: 2}
+      propertyPath: PlayerNumberOverride
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114462253976316184, guid: 325a7915afdd96a499bc45fc481afd20,
+        type: 2}
+      propertyPath: LivingPlayerNumberOverride
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 325a7915afdd96a499bc45fc481afd20, type: 2}
   m_IsPrefabParent: 0
