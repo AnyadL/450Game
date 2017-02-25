@@ -16,19 +16,22 @@ public class AttributeController : MonoBehaviour {
     [HideInInspector] public bool knockbacked;
     public float invincibiltyLength = 2.0f;
 
-    private void Start()
+    public void Start()
     {
-        myLayer = gameObject.layer;
+        if (gameObject.layer != 13)
+        {
+            myLayer = gameObject.layer;
+        }
         health = maxHealth;
     }
 
-    // Update is called once per frame
     void Update () {
+        // if we died
         if (health <= 0)
         {
+            // if we are a player
             if (gameObject.tag == "Player")
             {
-                --Globals.livingPlayers;
                 killPlayer(gameObject.GetComponent<HeroMovement>().playerNumber);
                 if (gameObject.name == "Delilah")
                 {
@@ -39,6 +42,7 @@ public class AttributeController : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        // if we are still marked as invincible
         if (gameObject.layer == 13)
         {
             if (nextVulnerable <= Time.time)
@@ -53,11 +57,33 @@ public class AttributeController : MonoBehaviour {
         }
 	}
 
+    // Sets global variables for the player identified by playerNumber, marking them as killed
     public void killPlayer(string playerNumber)
     {
-
+        if (playerNumber == Globals.player1.Number.ToString())
+        {
+            Globals.player1.Alive = false;
+            Globals.player1.GO = null;
+        }
+        else if (playerNumber == Globals.player2.Number.ToString())
+        {
+            Globals.player2.Alive = false;
+            Globals.player2.GO = null;
+        }
+        else if (playerNumber == Globals.player3.Number.ToString())
+        {
+            Globals.player3.Alive = false;
+            Globals.player3.GO = null;
+        }
+        else if (playerNumber == Globals.player4.Number.ToString())
+        {
+            Globals.player4.Alive = false;
+            Globals.player4.GO = null;
+        }
+        --Globals.livingPlayers;
     }
 
+    // responsible for knocking the current gameobject away from whatever hit them
     private void knockback(float x)
     {
         knockbacked = true;
@@ -72,6 +98,7 @@ public class AttributeController : MonoBehaviour {
         }
     }
 
+    // decreases health by damage as long as the current gameobject isnt invincible
     public bool decreaseHealth(float damage)
     {
         if (gameObject.layer == 13)
@@ -82,18 +109,21 @@ public class AttributeController : MonoBehaviour {
         return true;
     }
 
+    // returns the value of the private variable health
     public float getHealth()
     {
         return health;
     }
 
-    private void takenDamage()
+    // marks the current gameobject as invincible
+    public void takenDamage()
     {
         gameObject.layer = 13;
         nextVulnerable = Time.time + invincibiltyLength;
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.75f);
     }
 
+    // determines if the current gameobject is a player or an enemy
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.tag == "Enemy")
@@ -105,6 +135,7 @@ public class AttributeController : MonoBehaviour {
         }
     }
 
+    // something has collided with the player
     void playerCollisions(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -133,6 +164,7 @@ public class AttributeController : MonoBehaviour {
         }
     }
 
+    // something has collided with an enemy
     void enemyCollisions(Collider2D collision)
     {
         if (collision.gameObject.tag == "Platform")
