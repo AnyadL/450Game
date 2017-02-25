@@ -21,6 +21,7 @@ public class EnemyAI : MonoBehaviour {
     public Transform wallCheck;
     public Transform crushedCheck;
     public float moveForce = 365f;
+    [HideInInspector] public float currentMoveForce;
     public float maxSpeed = 5f;
     [HideInInspector] private bool isGrounded = true;
     [HideInInspector] private bool isBlocked = false;
@@ -35,6 +36,7 @@ public class EnemyAI : MonoBehaviour {
     void Start() {
         myBody = this.GetComponent<Rigidbody2D>();
         myAttributes = this.GetComponent<AttributeController>();
+        currentMoveForce = moveForce;
 
         // dont need anymore?
         if (this.GetComponent<SpriteRenderer>().flipX)
@@ -91,14 +93,14 @@ public class EnemyAI : MonoBehaviour {
         {
             return;
         }
-        if (moveForce == 0)
+        if (currentMoveForce == 0)
         {
             return;
         }
 
         if (facingRight * myBody.velocity.x < maxSpeed)
         {
-            myBody.AddForce(Vector2.right * facingRight * moveForce);
+            myBody.AddForce(Vector2.right * facingRight * currentMoveForce);
         }
 
         if (Mathf.Abs(myBody.velocity.x) > maxSpeed)

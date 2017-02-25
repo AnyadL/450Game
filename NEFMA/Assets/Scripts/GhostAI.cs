@@ -14,6 +14,9 @@ public class GhostAI : MonoBehaviour {
     private List<GameObject> targets = new List<GameObject>();
     public float teleportCooldown = 5f;
     private float nextTeleport = 0f;
+    public float fadeDuration = 1f;
+    private float fadeTime = 0f;
+    public int fade = 0;
 
     public GameObject TEST;
 
@@ -26,6 +29,30 @@ public class GhostAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (fadeTime >= Time.time)
+        {
+            if (fade == -1)
+            {
+                //Debug.Log("Time: " + Mathf.Abs(Time.time - fadeTime) + " Sin(" + 0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime) + ") = " + Mathf.Sin(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, Mathf.Sin(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
+            }
+            else if (fade == 1)
+            {
+                //Debug.Log("Time: " + Mathf.Abs(Time.time - fadeTime) + " Cos(" + 0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime) + ") = " + Mathf.Cos(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, Mathf.Cos(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
+            }
+            return;
+        }
+        if (fade == -1)
+        {
+            teleport();
+            return;
+        }
+        else if (fade == 1)
+        {
+            myAI.currentMoveForce = myAI.moveForce;
+            fade = 0;
+        }
         if (!gameObject.GetComponent<Renderer>().isVisible)
         {
             return;
@@ -68,7 +95,7 @@ public class GhostAI : MonoBehaviour {
         //Debug.Log("Targets: " + targets.Count);
         if (targets.Count > 0)
         {
-            teleport();
+            choose();
         }
     }
 
@@ -86,10 +113,21 @@ public class GhostAI : MonoBehaviour {
         }
     }
 
-    void teleport()
+    void choose()
     {
         int choice = Random.Range(0, targets.Count);
         target = targets[choice];
+        targets.Clear();
+        myAI.ghostOverride = true;
+        myAI.currentMoveForce = 0;
+        nextTeleport = Time.time + teleportCooldown;
+        fadeTime = Time.time + fadeDuration;
+        fade = -1;
+    }
+
+    void teleport()
+    {
+        
         bool dir = target.GetComponent<HeroMovement>().facingRight;
         //Debug.Log("Chosen " + targets[choice]);
         gameObject.transform.position = target.transform.position - new Vector3((dir? 1.5f : -1.5f), -0.25f, 0);
@@ -97,9 +135,8 @@ public class GhostAI : MonoBehaviour {
         {
             myAI.Flip();
         }
-        myAI.ghostOverride = true;
-        nextTeleport = Time.time + teleportCooldown;
-        targets.Clear();
+        fadeTime = Time.time + fadeDuration;
+        fade = 1;
     }
 
     void chase()
