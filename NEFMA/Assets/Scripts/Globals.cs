@@ -8,11 +8,15 @@ public class Player
     public string Name;
     public int Number;
     public bool Playing;
-    public Player(string name, int number, bool playing)
+    public bool Alive;
+    public GameObject Prefab;
+    public Player(string name, int number, bool playing, bool alive, GameObject prefab)
     {
         Name = name;
         Number = number;
         Playing = playing;
+        Alive = alive;
+        Prefab = prefab;
     }
 }
 
@@ -24,19 +28,17 @@ public class Globals : MonoBehaviour {
     static public float soundFXVolume = 0.5f;
     static public Checkpoint currentCheckpoint;
 
-    static public GameObject agniPrefab;
-    static public GameObject delilahPrefab;
-
-    static public Player player1 = new Player("Agni", 0, true);
-    static public Player player2 = new Player("", 1, false); // empty player
-    static public Player player3 = new Player("", 2, false); // empty player
-    static public Player player4 = new Player("", 3, false); // empty player
+    static public Player player1 = new Player("", 0, false, false, null); // empty player
+    static public Player player2 = new Player("", 1, false, false, null); // empty player
+    static public Player player3 = new Player("", 2, false, false, null); // empty player
+    static public Player player4 = new Player("", 3, false, false, null); // empty player
 
     // Use this for initialization
     void Start () {
         livingPlayers = numPlayers;
-        agniPrefab = GameObject.Find("Agni");
-        delilahPrefab = GameObject.Find("Delilah");
+        player1.Playing = true;
+        player1.Alive = true;
+        player1.Prefab = Resources.Load("Agni") as GameObject;
     }
 	
 	// Update is called once per frame

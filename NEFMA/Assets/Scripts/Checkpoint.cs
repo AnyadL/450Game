@@ -8,8 +8,11 @@ public class Checkpoint : MonoBehaviour {
     [HideInInspector] private float aliveTime;
     public float checkpointDuration = 2.0f;
 
-	// Use this for initialization
-	void Start ()
+    public GameObject agniPrefab;
+    public GameObject delilahPrefab;
+
+    // Use this for initialization
+    void Start ()
     {
 		
 	}
@@ -32,7 +35,27 @@ public class Checkpoint : MonoBehaviour {
 
     public void resPlayers()
     {
-        Instantiate(Globals.agniPrefab, transform.position, Quaternion.identity);
+        if (Globals.player1.Playing && !Globals.player1.Alive)
+        {
+            GameObject pl1 = Instantiate(Globals.player1.Prefab, transform.position, Quaternion.identity);
+            pl1.GetComponent<HeroMovement>().playerNumber = Globals.player1.Number.ToString();
+        }
+        if (Globals.player2.Playing && !Globals.player2.Alive)
+        {
+            GameObject pl2 = Instantiate(Globals.player2.Prefab, transform.position, Quaternion.identity);
+            pl2.GetComponent<HeroMovement>().playerNumber = Globals.player2.Number.ToString();
+        }
+        if (Globals.player3.Playing && !Globals.player3.Alive)
+        {
+            GameObject pl3 = Instantiate(Globals.player3.Prefab, transform.position, Quaternion.identity);
+            pl3.GetComponent<HeroMovement>().playerNumber = Globals.player3.Number.ToString();
+        }
+        if (Globals.player4.Playing && !Globals.player4.Alive)
+        {
+            GameObject pl4 = Instantiate(Globals.player4.Prefab, transform.position, Quaternion.identity);
+            pl4.GetComponent<HeroMovement>().playerNumber = Globals.player4.Number.ToString();
+        }
+        Globals.livingPlayers = Globals.numPlayers;
     }
 
     void OnTriggerEnter2D(Collider2D other)

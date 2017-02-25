@@ -28,7 +28,6 @@ public class AttributeController : MonoBehaviour {
         {
             if (gameObject.tag == "Player")
             {
-                --Globals.livingPlayers;
                 killPlayer(gameObject.GetComponent<HeroMovement>().playerNumber);
                 if (gameObject.name == "Delilah")
                 {
@@ -55,7 +54,23 @@ public class AttributeController : MonoBehaviour {
 
     public void killPlayer(string playerNumber)
     {
-
+        if (playerNumber == Globals.player1.Number.ToString())
+        {
+            Globals.player1.Alive = false;
+        }
+        else if (playerNumber == Globals.player2.Number.ToString())
+        {
+            Globals.player2.Alive = false;
+        }
+        else if (playerNumber == Globals.player3.Number.ToString())
+        {
+            Globals.player3.Alive = false;
+        }
+        else if (playerNumber == Globals.player4.Number.ToString())
+        {
+            Globals.player4.Alive = false;
+        }
+        --Globals.livingPlayers;
     }
 
     private void knockback(float x)
