@@ -102,7 +102,7 @@ public class AttributeController : MonoBehaviour {
         return health;
     }
 
-    private void takenDamage()
+    public void takenDamage()
     {
         gameObject.layer = 13;
         nextVulnerable = Time.time + invincibiltyLength;
