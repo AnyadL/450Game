@@ -30,7 +30,7 @@ public class Globals : MonoBehaviour {
     static public float soundFXVolume = 0.5f;
     static public Checkpoint currentCheckpoint;
 
-    static public Player player1 = new Player("", 0, false, false, null, null); // empty player
+    static public Player player1 = new Player("", 0, true, false, null, null); // empty player (there will always be a p1)
     static public Player player2 = new Player("", 1, false, false, null, null); // empty player
     static public Player player3 = new Player("", 2, false, false, null, null); // empty player
     static public Player player4 = new Player("", 3, false, false, null, null); // empty player
@@ -43,8 +43,6 @@ public class Globals : MonoBehaviour {
     // Use this for initialization
     void Start () {
         livingPlayers = 0;
-        player1.Playing = true;
-        player1.Prefab = Resources.Load("Agni") as GameObject;
     }
 	
 	// Update is called once per frame

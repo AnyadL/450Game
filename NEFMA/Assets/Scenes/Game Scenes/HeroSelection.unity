@@ -261,7 +261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25.4}
+  m_AnchoredPosition: {x: 0, y: -25.400024}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &193460547
@@ -387,7 +387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &239381080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -420,12 +420,18 @@ MonoBehaviour:
   playerNumber: 1
   playerText: {fileID: 404941790}
   playerPanel: {fileID: 184864419}
-  playerSelector: {fileID: 239381079}
+  playerSelector: {fileID: 239381082}
+  playerSelectorImage: {fileID: 21300000, guid: 0018b18b3fd68cf45abda34fd02a1d57,
+    type: 3}
+  playerSelectedImage: {fileID: 21300000, guid: 0a0907a3c622aa545b4115f2486086c8,
+    type: 3}
+  hiddenSelector: {fileID: 21300000, guid: 3bb0444254ba2834f989ccb06d19ea01, type: 3}
   delilahPoster: {fileID: 21300000, guid: 91f37cf35b24d8648a681d0e8f6dc6e9, type: 3}
   agniPoster: {fileID: 21300000, guid: 8331a0737cb9ae643b45db15b645c5eb, type: 3}
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}
   kittyPoster: {fileID: 21300000, guid: 34e083c223a56d549ab96b249abd82b8, type: 3}
   blankPoster: {fileID: 21300000, guid: 4322890fec33a0c4796d44405f47d3b8, type: 3}
+  startPoster: {fileID: 21300000, guid: f5e88ce5ec01a904d860a916e171535d, type: 3}
 --- !u!114 &239381082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25.4}
+  m_AnchoredPosition: {x: 0, y: -25.400024}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268634333
@@ -609,12 +615,18 @@ MonoBehaviour:
   playerNumber: 0
   playerText: {fileID: 1722197092}
   playerPanel: {fileID: 1906720520}
-  playerSelector: {fileID: 301502662}
+  playerSelector: {fileID: 301502664}
+  playerSelectorImage: {fileID: 21300000, guid: 376e1d3facc399b4789055227f9ddb9d,
+    type: 3}
+  playerSelectedImage: {fileID: 21300000, guid: dff3a5fe085358b459db6dc19c01ad77,
+    type: 3}
+  hiddenSelector: {fileID: 21300000, guid: 3bb0444254ba2834f989ccb06d19ea01, type: 3}
   delilahPoster: {fileID: 21300000, guid: 91f37cf35b24d8648a681d0e8f6dc6e9, type: 3}
   agniPoster: {fileID: 21300000, guid: 8331a0737cb9ae643b45db15b645c5eb, type: 3}
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}
   kittyPoster: {fileID: 21300000, guid: 34e083c223a56d549ab96b249abd82b8, type: 3}
   blankPoster: {fileID: 21300000, guid: 4322890fec33a0c4796d44405f47d3b8, type: 3}
+  startPoster: {fileID: 21300000, guid: f5e88ce5ec01a904d860a916e171535d, type: 3}
 --- !u!1 &302960478
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,7 +974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &850643700
 RectTransform:
   m_ObjectHideFlags: 0
@@ -995,12 +1007,18 @@ MonoBehaviour:
   playerNumber: 2
   playerText: {fileID: 1261972587}
   playerPanel: {fileID: 668805407}
-  playerSelector: {fileID: 850643699}
+  playerSelector: {fileID: 850643702}
+  playerSelectorImage: {fileID: 21300000, guid: 0118199610834914cbb2a1d6fdf9173f,
+    type: 3}
+  playerSelectedImage: {fileID: 21300000, guid: f20c2dbf5b0479049994b5f0e7007258,
+    type: 3}
+  hiddenSelector: {fileID: 21300000, guid: 3bb0444254ba2834f989ccb06d19ea01, type: 3}
   delilahPoster: {fileID: 21300000, guid: 91f37cf35b24d8648a681d0e8f6dc6e9, type: 3}
   agniPoster: {fileID: 21300000, guid: 8331a0737cb9ae643b45db15b645c5eb, type: 3}
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}
   kittyPoster: {fileID: 21300000, guid: 34e083c223a56d549ab96b249abd82b8, type: 3}
   blankPoster: {fileID: 21300000, guid: 4322890fec33a0c4796d44405f47d3b8, type: 3}
+  startPoster: {fileID: 21300000, guid: f5e88ce5ec01a904d860a916e171535d, type: 3}
 --- !u!114 &850643702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,7 +1069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &958383466
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1084,12 +1102,18 @@ MonoBehaviour:
   playerNumber: 3
   playerText: {fileID: 232982681}
   playerPanel: {fileID: 1017252487}
-  playerSelector: {fileID: 958383465}
+  playerSelector: {fileID: 958383468}
+  playerSelectorImage: {fileID: 21300000, guid: b01fb9e881b4daf4eaf3aa02f03bc578,
+    type: 3}
+  playerSelectedImage: {fileID: 21300000, guid: f8fd658b86a19704bbe11c15b41268ac,
+    type: 3}
+  hiddenSelector: {fileID: 21300000, guid: 3bb0444254ba2834f989ccb06d19ea01, type: 3}
   delilahPoster: {fileID: 21300000, guid: 91f37cf35b24d8648a681d0e8f6dc6e9, type: 3}
   agniPoster: {fileID: 21300000, guid: 8331a0737cb9ae643b45db15b645c5eb, type: 3}
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}
   kittyPoster: {fileID: 21300000, guid: 34e083c223a56d549ab96b249abd82b8, type: 3}
   blankPoster: {fileID: 21300000, guid: 4322890fec33a0c4796d44405f47d3b8, type: 3}
+  startPoster: {fileID: 21300000, guid: f5e88ce5ec01a904d860a916e171535d, type: 3}
 --- !u!114 &958383468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,7 +1317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.00000011920929, y: -25.4}
+  m_AnchoredPosition: {x: -0.00000011920929, y: -25.400024}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1147491530
@@ -1360,7 +1384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00000023841858, y: -25.4}
+  m_AnchoredPosition: {x: 0.00000023841858, y: -25.400024}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1163893535
@@ -1411,7 +1435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1261972586
 RectTransform:
   m_ObjectHideFlags: 0

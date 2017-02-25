@@ -41,7 +41,6 @@ public class PlayerSelectorMovement : MonoBehaviour {
 
     [HideInInspector] float nextMovement = 0;
     [HideInInspector] float nextMovementCooldown = 0.25f;
-    private bool allPlayersSelected = false;
 
     // Use this for initialization
     void Start () {
@@ -87,10 +86,6 @@ public class PlayerSelectorMovement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Submit") && allPlayersSelected)
-        {
-            SceneManager.LoadScene(2);
-        }
 
         // check if select button (A or enter) was pressed
         if (Input.GetButtonDown("Select_" + playerNumber))
@@ -179,7 +174,10 @@ public class PlayerSelectorMovement : MonoBehaviour {
     void setPlayerPanel()
     {
         if (playerSelector.sprite == hiddenSelector)
+        {
             playerPanel.sprite = startPoster;
+            playerText.text = null;
+        }
         else
         {
             if (position == rykerPosition)
@@ -236,7 +234,13 @@ public class PlayerSelectorMovement : MonoBehaviour {
 
     void selectPressed ()
     {
-        joinOrSelectHero();
+        if(heroSelected)
+        {
+            if (haveAllPlayersSelected())
+                SceneManager.LoadScene(2);
+        }
+        else
+            joinOrSelectHero();
     }
 
     void joinOrSelectHero ()
@@ -270,6 +274,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
                     playerSelector.sprite = playerSelectorImage;
                     playerPanel.sprite = blankPoster;
                     Globals.player2.Playing = true;
+                    ++Globals.numPlayers;
                 }
                 break;
 
@@ -287,6 +292,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
                     playerSelector.sprite = playerSelectorImage;
                     playerPanel.sprite = blankPoster;
                     Globals.player3.Playing = true;
+                    ++Globals.numPlayers;
                 }
 
                 break;
@@ -305,6 +311,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
                     playerSelector.sprite = playerSelectorImage;
                     playerPanel.sprite = blankPoster;
                     Globals.player4.Playing = true;
+                    ++Globals.numPlayers;
                 }
 
                 break;
@@ -349,20 +356,24 @@ public class PlayerSelectorMovement : MonoBehaviour {
                 {
                     case 0:
                         Globals.player1.Name = hero;
+                        Globals.player1.Prefab = Resources.Load(hero) as GameObject;
                         Debug.Log("Player 1 chose " + hero);
                         break;
                     case 1:
                         Globals.player2.Name = hero;
+                        Globals.player2.Prefab = Resources.Load(hero) as GameObject;
                         Debug.Log("Player 2 chose " + hero);
                         break;
 
                     case 2:
                         Globals.player3.Name = hero;
+                        Globals.player3.Prefab = Resources.Load(hero) as GameObject;
                         Debug.Log("Player 3 chose " + hero);
                         break;
 
                     case 3:
                         Globals.player4.Name = hero;
+                        Globals.player4.Prefab = Resources.Load(hero) as GameObject;
                         Debug.Log("Player 4 chose " + hero);
                         break;
                 }
@@ -370,6 +381,24 @@ public class PlayerSelectorMovement : MonoBehaviour {
                 playerSelector.sprite = playerSelectedImage;
             }
         }
+    }
+
+    bool haveAllPlayersSelected()
+    {
+        int namedCount = 0;
+
+        if (Globals.player1.Name != "")
+            ++namedCount;
+        if (Globals.player2.Name != "")
+            ++namedCount;
+        if (Globals.player3.Name != "")
+            ++namedCount;
+        if (Globals.player4.Name != "")
+            ++namedCount;
+
+        if (namedCount >= Globals.numPlayers)
+            return true;
+        return false;
     }
 
 }
