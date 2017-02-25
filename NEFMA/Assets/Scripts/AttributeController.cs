@@ -29,7 +29,7 @@ public class AttributeController : MonoBehaviour {
             if (gameObject.tag == "Player")
             {
                 --Globals.livingPlayers;
-                Globals.killPlayer(gameObject.GetComponent<HeroMovement>().playerNumber);
+                killPlayer(gameObject.GetComponent<HeroMovement>().playerNumber);
                 if (gameObject.name == "Delilah")
                 {
                     Destroy(gameObject.GetComponent<DelilahAttack>().wall);
@@ -52,6 +52,11 @@ public class AttributeController : MonoBehaviour {
             }
         }
 	}
+
+    public void killPlayer(string playerNumber)
+    {
+
+    }
 
     private void knockback(float x)
     {

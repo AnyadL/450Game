@@ -11,28 +11,22 @@ public class Globals : MonoBehaviour {
     static public float soundFXVolume = 0.5f;
     static public Checkpoint currentCheckpoint;
 
-	// Use this for initialization
-	void Start () {
+    static public GameObject agniPrefab;
+    static public GameObject delilahPrefab;
+
+    // Use this for initialization
+    void Start () {
         livingPlayers = numPlayers;
+        agniPrefab = GameObject.Find("Agni");
+        delilahPrefab = GameObject.Find("Delilah");
     }
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(currentCheckpoint);
         if (livingPlayers <= 0)
         {
             livingPlayers = numPlayers;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-    }
-
-    static public void killPlayer(string playerNumber)
-    {
-
-    }
-
-    static public void resPlayers()
-    {
-
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour {
 
-    public bool active = false;
+    public bool spawning = false;
     [HideInInspector] private float aliveTime;
     public float checkpointDuration = 2.0f;
 
@@ -17,24 +17,29 @@ public class Checkpoint : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if (active)
+		if (spawning)
         {
             if (aliveTime <= Time.time)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
             if (Globals.livingPlayers < Globals.numPlayers)
             {
-                Globals.resPlayers();
+                resPlayers();
             }
         }
 	}
+
+    public void resPlayers()
+    {
+        Instantiate(Globals.agniPrefab, transform.position, Quaternion.identity);
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            active = true;
+            spawning = true;
             aliveTime = Time.time + checkpointDuration;
             Globals.currentCheckpoint = this;
         }
