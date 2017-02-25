@@ -92,6 +92,7 @@ public class Camera2DFollow : MonoBehaviour
         m_LastTargetPosition = target;
     }
 
+    // adds newly created players to the cameras targets list
     private void linkPlayers()
     {
         if (Globals.player1.Alive && !targets.Contains(Globals.player1.GO.transform))

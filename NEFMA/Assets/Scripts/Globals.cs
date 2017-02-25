@@ -46,11 +46,13 @@ public class Globals : MonoBehaviour {
 	void Update () {
         if (livingPlayers <= 0)
         {
+            // should never happen, means that there is no default spawn point
             if (currentCheckpoint == null)
             {
                 livingPlayers = numPlayers;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
+            // the whole team died, respawn them at the last checkpoint
             else
             {
                 currentCheckpoint.gameObject.SetActive(true);
