@@ -45,8 +45,16 @@ public class Globals : MonoBehaviour {
 	void Update () {
         if (livingPlayers <= 0)
         {
-            livingPlayers = numPlayers;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (currentCheckpoint == null)
+            {
+                livingPlayers = numPlayers;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else
+            {
+                currentCheckpoint.gameObject.SetActive(true);
+                currentCheckpoint.resPlayers();
+            }
         }
     }
 }

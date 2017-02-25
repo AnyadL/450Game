@@ -235,9 +235,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawning: 0
   checkpointDuration: 2
-  agniPrefab: {fileID: 1880801342426786, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-  delilahPrefab: {fileID: 1198660775397150, guid: b83152af1cf5cf141a019683247045f8,
-    type: 2}
 --- !u!1001 &888200206
 Prefab:
   m_ObjectHideFlags: 0
@@ -456,7 +453,7 @@ Prefab:
     - target: {fileID: 114392560673639600, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
         type: 2}
       propertyPath: playerNumber
-      value: 02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114244758743622684, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
         type: 2}

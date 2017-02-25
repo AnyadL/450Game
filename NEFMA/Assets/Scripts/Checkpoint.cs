@@ -8,9 +8,6 @@ public class Checkpoint : MonoBehaviour {
     [HideInInspector] private float aliveTime;
     public float checkpointDuration = 2.0f;
 
-    public GameObject agniPrefab;
-    public GameObject delilahPrefab;
-
     // Use this for initialization
     void Start ()
     {
