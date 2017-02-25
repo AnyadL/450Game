@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GhostAI : MonoBehaviour {
 
-    private Rigidbody2D myBody;
-    private AttributeController myAttributes;
+    //private Rigidbody2D myBody;
+    //private AttributeController myAttributes;
     private EnemyAI myAI;
 
     private GameObject target;
