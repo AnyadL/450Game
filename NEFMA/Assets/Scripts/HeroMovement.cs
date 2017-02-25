@@ -13,9 +13,11 @@ public class HeroMovement : MonoBehaviour {
 
     public string playerNumber;
 
-    public float moveForce = 365f;
-    public float maxSpeed = 5f;
-    public float jumpForce = 1000f;
+    public float moveForce = 400f;
+    [HideInInspector] public float currentMoveForce;
+    public float maxSpeed = 12f;
+    [HideInInspector] public float currentMaxSpeed;
+    public float jumpForce = 1800f;
     public Transform groundCheck;
    // public Transform punchCheck;
 
@@ -30,6 +32,8 @@ public class HeroMovement : MonoBehaviour {
         //anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         myAttributes = GetComponent<AttributeController>();
+        currentMoveForce = moveForce;
+        currentMaxSpeed = maxSpeed;
     }
 
     // Update is called once per frame
@@ -61,11 +65,11 @@ public class HeroMovement : MonoBehaviour {
 
         //anim.SetFloat("Speed", Mathf.Abs(h));
 
-        if (!myAttributes.knockbacked && h * rb2d.velocity.x < maxSpeed)
-            rb2d.AddForce(Vector2.right * h * moveForce);
+        if (!myAttributes.knockbacked && h * rb2d.velocity.x < currentMaxSpeed)
+            rb2d.AddForce(Vector2.right * h * currentMoveForce);
 
-        if (Mathf.Abs(rb2d.velocity.x) > maxSpeed)
-            rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
+        if (Mathf.Abs(rb2d.velocity.x) > currentMaxSpeed)
+            rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * currentMaxSpeed, rb2d.velocity.y);
 
         if (h > 0 && !facingRight)
             Flip();

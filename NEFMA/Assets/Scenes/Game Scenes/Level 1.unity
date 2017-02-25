@@ -1305,7 +1305,7 @@ Prefab:
     - target: {fileID: 114232576091865976, guid: b83152af1cf5cf141a019683247045f8,
         type: 2}
       propertyPath: playerNumber
-      value: 1
+      value: 02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b83152af1cf5cf141a019683247045f8, type: 2}
