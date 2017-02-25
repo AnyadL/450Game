@@ -16,9 +16,12 @@ public class AttributeController : MonoBehaviour {
     [HideInInspector] public bool knockbacked;
     public float invincibiltyLength = 2.0f;
 
-    private void Start()
+    public void Start()
     {
-        myLayer = gameObject.layer;
+        if (gameObject.layer != 13)
+        {
+            myLayer = gameObject.layer;
+        }
         health = maxHealth;
     }
 
@@ -57,18 +60,22 @@ public class AttributeController : MonoBehaviour {
         if (playerNumber == Globals.player1.Number.ToString())
         {
             Globals.player1.Alive = false;
+            Globals.player1.GO = null;
         }
         else if (playerNumber == Globals.player2.Number.ToString())
         {
             Globals.player2.Alive = false;
+            Globals.player2.GO = null;
         }
         else if (playerNumber == Globals.player3.Number.ToString())
         {
             Globals.player3.Alive = false;
+            Globals.player3.GO = null;
         }
         else if (playerNumber == Globals.player4.Number.ToString())
         {
             Globals.player4.Alive = false;
+            Globals.player4.GO = null;
         }
         --Globals.livingPlayers;
     }

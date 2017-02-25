@@ -19,6 +19,7 @@ public class Camera2DFollow : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        linkPlayers();
         float x = 0;
         float y = 0;
         for (int i = 0; i < targets.Count; i++)
@@ -93,6 +94,21 @@ public class Camera2DFollow : MonoBehaviour
 
     private void linkPlayers()
     {
-        
+        if (Globals.player1.Alive && !targets.Contains(Globals.player1.GO.transform))
+        {
+            targets.Add(Globals.player1.GO.transform);
+        }
+        if (Globals.player2.Alive && !targets.Contains(Globals.player2.GO.transform))
+        {
+            targets.Add(Globals.player2.GO.transform);
+        }
+        if (Globals.player3.Alive && !targets.Contains(Globals.player3.GO.transform))
+        {
+            targets.Add(Globals.player3.GO.transform);
+        }
+        if (Globals.player4.Alive && !targets.Contains(Globals.player4.GO.transform))
+        {
+            targets.Add(Globals.player4.GO.transform);
+        }
     }
 }
