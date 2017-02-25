@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour {
     public float maxSpeed = 5f;
     [HideInInspector] private bool isGrounded = true;
     [HideInInspector] private bool isBlocked = false;
-    public int facingRight = 1;
+    [HideInInspector] public int facingRight = -1;
     public float projectileVelocity = 20;
     public float nextProjectileFire = 0;
     public float projectileCooldown = 0.3f;
@@ -34,9 +34,10 @@ public class EnemyAI : MonoBehaviour {
         myBody = this.GetComponent<Rigidbody2D>();
         myAttributes = this.GetComponent<AttributeController>();
 
+        // dont need anymore?
         if (this.GetComponent<SpriteRenderer>().flipX)
         {
-            facingRight = -1;
+            facingRight *= -1;
         }
     }
 
@@ -109,7 +110,7 @@ public class EnemyAI : MonoBehaviour {
         //Checks the direction and sets the bullet velocity to that direction
         float velocityDirection = projectileVelocity;
 
-        velocityDirection = velocityDirection * -facingRight;
+        velocityDirection = velocityDirection * facingRight;
 
         //Creates the bullet and makes it move
         GameObject newBullet = Instantiate(projectilePrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;

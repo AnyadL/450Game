@@ -84,8 +84,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1575302301188660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: -1.8, z: 0}
-  m_LocalScale: {x: 12.57041, y: 13.45276, z: 1}
+  m_LocalPosition: {x: -11, y: -12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4910862474173388}
   m_RootOrder: 0
@@ -97,8 +97,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260616831709446}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2, y: 0, z: 0}
-  m_LocalScale: {x: 13.004387, y: 13.917197, z: 1.0345236}
+  m_LocalPosition: {x: -11, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4910862474173388}
   m_RootOrder: 1
@@ -110,8 +110,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067143083143506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.3, y: 0, z: 0}
-  m_LocalScale: {x: 13.004379, y: 13.9172, z: 1.03452}
+  m_LocalPosition: {x: 14, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4910862474173388}
   m_RootOrder: 2
@@ -123,8 +123,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217193743556796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.664, y: 7.332, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: -16.37, y: 8.16, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 4022310015705994}
   - {fileID: 4405449047196624}
@@ -163,9 +163,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.03}
+  m_Offset: {x: 1, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8}
+  m_Size: {x: 24, y: 21}
 --- !u!61 &61344502327427460
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -177,9 +177,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.03}
+  m_Offset: {x: 1, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8}
+  m_Size: {x: 24, y: 21}
 --- !u!114 &114530645648626142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,13 +191,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692b94a5dbc7bee4b9f6f62af6c3cd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
   maxHealth: 1
   isRanged: 1
   bigCooldown: 10
   nextBigFire: 0
   myLayer: 0
-  myTag: 
   nextVulnerable: 0
   knockbacked: 0
   invincibiltyLength: 2
@@ -217,7 +215,7 @@ MonoBehaviour:
   crushedCheck: {fileID: 4617380494578128}
   moveForce: 0
   maxSpeed: 0
-  facingRight: 1
+  facingRight: -1
   projectileVelocity: 30
   nextProjectileFire: 0
   projectileCooldown: 2
@@ -254,7 +252,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f9d925f5d4bf3f64f83ff7f5e6f6efad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6bf6438db31cadd4691b3a25094ea2b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0

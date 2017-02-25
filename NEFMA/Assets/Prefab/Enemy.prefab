@@ -84,8 +84,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321060816576830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 21.82, y: 2.53, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 4821684112757508}
   - {fileID: 4813805045592524}
@@ -100,8 +100,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1495560742071606}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2, y: 0, z: 0}
-  m_LocalScale: {x: 13.004387, y: 13.917197, z: 1.0345236}
+  m_LocalPosition: {x: -13, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4776075685292272}
   m_RootOrder: 1
@@ -113,8 +113,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1456265434657630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: -1.8, z: 0}
-  m_LocalScale: {x: 12.57041, y: 13.45276, z: 1}
+  m_LocalPosition: {x: -13, y: -11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4776075685292272}
   m_RootOrder: 0
@@ -126,8 +126,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103063218230106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.3, y: 0, z: 0}
-  m_LocalScale: {x: 13.004379, y: 13.9172, z: 1.03452}
+  m_LocalPosition: {x: 12, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4776075685292272}
   m_RootOrder: 2
@@ -163,9 +163,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.10986328}
+  m_Offset: {x: -0.5, y: 1}
   serializedVersion: 2
-  m_Size: {x: 4.2, y: 2.588667}
+  m_Size: {x: 23, y: 21}
 --- !u!61 &61857374953878520
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -177,9 +177,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.1083887}
+  m_Offset: {x: -0.5, y: 1}
   serializedVersion: 2
-  m_Size: {x: 4.2, y: 2.845144}
+  m_Size: {x: 23, y: 21}
 --- !u!114 &114029218032258490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,10 +196,10 @@ MonoBehaviour:
   crushedCheck: {fileID: 4843638211050368}
   moveForce: 365
   maxSpeed: 5
-  facingRight: 1
-  projectileVelocity: 20
+  facingRight: -1
+  projectileVelocity: 0
   nextProjectileFire: 0
-  projectileCooldown: 0.3
+  projectileCooldown: 0
   projectilePrefab: {fileID: 0}
 --- !u!114 &114340048299960162
 MonoBehaviour:
@@ -212,13 +212,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692b94a5dbc7bee4b9f6f62af6c3cd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
   maxHealth: 1
   isRanged: 0
   bigCooldown: 10
   nextBigFire: 0
   myLayer: 0
-  myTag: 
   nextVulnerable: 0
   knockbacked: 0
   invincibiltyLength: 2
@@ -253,7 +251,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e6dc9c8103ebece47bd893646ba6b018, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 894345d07ec8a9d49a9300c03794f657, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
