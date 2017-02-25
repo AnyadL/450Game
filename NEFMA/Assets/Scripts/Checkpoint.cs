@@ -23,15 +23,20 @@ public class Checkpoint : MonoBehaviour {
             {
                 Destroy(gameObject);
             }
+            if (Globals.livingPlayers < Globals.numPlayers)
+            {
+                Globals.resPlayers();
+            }
         }
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             active = true;
             aliveTime = Time.time + checkpointDuration;
+            Globals.currentCheckpoint = this;
         }
     }
 }

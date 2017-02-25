@@ -22,6 +22,7 @@ public class Globals : MonoBehaviour {
     static public int livingPlayers = 2;
     static public float musicVolume = 0.5f;
     static public float soundFXVolume = 0.5f;
+    static public Checkpoint currentCheckpoint;
 
 
     static public Player player1 = new Player("Agni", 0, true);
@@ -36,10 +37,21 @@ public class Globals : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         if (livingPlayers <= 0)
         {
             livingPlayers = numPlayers;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    static public void killPlayer(string playerNumber)
+    {
+
+    }
+
+    static public void resPlayers()
+    {
+
     }
 }

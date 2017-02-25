@@ -29,6 +29,7 @@ public class AttributeController : MonoBehaviour {
             if (gameObject.tag == "Player")
             {
                 --Globals.livingPlayers;
+                Globals.killPlayer(gameObject.GetComponent<HeroMovement>().playerNumber);
                 if (gameObject.name == "Delilah")
                 {
                     Destroy(gameObject.GetComponent<DelilahAttack>().wall);
