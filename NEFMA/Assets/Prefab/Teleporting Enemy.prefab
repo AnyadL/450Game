@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 114323212982453884}
   - component: {fileID: 114193321496659480}
   - component: {fileID: 61956348595354200}
+  - component: {fileID: 114117086278311314}
   m_Layer: 9
   m_Name: Teleporting Enemy
   m_TagString: Enemy
@@ -180,6 +181,21 @@ BoxCollider2D:
   m_Offset: {x: -1, y: 0}
   serializedVersion: 2
   m_Size: {x: 14, y: 25}
+--- !u!114 &114117086278311314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323327057391826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fd664d7dec55a40b982aab47571c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRange: 20
+  yRange: 10
+  teleportCooldown: 5
+  TEST: {fileID: 0}
 --- !u!114 &114193321496659480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,7 +208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  isRanged: 0
   bigCooldown: 10
   nextBigFire: 0
   myLayer: 0
@@ -216,10 +231,12 @@ MonoBehaviour:
   moveForce: 100
   maxSpeed: 2
   facingRight: -1
+  isRanged: 0
   projectileVelocity: 20
   nextProjectileFire: 0
   projectileCooldown: 0.3
   projectilePrefab: {fileID: 0}
+  ghostOverride: 0
 --- !u!212 &212246587914279798
 SpriteRenderer:
   m_ObjectHideFlags: 1

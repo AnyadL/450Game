@@ -192,7 +192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  isRanged: 1
   bigCooldown: 10
   nextBigFire: 0
   myLayer: 0
@@ -216,6 +215,7 @@ MonoBehaviour:
   moveForce: 0
   maxSpeed: 0
   facingRight: -1
+  isRanged: 1
   projectileVelocity: 30
   nextProjectileFire: 0
   projectileCooldown: 2

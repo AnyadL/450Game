@@ -25,10 +25,12 @@ public class EnemyAI : MonoBehaviour {
     [HideInInspector] private bool isGrounded = true;
     [HideInInspector] private bool isBlocked = false;
     [HideInInspector] public int facingRight = -1;
+    public bool isRanged = false;
     public float projectileVelocity = 20;
     public float nextProjectileFire = 0;
     public float projectileCooldown = 0.3f;
     public GameObject projectilePrefab;
+    public bool ghostOverride = false;
 
     void Start() {
         myBody = this.GetComponent<Rigidbody2D>();
@@ -54,18 +56,21 @@ public class EnemyAI : MonoBehaviour {
             }
             else
             {
-                Flip();
+                if (!ghostOverride)
+                {
+                    Flip();
+                }
             }
         }
 
         isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         // If theres no ground, turn around. Or if I hit a wall, turn around
-        if (!isBlocked && !isGrounded)
+        if (!isBlocked && !isGrounded && !ghostOverride)
         {
             Flip();
         }
 
-        if (myAttributes.isRanged == 1)
+        if (isRanged)
         {
             if (Time.time >= nextProjectileFire)
             {

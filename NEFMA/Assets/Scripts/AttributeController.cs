@@ -6,7 +6,6 @@ public class AttributeController : MonoBehaviour {
 
     [HideInInspector] private float health = 1;
     public float maxHealth = 1;
-    public int isRanged = 0;
 
     public float bigCooldown = 10f;
     [HideInInspector] public float nextBigFire;
