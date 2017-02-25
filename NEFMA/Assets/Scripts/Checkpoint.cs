@@ -9,7 +9,6 @@ public class Checkpoint : MonoBehaviour {
     public float checkpointDuration = 2.0f;
     public bool initalSpawn = false;
 
-    // Use this for initialization
     void Start ()
     {
 		if (initalSpawn)
@@ -18,7 +17,6 @@ public class Checkpoint : MonoBehaviour {
         }
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
 		if (spawning)
@@ -34,6 +32,7 @@ public class Checkpoint : MonoBehaviour {
         }
 	}
 
+    // respawn all of the dead players at the current gameobject
     public void resPlayers()
     {
         if (Globals.player1.Playing && !Globals.player1.Alive)
@@ -77,6 +76,7 @@ public class Checkpoint : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // if we collided with a player and we are not currently spawning
         if (other.gameObject.tag == "Player" && !spawning)
         {
             spawning = true;
