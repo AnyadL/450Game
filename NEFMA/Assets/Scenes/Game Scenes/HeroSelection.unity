@@ -420,6 +420,7 @@ MonoBehaviour:
   playerNumber: 1
   playerText: {fileID: 404941790}
   playerPanel: {fileID: 184864419}
+  playerSelector: {fileID: 239381079}
   delilahPoster: {fileID: 21300000, guid: 91f37cf35b24d8648a681d0e8f6dc6e9, type: 3}
   agniPoster: {fileID: 21300000, guid: 8331a0737cb9ae643b45db15b645c5eb, type: 3}
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}
@@ -608,6 +609,7 @@ MonoBehaviour:
   playerNumber: 0
   playerText: {fileID: 1722197092}
   playerPanel: {fileID: 1906720520}
+  playerSelector: {fileID: 301502662}
   delilahPoster: {fileID: 21300000, guid: 91f37cf35b24d8648a681d0e8f6dc6e9, type: 3}
   agniPoster: {fileID: 21300000, guid: 8331a0737cb9ae643b45db15b645c5eb, type: 3}
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}
@@ -993,6 +995,7 @@ MonoBehaviour:
   playerNumber: 2
   playerText: {fileID: 1261972587}
   playerPanel: {fileID: 668805407}
+  playerSelector: {fileID: 850643699}
   delilahPoster: {fileID: 21300000, guid: 91f37cf35b24d8648a681d0e8f6dc6e9, type: 3}
   agniPoster: {fileID: 21300000, guid: 8331a0737cb9ae643b45db15b645c5eb, type: 3}
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}
@@ -1081,6 +1084,7 @@ MonoBehaviour:
   playerNumber: 3
   playerText: {fileID: 232982681}
   playerPanel: {fileID: 1017252487}
+  playerSelector: {fileID: 958383465}
   delilahPoster: {fileID: 21300000, guid: 91f37cf35b24d8648a681d0e8f6dc6e9, type: 3}
   agniPoster: {fileID: 21300000, guid: 8331a0737cb9ae643b45db15b645c5eb, type: 3}
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}

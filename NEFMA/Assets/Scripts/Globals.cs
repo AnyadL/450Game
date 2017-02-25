@@ -32,6 +32,11 @@ public class Globals : MonoBehaviour {
     static public Player player3 = new Player("", 2, false); // empty player
     static public Player player4 = new Player("", 3, false); // empty player
 
+    static public bool delilahChosen = false;
+    static public bool kittyChosen = false;
+    static public bool agniChosen = false;
+    static public bool rykerChosen = false;
+
     // Use this for initialization
     void Start () {
         livingPlayers = numPlayers;
