@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+    public bool OVERRIDE = false;
+    public int PlayerNumberOverride = 0;
+    public int LivingPlayerNumberOverride = 0;
+
+    // Use this for initialization
+    void Start () {
+		if (OVERRIDE)
+        {
+            Globals.numPlayers = PlayerNumberOverride;
+            Globals.livingPlayers = LivingPlayerNumberOverride;
+        }
 	}
 	
 	// Update is called once per frame

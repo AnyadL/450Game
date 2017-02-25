@@ -42,7 +42,6 @@ public class Globals : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        livingPlayers = 0;
         player1.Playing = true;
         player1.Prefab = Resources.Load("Agni") as GameObject;
     }
