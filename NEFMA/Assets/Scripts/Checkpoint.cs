@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Checkpoint : MonoBehaviour {
 
@@ -44,6 +45,9 @@ public class Checkpoint : MonoBehaviour {
                 Globals.players[i].GO = pl;
                 pl.GetComponent<HeroMovement>().playerNumber = Globals.players[i].Number;
                 pl.GetComponent<HeroMovement>().inputNumber = Globals.players[i].InputNum;
+                GameObject canvas = GameObject.Find("HUDCanvas");
+                pl.GetComponent<SetPlayerUI>().healthSlider = canvas.transform.GetChild(i).FindChild("HealthBar").GetComponent<Slider>();
+                pl.GetComponent<SetPlayerUI>().powerSlider = canvas.transform.GetChild(i).FindChild("PowerBar").GetComponent<Slider>();
                 pl.GetComponent<AttributeController>().myLayer = pl.gameObject.layer;
                 pl.GetComponent<AttributeController>().takenDamage();
             }

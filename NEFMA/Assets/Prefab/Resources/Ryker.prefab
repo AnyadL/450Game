@@ -82,18 +82,18 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840161315393440}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 6
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61340663685744488
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -138,8 +138,11 @@ MonoBehaviour:
   attack: 0
   inRange: 0
   playerNumber: -1
+  inputNumber: -1
   moveForce: 400
+  currentMoveForce: 0
   maxSpeed: 12
+  currentMaxSpeed: 0
   jumpForce: 1800
   groundCheck: {fileID: 4552635497574260}
   grounded: 0
@@ -155,7 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  isRanged: 0
   bigCooldown: 10
   nextBigFire: 0
   myLayer: 0

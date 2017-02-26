@@ -13,7 +13,7 @@ public class SetHUDs : MonoBehaviour {
     private Player player;
 
     // Use this for initialization
-    void Start () {
+    public void Start () {
         int numberOfHuds = Globals.players.Count;
         int i = 0;
         foreach (Transform child in transform)
