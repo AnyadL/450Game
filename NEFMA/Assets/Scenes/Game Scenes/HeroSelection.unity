@@ -215,7 +215,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f5e88ce5ec01a904d860a916e171535d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59984e14916fbb74ab1d083b2a64c5c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -431,7 +431,7 @@ MonoBehaviour:
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}
   kittyPoster: {fileID: 21300000, guid: 34e083c223a56d549ab96b249abd82b8, type: 3}
   blankPoster: {fileID: 21300000, guid: 4322890fec33a0c4796d44405f47d3b8, type: 3}
-  startPoster: {fileID: 21300000, guid: f5e88ce5ec01a904d860a916e171535d, type: 3}
+  startPoster: {fileID: 21300000, guid: 59984e14916fbb74ab1d083b2a64c5c2, type: 3}
 --- !u!114 &239381082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,6 +532,87 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 268634331}
+--- !u!1 &284757034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 284757035}
+  - component: {fileID: 284757037}
+  - component: {fileID: 284757036}
+  - component: {fileID: 284757038}
+  m_Layer: 5
+  m_Name: PressAToStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &284757035
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 284757034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 302960482}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.2, y: 0.05}
+  m_AnchorMax: {x: 0.8, y: 0.2}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &284757036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 284757034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 2800000, guid: 4322890fec33a0c4796d44405f47d3b8, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &284757037
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 284757034}
+--- !u!114 &284757038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 284757034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646f4812997a148438065eea4708eb92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressAtoStart: {fileID: 2800000, guid: 0c9f0b96a0647f64f9e65102a4b5f841, type: 3}
+  blankSprite: {fileID: 2800000, guid: 4322890fec33a0c4796d44405f47d3b8, type: 3}
 --- !u!1 &301502662
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +707,7 @@ MonoBehaviour:
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}
   kittyPoster: {fileID: 21300000, guid: 34e083c223a56d549ab96b249abd82b8, type: 3}
   blankPoster: {fileID: 21300000, guid: 4322890fec33a0c4796d44405f47d3b8, type: 3}
-  startPoster: {fileID: 21300000, guid: f5e88ce5ec01a904d860a916e171535d, type: 3}
+  startPoster: {fileID: 21300000, guid: 59984e14916fbb74ab1d083b2a64c5c2, type: 3}
 --- !u!1 &302960478
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,6 +798,7 @@ RectTransform:
   - {fileID: 239381080}
   - {fileID: 850643700}
   - {fileID: 958383466}
+  - {fileID: 284757035}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -856,7 +938,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f5e88ce5ec01a904d860a916e171535d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59984e14916fbb74ab1d083b2a64c5c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1018,7 +1100,7 @@ MonoBehaviour:
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}
   kittyPoster: {fileID: 21300000, guid: 34e083c223a56d549ab96b249abd82b8, type: 3}
   blankPoster: {fileID: 21300000, guid: 4322890fec33a0c4796d44405f47d3b8, type: 3}
-  startPoster: {fileID: 21300000, guid: f5e88ce5ec01a904d860a916e171535d, type: 3}
+  startPoster: {fileID: 21300000, guid: 59984e14916fbb74ab1d083b2a64c5c2, type: 3}
 --- !u!114 &850643702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,7 +1195,7 @@ MonoBehaviour:
   rykerPoster: {fileID: 21300000, guid: a2241b2dda60cde438ec59dd57343484, type: 3}
   kittyPoster: {fileID: 21300000, guid: 34e083c223a56d549ab96b249abd82b8, type: 3}
   blankPoster: {fileID: 21300000, guid: 4322890fec33a0c4796d44405f47d3b8, type: 3}
-  startPoster: {fileID: 21300000, guid: f5e88ce5ec01a904d860a916e171535d, type: 3}
+  startPoster: {fileID: 21300000, guid: 59984e14916fbb74ab1d083b2a64c5c2, type: 3}
 --- !u!114 &958383468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1204,7 +1286,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f5e88ce5ec01a904d860a916e171535d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59984e14916fbb74ab1d083b2a64c5c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
