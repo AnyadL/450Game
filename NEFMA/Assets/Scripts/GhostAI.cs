@@ -16,7 +16,7 @@ public class GhostAI : MonoBehaviour {
     private float nextTeleport = 0f;
     public float fadeDuration = 1f;
     private float fadeTime = 0f;
-    public int fade = 0;
+    private int fade = 0;
 
     public GameObject TEST;
 
