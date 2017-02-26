@@ -11,13 +11,14 @@ public class PlayerSelectorMovement : MonoBehaviour {
     int bottomX = 600;
     int topY = 70;
     int bottomY = -50;
+    
 
     public int playerNumber;
     public Text playerText;
     public Image playerPanel;
     public Image playerSelector;
-    public Sprite playerSelectorImage;
-    public Sprite playerSelectedImage;
+    public Sprite playerSelectorSprite;
+    public Sprite playerSelectedSprite;
     public Sprite hiddenSelector;
 
     public Sprite delilahPoster;
@@ -32,54 +33,38 @@ public class PlayerSelectorMovement : MonoBehaviour {
     Vector3 rykerPosition;
     Vector3 kittyPosition;
 
-    string delilahText;
-    string agniText;
-    string rykerText;
-    string kittyText;
+    string delilahText = "I may be shy, but don’t let that fool you!  I can summon giant energy hands to protect people.  I can even use my shields to send foes flying!  Is it any wonder I'm the leader of the school’s anti-bullying club?";
+    string agniText = "I'm a real firebrand, blessed with the super power to manipulate flames. Unfortunately, I'm not so hot at controlling my powers, and my wardrobe has gone up in flames more often than I can count.";
+    string rykerText = "I'm a very good runner. I can run past my enemies so quickly I completely disorient them.  Someday I'm going to be a supersonic hero.";
+    string kittyText = "I am the queen of the school improv club. I'm a  social butterfly, and my feline agility makes me the acrobat of the team. In battle, I am “furocious”, favoring a barrage of quick strikes and huge leaps.";
 
     private bool heroSelected = false;
+    private bool joinedGame = false;
+    private int playerInput; // assigned based on which controller this player registers with
+    private int inputPressed; // assigned based on which controller pressed a button
+    private Player player;
 
     [HideInInspector] float nextMovement = 0;
     [HideInInspector] float nextMovementCooldown = 0.25f;
 
     // Use this for initialization
     void Start () {
+        position = new Vector3(0, topY, 0);
         delilahPosition = new Vector3(-topX, topY, 0);
         agniPosition = new Vector3(topX, topY, 0);
         rykerPosition = new Vector3(0, topY, 0);
         kittyPosition = new Vector3(-bottomX, bottomY, 0);
-
-        delilahText = "I may be shy, but don’t let that fool you!  I can summon giant energy hands to protect people.  I can even use my shields to send foes flying!  Is it any wonder I'm the leader of the school’s anti-bullying club?";
-        agniText = "I'm a real firebrand, blessed with the super power to manipulate flames. Unfortunately, I'm not so hot at controlling my powers, and my wardrobe has gone up in flames more often than I can count.";
-        rykerText = "I'm a very good runner. I can run past my enemies so quickly I completely disorient them.  Someday I'm going to be a supersonic hero.";
-        kittyText = "I am the queen of the school improv club. I'm a  social butterfly, and my feline agility makes me the acrobat of the team. In battle, I am “furocious”, favoring a barrage of quick strikes and huge leaps.";
-
-
-        switch (playerNumber)
+        
+        if (playerNumber == 0)
         {
-            case 0:
-                position = delilahPosition;
-                playerNumber = Globals.player1.Number;
-                break;
-            case 1:
-                position = rykerPosition;
-                playerNumber = Globals.player2.Number;
-                playerSelector.sprite = hiddenSelector;
-                break;
-
-            case 2:
-                position = agniPosition;
-                playerNumber = Globals.player3.Number;
-                playerSelector.sprite = hiddenSelector;
-                break;
-
-            case 3:
-                position = kittyPosition;
-                playerNumber = Globals.player4.Number;
-                playerSelector.sprite = hiddenSelector;
-                break;
-            
+            // Create player 1
+            playerInput = Globals.players[0].InputNum;
+            joinedGame = true;
+            playerSelector.sprite = playerSelectorSprite;
         }
+        else
+            playerSelector.sprite = hiddenSelector;
+
         GetComponent<RectTransform>().localPosition = position;
     }
 
@@ -88,14 +73,15 @@ public class PlayerSelectorMovement : MonoBehaviour {
     {
 
         // check if select button (A or enter) was pressed
-        if (Input.GetButtonDown("Select_" + playerNumber))
+        inputPressed = getInputPressed();
+        if (inputPressed != -1)
         {
             selectPressed();
         }
 
-        if (!heroSelected)
+        if (!heroSelected && joinedGame)
         {
-            float vertical = Input.GetAxisRaw("Vertical_" + playerNumber);
+            float vertical = Input.GetAxisRaw("Vertical_" + playerInput);
 
             if (vertical > 0 && Time.time >= nextMovement)
             {
@@ -125,7 +111,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
                     GetComponent<RectTransform>().localPosition = position;
                 }
             }
-            float horizontal = Input.GetAxisRaw("Horizontal_" + playerNumber);
+            float horizontal = Input.GetAxisRaw("Horizontal_" + playerInput);
             if (horizontal < 0 && Time.time >= nextMovement)
             {
                 nextMovement = Time.time + nextMovementCooldown;
@@ -212,18 +198,22 @@ public class PlayerSelectorMovement : MonoBehaviour {
     {
         if (position == rykerPosition && !Globals.rykerChosen)
         {
+            Globals.rykerChosen = true;
             return "Ryker";
         }
         else if (position == delilahPosition && !Globals.delilahChosen)
         {
+            Globals.delilahChosen = true;
             return "Delilah";
         }
         else if (position == agniPosition && !Globals.agniChosen)
         {
+            Globals.agniChosen = true;
             return "Agni";
         }
         else if (position == kittyPosition && !Globals.kittyChosen)
         {
+            Globals.kittyChosen = true;
             return "Kitty";
         }
         else
@@ -234,7 +224,8 @@ public class PlayerSelectorMovement : MonoBehaviour {
 
     void selectPressed ()
     {
-        if(heroSelected)
+
+        if(heroSelected && (inputPressed == playerInput))
         {
             if (haveAllPlayersSelected())
                 SceneManager.LoadScene(2);
@@ -245,88 +236,73 @@ public class PlayerSelectorMovement : MonoBehaviour {
 
     void joinOrSelectHero ()
     {
-        int player = playerNumber;
-        if (Globals.player1.Number == 1)
-            player = playerNumber - 1;
-
-        switch (player)
+        if (joinedGame && (inputPressed == playerInput)) // select Hero
         {
-            case 0:
-                if (Globals.player1.Playing == true)
-                {
-                    // set player hero selection
-                    string hero = testPosition();
-                    if (hero != "null")
-                        setHero(player, hero);
-                }
-                break;
-            case 1:
-                if (Globals.player2.Playing == true)
-                {
-                    // set player hero selection
-                    string hero = testPosition();
-                    if (hero != "null")
-                        setHero(player, hero);
-                }
-                else
-                {
-                    // join game
-                    playerSelector.sprite = playerSelectorImage;
-                    playerPanel.sprite = blankPoster;
-                    Globals.player2.Playing = true;
-                    ++Globals.numPlayers;
-                }
-                break;
+            string hero = testPosition();
+            if (hero != "null")
+                setHero(hero);
+        }
+        else // join
+        {
+            if (!joinedGame && !isInputInUse())
+            {
+                playerInput = inputPressed;
+                player = new Player("", playerNumber, playerInput, true /*remove*/, true, null, null);
+                Globals.players.Add(player);
 
-            case 2:
-                if (Globals.player3.Playing == true)
-                {
-                    // set player hero selection
-                    string hero = testPosition();
-                    if (hero != "null")
-                        setHero(player, hero);
-                }
-                else
-                {
-                    // join game
-                    playerSelector.sprite = playerSelectorImage;
-                    playerPanel.sprite = blankPoster;
-                    Globals.player3.Playing = true;
-                    ++Globals.numPlayers;
-                }
-
-                break;
-
-            case 3:
-                if (Globals.player3.Playing == true)
-                {
-                    // set player hero selection
-                    string hero = testPosition();
-                    if (hero != "null")
-                        setHero(player, hero);
-                }
-                else
-                {
-                    // join game
-                    playerSelector.sprite = playerSelectorImage;
-                    playerPanel.sprite = blankPoster;
-                    Globals.player4.Playing = true;
-                    ++Globals.numPlayers;
-                }
-
-                break;
+                joinedGame = true;
+                playerSelector.sprite = playerSelectorSprite;
+                playerPanel.sprite = blankPoster;
+                ++Globals.numPlayers;
+            }
         }
     }
 
-    void setHero (int player, string hero)
+    bool isInputInUse()
     {
-        print("In set hero");
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            if (Globals.players[i].InputNum == inputPressed)
+                return true;
+        }
+        return false;
+    }
+
+    int getInputPressed()
+    {
+        if (Input.GetButtonUp("Select_0"))
+        {
+            return 0;
+        }
+        else if (Input.GetButtonUp("Select_1"))
+        {
+            return 1;
+        }
+        else if (Input.GetButtonUp("Select_2"))
+        {
+            return 2;
+        }
+        else if (Input.GetButtonUp("Select_3"))
+        {
+            return 3;
+        }
+        else if (Input.GetButtonUp("Select_4"))
+        {
+            return 4;
+        }
+        else
+        {
+            return -1; // no select input was pressed
+        }
+    }
+
+    void setHero (string hero)
+    {
         if (!heroSelected)
         {
-            print("hero not selected");
             bool heroChoiceAllowed = true;
 
-            switch (hero)
+          /*  switch (hero)
             {
                 case "Ryker":
                     if (Globals.rykerChosen)
@@ -348,37 +324,14 @@ public class PlayerSelectorMovement : MonoBehaviour {
                         heroChoiceAllowed = false;
                     Globals.agniChosen = true;
                     break;
-            }
+            }*/
             if (heroChoiceAllowed)
             {
-                print("hero allowed");
-                switch (player)
-                {
-                    case 0:
-                        Globals.player1.Name = hero;
-                        Globals.player1.Prefab = Resources.Load(hero) as GameObject;
-                        Debug.Log("Player 1 chose " + hero);
-                        break;
-                    case 1:
-                        Globals.player2.Name = hero;
-                        Globals.player2.Prefab = Resources.Load(hero) as GameObject;
-                        Debug.Log("Player 2 chose " + hero);
-                        break;
+                Globals.players[playerNumber].Name = hero;
+                Globals.players[playerNumber].Prefab = Resources.Load(hero) as GameObject;
 
-                    case 2:
-                        Globals.player3.Name = hero;
-                        Globals.player3.Prefab = Resources.Load(hero) as GameObject;
-                        Debug.Log("Player 3 chose " + hero);
-                        break;
-
-                    case 3:
-                        Globals.player4.Name = hero;
-                        Globals.player4.Prefab = Resources.Load(hero) as GameObject;
-                        Debug.Log("Player 4 chose " + hero);
-                        break;
-                }
                 heroSelected = true;
-                playerSelector.sprite = playerSelectedImage;
+                playerSelector.sprite = playerSelectedSprite;
             }
         }
     }
@@ -386,15 +339,11 @@ public class PlayerSelectorMovement : MonoBehaviour {
     bool haveAllPlayersSelected()
     {
         int namedCount = 0;
-
-        if (Globals.player1.Name != "")
-            ++namedCount;
-        if (Globals.player2.Name != "")
-            ++namedCount;
-        if (Globals.player3.Name != "")
-            ++namedCount;
-        if (Globals.player4.Name != "")
-            ++namedCount;
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            if (Globals.players[i].Name != "")
+                ++namedCount;
+        }
 
         if (namedCount >= Globals.numPlayers)
             return true;

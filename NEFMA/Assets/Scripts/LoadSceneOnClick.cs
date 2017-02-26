@@ -4,15 +4,40 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneOnClick : MonoBehaviour
 {
+
     private void determinePlayer1()
     {
-        if (!(Input.GetKeyDown("return") || Input.GetKeyDown("enter") || Input.GetKeyDown("space")))
+        Player player;
+        int submittingInput = getInputPressed();
+        player = new Player("", 1, submittingInput, true /*remove*/, true, null, null);
+        Globals.players.Add(player);
+    }
+
+    int getInputPressed()
+    {
+        if (Input.GetButtonDown("Select_0"))
         {
-            // Player 1 is controller
-            Globals.player1.Number = 1;
-            Globals.player2.Number = 2;
-            Globals.player3.Number = 3;
-            Globals.player4.Number = 4;
+            return 0;
+        }
+        else if (Input.GetButtonDown("Select_1"))
+        {
+            return 1;
+        }
+        else if (Input.GetButtonDown("Select_2"))
+        {
+            return 2;
+        }
+        else if (Input.GetButtonDown("Select_3"))
+        {
+            return 3;
+        }
+        else if (Input.GetButtonDown("Select_4"))
+        {
+            return 4;
+        }
+        else
+        {
+            return -1; // no select input was pressed
         }
     }
 
