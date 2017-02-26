@@ -259,6 +259,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
                 playerSelector.sprite = playerSelectorSprite;
                 playerPanel.sprite = blankPoster;
                 ++Globals.numPlayers;
+
             }
         }
     }
