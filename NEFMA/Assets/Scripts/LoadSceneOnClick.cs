@@ -9,7 +9,7 @@ public class LoadSceneOnClick : MonoBehaviour
     {
         Player player;
         int submittingInput = getInputPressed();
-        player = new Player("", 1, submittingInput, false, null, null);
+        player = new Player("", 0, submittingInput, false, null, null);
         Globals.players.Add(player);
     }
 

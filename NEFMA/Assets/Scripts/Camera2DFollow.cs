@@ -97,7 +97,7 @@ public class Camera2DFollow : MonoBehaviour
     {
         for (int i = 0; i < Globals.players.Count; i++)
         {
-            Debug.Log(Globals.players[i]);
+            //Debug.Log(Globals.players[i]);
             if (Globals.players[i].Alive && !targets.Contains(Globals.players[i].GO.transform))
             {
                 targets.Add(Globals.players[i].GO.transform);

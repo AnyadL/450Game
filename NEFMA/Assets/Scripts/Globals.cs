@@ -23,7 +23,7 @@ public class Player
 
     public override string ToString()
     {
-        return "Name: " + Name + " Number: " + Number + " InputNum: " + InputNum + " Alive: " + Alive + " Prefab: " + Prefab + " GO: " + GO;
+        return "Name: " + Name + "| Number: " + Number + "| InputNum: " + InputNum + "| Alive: " + Alive + "| Prefab: " + Prefab + "| GO: " + GO;
     }
 }
 
