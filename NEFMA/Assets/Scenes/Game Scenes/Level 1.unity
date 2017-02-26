@@ -1812,7 +1812,7 @@ GameObject:
   - component: {fileID: 476224281}
   - component: {fileID: 476224282}
   m_Layer: 5
-  m_Name: PowerBarP2
+  m_Name: PowerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1931,7 +1931,7 @@ GameObject:
   - component: {fileID: 503668406}
   - component: {fileID: 503668407}
   m_Layer: 5
-  m_Name: PowerBarP2
+  m_Name: PowerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2053,7 +2053,7 @@ GameObject:
   - component: {fileID: 536462333}
   - component: {fileID: 536462334}
   m_Layer: 5
-  m_Name: HealthBarP2
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2452,7 +2452,7 @@ GameObject:
   - component: {fileID: 573765905}
   - component: {fileID: 573765906}
   m_Layer: 5
-  m_Name: HealthBarP2
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3125,7 +3125,7 @@ GameObject:
   - component: {fileID: 777161055}
   - component: {fileID: 777161056}
   m_Layer: 5
-  m_Name: HealthBarP2
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5095,7 +5095,7 @@ GameObject:
   - component: {fileID: 1283915145}
   - component: {fileID: 1283915146}
   m_Layer: 5
-  m_Name: HealthBarP1
+  m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5328,7 +5328,7 @@ GameObject:
   - component: {fileID: 1354070857}
   - component: {fileID: 1354070858}
   m_Layer: 5
-  m_Name: PowerBarP1
+  m_Name: PowerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8032,7 +8032,7 @@ GameObject:
   - component: {fileID: 2131044335}
   - component: {fileID: 2131044336}
   m_Layer: 5
-  m_Name: PowerBarP2
+  m_Name: PowerBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

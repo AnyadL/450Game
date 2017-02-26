@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttributeController : MonoBehaviour {
 
+    private HeroMovement myMovement;
     [HideInInspector] private float health = 1;
     public float maxHealth = 1;
 
@@ -17,6 +18,7 @@ public class AttributeController : MonoBehaviour {
 
     public void Start()
     {
+        myMovement = gameObject.GetComponent<HeroMovement>();
         if (gameObject.layer != 13)
         {
             myLayer = gameObject.layer;
@@ -31,8 +33,8 @@ public class AttributeController : MonoBehaviour {
             // if we are a player
             if (gameObject.tag == "Player")
             {
-                killPlayer(gameObject.GetComponent<HeroMovement>().playerNumber);
-                if (gameObject.name == "Delilah")
+                killPlayer(myMovement.playerNumber);
+                if (Globals.players[myMovement.playerNumber].Name == "Delilah")
                 {
                     Destroy(gameObject.GetComponent<DelilahAttack>().wall);
                 }
