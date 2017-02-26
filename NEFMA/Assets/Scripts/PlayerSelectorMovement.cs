@@ -60,7 +60,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
             // Create player 1
             if (Globals.players.Count == 0)
             {
-                player = new Player("", 1, 0, true /*remove*/, true, null, null);
+                player = new Player("", 1, 0, false, null, null);
                 Globals.players.Add(player);
             }
             playerInput = Globals.players[0].InputNum;
@@ -252,7 +252,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
             if (!joinedGame && !isInputInUse())
             {
                 playerInput = inputPressed;
-                player = new Player("", playerNumber, playerInput, true /*remove*/, true, null, null);
+                player = new Player("", playerNumber, playerInput, false, null, null);
                 Globals.players.Add(player);
 
                 joinedGame = true;

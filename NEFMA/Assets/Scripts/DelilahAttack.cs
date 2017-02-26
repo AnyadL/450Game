@@ -32,13 +32,13 @@ public class DelilahAttack : MonoBehaviour {
             destroyWall();
             Destroy(wall);
         }
-        if ((Input.GetButtonDown("Fire1_" + myMovement.playerNumber)) && (Time.time >= nextLittleFire) && (Time.time >= myAttribute.nextBigFire) && myMovement.grounded)
+        if ((Input.GetButtonDown("Fire1_" + myMovement.inputNumber)) && (Time.time >= nextLittleFire) && (Time.time >= myAttribute.nextBigFire) && myMovement.grounded)
         {
             nextLittleFire = Time.time + littleCooldown;
             RegularFire();
         }
 
-        if (Input.GetButtonDown("Fire2_" + myMovement.playerNumber) && (Time.time >= myAttribute.nextBigFire))
+        if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber) && (Time.time >= myAttribute.nextBigFire))
         {
             myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
             BigFire();

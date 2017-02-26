@@ -57,28 +57,10 @@ public class AttributeController : MonoBehaviour {
 	}
 
     // Sets global variables for the player identified by playerNumber, marking them as killed
-    public void killPlayer(string playerNumber)
+    public void killPlayer(int playerNumber)
     {
-        if (playerNumber == Globals.player1.Number.ToString())
-        {
-            Globals.player1.Alive = false;
-            Globals.player1.GO = null;
-        }
-        else if (playerNumber == Globals.player2.Number.ToString())
-        {
-            Globals.player2.Alive = false;
-            Globals.player2.GO = null;
-        }
-        else if (playerNumber == Globals.player3.Number.ToString())
-        {
-            Globals.player3.Alive = false;
-            Globals.player3.GO = null;
-        }
-        else if (playerNumber == Globals.player4.Number.ToString())
-        {
-            Globals.player4.Alive = false;
-            Globals.player4.GO = null;
-        }
+        Globals.players[playerNumber].Alive = false;
+        Globals.players[playerNumber].GO = null;
         --Globals.livingPlayers;
     }
 

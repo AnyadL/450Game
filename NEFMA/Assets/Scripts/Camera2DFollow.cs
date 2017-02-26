@@ -95,21 +95,13 @@ public class Camera2DFollow : MonoBehaviour
     // adds newly created players to the cameras targets list
     private void linkPlayers()
     {
-        if (Globals.player1.Alive && !targets.Contains(Globals.player1.GO.transform))
+        for (int i = 0; i < Globals.players.Count; i++)
         {
-            targets.Add(Globals.player1.GO.transform);
-        }
-        if (Globals.player2.Alive && !targets.Contains(Globals.player2.GO.transform))
-        {
-            targets.Add(Globals.player2.GO.transform);
-        }
-        if (Globals.player3.Alive && !targets.Contains(Globals.player3.GO.transform))
-        {
-            targets.Add(Globals.player3.GO.transform);
-        }
-        if (Globals.player4.Alive && !targets.Contains(Globals.player4.GO.transform))
-        {
-            targets.Add(Globals.player4.GO.transform);
+            Debug.Log(Globals.players[i]);
+            if (Globals.players[i].Alive && !targets.Contains(Globals.players[i].GO.transform))
+            {
+                targets.Add(Globals.players[i].GO.transform);
+            }
         }
     }
 }

@@ -50,7 +50,7 @@ public class GhostAI : MonoBehaviour {
         }
         else if (fade == 1)
         {
-            myAI.currentMoveForce = myAI.moveForce;
+            //myAI.currentMoveForce = myAI.moveForce;
             fade = 0;
         }
         if (!gameObject.GetComponent<Renderer>().isVisible)
@@ -71,22 +71,14 @@ public class GhostAI : MonoBehaviour {
             myAI.ghostOverride = false;
         }
 
-        if (Globals.player1.Alive)
+        for (int i = 0; i < Globals.players.Count; i++)
         {
-            targeter(Globals.player1.GO);
+            if (Globals.players[i].Alive)
+            {
+                targeter(Globals.players[i].GO);
+            }
         }
-        if (Globals.player2.Alive)
-        {
-            targeter(Globals.player2.GO);
-        }
-        if (Globals.player3.Alive)
-        {
-            targeter(Globals.player3.GO);
-        }
-        if (Globals.player4.Alive)
-        {
-            targeter(Globals.player4.GO);
-        }
+
         if (TEST != null)
         {
             targeter(TEST);
@@ -119,7 +111,7 @@ public class GhostAI : MonoBehaviour {
         target = targets[choice];
         targets.Clear();
         myAI.ghostOverride = true;
-        myAI.currentMoveForce = 0;
+        //myAI.currentMoveForce = 0;
         nextTeleport = Time.time + teleportCooldown;
         fadeTime = Time.time + fadeDuration;
         fade = -1;

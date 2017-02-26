@@ -47,10 +47,10 @@ public class EnemyAI : MonoBehaviour {
 
     void Update()
     {
-        if (!gameObject.GetComponent<Renderer>().isVisible)
-        {
-            return;
-        }
+        //if (!gameObject.GetComponent<Renderer>().isVisible)
+        //{
+        //    return;
+        //}
         isBlocked = Physics2D.Linecast(transform.position, wallCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if (isBlocked)
@@ -89,10 +89,10 @@ public class EnemyAI : MonoBehaviour {
     // Great for physics updates, use FixedUpdate instead of Update!
     void FixedUpdate()
     {
-        if (!gameObject.GetComponent<Renderer>().isVisible)
-        {
-            return;
-        }
+        //if (!gameObject.GetComponent<Renderer>().isVisible)
+        //{
+        //    return;
+        //}
         if (currentMoveForce == 0)
         {
             return;
