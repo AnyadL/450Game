@@ -59,7 +59,10 @@ public class PlayerSelectorMovement : MonoBehaviour {
         {
             // Create player 1
             if (Globals.players.Count == 0)
-                Debug.Log("Player count is 0 - please start from main menu");
+            {
+                player = new Player("", 1, 0, true /*remove*/, true, null, null);
+                Globals.players.Add(player);
+            }
             playerInput = Globals.players[0].InputNum;
             joinedGame = true;
             playerSelector.sprite = playerSelectorSprite;
