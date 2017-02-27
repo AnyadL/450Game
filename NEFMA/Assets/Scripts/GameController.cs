@@ -1,12 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+    public bool OVERRIDE = false;
+    public int PlayerNumberOverride = 0;
+    public int LivingPlayerNumberOverride = 0;
+
+    public List<GameObject> PresetPlayers = new List<GameObject>();
+
+    // Use this for initialization
+    void Start () {
+		if (OVERRIDE)
+        {
+            Globals.numPlayers = PlayerNumberOverride;
+            Globals.livingPlayers = LivingPlayerNumberOverride;
+            for (int i = 0; i < PresetPlayers.Count; i++)
+            {
+                if (PresetPlayers[i] != null)
+                {
+                    Player player = new Player(PresetPlayers[i].name, i, PresetPlayers[i].GetComponent<HeroMovement>().inputNumber, true, (GameObject) Resources.Load(PresetPlayers[i].name), PresetPlayers[i]);
+                    //Debug.Log(player);
+                    Globals.players.Add(player);
+                    PresetPlayers[i].GetComponent<HeroMovement>().playerNumber = i;
+                    GameObject canvas = GameObject.Find("HUDCanvas");
+                    PresetPlayers[i].GetComponent<SetPlayerUI>().healthSlider = canvas.transform.GetChild(i).FindChild("HealthBar").GetComponent<Slider>();
+                    PresetPlayers[i].GetComponent<SetPlayerUI>().powerSlider = canvas.transform.GetChild(i).FindChild("PowerBar").GetComponent<Slider>();
+                }
+            }
+            GameObject HUDcanvas = GameObject.Find("HUDCanvas");
+            HUDcanvas.GetComponent<SetHUDs>().Start();
+        }
 	}
 	
 	// Update is called once per frame

@@ -1,23 +1,68 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Checkpoint : MonoBehaviour {
 
-	// Use this for initialization
-	void Start ()
+    public bool spawning = false;
+    [HideInInspector] private float aliveTime;
+    public float checkpointDuration = 2.0f;
+    public bool initalSpawn = false;
+
+    void Start ()
     {
-		
+		if (initalSpawn)
+        {
+            Globals.currentCheckpoint = this;
+        }
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
-		
+		if (spawning)
+        {
+            if (aliveTime <= Time.time)
+            {
+                gameObject.SetActive(false);
+            }
+            if (Globals.livingPlayers < Globals.numPlayers)
+            {
+                resPlayers();
+            }
+        }
 	}
+
+    // respawn all of the dead players at the current gameobject
+    public void resPlayers()
+    {
+        for (int i = 0; i < Globals.players.Count; i++)
+        {
+            if (!Globals.players[i].Alive)
+            {
+                GameObject pl = Instantiate(Globals.players[i].Prefab, transform.position, Quaternion.identity);
+                Globals.players[i].Alive = true;
+                Globals.players[i].GO = pl;
+                pl.GetComponent<HeroMovement>().playerNumber = Globals.players[i].Number;
+                pl.GetComponent<HeroMovement>().inputNumber = Globals.players[i].InputNum;
+                GameObject canvas = GameObject.Find("HUDCanvas");
+                pl.GetComponent<SetPlayerUI>().healthSlider = canvas.transform.GetChild(i).FindChild("HealthBar").GetComponent<Slider>();
+                pl.GetComponent<SetPlayerUI>().powerSlider = canvas.transform.GetChild(i).FindChild("PowerBar").GetComponent<Slider>();
+                pl.GetComponent<AttributeController>().myLayer = pl.gameObject.layer;
+                pl.GetComponent<AttributeController>().takenDamage();
+            }
+        }
+        Globals.livingPlayers = Globals.players.Count;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
+        // if we collided with a player and we are not currently spawning
+        if (other.gameObject.tag == "Player" && !spawning)
+        {
+            spawning = true;
+            aliveTime = Time.time + checkpointDuration;
+            Globals.currentCheckpoint = this;
+        }
     }
 }

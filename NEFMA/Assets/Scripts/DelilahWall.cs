@@ -8,6 +8,7 @@ public class DelilahWall : MonoBehaviour {
     [HideInInspector] public int wallRight;
     [HideInInspector] public bool free = false;
     [HideInInspector] public float timeToDie;
+    public int health = 30;
 
     // Use this for initialization
     void Start () {
@@ -17,6 +18,11 @@ public class DelilahWall : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (health <= 0)
+        {
+            owner.GetComponent<DelilahAttack>().destroyWall();
+            Destroy(gameObject);
+        }
 		if (free && Time.time >= timeToDie)
         {
             Destroy(gameObject);
@@ -28,6 +34,18 @@ public class DelilahWall : MonoBehaviour {
         if (!free)
         {
             transform.position = owner.transform.position + new Vector3(6 * wallRight, 1, 0);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            health = health - 1;
+        }
+        else if (collision.gameObject.tag == "EnemyAttack")
+        {
+            health = health - 3;
         }
     }
 }

@@ -31,7 +31,7 @@ public class AgniAttack : MonoBehaviour
         if (Time.time >= nextLittleFire)
         {
             //Fire little fireballs
-            if (Input.GetButtonDown("Fire1_" + hm.playerNumber))
+            if (Input.GetButtonDown("Fire1_" + hm.inputNumber))
             {
                 nextLittleFire = Time.time + littleCooldown;
                 RegularFire();
@@ -40,7 +40,7 @@ public class AgniAttack : MonoBehaviour
 
         if(Time.time >= myAttribute.nextBigFire) { 
             //Fire Big Fireballs
-            if (Input.GetButtonDown("Fire2_" + hm.playerNumber))
+            if (Input.GetButtonDown("Fire2_" + hm.inputNumber))
             {
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
                 BigFire();

@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AttributeController : MonoBehaviour {
 
-    public float health;
-    public int isRanged = 0;
+    private HeroMovement myMovement;
+    [HideInInspector] private float health = 1;
+    public float maxHealth = 1;
 
     public float bigCooldown = 10f;
+    public bool isRanged;
     [HideInInspector] public float nextBigFire;
 
     [HideInInspector] public int myLayer;
-    [HideInInspector] public string myTag;
     [HideInInspector] public float nextVulnerable;
     [HideInInspector] public bool knockbacked;
     [HideInInspector] public EnemyAI enemyAI;
@@ -21,47 +21,47 @@ public class AttributeController : MonoBehaviour {
 
     public float invincibiltyLength = 2.0f;
 
-    private void Start()
+    public void Start()
     {
         myLayer = gameObject.layer;
-        myTag = gameObject.tag;
-
-        if(myTag == "Enemy")
+        if(gameObject.tag == "Enemy")
         {
             enemyAI = gameObject.GetComponent<EnemyAI>();
             speed = enemyAI.maxSpeed;
             pcooldown = enemyAI.projectileCooldown;
         }
+        myMovement = gameObject.GetComponent<HeroMovement>();
+
+        if (gameObject.layer != 13)
+        {
+            myLayer = gameObject.layer;
+        }
+        health = maxHealth;
     }
 
-    // Update is called once per frame
     void Update () {
-		if (health <= 0)
+        // if we died
+        if (health <= 0)
         {
+            // if we are a player
             if (gameObject.tag == "Player")
             {
-                gameObject.GetComponent<SetPlayerUI>().Update();
-                --Globals.livingPlayers;
-                //Debug.Log("living players = " + Globals.livingPlayers);
-                if (gameObject.name == "Delilah")
+                killPlayer(myMovement.playerNumber);
+                if (Globals.players[myMovement.playerNumber].Name == "Delilah")
                 {
                     Destroy(gameObject.GetComponent<DelilahAttack>().wall);
                 }
-                if (Globals.livingPlayers <= 0)
-                {
-                    Globals.livingPlayers = 2;
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                }
+                gameObject.GetComponent<SetPlayerUI>().Update();
             }
             Destroy(gameObject);
         }
 
+        // if we are still marked as invincible
         if (gameObject.layer == 13)
         {
             if (nextVulnerable <= Time.time)
             {
                 gameObject.layer = myLayer;
-                gameObject.tag = myTag;
                 gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             }
             else
@@ -71,6 +71,15 @@ public class AttributeController : MonoBehaviour {
         }
 	}
 
+    // Sets global variables for the player identified by playerNumber, marking them as killed
+    public void killPlayer(int playerNumber)
+    {
+        Globals.players[playerNumber].Alive = false;
+        Globals.players[playerNumber].GO = null;
+        --Globals.livingPlayers;
+    }
+
+    // responsible for knocking the current gameobject away from whatever hit them
     private void knockback(float x)
     {
         knockbacked = true;
@@ -85,20 +94,39 @@ public class AttributeController : MonoBehaviour {
         }
     }
 
-    private void takenDamage()
+    // decreases health by damage as long as the current gameobject isnt invincible
+    public bool decreaseHealth(float damage)
+    {
+        if (gameObject.layer == 13)
+        {
+            return false;
+        }
+        health = health - damage;
+        return true;
+    }
+
+    // returns the value of the private variable health
+    public float getHealth()
+    {
+        return health;
+    }
+
+    // marks the current gameobject as invincible
+    public void takenDamage()
     {
         gameObject.layer = 13;
-        gameObject.tag = "Invincible";
         nextVulnerable = Time.time + invincibiltyLength;
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.75f);
     }
+
+    //Causes enemies to be stunned for 2 seconds
     IEnumerator stunEnemy()
     {
 
         Debug.Log("speed:" + speed);
 
         enemyAI.maxSpeed = 0;
-        if (isRanged == 1)
+        if (isRanged)
         {
             enemyAI.nextProjectileFire = 5;
         }
@@ -109,11 +137,11 @@ public class AttributeController : MonoBehaviour {
 
     }
 
+    // determines if the current gameobject is a player or an enemy
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.tag == "Enemy")
         {
-            //Debug.Log(collision.gameObject.tag);
             enemyCollisions(collision);
         }
         if (gameObject.tag == "Player"){
@@ -121,28 +149,36 @@ public class AttributeController : MonoBehaviour {
         }
     }
 
+    // something has collided with the player
     void playerCollisions(Collider2D collision)
     {
-        //Debug.Log(collision.gameObject.tag);
-        //Debug.Log(health);
         if (collision.gameObject.tag == "Enemy")
         {
-            health = health - 1;
-            takenDamage();
-            knockback(collision.gameObject.transform.position.x);
+            if (decreaseHealth(1.0f))
+            {
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
+            }
         }
         else if (collision.gameObject.tag == "EnemyAttack")
         {
-            health = health - 1;
-            takenDamage();
-            knockback(collision.gameObject.transform.position.x);
+            if (decreaseHealth(1.0f))
+            {
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
+            }
         }
         else if (collision.gameObject.tag == "DeathLine")
         {
             health = 0;
         }
+        else if (collision.gameObject.tag == "Checkpoint")
+        {
+            health = maxHealth;
+        }
     }
 
+    // something has collided with an enemy
     void enemyCollisions(Collider2D collision)
     {
         if (collision.gameObject.tag == "Platform")
@@ -153,19 +189,21 @@ public class AttributeController : MonoBehaviour {
         {
             return;
         }
-        //Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag == "LittleAttack")
+        else if (collision.gameObject.tag == "LittleAttack")
         {
-            //Debug.Log("here");
-            health = health - 1;
-            takenDamage();
-            knockback(collision.gameObject.transform.position.x);
+            if (decreaseHealth(1.0f))
+            {
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
+            }
         }
         else if(collision.gameObject.tag == "BigAttack")
         {
-            health = health - 3;
-            takenDamage();
-            knockback(collision.gameObject.transform.position.x);
+            if (decreaseHealth(3.0f))
+            {
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
+            }
         }
         else if (collision.gameObject.tag == "DeathLine")
         {

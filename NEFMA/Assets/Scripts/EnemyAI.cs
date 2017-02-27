@@ -21,27 +21,36 @@ public class EnemyAI : MonoBehaviour {
     public Transform wallCheck;
     public Transform crushedCheck;
     public float moveForce = 365f;
+    [HideInInspector] public float currentMoveForce;
     public float maxSpeed = 5f;
     [HideInInspector] private bool isGrounded = true;
     [HideInInspector] private bool isBlocked = false;
-    [HideInInspector] public int facingRight = 1;
+    [HideInInspector] public int facingRight = -1;
+    public bool isRanged = false;
     public float projectileVelocity = 20;
     public float nextProjectileFire = 0;
     public float projectileCooldown = 0.3f;
     public GameObject projectilePrefab;
+    public bool ghostOverride = false;
 
     void Start() {
         myBody = this.GetComponent<Rigidbody2D>();
         myAttributes = this.GetComponent<AttributeController>();
+        currentMoveForce = moveForce;
 
+        // dont need anymore?
         if (this.GetComponent<SpriteRenderer>().flipX)
         {
-            facingRight = -1;
+            facingRight *= -1;
         }
     }
 
     void Update()
     {
+        //if (!gameObject.GetComponent<Renderer>().isVisible)
+        //{
+        //    return;
+        //}
         isBlocked = Physics2D.Linecast(transform.position, wallCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if (isBlocked)
@@ -49,22 +58,25 @@ public class EnemyAI : MonoBehaviour {
             bool crushed = Physics2D.Linecast(transform.position, crushedCheck.position, 1 << LayerMask.NameToLayer("Ground"));
             if (crushed)
             {
-                myAttributes.health = 0;
+                myAttributes.decreaseHealth(myAttributes.maxHealth);
             }
             else
             {
-                Flip();
+                if (!ghostOverride)
+                {
+                    Flip();
+                }
             }
         }
 
         isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         // If theres no ground, turn around. Or if I hit a wall, turn around
-        if (!isBlocked && !isGrounded)
+        if (!isBlocked && !isGrounded && !ghostOverride)
         {
             Flip();
         }
 
-        if (myAttributes.isRanged == 1)
+        if (isRanged)
         {
             if (Time.time >= nextProjectileFire)
             {
@@ -77,14 +89,18 @@ public class EnemyAI : MonoBehaviour {
     // Great for physics updates, use FixedUpdate instead of Update!
     void FixedUpdate()
     {
-        if (moveForce == 0)
+        //if (!gameObject.GetComponent<Renderer>().isVisible)
+        //{
+        //    return;
+        //}
+        if (currentMoveForce == 0)
         {
             return;
         }
 
         if (facingRight * myBody.velocity.x < maxSpeed)
         {
-            myBody.AddForce(Vector2.right * facingRight * moveForce);
+            myBody.AddForce(Vector2.right * facingRight * currentMoveForce);
         }
 
         if (Mathf.Abs(myBody.velocity.x) > maxSpeed)
@@ -109,7 +125,7 @@ public class EnemyAI : MonoBehaviour {
         //Checks the direction and sets the bullet velocity to that direction
         float velocityDirection = projectileVelocity;
 
-        velocityDirection = velocityDirection * -facingRight;
+        velocityDirection = velocityDirection * facingRight;
 
         //Creates the bullet and makes it move
         GameObject newBullet = Instantiate(projectilePrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;

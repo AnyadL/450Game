@@ -29,16 +29,16 @@ public class DelilahAttack : MonoBehaviour {
     {
         if (hasWall && !myMovement.grounded)
         {
-            hasWall = false;
+            destroyWall();
             Destroy(wall);
         }
-        if ((Input.GetButtonDown("Fire1_" + myMovement.playerNumber)) && (Time.time >= nextLittleFire) && (Time.time >= myAttribute.nextBigFire) && myMovement.grounded)
+        if ((Input.GetButtonDown("Fire1_" + myMovement.inputNumber)) && (Time.time >= nextLittleFire) && (Time.time >= myAttribute.nextBigFire) && myMovement.grounded)
         {
             nextLittleFire = Time.time + littleCooldown;
             RegularFire();
         }
 
-        if (Input.GetButtonDown("Fire2_" + myMovement.playerNumber) && hasWall)
+        if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber) && (Time.time >= myAttribute.nextBigFire))
         {
             myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
             BigFire();
@@ -50,12 +50,12 @@ public class DelilahAttack : MonoBehaviour {
     {
         if (hasWall)
         {
-            hasWall = false;
+            destroyWall();
             Destroy(wall);
         }
         else
         {
-            hasWall = true;
+            createWall();
             wallRight = myMovement.facingRight? 1 : -1;
             wall = Instantiate(wallPrefab, (transform.position + new Vector3(6 * wallRight, 1,0)), Quaternion.identity);
             wall.GetComponent<DelilahWall>().owner = gameObject;
@@ -76,10 +76,31 @@ public class DelilahAttack : MonoBehaviour {
         //GameObject newBullet = Instantiate(bigBulletPrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;
         //newBullet.transform.rotation = gameObject.transform.rotation; //Rotate the same direction as the ship it is fired from
         //newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
-        hasWall = false;
+        if (!hasWall)
+        {
+            createWall();
+            wallRight = myMovement.facingRight ? 1 : -1;
+            wall = Instantiate(wallPrefab, (transform.position + new Vector3(6 * wallRight, 1, 0)), Quaternion.identity);
+            wall.GetComponent<DelilahWall>().owner = gameObject;
+            wall.GetComponent<DelilahWall>().wallRight = wallRight;
+
+        }
+        destroyWall();
 
         wall.GetComponent<Rigidbody2D>().velocity = new Vector2(wallVelocity * wallRight, 0);
         wall.GetComponent<DelilahWall>().free = true;
         wall.GetComponent<DelilahWall>().timeToDie = Time.time + wallLifeTime;
+    }
+
+    public void destroyWall()
+    {
+        hasWall = false;
+        myMovement.currentMaxSpeed = myMovement.maxSpeed;
+    }
+
+    public void createWall()
+    {
+        hasWall = true;
+        myMovement.currentMaxSpeed = myMovement.maxSpeed / 3;
     }
 }
