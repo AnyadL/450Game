@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114501560410476800}
   - component: {fileID: 114480848827934352}
   m_Layer: 11
-  m_Name: Ryker 1
+  m_Name: Ryker
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692b94a5dbc7bee4b9f6f62af6c3cd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 3
   bigCooldown: 10
   isRanged: 0
   nextBigFire: 0
