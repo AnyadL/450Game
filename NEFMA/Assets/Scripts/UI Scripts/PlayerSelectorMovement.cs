@@ -78,10 +78,15 @@ public class PlayerSelectorMovement : MonoBehaviour {
     {
 
         // check if select button (A or enter) was pressed
-        inputPressed = getInputPressed();
+        inputPressed = getInputPressed("Select");
         if (inputPressed != -1)
         {
             selectPressed();
+        }
+        inputPressed = getInputPressed("Back");
+        if (inputPressed != -1)
+        {
+            backPressed();
         }
 
         if (!heroSelected && joinedGame)
@@ -239,6 +244,13 @@ public class PlayerSelectorMovement : MonoBehaviour {
             joinOrSelectHero();
     }
 
+    void backPressed()
+    {
+
+        if (heroSelected && (inputPressed == playerInput))
+            unsetHero();
+    }
+
     void joinOrSelectHero ()
     {
         if (joinedGame && (inputPressed == playerInput)) // select Hero
@@ -264,6 +276,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
         }
     }
 
+
     bool isInputInUse()
     {
         for (int i = 0; i < Globals.players.Count; ++i)
@@ -274,31 +287,31 @@ public class PlayerSelectorMovement : MonoBehaviour {
         return false;
     }
 
-    int getInputPressed()
+    int getInputPressed(string button)
     {
-        if (Input.GetButtonUp("Select_0"))
+        if (Input.GetButtonUp(button + "_0"))
         {
             return 0;
         }
-        else if (Input.GetButtonUp("Select_1"))
+        else if (Input.GetButtonUp(button + "_1"))
         {
             return 1;
         }
-        else if (Input.GetButtonUp("Select_2"))
+        else if (Input.GetButtonUp(button + "_2"))
         {
             return 2;
         }
-        else if (Input.GetButtonUp("Select_3"))
+        else if (Input.GetButtonUp(button + "_3"))
         {
             return 3;
         }
-        else if (Input.GetButtonUp("Select_4"))
+        else if (Input.GetButtonUp(button + "_4"))
         {
             return 4;
         }
         else
         {
-            return -1; // no select input was pressed
+            return -1; // no button input was pressed
         }
     }
 
@@ -307,30 +320,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
         if (!heroSelected)
         {
             bool heroChoiceAllowed = true;
-
-          /*  switch (hero)
-            {
-                case "Ryker":
-                    if (Globals.rykerChosen)
-                        heroChoiceAllowed = false;
-                    Globals.rykerChosen = true;
-                    break;
-                case "Delilah":
-                    if (Globals.delilahChosen)
-                        heroChoiceAllowed = false;
-                    Globals.delilahChosen = true;
-                    break;
-                case "Kitty":
-                    if (Globals.kittyChosen)
-                        heroChoiceAllowed = false;
-                    Globals.kittyChosen = true;
-                    break;
-                case "Agni":
-                    if (Globals.agniChosen)
-                        heroChoiceAllowed = false;
-                    Globals.agniChosen = true;
-                    break;
-            }*/
+            
             if (heroChoiceAllowed)
             {
                 Globals.players[playerNumber].Name = hero;
@@ -339,6 +329,35 @@ public class PlayerSelectorMovement : MonoBehaviour {
                 heroSelected = true;
                 playerSelector.sprite = playerSelectedSprite;
             }
+        }
+    }
+
+    void unsetHero()
+    {
+        if (heroSelected)
+        {
+            if (Globals.players[playerNumber].Name == "Ryker")
+            {
+                Globals.rykerChosen = false;
+            }
+            else if (Globals.players[playerNumber].Name == "Agni")
+            {
+                Globals.agniChosen = false;
+            }
+            else if (Globals.players[playerNumber].Name == "Delilah")
+            {
+                Globals.delilahChosen = false;
+            }
+            else if (Globals.players[playerNumber].Name == "Kitty")
+            {
+                Globals.kittyChosen = false;
+            }
+            Globals.players[playerNumber].Name = "";
+            Globals.players[playerNumber].Prefab = null;
+
+            heroSelected = false;
+            playerSelector.sprite = playerSelectorSprite;
+
         }
     }
 
