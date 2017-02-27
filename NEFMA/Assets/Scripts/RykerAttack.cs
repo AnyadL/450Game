@@ -67,6 +67,7 @@ public class RykerAttack : MonoBehaviour {
         }
         yield return new WaitForSeconds(dashTime);
         gameObject.layer = myLayer;
+        Destroy(dashObject);
     }
 
     //Creates claw attack which persists for a second and then disappears
