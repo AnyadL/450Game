@@ -1638,10 +1638,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dcb45830c211c41bc2018c941e6daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agniPortrait: {fileID: 21300000, guid: 8096c81d995f81b40be7eba4291c1e03, type: 3}
-  rykerPortrait: {fileID: 21300000, guid: ec1a5e4e804f6f844ab0fe2c95f08d78, type: 3}
-  delilahPortrait: {fileID: 21300000, guid: c529d2ed7a09d3545a727303efe87551, type: 3}
-  kittyPortrait: {fileID: 21300000, guid: d8a7f38f163053e4fa0143560bcb70b8, type: 3}
+  agniPortrait: {fileID: 21300000, guid: f6149dbd6b02a13489aed48685ce15b3, type: 3}
+  rykerPortrait: {fileID: 21300000, guid: 7a24f562798390a4d966d01a3ee8b5d5, type: 3}
+  delilahPortrait: {fileID: 21300000, guid: 14b222498bc65a547960af1a58870490, type: 3}
+  kittyPortrait: {fileID: 21300000, guid: 9f912f74f66818d46b7069279ea19411, type: 3}
 --- !u!1001 &438134291
 Prefab:
   m_ObjectHideFlags: 0
