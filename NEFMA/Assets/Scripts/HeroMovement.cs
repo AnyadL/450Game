@@ -8,6 +8,7 @@ public class HeroMovement : MonoBehaviour {
     [HideInInspector] public bool jump = false;
     [HideInInspector] public bool punchRange = false;
     [HideInInspector] public bool attack = false;
+    [HideInInspector] public int myLayer; 
 
     [HideInInspector] public bool inRange = false;
 
@@ -20,7 +21,7 @@ public class HeroMovement : MonoBehaviour {
     [HideInInspector] public float currentMaxSpeed;
     public float jumpForce = 1800f;
     public Transform groundCheck;
-   // public Transform punchCheck;
+    public Transform punchCheck;
 
     [HideInInspector] public bool grounded = false;
     //private Animator anim;
@@ -35,6 +36,7 @@ public class HeroMovement : MonoBehaviour {
         myAttributes = GetComponent<AttributeController>();
         currentMoveForce = moveForce;
         currentMaxSpeed = maxSpeed;
+        myLayer = gameObject.layer;
     }
 
     // Update is called once per frame
@@ -85,12 +87,21 @@ public class HeroMovement : MonoBehaviour {
             jump = false;
         }
 
-       // punchRange = Physics2D.Linecast(transform.position, punchCheck.position, 1 << LayerMask.NameToLayer("Enemy"));
+        punchRange = Physics2D.Linecast(transform.position, punchCheck.position, 1 << LayerMask.NameToLayer("Enemy"));
         if (attack && punchRange)
         {
             Debug.Log("attack");
             attack = false;
+            StartCoroutine(Punch());
         }
+    }
+
+    IEnumerator Punch()
+    {
+        Debug.Log("Punch");
+        gameObject.layer = 14;
+        yield return new WaitForSeconds(0.02f);
+        gameObject.layer = myLayer;
     }
 
     //Check if within hitting range of an enemy, enemies should have 2 colliders

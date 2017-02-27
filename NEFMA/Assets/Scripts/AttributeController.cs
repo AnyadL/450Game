@@ -69,6 +69,8 @@ public class AttributeController : MonoBehaviour {
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(1, Mathf.Sin(2 * Mathf.PI * 5 * (nextVulnerable - Time.time) + 0), Mathf.Sin(2 * Mathf.PI * 5 * (nextVulnerable - Time.time) + 0), 0.75f);
             }
         }
+
+
 	}
 
     // Sets global variables for the player identified by playerNumber, marking them as killed
@@ -130,7 +132,7 @@ public class AttributeController : MonoBehaviour {
         {
             enemyAI.nextProjectileFire = 5;
         }
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(2);
         Debug.Log("Waited");
         enemyAI.maxSpeed = speed;
         enemyAI.projectileCooldown = pcooldown;
@@ -152,20 +154,25 @@ public class AttributeController : MonoBehaviour {
     // something has collided with the player
     void playerCollisions(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+
+        //If player is not currently punching then it will do the attack collisions
+        if (gameObject.layer != 14)
         {
-            if (decreaseHealth(1.0f))
+            if (collision.gameObject.tag == "Enemy")
             {
-                takenDamage();
-                knockback(collision.gameObject.transform.position.x);
+                if (decreaseHealth(1.0f))
+                {
+                    takenDamage();
+                    knockback(collision.gameObject.transform.position.x);
+                }
             }
-        }
-        else if (collision.gameObject.tag == "EnemyAttack")
-        {
-            if (decreaseHealth(1.0f))
+            else if (collision.gameObject.tag == "EnemyAttack")
             {
-                takenDamage();
-                knockback(collision.gameObject.transform.position.x);
+                if (decreaseHealth(1.0f))
+                {
+                    takenDamage();
+                    knockback(collision.gameObject.transform.position.x);
+                }
             }
         }
         else if (collision.gameObject.tag == "DeathLine")
@@ -176,6 +183,7 @@ public class AttributeController : MonoBehaviour {
         {
             health = maxHealth;
         }
+        
     }
 
     // something has collided with an enemy
@@ -197,7 +205,7 @@ public class AttributeController : MonoBehaviour {
                 knockback(collision.gameObject.transform.position.x);
             }
         }
-        else if(collision.gameObject.tag == "BigAttack")
+        else if (collision.gameObject.tag == "BigAttack")
         {
             if (decreaseHealth(3.0f))
             {
@@ -213,7 +221,15 @@ public class AttributeController : MonoBehaviour {
         {
             // knockback(collision.gameObject.transform.position.x);
             StartCoroutine(stunEnemy());
-           
+
+        }
+        else if (collision.gameObject.layer == 14)
+        {
+            if (decreaseHealth(1.0f))
+            {
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
+            }
         }
     }
 }
