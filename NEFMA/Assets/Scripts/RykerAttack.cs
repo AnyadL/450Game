@@ -48,8 +48,7 @@ public class RykerAttack : MonoBehaviour {
     // Creates a Hiss that stuns enemies
     void Dash()
     {
-       // GameObject Hiss = Instantiate(HissPrefab, (transform.position + (transform.forward / 10)), Quaternion.identity) as GameObject;
-
+    
     }
 
     //Creates claw attack which persists for a second and then disappears
@@ -61,6 +60,11 @@ public class RykerAttack : MonoBehaviour {
         foreach(GameObject go in gos)
         {
             GameObject stunObject = Instantiate(stunPrefab, (go.transform.position), Quaternion.identity) as GameObject;
+            if (!stunObject)
+            {
+                return;
+            }
         }
+
     }
 }
