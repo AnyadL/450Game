@@ -8,7 +8,7 @@ public class RykerAttack : MonoBehaviour {
 
     private string playerNumber;
 
-    private HeroMovement hm;
+    //private HeroMovement hm;
     private AttributeController myAttribute;
     public float dashCooldown = 3.0f;
     public float nextDash;
@@ -17,7 +17,7 @@ public class RykerAttack : MonoBehaviour {
     void Start()
     {
         //In order to figure out which way the character is facing I need to access the HeroMovement script
-        hm = gameObject.GetComponent<HeroMovement>();
+      //  hm = gameObject.GetComponent<HeroMovement>();
         myAttribute = gameObject.GetComponent<AttributeController>();
     }
 
