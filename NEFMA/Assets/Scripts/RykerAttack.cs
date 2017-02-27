@@ -5,20 +5,27 @@ using UnityEngine;
 public class RykerAttack : MonoBehaviour {
 
     public GameObject stunPrefab;
+    public GameObject dashPrefab;
 
     private string playerNumber;
 
-    //private HeroMovement hm;
+    private HeroMovement hm;
     private AttributeController myAttribute;
     public float dashCooldown = 3.0f;
     public float nextDash;
+    public float dashSpeed;
+    public float dashTime;
+    [HideInInspector] public int myLayer;
+    
 
     // Use this for initialization
     void Start()
     {
         //In order to figure out which way the character is facing I need to access the HeroMovement script
-      //  hm = gameObject.GetComponent<HeroMovement>();
+        hm = gameObject.GetComponent<HeroMovement>();
         myAttribute = gameObject.GetComponent<AttributeController>();
+        myLayer = gameObject.layer;
+
     }
 
     // Update is called once per frame
@@ -26,17 +33,17 @@ public class RykerAttack : MonoBehaviour {
     {
         if (Time.time >= nextDash)
         {
-            //Fire little fireballs
+            //Dashes through enemies
             if (Input.GetButtonDown("Fire1_0"))
             {
                 nextDash = Time.time + dashCooldown;
-                Dash();
+                StartCoroutine(Dash());
             }
         }
 
         if (Time.time >= myAttribute.nextBigFire)
         {
-            //Fire Big Fireballs
+            //Stuns all enemies on the screen 
             if (Input.GetButtonDown("Fire2_0"))
             {
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
@@ -46,9 +53,20 @@ public class RykerAttack : MonoBehaviour {
     }
 
     // Creates a Hiss that stuns enemies
-    void Dash()
+    IEnumerator Dash()
     {
-    
+        gameObject.layer = 13;
+        GameObject dashObject = Instantiate(dashPrefab, (gameObject.transform.position), Quaternion.identity) as GameObject;
+        if (hm.facingRight)
+        {
+            transform.position += new Vector3(dashSpeed * Time.deltaTime, dashTime, 0.0f);
+        }
+        else
+        {
+            transform.position -= new Vector3(dashSpeed * Time.deltaTime, dashTime, 0.0f);
+        }
+        yield return new WaitForSeconds(dashTime);
+        gameObject.layer = myLayer;
     }
 
     //Creates claw attack which persists for a second and then disappears

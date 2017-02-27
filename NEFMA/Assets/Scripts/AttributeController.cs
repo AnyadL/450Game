@@ -130,7 +130,7 @@ public class AttributeController : MonoBehaviour {
         {
             enemyAI.nextProjectileFire = 5;
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(6);
         Debug.Log("Waited");
         enemyAI.maxSpeed = speed;
         enemyAI.projectileCooldown = pcooldown;
