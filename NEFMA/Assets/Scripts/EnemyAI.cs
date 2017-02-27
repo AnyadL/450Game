@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour {
         isBlocked = Physics2D.Linecast(transform.position, wallCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if (isBlocked)
-        {
+        {      
             bool crushed = Physics2D.Linecast(transform.position, crushedCheck.position, 1 << LayerMask.NameToLayer("Ground"));
             if (crushed)
             {
