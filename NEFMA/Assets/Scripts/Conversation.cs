@@ -14,9 +14,10 @@
  * ***************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
-
+[System.Serializable]
 public class Conversation : MonoBehaviour
 {
 
@@ -38,5 +39,6 @@ public class Node
     public string speaker;
     public string text;
 
+    // FIXME: What, like String Voiceover file, int voiceover duration..?
     // TODO: Needs voiceover variables/handling
 }
