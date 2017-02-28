@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114874067683200736}
   - component: {fileID: 114449209950069886}
   m_Layer: 11
-  m_Name: Agni 1
+  m_Name: Agni
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

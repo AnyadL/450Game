@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114267163261142808}
   - component: {fileID: 114799400630815804}
   m_Layer: 11
-  m_Name: Delilah 1
+  m_Name: Delilah
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
