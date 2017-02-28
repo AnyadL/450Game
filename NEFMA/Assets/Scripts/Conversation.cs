@@ -1,4 +1,4 @@
-﻿/******************************************************************************
+/******************************************************************************
  * Author: Michael Morris
  * Course: NEFMA
  * File: Conversation.cs
@@ -14,16 +14,17 @@
  * ***************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
-
+[System.Serializable]
 public class Conversation : MonoBehaviour
 {
 
     public bool isEOF(int index) {
- /*       if (index >= dialogue.size) {
+        if (index >= dialogue.Count) {
             return true;
-        }*/
+        }
 
         return false;
     }
@@ -38,5 +39,6 @@ public class Node
     public string speaker;
     public string text;
 
+    // FIXME: What, like String Voiceover file, int voiceover duration..?
     // TODO: Needs voiceover variables/handling
 }
