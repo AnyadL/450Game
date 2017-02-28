@@ -21,7 +21,7 @@ public class Conversation : MonoBehaviour
 {
 
     public bool isEOF(int index) {
-        if (index >= dialogue.size) {
+        if (index >= dialogue.Count) {
             return true;
         }
 
