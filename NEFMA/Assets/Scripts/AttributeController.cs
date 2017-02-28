@@ -15,6 +15,9 @@ public class AttributeController : MonoBehaviour {
     [HideInInspector] public float nextVulnerable;
     [HideInInspector] public bool knockbacked;
     public float invincibiltyLength = 2.0f;
+    [HideInInspector] public EnemyAI enemyAI;
+    [HideInInspector] public float speed;
+    [HideInInspector] float pcooldown;
 
     public void Start()
     {
@@ -24,6 +27,13 @@ public class AttributeController : MonoBehaviour {
             myLayer = gameObject.layer;
         }
         health = maxHealth;
+
+        if (gameObject.tag == "Enemy")
+        {
+            enemyAI = gameObject.GetComponent<EnemyAI>();
+            speed = enemyAI.maxSpeed;
+            pcooldown = enemyAI.projectileCooldown;
+        }
     }
 
     void Update () {
@@ -106,6 +116,21 @@ public class AttributeController : MonoBehaviour {
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.75f);
     }
 
+    IEnumerator stunEnemy()
+    {
+         Debug.Log("speed:" + speed);
+ 
+         enemyAI.maxSpeed = 0;
+         if (enemyAI.isRanged)
+         {
+             enemyAI.nextProjectileFire = 5;
+         }
+         yield return new WaitForSeconds(2);
+         Debug.Log("Waited");
+         enemyAI.maxSpeed = speed;
+         enemyAI.projectileCooldown = pcooldown;
+    }
+
     // determines if the current gameobject is a player or an enemy
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -180,7 +205,8 @@ public class AttributeController : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "Stun")
         {
-            knockback(collision.gameObject.transform.position.x);
+            //knockback(collision.gameObject.transform.position.x);
+            StartCoroutine(stunEnemy());
         }
     }
 }
