@@ -1,4 +1,4 @@
-﻿/******************************************************************************
+/******************************************************************************
  * Author: Michael Morris
  * Course: NEFMA
  * File: ConversationRunner.cs
@@ -11,6 +11,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class ConversationRunner : MonoBehaviour {
 
@@ -24,15 +25,46 @@ public class ConversationRunner : MonoBehaviour {
 		
 	}
 
-    void loadConversation(Conversation newConversation) {
-        conversation = newConversation;
-        currentIndex = 0;
+    void loadConversation(string conversationPath) {
+        // From Unity3D - Loading Game Data Json
+        // Path.Combine combines strings into a file path.
+        string filePath = Path.Combine(Application.streamingAssetsPath, conversationPath);
+        if( File.Exists(filePath) ) {
+            // Read the json from the file into a string
+            string data = File.ReadAllText(filePath);
+
+            // Pass the json to JsonUtility, and tell it to create a GameData object from it.
+            Conversation loadedConversation = JsonUtility.FromJson<Conversation>(data);
+            currentIndex = 0;
+        }
+        else {
+            Debug.LogError("ERROR: Failed to load conversation!");
+        }
+
     }
 
     void setPane(DialoguePane newWindow) {
         window = newWindow;
     }
 
+    void advance() {
+        int nextIndex = currentIndex + 1;
+        if (conversation.isEOF(nextIndex)) {
+            end();
+            return;
+        }
+
+        currentIndex = nextIndex;
+        // FIXME: Halt playing VO now.
+        // FIXME: Start next VO line now.
+    }
+
+    void end() {
+        window.close();
+        
+        conversation = null;
+        currentIndex = 0;
+    }
 
     public Conversation conversation;   // FIXME: Public only for testing, must be private for release!
     public DialoguePane window;         // FIXME: Public only for testing, must be private for release!
