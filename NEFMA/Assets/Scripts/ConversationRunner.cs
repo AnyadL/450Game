@@ -34,7 +34,8 @@ public class ConversationRunner : MonoBehaviour {
             string data = File.ReadAllText(filePath);
 
             // Pass the json to JsonUtility, and tell it to create a GameData object from it.
-            Conversation loadedConversation = JsonUtility.FromJson<Conversation>(data);
+            //Conversation loadedConversation = JsonUtility.FromJson<Conversation>(data); // COMMENTED OUT BECAUSE OF WARNINGS
+            JsonUtility.FromJson<Conversation>(data);
             currentIndex = 0;
         }
         else {
