@@ -16,6 +16,7 @@ TagManager:
   - Invincible
   - Checkpoint
   - Stun
+  - BossHead
   layers:
   - Default
   - TransparentFX
