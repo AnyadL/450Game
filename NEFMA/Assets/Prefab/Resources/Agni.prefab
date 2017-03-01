@@ -48,6 +48,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1976778713789952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4077430156238168}
+  m_Layer: 11
+  m_Name: punch check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4077430156238168
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976778713789952}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15, y: -5, z: 0}
+  m_LocalScale: {x: 12.914793, y: 13.821369, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4998275180768812}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4547986362550128
 Transform:
   m_ObjectHideFlags: 1
@@ -72,6 +100,7 @@ Transform:
   m_LocalScale: {x: 0.073, y: 0.073, z: 1}
   m_Children:
   - {fileID: 4547986362550128}
+  - {fileID: 4077430156238168}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -127,6 +156,8 @@ MonoBehaviour:
   nextVulnerable: 0
   knockbacked: 0
   invincibiltyLength: 2
+  enemyAI: {fileID: 0}
+  speed: 0
 --- !u!114 &114392560673639600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,6 +173,7 @@ MonoBehaviour:
   jump: 0
   punchRange: 0
   attack: 0
+  myLayer: 0
   inRange: 0
   playerNumber: -1
   inputNumber: -1
@@ -151,6 +183,7 @@ MonoBehaviour:
   currentMaxSpeed: 0
   jumpForce: 1800
   groundCheck: {fileID: 4547986362550128}
+  punchCheck: {fileID: 4077430156238168}
   grounded: 0
 --- !u!114 &114608651482724496
 MonoBehaviour:

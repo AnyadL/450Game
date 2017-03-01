@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4152098520219624}
   m_Layer: 11
-  m_Name: ground check
+  m_Name: punch check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,12 +48,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1857414780406618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4461802130450952}
+  m_Layer: 11
+  m_Name: ground check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4152098520219624
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008697963557068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15, y: 0, z: 0}
+  m_LocalScale: {x: 12.570398, y: 13.452799, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4809369325167958}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4461802130450952
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857414780406618}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -15, z: 0}
   m_LocalScale: {x: 12.570405, y: 13.452761, z: 1}
@@ -71,6 +99,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.075, y: 0.075, z: 1}
   m_Children:
+  - {fileID: 4461802130450952}
   - {fileID: 4152098520219624}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -124,12 +153,17 @@ MonoBehaviour:
   jump: 0
   punchRange: 0
   attack: 0
+  myLayer: 0
   inRange: 0
   playerNumber: -1
+  inputNumber: -1
   moveForce: 400
+  currentMoveForce: 0
   maxSpeed: 12
+  currentMaxSpeed: 0
   jumpForce: 1800
-  groundCheck: {fileID: 4152098520219624}
+  groundCheck: {fileID: 4461802130450952}
+  punchCheck: {fileID: 4152098520219624}
   grounded: 0
 --- !u!114 &114528341687823494
 MonoBehaviour:
@@ -175,13 +209,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  isRanged: 0
   bigCooldown: 10
   nextBigFire: 0
   myLayer: 0
   nextVulnerable: 0
   knockbacked: 0
   invincibiltyLength: 2
+  enemyAI: {fileID: 0}
+  speed: 0
 --- !u!212 &212354671295307794
 SpriteRenderer:
   m_ObjectHideFlags: 1
