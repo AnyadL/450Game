@@ -83,4 +83,15 @@ MonoBehaviour:
   myHead: {fileID: 0}
   myLeftHand: {fileID: 0}
   myRightHand: {fileID: 0}
+  myHeadScript: {fileID: 0}
+  myLeftHandScript: {fileID: 0}
+  myRightHandScript: {fileID: 0}
+  allyPrefab: {fileID: 0}
   numberOfParts: 3
+  lowerHands: 0
+  nextSwipe: 0
+  swipeCooldown: 10
+  nextFireball: 0
+  fireballCooldown: 15
+  nextSpawn: 0
+  spawnCooldown: 15

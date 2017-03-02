@@ -43,10 +43,10 @@ public class BossHand : MonoBehaviour {
                 moving = true;
             }
         }
-        if (nextSwipe <= Time.time && nextSwipe != 0)
-        {
-            raiseHand(maxHeight);
-        }
+        //if (nextSwipe <= Time.time && nextSwipe != 0)
+        //{
+        //    raiseHand(maxHeight);
+        //}
     }
 
     public void raiseHand(float height)
@@ -62,7 +62,6 @@ public class BossHand : MonoBehaviour {
     {
         currentMaxHeight = maxHeight;
         currentMinHeight = minHeight;
-        velocity.y = -velocity.y;
         if (hand == 1)
         {
             moving = true;

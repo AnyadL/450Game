@@ -4,28 +4,62 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour {
 
-    public GameObject myHead;
-    public GameObject myLeftHand;
-    public GameObject myRightHand;
+    [HideInInspector] public GameObject myHead;
+    [HideInInspector] public GameObject myLeftHand;
+    [HideInInspector] public GameObject myRightHand;
+    [HideInInspector] public BossHead myHeadScript;
+    [HideInInspector] public BossHand myLeftHandScript;
+    [HideInInspector] public BossHand myRightHandScript;
+    public GameObject allyPrefab;
     private int parts = 0;
     public int numberOfParts = 3;
+    [HideInInspector] public float lowerHands = 0;
+    [HideInInspector] public float nextSwipe;
+    public float swipeCooldown = 10f;
+    [HideInInspector] public float nextFireball;
+    public float fireballCooldown = 15f;
+    [HideInInspector] public float nextSpawn;
+    public float spawnCooldown = 15f;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        nextSwipe = Time.time + swipeCooldown;
+        nextFireball = Time.time + fireballCooldown;
+        nextSpawn = Time.time + spawnCooldown;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		//if (parts == numberOfParts)
-  //      {
-  //          Debug.Log("Linked");
-  //      }
-  //      else
-  //      {
-  //          Debug.Log("Not Linked");
-  //      }
-	}
+        if (lowerHands <= Time.time && lowerHands != 0)
+        {
+            myLeftHandScript.resetHands(0);
+            myRightHandScript.resetHands(1);
+            lowerHands = 0;
+        }
+        if (nextSwipe <= Time.time)
+        {
+            myLeftHandScript.raiseHand(myLeftHandScript.maxHeight);
+            myRightHandScript.raiseHand(myLeftHandScript.maxHeight);
+            nextSwipe = Time.time + swipeCooldown;
+            lowerHands = Time.time + 2;
+        }
+        if (nextFireball <= Time.time)
+        {
+            myHeadScript.fireballs();
+            nextFireball = Time.time + fireballCooldown;
+        }
+        if (nextSpawn <= Time.time)
+        {
+            spawnAllies();
+            nextSpawn = Time.time + spawnCooldown;
+        }
+    }
+
+    void spawnAllies()
+    {
+        Instantiate(allyPrefab, (transform.position + (transform.right * 30) - (transform.up * 8)), Quaternion.identity);
+        Instantiate(allyPrefab, (transform.position - (transform.right * 30) - (transform.up * 8)), Quaternion.identity);
+    }
 
     public void registerBodyPart(GameObject part, int num)
     {
@@ -35,6 +69,7 @@ public class BossController : MonoBehaviour {
             if (myLeftHand == null)
             {
                 myLeftHand = part;
+                myLeftHandScript = myLeftHand.GetComponent<BossHand>();
             }
             else
             {
@@ -47,6 +82,7 @@ public class BossController : MonoBehaviour {
             if (myHead == null)
             {
                 myHead = part;
+                myHeadScript = myHead.GetComponent<BossHead>();
             }
             else
             {
@@ -59,6 +95,7 @@ public class BossController : MonoBehaviour {
             if (myRightHand == null)
             {
                 myRightHand = part;
+                myRightHandScript = myRightHand.GetComponent<BossHand>();
             }
             else
             {

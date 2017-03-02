@@ -6,6 +6,7 @@ public class BossHead : MonoBehaviour {
 
     //private Rigidbody2D myBody;
     private BossController myController;
+    public GameObject fireballPrefab;
 
     // Use this for initialization
     void Start () {
@@ -18,4 +19,11 @@ public class BossHead : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void fireballs()
+    {
+        GameObject newBullet = Instantiate(fireballPrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;
+        newBullet.tag = "EnemyAttack";
+        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -30);
+    }
 }
