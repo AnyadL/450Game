@@ -50,6 +50,11 @@ public class AttributeController : MonoBehaviour {
                 }
                 gameObject.GetComponent<SetPlayerUI>().Update();
             }
+            if (gameObject.tag == "BossHead")
+            {
+                // Defeated Boss, should call some script here
+                health = 1;
+            }
             Destroy(gameObject);
         }
 
