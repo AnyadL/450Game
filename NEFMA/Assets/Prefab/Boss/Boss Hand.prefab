@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114213381888708802}
   - component: {fileID: 50955785128957378}
   m_Layer: 8
-  m_Name: BossHand
+  m_Name: Boss Hand
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
