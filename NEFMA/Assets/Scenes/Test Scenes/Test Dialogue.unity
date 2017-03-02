@@ -306,6 +306,24 @@ MonoBehaviour:
     type: 2}
   ellipsisPrefab: {fileID: 1650786452437784, guid: 8ec7ddf0fc2acab40ae7a5fe9dd44419,
     type: 2}
+  conversation:
+  - Agni Question 2 OMG, can you believe Dr. G cancelled class on us again yesterday?
+  - Agni Exclamation 1 I was stranded at school for hours!
+  - Ryker Question 1 Why didn't you just run home, Agni?
+  - Agni Exclamation 1 Not everyone's a speedster like you, Ryker!
+  - Agni Exclamation 2 Well, he better not have cancelled class again or I'm gonna
+    flip
+  - Delilah Ellipsis 1 I'm sure he didn't
+  - Kitty Question 1 Didja miss me?
+  - Ryker Exclamation 2 Holy crap! You just about gave me a heart attack, Kitty!
+  - Delilah Ellipsis 1 Hey, Kitty
+  - Ryker Question 2 Hey, so... does something seem odd to you guys today?
+  - Ryker Ellipsis 1 Maybe we should go home.
+  - Agni Exclamation 1 Don't be such a wuss!
+  - 'Agni Ellipsis 1 But now that you mention it - '
+  - Delilah Ellipsis 1 A little.
+  - Agni Exclamation 2 Let's get to school quick! I'm sure Dr. G knows what's going
+    on!
 --- !u!4 &791392456
 Transform:
   m_ObjectHideFlags: 0
@@ -550,6 +568,10 @@ Prefab:
     - target: {fileID: 212490725946953966, guid: 5073f75282652c54bb608bb66fdb6345,
         type: 2}
       propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1034903816482958, guid: 5073f75282652c54bb608bb66fdb6345, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
