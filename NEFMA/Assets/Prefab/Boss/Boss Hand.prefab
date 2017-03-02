@@ -145,9 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7dd03da98a5a248a4379bab1e7d96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHeight: 15
+  leftHand: 1
+  maxHeight: 0
   minHeight: 0
-  velocity: {x: 0, y: 15}
+  velocity: {x: 0, y: 0}
   nextSwipe: 0
   swipeCooldown: 5
   moving: 1

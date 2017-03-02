@@ -17,6 +17,7 @@ TagManager:
   - Checkpoint
   - Stun
   - BossHead
+  - Boss Controller
   layers:
   - Default
   - TransparentFX

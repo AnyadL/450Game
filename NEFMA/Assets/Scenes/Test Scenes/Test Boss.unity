@@ -143,6 +143,11 @@ Prefab:
       propertyPath: velocity.y
       value: -15
       objectReference: {fileID: 0}
+    - target: {fileID: 114213381888708802, guid: 04aeb9adfb55c2c4ea870c551c6b4acd,
+        type: 2}
+      propertyPath: maxHeight
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04aeb9adfb55c2c4ea870c551c6b4acd, type: 2}
   m_IsPrefabParent: 0
@@ -540,6 +545,21 @@ Prefab:
     - target: {fileID: 1296378600162086, guid: 04aeb9adfb55c2c4ea870c551c6b4acd, type: 2}
       propertyPath: m_Name
       value: Boss Hand Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213381888708802, guid: 04aeb9adfb55c2c4ea870c551c6b4acd,
+        type: 2}
+      propertyPath: velocity.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213381888708802, guid: 04aeb9adfb55c2c4ea870c551c6b4acd,
+        type: 2}
+      propertyPath: maxHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213381888708802, guid: 04aeb9adfb55c2c4ea870c551c6b4acd,
+        type: 2}
+      propertyPath: leftHand
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04aeb9adfb55c2c4ea870c551c6b4acd, type: 2}

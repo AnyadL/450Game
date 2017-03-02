@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossHand : MonoBehaviour {
 
     private Rigidbody2D myBody;
+    private BossController myController;
+    public bool leftHand = true;
     public float maxHeight = 0;
     public float minHeight = 0;
     private float currentMaxHeight = 0;
@@ -18,6 +20,15 @@ public class BossHand : MonoBehaviour {
     // Use this for initialization
     void Start () {
         myBody = this.GetComponent<Rigidbody2D>();
+        myController = GameObject.FindWithTag("Boss Controller").GetComponent<BossController>();
+        if (leftHand)
+        {
+            myController.registerBodyPart(gameObject, -1);
+        }
+        else
+        {
+            myController.registerBodyPart(gameObject, 1);
+        }
         currentMaxHeight = maxHeight;
         currentMinHeight = minHeight;
         nextSwipe = Time.time + swipeCooldown;
