@@ -20,6 +20,35 @@ using UnityEngine;
 [System.Serializable]
 public class Conversation : MonoBehaviour
 {
+    public List<Node> dialogue;         // TODO: Needs to become private.
+    
+    // Move to next dialogue entry, or if moving past end of conversation, close dialogue
+    int nextIndex(int oldIndex)
+    {
+        if (isEOF(oldIndex)) {
+            return -1;
+        }
+        
+        return (oldIndex + 1);
+    }
+
+    public string getSpeaker(int index) {
+        return dialogue[index].speaker;
+    }
+
+    public string getText(int index) {
+        return dialogue[index].text;
+    }
+
+    public string getVOFile(int index) {
+        return dialogue[index].voFile;
+    }
+
+    public int getDisplayTime(int index)
+    {
+        return dialogue[index].displayTime;
+    }
+
 
     public bool isEOF(int index) {
         if (index >= dialogue.Count) {
@@ -28,8 +57,6 @@ public class Conversation : MonoBehaviour
 
         return false;
     }
-
-    public List<Node> dialogue; // TODO: Needs to become private.
 }
 
 
@@ -38,7 +65,6 @@ public class Node
 {
     public string speaker;
     public string text;
-
-    // FIXME: What, like String Voiceover file, int voiceover duration..?
-    // TODO: Needs voiceover variables/handling
+    public string voFile;
+    public int displayTime;
 }

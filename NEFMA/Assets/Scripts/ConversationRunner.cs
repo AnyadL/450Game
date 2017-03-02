@@ -14,62 +14,110 @@ using UnityEngine;
 using System.IO;
 
 public class ConversationRunner : MonoBehaviour {
+    public UnityEngine.UI.Text speakerOut;   // Set directly in Unity.
+    public UnityEngine.UI.Text textOut;      // Set directly in Unity.
+    public UnityEngine.AudioSource voAudio;  // Set directly in Unity.
+
+    protected Conversation conversation;
+    protected int timeUntilUpdate;            // Tracks expected time until the next dialogue should load.
+    protected int currIndex;                  // Tracks which dialogue in the conversation we are on.
+    protected bool conversationLoaded;        // True if a conversation has been successfully loaded from disk.
 
     // Use this for initialization
     void Start () {
-        
-    }
-    
-    // Update is called once per frame
-    void Update () {
-        
-    }
+        conversationLoaded = false;
+        currIndex = 0;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        if (!conversationLoaded) { return; }
 
-    void loadConversation(string conversationPath) {
-        // From Unity3D - Loading Game Data Json
-        // Path.Combine combines strings into a file path.
-        string filePath = Path.Combine(Application.streamingAssetsPath, conversationPath);
-        if( File.Exists(filePath) ) {
-            // Read the json from the file into a string
-            string data = File.ReadAllText(filePath);
-
-            // Pass the json to JsonUtility, and tell it to create a GameData object from it.
-            //Conversation loadedConversation = JsonUtility.FromJson<Conversation>(data); // COMMENTED OUT BECAUSE OF WARNINGS
-            JsonUtility.FromJson<Conversation>(data);
-            currentIndex = 0;
+        timeUntilUpdate = timeUntilUpdate - 1;
+        if (timeUntilUpdate <= 0) {
+            next();
         }
-        else {
-            Debug.LogError("ERROR: Failed to load conversation!");
+	}
+
+    public void startConversation(string conversationPath) {
+        loadConversation(conversationPath);
+        // Handle conversation load failure as gracefully as we can...
+        if (conversationLoaded) {
+            updateLine(0);
         }
-
     }
 
-    void setPane(DialoguePane newWindow) {
-        window = newWindow;
-    }
+    // Move to next dialogue entry, or if moving past end of conversation, close dialogue
+    public void next() {
+        voAudio.Stop();
 
-    void advance() {
-        int nextIndex = currentIndex + 1;
-        if (conversation.isEOF(nextIndex)) {
-            end();
+        if (conversation.isEOF(currIndex)) {
+            this.end();
             return;
         }
 
-        currentIndex = nextIndex;
-        // FIXME: Halt playing VO now.
-        // FIXME: Start next VO line now.
+        currIndex = currIndex + 1;
+        updateLine(currIndex);
     }
 
-    void end() {
-        window.close();
-        
+    // Reset tracking vars, empty out output strings.
+    public void end() {
+        if (!conversationLoaded) { return; }
+
+        this.clear();
+
+        conversationLoaded = false;
         conversation = null;
-        currentIndex = 0;
+        currIndex = 0;  
     }
 
-    public Conversation conversation;   // FIXME: Public only for testing, must be private for release!
-    public DialoguePane window;         // FIXME: Public only for testing, must be private for release!
-    public int currentIndex;            // FIXME: Public only for testing, must be private for release!
-    
+    // Load a conversation from the provided file path.
+    protected void loadConversation(string conversationPath)
+    {
+        // From Unity3D - Loading Game Data Json
+        // Path.Combine combines strings into a file path.
+        string filePath = Path.Combine(Application.streamingAssetsPath, conversationPath);
+        if (File.Exists(filePath))
+        {
+            string data = File.ReadAllText(filePath);
+            Conversation loadedConversation = JsonUtility.FromJson<Conversation>(data);
+            conversationLoaded = true;
+            currIndex = 0;
+        }
+        else
+        {
+            Debug.LogError("ERROR: Failed to load conversation!");
+            conversationLoaded = false;
+        }
+
+    }
+
+    protected void playVOLine(int index) {
+        voAudio.Stop();
+        
+        // If a voice over line exists for this index {
+        // TODO: Play this VO line now.
+        // voAudio.PlayOneShot(...)
+
+        // timeUntilUpdate = voAudio.clip.length;
+        // }
+    }
+
+    // Update display variables for the new line and start VO.
+    protected void updateLine(int newIndex) {
+        if (conversationLoaded) {
+            speakerOut.text = conversation.getSpeaker(currIndex);
+            textOut.text = conversation.getText(currIndex);
+            timeUntilUpdate = conversation.getDisplayTime(currIndex);
+            playVOLine(currIndex);
+        }
+    }
+
+    // Clears display variables to hide window.
+    protected void clear() {
+        speakerOut.text = "";
+        textOut.text = "";
+        timeUntilUpdate = 0;
+    }
 
 }

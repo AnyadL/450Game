@@ -1,0 +1,50 @@
+﻿[
+  {
+    "Speaker":"Agni",
+    "Text":"Hey, isn't that - ",
+    "voFile":"",
+    "displayTime":5000,
+  },
+  {
+    "Speaker":"Kitty",
+    "Text":"Dr. G!",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Dr. G",
+    "Text":"Help!",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Agni",
+    "Text":"Oh, hell no!  There’s no way you’re cancelling class again!",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Dr. G",
+    "Text":"I’m kinda being kidnapped hereeeeeee",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Kitty",
+    "Text":"We have to go after him!",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Ryker",
+    "Text":"Shouldn’t we let the real heroes deal with this?",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Delilah",
+    "Text":"We’re the only ones here.",
+    "voFile":"",
+    "displayTime":5000
+  }
+]
