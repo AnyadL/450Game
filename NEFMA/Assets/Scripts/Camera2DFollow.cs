@@ -15,6 +15,7 @@ public class Camera2DFollow : MonoBehaviour
     private Vector3 m_CurrentVelocity;
     private Vector3 m_LookAheadPos;
     private Vector3 target;
+    public bool cameraForced = false;
 
     // Use this for initialization
     private void Start()
@@ -95,13 +96,26 @@ public class Camera2DFollow : MonoBehaviour
     // adds newly created players to the cameras targets list
     private void linkPlayers()
     {
-        for (int i = 0; i < Globals.players.Count; i++)
+        if (!cameraForced)
         {
-            //Debug.Log(Globals.players[i]);
-            if (Globals.players[i].Alive && !targets.Contains(Globals.players[i].GO.transform))
+            for (int i = 0; i < Globals.players.Count; i++)
             {
-                targets.Add(Globals.players[i].GO.transform);
+                //Debug.Log(Globals.players[i]);
+                if (Globals.players[i].Alive && !targets.Contains(Globals.players[i].GO.transform))
+                {
+                    targets.Add(Globals.players[i].GO.transform);
+                }
             }
+        }
+    }
+
+    public void unLinkPlayers(Transform optionalTarget)
+    {
+        cameraForced = true;
+        targets.Clear();
+        if (optionalTarget == null)
+        {
+            targets.Add(optionalTarget);
         }
     }
 }
