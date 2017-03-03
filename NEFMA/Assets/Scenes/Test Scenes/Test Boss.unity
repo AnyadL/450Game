@@ -264,7 +264,7 @@ Prefab:
     - target: {fileID: 224681624804143432, guid: 9598bc9c8dc9f114884f3cb85527d48c,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.8666667
       objectReference: {fileID: 0}
     - target: {fileID: 224681624804143432, guid: 9598bc9c8dc9f114884f3cb85527d48c,
         type: 2}
@@ -389,6 +389,11 @@ Prefab:
     - target: {fileID: 114396522712519350, guid: 9598bc9c8dc9f114884f3cb85527d48c,
         type: 2}
       propertyPath: m_MaxValue
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114396522712519350, guid: 9598bc9c8dc9f114884f3cb85527d48c,
+        type: 2}
+      propertyPath: m_Value
       value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
