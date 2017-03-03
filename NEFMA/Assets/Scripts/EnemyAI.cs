@@ -122,6 +122,8 @@ public class EnemyAI : MonoBehaviour {
 
     public void RangedAttack()
     {
+        targeter();
+
         //Checks the direction and sets the bullet velocity to that direction
         float velocityDirection = projectileVelocity;
 
@@ -132,5 +134,10 @@ public class EnemyAI : MonoBehaviour {
         newBullet.tag = "EnemyAttack";
         newBullet.transform.rotation = gameObject.transform.rotation;
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
+    }
+
+    private GameObject targeter()
+    {
+        return new GameObject(); // TODO: CHANGE
     }
 }
