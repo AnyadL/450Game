@@ -9,15 +9,12 @@ public class DialogueController : MonoBehaviour {
     public GameObject ellipsisPrefab;
 
     private GameObject bubble;
-    private GameObject question;
-    private GameObject exclamation;
-    private GameObject ellipsis;
 
     private GameObject playerObject;
     private Vector3 localOffset = new Vector3(-5, 20, 0);
     private Vector3 agniOffset = new Vector3(-5, 15, 0);
 
-    private List<GameObject> players = new List<GameObject>();
+    //private List<GameObject> players = new List<GameObject>();
     private string[] orderedNames = new string[4] { "Agni", "Ryker", "Delilah", "Kitty" };
 
     private float pause = 1f;
@@ -38,9 +35,9 @@ public class DialogueController : MonoBehaviour {
 	    for (int i = 0; i < orderedNames.Length; ++i)
         {
             playerObject = findPlayerObject(orderedNames[i]);
-            question = createBubble(orderedNames[i], questionPrefab);
-            exclamation = createBubble(orderedNames[i], exclamationPrefab);
-            ellipsis = createBubble(orderedNames[i] , ellipsisPrefab);
+            createBubble(orderedNames[i], questionPrefab);
+            createBubble(orderedNames[i], exclamationPrefab);
+            createBubble(orderedNames[i] , ellipsisPrefab);
         }
         nextLine = Time.time + pause;
         playerObject = findPlayerObject("Kitty");
@@ -88,8 +85,9 @@ public class DialogueController : MonoBehaviour {
     }
 
     void playLine()
-    {
-        Debug.Log(conversation[currentLine]);
+    {   
+        if (sceneOn)
+            Debug.Log(conversation[currentLine]);
     }
 
     void setNextWord()
@@ -99,7 +97,7 @@ public class DialogueController : MonoBehaviour {
         //print(currentWord);
     }
 
-    GameObject createBubble(string name, GameObject prefab)
+    void createBubble(string name, GameObject prefab)
     {
         bubble = Instantiate(prefab) as GameObject;
         bubble.transform.parent = playerObject.transform;
@@ -110,8 +108,7 @@ public class DialogueController : MonoBehaviour {
             bubble.transform.localPosition = localOffset;
 
         bubble.SetActive(false);
-
-        return bubble;
+        
     }
 
     GameObject findPlayerObject(string name)
