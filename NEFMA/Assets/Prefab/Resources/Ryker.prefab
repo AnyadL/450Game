@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 61340663685744488}
   - component: {fileID: 114936493580927104}
   - component: {fileID: 114447973750202016}
+  - component: {fileID: 114172644724896464}
   m_Layer: 11
   m_Name: Ryker
   m_TagString: Player
@@ -137,6 +138,24 @@ BoxCollider2D:
   m_Offset: {x: -0.8, y: -0.5}
   serializedVersion: 2
   m_Size: {x: 15, y: 26}
+--- !u!114 &114172644724896464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1840161315393440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1058f2ad3fcb7ff4a80b4a82499c7ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunPrefab: {fileID: 1690809506629254, guid: 7e5505b28339f2b4d880466f3db8152a, type: 2}
+  dashPrefab: {fileID: 1810483901563008, guid: 39286301c1bf2d14181350c58a1eadaf, type: 2}
+  dashCooldown: 3
+  nextDash: 0
+  dashSpeed: 0
+  dashTime: 0
+  myLayer: 0
 --- !u!114 &114447973750202016
 MonoBehaviour:
   m_ObjectHideFlags: 1

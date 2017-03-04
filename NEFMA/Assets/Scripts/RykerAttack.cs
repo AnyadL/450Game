@@ -57,7 +57,7 @@ public class RykerAttack : MonoBehaviour
     // Creates a Hiss that stuns enemies
     IEnumerator Dash()
     {
-        gameObject.layer = 13;
+        gameObject.layer = 14;
         GameObject dashObject = Instantiate(dashPrefab, (gameObject.transform.position), Quaternion.identity) as GameObject;
         if (hm.facingRight)
         {
