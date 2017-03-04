@@ -1,0 +1,104 @@
+﻿{ "dialogue": [
+  {
+    "Speaker":"Milo",
+    "Text":"Guh!  You’re strong, but I’m not done yet!",
+    "voFile":"",
+    "displayTime":5000,
+  },
+  {
+    "Speaker":"Agni",
+    "Text":"Just stop it already!",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Milo",
+    "Text":"No!  You didn’t show mercy to Mr. Fluffy!  This is payback!",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Delilah",
+    "Text":"Yes, we did.",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Ryker",
+    "Text":"Dude, Mr. Fluffy is fine.",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Milo",
+    "Text":"Like that’ll sway - wait, what?",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Agni",
+    "Text":"We didn’t even touch Mr. Fluffy.  What the hell.",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Milo",
+    "Text":"Well fine, but what about the others?!",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Agni",
+    "Text":"Didn’t touch them either.  Get with the program, here.",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Delilah",
+    "Text":"Yeah.",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Kitty",
+    "Text":"You’re right, what we were doing to the monsters was wrong.",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Milo",
+    "Text":"Wait, I need a minute here.",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Agni",
+    "Text":"We’ll find a home for your friends.  Come on, bring Dr. G with you and let’s all go home.",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Delilah",
+    "Text":"What about a park?",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Dr. G",
+    "Text":"That’s all well and good, but we still need to deal with the civilians.",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Milo",
+    "Text":"Yeah… Okay.  I can stop the monsters.",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Milo",
+    "Text":"What was that about a park?",
+    "voFile":"",
+    "displayTime":5000
+  }
+] }

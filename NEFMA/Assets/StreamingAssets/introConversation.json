@@ -1,0 +1,74 @@
+﻿{ "dialogue": [
+	  {
+		"Speaker":"Agni",
+		"Text":"OMG, can you believe Dr. G cancelled class on us again yesterday?  I was stranded at school for hours!",
+		"voFile":"",
+		"displayTime":5000,
+	  },
+	  {
+		"Speaker":"Ryker",
+		"Text":"Why didn’t you just run home, Agni?",
+		"voFile":"",
+		"displayTime":5000
+	  },
+	  {
+		"Speaker":"Agni",
+		"Text":"Not everyone’s a speedster like you, Ryker!  Well, he better not have cancelled class again or I’m gonna flip!",
+		"voFile":"",
+		"displayTime":5000
+	  }, 
+	  {
+		"Speaker":"Delilah",
+		"Text":"I’m sure he didn’t.",
+		"voFile":"",
+		"displayTime":5000
+	  }, 
+	  {
+		"Speaker":"Kitty",
+		"Text":"Didja miss me?",
+		"voFile":"",
+		"displayTime":5000
+	  }, 
+	  {
+		"Speaker":"Ryker",
+		"Text":"Holy crap!  You just about gave me a heart attack, Kitty!",
+		"voFile":"",
+		"displayTime":5000
+	  }, 
+	  {
+		"Speaker":"Delilah",
+		"Text":"Hey, Kitty.",
+		"voFile":"",
+		"displayTime":5000
+	  },
+	  {
+		"Speaker":"Kitty",
+		"Text":"What the heck.  What kind of greeting is that, Ryker?",
+		"voFile":"",
+		"displayTime":5000
+	  }, 
+	  {
+		"Speaker":"Ryker",
+		"Text":"Hey, so… does something seem odd to you guys today?  Maybe we should go home.",
+		"voFile":"",
+		"displayTime":5000
+	  }, 
+	  {
+		"Speaker":"Agni",
+		"Text":"Don’t be such a wuss!  But now that you mention it -",
+		"voFile":"",
+		"displayTime":5000
+	  }, 
+	  {
+		"Speaker":"Delilah",
+		"Text":"A little.",
+		"voFile":"",
+		"displayTime":5000
+	  },
+	  {
+		"Speaker":"Agni",
+		"Text":"Let’s get to school quick!  I’m sure Dr. G knows what’s going on!",
+		"voFile":"",
+		"displayTime":5000
+	  }
+] }
