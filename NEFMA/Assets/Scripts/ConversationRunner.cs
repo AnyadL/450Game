@@ -17,6 +17,7 @@ public class ConversationRunner : MonoBehaviour {
     public UnityEngine.UI.Text speakerOut;   // Set directly in Unity.
     public UnityEngine.UI.Text textOut;      // Set directly in Unity.
     public UnityEngine.AudioSource voAudio;  // Set directly in Unity.
+    public string convName;                  // Set a default conversation.
 
     protected Conversation conversation;
     protected int timeUntilUpdate;            // Tracks expected time until the next dialogue should load.
@@ -27,6 +28,10 @@ public class ConversationRunner : MonoBehaviour {
     void Start () {
         conversationLoaded = false;
         currIndex = 0;
+
+        if (convName.Length > 0) {
+            startConversation(convName);
+        }
 	}
 	
 	// Update is called once per frame
@@ -67,7 +72,6 @@ public class ConversationRunner : MonoBehaviour {
         this.clear();
 
         conversationLoaded = false;
-        conversation = null;
         currIndex = 0;  
     }
 
@@ -86,6 +90,7 @@ public class ConversationRunner : MonoBehaviour {
         }
         else
         {
+            Debug.Log(Application.streamingAssetsPath);
             Debug.LogError("ERROR: Failed to load conversation!");
             conversationLoaded = false;
         }
@@ -110,6 +115,10 @@ public class ConversationRunner : MonoBehaviour {
             textOut.text = conversation.getText(currIndex);
             timeUntilUpdate = conversation.getDisplayTime(currIndex);
             playVOLine(currIndex);
+
+            Debug.Log( conversation.getSpeaker(currIndex) );
+            Debug.Log( conversation.getText(currIndex) );
+            Debug.Log( conversation.getDisplayTime(currIndex) );
         }
     }
 
