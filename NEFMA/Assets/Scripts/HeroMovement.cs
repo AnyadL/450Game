@@ -27,7 +27,8 @@ public class HeroMovement : MonoBehaviour {
     //private Animator anim;
     private Rigidbody2D rb2d;
     private AttributeController myAttributes;
-    
+    [HideInInspector] public float currentSpeed;
+
     // Use this for initialization
     void Awake()
     {
@@ -64,19 +65,19 @@ public class HeroMovement : MonoBehaviour {
     //Does the actions during the frame the hero has to do, in this case jumping, flipping and attacking
     void FixedUpdate()
     {
-        float h = Input.GetAxisRaw("Horizontal_" + inputNumber);
+        currentSpeed = Input.GetAxisRaw("Horizontal_" + inputNumber);
 
         //anim.SetFloat("Speed", Mathf.Abs(h));
 
-        if (!myAttributes.knockbacked && h * rb2d.velocity.x < currentMaxSpeed)
-            rb2d.AddForce(Vector2.right * h * currentMoveForce);
+        if (!myAttributes.knockbacked && currentSpeed * rb2d.velocity.x < currentMaxSpeed)
+            rb2d.AddForce(Vector2.right * currentSpeed * currentMoveForce);
 
         if (Mathf.Abs(rb2d.velocity.x) > currentMaxSpeed)
             rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * currentMaxSpeed, rb2d.velocity.y);
 
-        if (h > 0 && !facingRight)
+        if (currentSpeed > 0 && !facingRight)
             Flip();
-        else if (h < 0 && facingRight)
+        else if (currentSpeed < 0 && facingRight)
             Flip();
 
         if (jump)
