@@ -11,7 +11,7 @@ public class sfxWalking : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(hm.grounded == true && hm.currentMaxSpeed > 2f && GetComponent<AudioSource>().isPlaying == false)
+		if(hm.grounded == true && hm.currentSpeed != 0 && GetComponent<AudioSource>().isPlaying == false)
         {
             GetComponent<AudioSource>().Play();
         }
