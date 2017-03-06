@@ -14,20 +14,20 @@ using UnityEngine;
 using System.IO;
 
 public class ConversationRunner : MonoBehaviour {
-    public UnityEngine.UI.Text speakerOut;   // Set directly in Unity.
-    public UnityEngine.UI.Text textOut;      // Set directly in Unity.
-    public UnityEngine.AudioSource voAudio;  // Set directly in Unity.
     public string convName;                  // Set a default conversation.
+    public DialogueController dialogue;      // Handles speech bubble popups.
 
-    protected Conversation conversation;
-    protected int timeUntilUpdate;            // Tracks expected time until the next dialogue should load.
-    protected int currIndex;                  // Tracks which dialogue in the conversation we are on.
-    protected bool conversationLoaded;        // True if a conversation has been successfully loaded from disk.
+    protected Conversation conversation;     // Raw data for conversation.   
+    protected float timeOfUpdate;            // Tracks expected time when the next dialogue should load.
+    protected int currIndex;                 // Tracks which dialogue in the conversation we are on.
+    protected bool conversationLoaded;       // True if a conversation has been successfully loaded from disk.
 
     // Use this for initialization
     void Start () {
         conversationLoaded = false;
         currIndex = 0;
+
+        dialogue.initialize();
 
         if (convName.Length > 0) {
             startConversation(convName);
@@ -38,8 +38,7 @@ public class ConversationRunner : MonoBehaviour {
 	void Update () {
         if (!conversationLoaded) { return; }
 
-        timeUntilUpdate = timeUntilUpdate - 500;
-        if (timeUntilUpdate <= 0) {
+        if (Time.time >= timeOfUpdate) {
             next();
         }
 	}
@@ -55,7 +54,7 @@ public class ConversationRunner : MonoBehaviour {
 
     // Move to next dialogue entry, or if moving past end of conversation, close dialogue
     public void next() {
-        if (voAudio) { voAudio.Stop(); }
+        dialogue.stopVoiceOver();
 
         if (conversation.isEOF(currIndex)) {
             this.end();
@@ -100,15 +99,20 @@ public class ConversationRunner : MonoBehaviour {
     }
 
     protected void playVOLine(int index) {
-        if (!voAudio) { return; }
-        voAudio.Stop();
-        
+        dialogue.stopVoiceOver();
+
         // If a voice over line exists for this index {
         // TODO: Play this VO line now.
-        // voAudio.PlayOneShot(...)
 
-        // timeUntilUpdate = voAudio.clip.length;
-        // }
+        string voFile = conversation.dialogue[index].voFile;
+        if (voFile.Length > 0) {
+            float duration = dialogue.playVoiceOver(voFile);
+
+            // Override time of update to wait out VO, only if clip exists.
+            if (duration > 0) {
+                timeOfUpdate = Time.time + duration;
+            }
+        }
     }
 
     // Update display variables for the new line and start VO.
@@ -116,10 +120,10 @@ public class ConversationRunner : MonoBehaviour {
         if (conversation == null) { return; }
 
         if (conversationLoaded) {
-            //speakerOut.text = loadedConversation.getSpeaker(index);
-            //textOut.text = loadedConversation.getText(index);
-            timeUntilUpdate = conversation.getDisplayTime(index);
+            timeOfUpdate = Time.time + conversation.getDisplayTime(index);
             playVOLine(index);
+
+            dialogue.setNode(conversation.dialogue[index]);
 
             Debug.Log(index);
             Debug.Log(conversation.getSpeaker(index) );
@@ -130,9 +134,8 @@ public class ConversationRunner : MonoBehaviour {
 
     // Clears display variables to hide window.
     protected void clear() {
-        //speakerOut.text = "";
-        //textOut.text = "";
-        timeUntilUpdate = 0;
+        dialogue.clearUI();
+        timeOfUpdate = 0;
     }
 
 }
