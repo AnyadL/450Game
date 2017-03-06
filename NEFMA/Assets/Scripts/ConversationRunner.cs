@@ -38,7 +38,7 @@ public class ConversationRunner : MonoBehaviour {
 	void Update () {
         if (!conversationLoaded) { return; }
 
-        timeUntilUpdate = timeUntilUpdate - 1;
+        timeUntilUpdate = timeUntilUpdate - 500;
         if (timeUntilUpdate <= 0) {
             next();
         }
@@ -48,13 +48,14 @@ public class ConversationRunner : MonoBehaviour {
         loadConversation(conversationPath);
         // Handle conversation load failure as gracefully as we can...
         if (conversationLoaded) {
+            currIndex = 0;
             updateLine(0);
         }
     }
 
     // Move to next dialogue entry, or if moving past end of conversation, close dialogue
     public void next() {
-        voAudio.Stop();
+        if (voAudio) { voAudio.Stop(); }
 
         if (conversation.isEOF(currIndex)) {
             this.end();
@@ -84,7 +85,8 @@ public class ConversationRunner : MonoBehaviour {
         if (File.Exists(filePath))
         {
             string data = File.ReadAllText(filePath);
-            Conversation loadedConversation = JsonUtility.FromJson<Conversation>(data);
+            conversation = JsonUtility.FromJson<Conversation>(data);
+            Debug.Log(conversation.dialogue.Count);
             conversationLoaded = true;
             currIndex = 0;
         }
@@ -98,6 +100,7 @@ public class ConversationRunner : MonoBehaviour {
     }
 
     protected void playVOLine(int index) {
+        if (!voAudio) { return; }
         voAudio.Stop();
         
         // If a voice over line exists for this index {
@@ -109,23 +112,26 @@ public class ConversationRunner : MonoBehaviour {
     }
 
     // Update display variables for the new line and start VO.
-    protected void updateLine(int newIndex) {
-        if (conversationLoaded) {
-            speakerOut.text = conversation.getSpeaker(currIndex);
-            textOut.text = conversation.getText(currIndex);
-            timeUntilUpdate = conversation.getDisplayTime(currIndex);
-            playVOLine(currIndex);
+    protected void updateLine(int index) {
+        if (conversation == null) { return; }
 
-            Debug.Log( conversation.getSpeaker(currIndex) );
-            Debug.Log( conversation.getText(currIndex) );
-            Debug.Log( conversation.getDisplayTime(currIndex) );
+        if (conversationLoaded) {
+            //speakerOut.text = loadedConversation.getSpeaker(index);
+            //textOut.text = loadedConversation.getText(index);
+            timeUntilUpdate = conversation.getDisplayTime(index);
+            playVOLine(index);
+
+            Debug.Log(index);
+            Debug.Log(conversation.getSpeaker(index) );
+            Debug.Log(conversation.getText(index) );
+            Debug.Log(conversation.getDisplayTime(index) );
         }
     }
 
     // Clears display variables to hide window.
     protected void clear() {
-        speakerOut.text = "";
-        textOut.text = "";
+        //speakerOut.text = "";
+        //textOut.text = "";
         timeUntilUpdate = 0;
     }
 

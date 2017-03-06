@@ -14,11 +14,10 @@
  * ***************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
 
 [System.Serializable]
-public class Conversation : MonoBehaviour
+public class Conversation
 {
     public List<Node> dialogue;         // TODO: Needs to become private.
     
@@ -33,11 +32,11 @@ public class Conversation : MonoBehaviour
     }
 
     public string getSpeaker(int index) {
-        return dialogue[index].speaker;
+        return dialogue[index].Speaker;
     }
 
     public string getText(int index) {
-        return dialogue[index].text;
+        return dialogue[index].Text;
     }
 
     public string getVOFile(int index) {
@@ -63,8 +62,8 @@ public class Conversation : MonoBehaviour
 [System.Serializable]
 public class Node
 {
-    public string speaker;
-    public string text;
+    public string Speaker;
+    public string Text;
     public string voFile;
     public int displayTime;
 }
