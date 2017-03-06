@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114496925877385596}
   m_Layer: 0
   m_Name: clawMarks
-  m_TagString: BigAttack
+  m_TagString: LittleAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

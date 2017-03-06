@@ -11,8 +11,8 @@ public class KittyAttack : MonoBehaviour
 
     private HeroMovement hm;
     private AttributeController myAttribute;
-    public float hissCooldown = 3.0f;
-    public float nextHiss;
+    public float scratchCooldown = 5.0f;
+    public float nextScratch;
 
     // Use this for initialization
     void Start()
@@ -25,13 +25,13 @@ public class KittyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextHiss)
+        if (Time.time >= nextScratch)
         {
             //Fire little fireballs
             if (Input.GetButtonDown("Fire1_0"))
             {
-                nextHiss = Time.time + hissCooldown;
-                Hiss();
+                nextScratch = Time.time + scratchCooldown;
+                ClawAttack();
             }
         }
 
@@ -41,7 +41,7 @@ public class KittyAttack : MonoBehaviour
             if (Input.GetButtonDown("Fire2_0"))
             {
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
-                ClawAttack();
+                Hiss();
             }
         }
     }
