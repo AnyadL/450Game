@@ -172,7 +172,8 @@ public class AttributeController : MonoBehaviour {
                 }
             }
         }
-        else if (collision.gameObject.tag == "DeathLine")
+        // LEXIE: I changed this else if to an if because we still want to die if the layer is 14. Check if this breaks your stuff
+        if (collision.gameObject.tag == "DeathLine")
         {
             health = 0;
         }

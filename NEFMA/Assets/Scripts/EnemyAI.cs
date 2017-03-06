@@ -122,7 +122,7 @@ public class EnemyAI : MonoBehaviour {
 
     public void RangedAttack()
     {
-        targeter();
+        //targeter();
 
         //Checks the direction and sets the bullet velocity to that direction
         float velocityDirection = projectileVelocity;
