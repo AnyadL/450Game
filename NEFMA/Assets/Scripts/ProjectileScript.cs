@@ -43,5 +43,11 @@ public class ProjectileScript : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+        if(collision.gameObject.tag ==  "Deflect")
+        {
+            Debug.Log("Deflect");
+
+
+        }
     }
 }

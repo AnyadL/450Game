@@ -218,6 +218,8 @@ public class AttributeController : MonoBehaviour {
             //knockback(collision.gameObject.transform.position.x);
             StartCoroutine(stunEnemy());
         }
+
+        //This is for rkyer dashing through enemy or any time where a character is invincible but can still attack enemies
         else if (collision.gameObject.layer == 14)
         {
             if (decreaseHealth(1.0f))
@@ -226,5 +228,10 @@ public class AttributeController : MonoBehaviour {
                 knockback(collision.gameObject.transform.position.x);
             }
         }
+        else if (collision.gameObject.tag == "Deflect")
+        {
+            knockback(collision.gameObject.transform.position.x);
+        }
+
     }
 }
