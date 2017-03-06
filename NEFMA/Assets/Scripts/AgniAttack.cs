@@ -17,6 +17,9 @@ public class AgniAttack : MonoBehaviour
     public float littleCooldown = 0.3f;
     public float nextLittleFire;
 
+    public AudioSource sfxSmallFireBall;
+    public AudioSource sfxBigFireBall;
+
     // Use this for initialization
     void Start()
     {
@@ -35,6 +38,7 @@ public class AgniAttack : MonoBehaviour
             {
                 nextLittleFire = Time.time + littleCooldown;
                 RegularFire();
+                sfxSmallFireBall.Play();
             }
         }
 
@@ -44,6 +48,7 @@ public class AgniAttack : MonoBehaviour
             {
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
                 BigFire();
+                sfxBigFireBall.Play();
             }
         }
     }
