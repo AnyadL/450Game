@@ -7,6 +7,7 @@ public class sfxWalking : MonoBehaviour {
     // Use this for initialization
     private HeroMovement hm;
     public AudioSource sfxFootstep;
+    public AudioSource sfxJump;
 	void Start () {
         hm = GetComponent<HeroMovement>();
 	}
@@ -16,6 +17,10 @@ public class sfxWalking : MonoBehaviour {
 		if(hm.grounded == true && hm.currentSpeed != 0 && sfxFootstep.isPlaying == false)
         {
             sfxFootstep.Play();
+        }
+        if(hm.jump == true)
+        {
+            sfxJump.Play();
         }
 	}
 }
