@@ -36,39 +36,57 @@
 		"displayTime":5000
 	  }, 
 	  {
-		"Speaker":"Delilah",
-		"Text":"Hey, Kitty.",
-		"voFile":"",
-		"displayTime":5000
-	  },
-	  {
-		"Speaker":"Kitty",
-		"Text":"What the heck.  What kind of greeting is that, Ryker?",
-		"voFile":"",
-		"displayTime":5000
-	  }, 
-	  {
 		"Speaker":"Ryker",
-		"Text":"Hey, so… does something seem odd to you guys today?  Maybe we should go home.",
-		"voFile":"",
-		"displayTime":5000
-	  }, 
-	  {
-		"Speaker":"Agni",
-		"Text":"Don’t be such a wuss!  But now that you mention it -",
-		"voFile":"",
-		"displayTime":5000
-	  }, 
-	  {
-		"Speaker":"Delilah",
-		"Text":"A little.",
+		"Text":"Hey, so… does something seem odd to you guys today?",
 		"voFile":"",
 		"displayTime":5000
 	  },
-	  {
-		"Speaker":"Agni",
-		"Text":"Let’s get to school quick!  I’m sure Dr. G knows what’s going on!",
-		"voFile":"",
-		"displayTime":5000
-	  }
+	 {
+    "Speaker":"Agni",
+    "Text":"Hey, isn't that - ",
+    "voFile":"",
+    "displayTime":5000,
+  },
+  {
+    "Speaker":"Kitty",
+    "Text":"Dr. G!",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Dr. G",
+    "Text":"Help!",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Agni",
+    "Text":"Oh, hell no!  There’s no way you’re cancelling class again!",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Dr. G",
+    "Text":"I’m kinda being kidnapped hereeeeeee",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Kitty",
+    "Text":"We have to go after him!",
+    "voFile":"",
+    "displayTime":5000
+  }, 
+  {
+    "Speaker":"Ryker",
+    "Text":"Shouldn’t we let the real heroes deal with this?",
+    "voFile":"",
+    "displayTime":5000
+  },
+  {
+    "Speaker":"Delilah",
+    "Text":"We’re the only ones here.",
+    "voFile":"",
+    "displayTime":5000
+  }
 ] }
