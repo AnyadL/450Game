@@ -12,6 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class ConversationRunner : MonoBehaviour {
     public string convName;                  // Set a default conversation.
@@ -72,7 +73,10 @@ public class ConversationRunner : MonoBehaviour {
         this.clear();
 
         conversationLoaded = false;
-        currIndex = 0;  
+        currIndex = 0;
+
+        // load next scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     // Load a conversation from the provided file path.
@@ -125,10 +129,11 @@ public class ConversationRunner : MonoBehaviour {
 
             dialogue.setNode(conversation.dialogue[index]);
 
-            Debug.Log(index);
+            //Debug.Log(index);
             Debug.Log(conversation.getSpeaker(index) );
             Debug.Log(conversation.getText(index) );
-            Debug.Log(conversation.getDisplayTime(index) );
+            //Debug.Log(conversation.getDisplayTime(index) );
+            //Debug.Log(conversation.getType(index));
         }
     }
 

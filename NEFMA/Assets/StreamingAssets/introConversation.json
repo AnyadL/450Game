@@ -1,74 +1,117 @@
-﻿{ "dialogue": [
-	  {
-		"Speaker":"Agni",
-		"Text":"OMG, can you believe Dr. G cancelled class on us again yesterday?  I was stranded at school for hours!",
-		"voFile":"",
-		"displayTime":5000
-	  },
-	  {
-		"Speaker":"Ryker",
-		"Text":"Why didn’t you just run home, Agni?",
-		"voFile":"",
-		"displayTime":5000
-	  },
-	  {
-		"Speaker":"Agni",
-		"Text":"Not everyone’s a speedster like you, Ryker!  Well, he better not have cancelled class again or I’m gonna flip!",
-		"voFile":"",
-		"displayTime":5000
-	  }, 
-	  {
-		"Speaker":"Delilah",
-		"Text":"I’m sure he didn’t.",
-		"voFile":"",
-		"displayTime":5000
-	  }, 
-	  {
-		"Speaker":"Kitty",
-		"Text":"Didja miss me?",
-		"voFile":"",
-		"displayTime":5000
-	  }, 
-	  {
-		"Speaker":"Ryker",
-		"Text":"Holy crap!  You just about gave me a heart attack, Kitty!",
-		"voFile":"",
-		"displayTime":5000
-	  }, 
-	  {
-		"Speaker":"Delilah",
-		"Text":"Hey, Kitty.",
-		"voFile":"",
-		"displayTime":5000
-	  },
-	  {
-		"Speaker":"Kitty",
-		"Text":"What the heck.  What kind of greeting is that, Ryker?",
-		"voFile":"",
-		"displayTime":5000
-	  }, 
-	  {
-		"Speaker":"Ryker",
-		"Text":"Hey, so… does something seem odd to you guys today?  Maybe we should go home.",
-		"voFile":"",
-		"displayTime":5000
-	  }, 
-	  {
-		"Speaker":"Agni",
-		"Text":"Don’t be such a wuss!  But now that you mention it -",
-		"voFile":"",
-		"displayTime":5000
-	  }, 
-	  {
-		"Speaker":"Delilah",
-		"Text":"A little.",
-		"voFile":"",
-		"displayTime":5000
-	  },
-	  {
-		"Speaker":"Agni",
-		"Text":"Let’s get to school quick!  I’m sure Dr. G knows what’s going on!",
-		"voFile":"",
-		"displayTime":5000
-	  }
-] }
+﻿{
+    "dialogue": 
+    [
+        {
+            "Speaker": "Agni",
+            "Text": "OMG, can you believe Dr. G cancelled class on us again yesterday?",
+            "voFile": "",
+            "displayTime": 4,
+            "type":  "Question"
+        },
+        {
+            "Speaker": "Agni",
+            "Text": "I was stranded at school for hours!",
+            "voFile": "",
+            "displayTime": 3,
+            "type":  "Exclamation"
+        },
+        {
+            "Speaker": "Ryker",
+            "Text": "Why didn’t you just run home, Agni?",
+            "voFile": "",
+            "displayTime": 2,
+            "type":  "Question"
+        },
+        {
+            "Speaker": "Agni",
+            "Text": "Not everyone’s a speedster like you, Ryker!  Well, he better not have cancelled class again or I’m gonna flip!",
+            "voFile": "",
+            "displayTime": 5,
+            "type":  "Exclamation"
+        },
+        {
+            "Speaker": "Delilah",
+            "Text": "I’m sure he didn’t.",
+            "voFile": "",
+            "displayTime": 2,
+            "type":  "Ellipsis"
+        },
+        {
+            "Speaker": "Kitty",
+            "Text": "Didja miss me?",
+            "voFile": "",
+            "displayTime": 2,
+            "type":  "Question"
+        },
+        {
+            "Speaker": "Ryker",
+            "Text": "Holy crap!  You just about gave me a heart attack, Kitty!",
+            "voFile": "",
+            "displayTime": 3,
+            "type":  "Exclamation"
+        },
+        {
+            "Speaker": "Ryker",
+            "Text": "Hey, so… does something seem odd to you guys today?",
+            "voFile": "",
+            "displayTime": 4,
+            "type":  "Question"
+        },
+        {
+            "Speaker": "Agni",
+            "Text": "Hey, isn't that - ",
+            "voFile": "",
+            "displayTime": 2,
+            "type":  "Ellipsis"
+        },
+        {
+            "Speaker": "Kitty",
+            "Text": "Dr. G!",
+            "voFile": "",
+            "displayTime": 1,
+            "type":  "Exclamation"
+        },
+        {
+            "Speaker": "Dr. G",
+            "Text": "Help!",
+            "voFile": "",
+            "displayTime": 1,
+            "type":  "Exclamation"
+        },
+        {
+            "Speaker": "Agni",
+            "Text": "Oh, hell no!  There’s no way you’re cancelling class again!",
+            "voFile": "",
+            "displayTime": 3,
+            "type":  "Exclamation"
+        },
+        {
+            "Speaker": "Dr. G",
+            "Text": "I’m kinda being kidnapped hereeeeeee!",
+            "voFile": "",
+            "displayTime": 3,
+            "type":  "Exclamation"
+        },
+        {
+            "Speaker": "Kitty",
+            "Text": "We have to go after him!",
+            "voFile": "",
+            "displayTime": 2,
+            "type":  "Exclamation"
+        },
+        {
+            "Speaker": "Ryker",
+            "Text": "Shouldn’t we let the real heroes deal with this?",
+            "voFile": "",
+            "displayTime": 3,
+            "type":  "Question"
+        },
+        {
+            "Speaker": "Delilah",
+            "Text": "We’re the only ones here.",
+            "voFile": "",
+            "displayTime": 2,
+            "type":  "Ellipsis"
+        }
+    ] 
+}
