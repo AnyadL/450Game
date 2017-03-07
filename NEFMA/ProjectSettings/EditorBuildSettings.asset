@@ -9,7 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Game Scenes/MainMenu.unity
   - enabled: 1
     path: Assets/Scenes/Game Scenes/HeroSelection.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game Scenes/Level 1.unity
   - enabled: 0
     path: Assets/Scenes/Test Scenes/Test Checkpoint.unity
+  - enabled: 1
+    path: Assets/Scenes/Test Scenes/Test Dialogue.unity
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/Level 2.unity

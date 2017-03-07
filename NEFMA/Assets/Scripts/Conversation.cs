@@ -48,6 +48,10 @@ public class Conversation
         return dialogue[index].displayTime;
     }
 
+    public string getType(int index)
+    {
+        return dialogue[index].type;
+    }
 
     public bool isEOF(int index) {
         if (index >= dialogue.Count) {
@@ -66,4 +70,5 @@ public class Node
     public string Text;
     public string voFile;
     public int displayTime;
+    public string type;
 }

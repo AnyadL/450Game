@@ -20,25 +20,35 @@ public class SetHUDs : MonoBehaviour {
     private string tempName = "";
     private string[] orderedNames = new string[4] { "Agni", "Ryker" , "Delilah", "Kitty"};
 
+    private bool HUDactive = true;
+
     // Use this for initialization
     public void Start () {
         int numberOfHuds = Globals.players.Count;
         int i = 0;
-        foreach (Transform child in transform)
+        if (gameObject.transform.FindChild("DialoguePanel"))
         {
-            if (Globals.players.Count > i)
-            {
-                child.gameObject.SetActive(true);
-                setImage(i, child, true);
-            }
-            ++i;
+            // Don't do hud stuff
+            HUDactive = false;
         }
+        else
+        {
+            foreach (Transform child in transform)
+            {
+                if (Globals.players.Count > i)
+                {
+                    child.gameObject.SetActive(true);
+                    setImage(i, child, true);
+                }
+                ++i;
+            }
+        }     
     }
 
     void Update()
     {
         int i = 0;
-        if(Globals.players.Count < orderedNames.Length)
+        if(Globals.players.Count < orderedNames.Length && HUDactive)
         {
             foreach (Transform child in transform)
             {

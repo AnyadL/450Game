@@ -238,7 +238,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
         if(heroSelected && (inputPressed == playerInput))
         {
             if (haveAllPlayersSelected())
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
             joinOrSelectHero();
