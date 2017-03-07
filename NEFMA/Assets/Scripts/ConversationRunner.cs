@@ -42,7 +42,12 @@ public class ConversationRunner : MonoBehaviour {
         if (Time.time >= timeOfUpdate) {
             next();
         }
-	}
+
+        if (Input.GetKey("space"))
+        {
+            end();
+        }
+    }
 
     public void startConversation(string conversationPath) {
         loadConversation(conversationPath);
@@ -74,6 +79,7 @@ public class ConversationRunner : MonoBehaviour {
 
         conversationLoaded = false;
         currIndex = 0;
+
 
         // load next scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -130,8 +136,8 @@ public class ConversationRunner : MonoBehaviour {
             dialogue.setNode(conversation.dialogue[index]);
 
             //Debug.Log(index);
-            Debug.Log(conversation.getSpeaker(index) );
-            Debug.Log(conversation.getText(index) );
+            //Debug.Log(conversation.getSpeaker(index) );
+            //Debug.Log(conversation.getText(index) );
             //Debug.Log(conversation.getDisplayTime(index) );
             //Debug.Log(conversation.getType(index));
         }

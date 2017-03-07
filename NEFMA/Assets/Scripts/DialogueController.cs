@@ -38,6 +38,7 @@ public class DialogueController : MonoBehaviour {
     
     // Use this for initialization
     public void initialize() {
+        //Debug.Log(Globals.players[0]) ;
 	    for (int i = 0; i < orderedNames.Length; ++i)
         {
             playerObject = findPlayerObject(orderedNames[i]);
@@ -116,7 +117,7 @@ public class DialogueController : MonoBehaviour {
             if (currentBubble)
                 currentBubble.SetActive(false);
             currentBubble = speakerObj.transform.FindChild(type + "Bubble(Clone)").gameObject;
-            Debug.Log(currentBubble);
+            //Debug.Log(currentBubble);
             currentBubble.SetActive(true);
         }
     }
@@ -125,7 +126,7 @@ public class DialogueController : MonoBehaviour {
         deactivateSpeaker(currentSpeaker);
         clearUI();
 
-        Debug.Log("END SCENE.");
+        //Debug.Log("END SCENE.");
 //      sceneOn = false;
     }
     public void createBubble(string name, GameObject prefab)
