@@ -66,7 +66,7 @@ public class AgniAttack : MonoBehaviour
         }
 
         //Creates the bullet and makes it move
-        GameObject newBullet = Instantiate(littleBulletPrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;
+        GameObject newBullet = Instantiate(littleBulletPrefab, (transform.position - (transform.up)), Quaternion.identity) as GameObject;
         newBullet.transform.rotation = gameObject.transform.rotation; //Rotate the same direction as the ship it is fired from
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
     }
@@ -81,7 +81,7 @@ public class AgniAttack : MonoBehaviour
             velocityDirection = -velocityDirection;
         }
 
-        GameObject newBullet = Instantiate(bigBulletPrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;
+        GameObject newBullet = Instantiate(bigBulletPrefab, (transform.position - (transform.up)), Quaternion.identity) as GameObject;
         newBullet.transform.rotation = gameObject.transform.rotation; //Rotate the same direction as the ship it is fired from
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
     }
