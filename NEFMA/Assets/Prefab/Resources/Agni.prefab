@@ -123,7 +123,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 6
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -517,9 +517,9 @@ MonoBehaviour:
   inputNumber: -1
   moveForce: 400
   currentMoveForce: 0
-  maxSpeed: 12
+  maxSpeed: 30
   currentMaxSpeed: 0
-  jumpForce: 1800
+  jumpForce: 2400
   groundCheck: {fileID: 4547986362550128}
   punchCheck: {fileID: 4077430156238168}
   grounded: 0
