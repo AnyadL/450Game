@@ -76,8 +76,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385842440169070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.6, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 26, z: 1}
+  m_LocalPosition: {x: 55.85, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 60, z: 1}
   m_Children: []
   m_Father: {fileID: 4120247364456308}
   m_RootOrder: 1
@@ -89,7 +89,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1704049447726580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.25, y: -3.75, z: -10}
+  m_LocalPosition: {x: 0, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4472376093586652}
@@ -104,8 +104,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220198716494264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.6, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 26, z: 1}
+  m_LocalPosition: {x: -55.85, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 60, z: 1}
   m_Children: []
   m_Father: {fileID: 4120247364456308}
   m_RootOrder: 0
@@ -130,7 +130,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 13
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -318,6 +318,7 @@ MonoBehaviour:
   lookAheadFactor: 6
   lookAheadReturnSpeed: 1
   lookAheadMoveThreshold: 0.1
+  cameraForced: 0
 --- !u!124 &124824625270747754
 Behaviour:
   m_ObjectHideFlags: 1
