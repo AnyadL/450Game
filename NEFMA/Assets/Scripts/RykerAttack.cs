@@ -36,7 +36,7 @@ public class RykerAttack : MonoBehaviour
         if (Time.time >= nextDash)
         {
             //Dashes through enemies
-            if (Input.GetButtonDown("Fire1_0"))
+            if (Input.GetButtonDown("Fire1_"+hm.inputNumber))
             {
                 nextDash = Time.time + dashCooldown;
                 StartCoroutine(Dash());
@@ -46,7 +46,7 @@ public class RykerAttack : MonoBehaviour
         if (Time.time >= myAttribute.nextBigFire)
         {
             //Stuns all enemies on the screen 
-            if (Input.GetButtonDown("Fire2_0"))
+            if (Input.GetButtonDown("Fire2_"+hm.inputNumber))
             {
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
                 StunAttack();

@@ -18,7 +18,7 @@ public class KittyAttack : MonoBehaviour
     void Start()
     {
         //In order to figure out which way the character is facing I need to access the HeroMovement script
-        //hm = gameObject.GetComponent<HeroMovement>();
+        hm = gameObject.GetComponent<HeroMovement>();
         myAttribute = gameObject.GetComponent<AttributeController>();
     }
 
@@ -28,7 +28,7 @@ public class KittyAttack : MonoBehaviour
         if (Time.time >= nextScratch)
         {
             //Fire little fireballs
-            if (Input.GetButtonDown("Fire1_0"))
+            if (Input.GetButtonDown("Fire1_"+hm.inputNumber))
             {
                 nextScratch = Time.time + scratchCooldown;
                 ClawAttack();
@@ -38,7 +38,7 @@ public class KittyAttack : MonoBehaviour
         if (Time.time >= myAttribute.nextBigFire)
         {
             //Fire Big Fireballs
-            if (Input.GetButtonDown("Fire2_0"))
+            if (Input.GetButtonDown("Fire2_"+hm.inputNumber))
             {
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
                 Hiss();
