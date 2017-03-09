@@ -28,7 +28,9 @@ public class HeroMovement : MonoBehaviour {
     private Rigidbody2D rb2d;
     private AttributeController myAttributes;
     [HideInInspector] public float currentSpeed;
-
+    private bool doublejump = false;
+    private bool candoublejump = false;
+    private bool isKitty = false;
     // Use this for initialization
     void Awake()
     {
@@ -38,6 +40,10 @@ public class HeroMovement : MonoBehaviour {
         currentMoveForce = moveForce;
         currentMaxSpeed = maxSpeed;
         myLayer = gameObject.layer;
+        string name = gameObject.name;
+        if (name == "Kitty"){
+            isKitty = true;
+        }
     }
 
     // Update is called once per frame
@@ -50,12 +56,19 @@ public class HeroMovement : MonoBehaviour {
             myAttributes.knockbacked = false;
         }
 
-        if (Input.GetButtonDown("Jump_" + inputNumber) && grounded)
+        if (Input.GetButtonDown("Jump_" + inputNumber))
         {
-            jump = true;
+            if (grounded)
+            {
+                jump = true;
+            }
+            else if (candoublejump && isKitty)
+            {
+                doublejump = true;
+            }
         }
-
-        if (Input.GetButtonDown("Fire3"))
+      
+        if (Input.GetButtonDown("Fire3_" + inputNumber))
         {
             attack = true;
         }
@@ -87,8 +100,15 @@ public class HeroMovement : MonoBehaviour {
             //rb2d.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
             rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
+            candoublejump = true;
+   
         }
-
+        if (doublejump)
+        {
+            rb2d.AddForce(new Vector2(0f, jumpForce));
+            doublejump = false;
+            candoublejump = false;
+        }
         punchRange = Physics2D.Linecast(transform.position, punchCheck.position, 1 << LayerMask.NameToLayer("Enemy"));
         if (attack && punchRange)
         {
