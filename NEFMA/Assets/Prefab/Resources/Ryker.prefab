@@ -188,7 +188,7 @@ MonoBehaviour:
   inRange: 0
   playerNumber: -1
   inputNumber: -1
-  moveForce: 400
+  moveForce: 450
   currentMoveForce: 0
   maxSpeed: 30
   currentMaxSpeed: 0
