@@ -18,6 +18,7 @@ TagManager:
   - Stun
   - BossHead
   - Boss Controller
+  - Background
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Panorama
+    uniqueID: 3248000629
+    locked: 0
+  - name: Background
+    uniqueID: 2370524807
+    locked: 0
+  - name: Midground
+    uniqueID: 1711177739
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 4084963481
+    locked: 0
+  - name: Characters
+    uniqueID: 3144461923
     locked: 0
