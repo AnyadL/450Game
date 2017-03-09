@@ -540,7 +540,7 @@ MonoBehaviour:
   bigBulletPrefab: {fileID: 1203249533886494, guid: a8a8442f104a9074ba94221213e5f469,
     type: 2}
   littleBulletVelocity: 20
-  bigBulletVelocity: 10
+  bigBulletVelocity: 20
   littleCooldown: 0.3
   nextLittleFire: 0
   sfxSmallFireBall: {fileID: 82810375224561512}

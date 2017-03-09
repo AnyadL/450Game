@@ -65,6 +65,7 @@ public class HeroMovement : MonoBehaviour {
     //Does the actions during the frame the hero has to do, in this case jumping, flipping and attacking
     void FixedUpdate()
     {
+        //Physics2D.IgnoreLayerCollision(8, 11, (rb2d.velocity.y > 0.0f)); // Doesnt work for multiplayer
         currentSpeed = Input.GetAxisRaw("Horizontal_" + inputNumber);
 
         //anim.SetFloat("Speed", Mathf.Abs(h));
