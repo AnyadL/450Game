@@ -49,7 +49,10 @@ public class Checkpoint : MonoBehaviour {
                 pl.GetComponent<SetPlayerUI>().healthSlider = canvas.transform.GetChild(i).FindChild("HealthBar").GetComponent<Slider>();
                 pl.GetComponent<SetPlayerUI>().powerSlider = canvas.transform.GetChild(i).FindChild("PowerBar").GetComponent<Slider>();
                 pl.GetComponent<AttributeController>().myLayer = pl.gameObject.layer;
-                pl.GetComponent<AttributeController>().takenDamage();
+                if (!initalSpawn)
+                {
+                    pl.GetComponent<AttributeController>().takenDamage();
+                }
             }
         }
         Globals.livingPlayers = Globals.players.Count;
