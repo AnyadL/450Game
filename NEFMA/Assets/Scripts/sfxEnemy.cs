@@ -6,7 +6,9 @@ public class sfxEnemy : MonoBehaviour {
 
     // Use this for initialization
     private EnemyAI ea;
+    private GhostAI ga;
     public AudioSource loafer_motion;
+    public AudioSource frog_attack;
 	void Start () {
         ea = GetComponent<EnemyAI>();
 	}
@@ -15,9 +17,24 @@ public class sfxEnemy : MonoBehaviour {
 	void Update () {
         if (ea.gameObject.GetComponent<Renderer>().isVisible)
         {
-            if (ea.groundCheck == true && ea.isRanged == false && ea.ghostOverride == false && loafer_motion.isPlaying == false)
+            if (ea.isRanged == false && ea.ghostOverride == false)  //If enemy is a loafer
             {
-                loafer_motion.Play();
+                if (ea.groundCheck == true && loafer_motion.isPlaying == false)
+                {
+                    loafer_motion.Play();
+                }
+            }
+            else if (ea.isRanged == true) //If enemy is a froggy
+            {
+                if(Time.time > ea.nextProjectileFire && frog_attack.isPlaying ==false)
+                {
+                    frog_attack.Play();
+                }
+            }
+            else if (ea.ghostOverride == true) //If ghost
+            {
+                ga = GetComponent<GhostAI>();
+                
             }
         }
 	}
