@@ -6,7 +6,7 @@ public class sfxEnemy : MonoBehaviour {
 
     // Use this for initialization
     private EnemyAI ea;
-    private GhostAI ga;
+    //private GhostAI ga;
     public AudioSource loafer_motion;
     public AudioSource frog_attack;
 	void Start () {
@@ -33,7 +33,7 @@ public class sfxEnemy : MonoBehaviour {
             }
             else if (ea.ghostOverride == true) //If ghost
             {
-                ga = GetComponent<GhostAI>();
+                //ga = GetComponent<GhostAI>();
                 
             }
         }
