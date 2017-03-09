@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 50347706107158932}
   - component: {fileID: 61500929132801308}
   - component: {fileID: 114181680731884592}
+  - component: {fileID: 61888690320543670}
+  - component: {fileID: 114333129725434290}
   m_Layer: 0
   m_Name: Big Fireball
   m_TagString: BigAttack
@@ -37,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1203249533886494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.358239, y: 5.0308795, z: 0}
+  m_LocalPosition: {x: -8.88, y: 4.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -50,13 +52,13 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1203249533886494}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -74,9 +76,23 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.025182724, y: 0.00000047683716}
+  m_Offset: {x: 0.025182724, y: -0.014015198}
   serializedVersion: 2
-  m_Size: {x: 1.7617457, y: 1.661021}
+  m_Size: {x: 1.7617457, y: 1.6890526}
+--- !u!61 &61888690320543670
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203249533886494}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.014014244, y: -0.22424412}
+  serializedVersion: 2
+  m_Size: {x: 1.7219486, y: 2.0302887}
 --- !u!114 &114181680731884592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,6 +104,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88c2e2dfcc6e324faa87c290dfdd2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114333129725434290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203249533886494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628ef4c82c2a7784eb87e46be642f2b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTime: 4
 --- !u!212 &212485257832895068
 SpriteRenderer:
   m_ObjectHideFlags: 1

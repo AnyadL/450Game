@@ -25,6 +25,7 @@ public class ProjectileScript : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.tag == "Platform")
         {
             Destroy(gameObject);
