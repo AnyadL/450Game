@@ -1335,6 +1335,21 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224535166988199448, guid: 9598bc9c8dc9f114884f3cb85527d48c,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224535166988199448, guid: 9598bc9c8dc9f114884f3cb85527d48c,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224535166988199448, guid: 9598bc9c8dc9f114884f3cb85527d48c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 399.99997
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9598bc9c8dc9f114884f3cb85527d48c, type: 2}
   m_IsPrefabParent: 0
@@ -1847,6 +1862,21 @@ Prefab:
     - target: {fileID: 81061442016783196, guid: 8f3b871b52a79fa49a641d1700387c80,
         type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0.39705884
+      objectReference: {fileID: 0}
+    - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0.63153595
+      objectReference: {fileID: 0}
+    - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
