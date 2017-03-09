@@ -68,7 +68,7 @@ public class HeroMovement : MonoBehaviour {
             }
         }
       
-        if (Input.GetButtonDown("Fire3"))
+        if (Input.GetButtonDown("Fire3_" + inputNumber))
         {
             attack = true;
         }
