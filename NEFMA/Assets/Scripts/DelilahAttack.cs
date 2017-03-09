@@ -66,30 +66,19 @@ public class DelilahAttack : MonoBehaviour {
     //Does the same as RegularFire except with big fireballs
     void BigFire()
     {
-        //float velocityDirection = wallVelocity;
-
-        //if (!myMovement.facingRight)
-        //{
-        //    velocityDirection = -velocityDirection;
-        //}
-
-        //GameObject newBullet = Instantiate(bigBulletPrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;
-        //newBullet.transform.rotation = gameObject.transform.rotation; //Rotate the same direction as the ship it is fired from
-        //newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
-        if (!hasWall)
+        if (hasWall)
+        {
+            destroyWall();
+            Destroy(wall);
+        }
+        else
         {
             createWall();
             wallRight = myMovement.facingRight ? 1 : -1;
             wall = Instantiate(wallPrefab, (transform.position + new Vector3(6 * wallRight, 1, 0)), Quaternion.identity);
             wall.GetComponent<DelilahWall>().owner = gameObject;
             wall.GetComponent<DelilahWall>().wallRight = wallRight;
-
         }
-        destroyWall();
-
-        wall.GetComponent<Rigidbody2D>().velocity = new Vector2(wallVelocity * wallRight, 0);
-        wall.GetComponent<DelilahWall>().free = true;
-        wall.GetComponent<DelilahWall>().timeToDie = Time.time + wallLifeTime;
     }
 
     public void destroyWall()
