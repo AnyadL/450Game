@@ -19,6 +19,7 @@ TagManager:
   - BossHead
   - Boss Controller
   - Background
+  - Deflect
   layers:
   - Default
   - TransparentFX

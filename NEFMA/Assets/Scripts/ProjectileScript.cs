@@ -46,8 +46,9 @@ public class ProjectileScript : MonoBehaviour {
         }
         if(collision.gameObject.tag ==  "Deflect")
         {
-            Debug.Log("Deflect");
-
+            Vector2 oldVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+            gameObject.GetComponent<Rigidbody2D>().velocity = -oldVelocity;
+           
 
         }
     }
