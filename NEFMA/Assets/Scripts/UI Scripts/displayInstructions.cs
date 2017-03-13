@@ -21,7 +21,7 @@ public class displayInstructions : MonoBehaviour {
             if (Globals.players[i].Name != "")
                 ++countChosen;
         }
-        if (countChosen == Globals.players.Count)
+        if (countChosen == Globals.players.Count && Globals.players.Count != 0)
             gameObject.GetComponent<RawImage>().texture = pressAtoStart;
         else
             gameObject.GetComponent<RawImage>().texture = blankSprite;

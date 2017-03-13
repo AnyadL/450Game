@@ -1831,9 +1831,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: I'm a real firebrand, blessed with the super power to manipulate flames.
-    Unfortunately, I'm not so hot at controlling my powers, and my wardrobe has gone
-    up in flames more often than I can count.
+  m_Text: 
 --- !u!222 &1722197093
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2098,7 +2096,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8331a0737cb9ae643b45db15b645c5eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59984e14916fbb74ab1d083b2a64c5c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

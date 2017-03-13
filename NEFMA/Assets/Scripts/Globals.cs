@@ -29,7 +29,7 @@ public class Player
 
 public class Globals : MonoBehaviour {
 
-    static public int numPlayers = 1;
+    static public int numPlayers = 0;
     static public int livingPlayers = 0;
     static public float musicVolume = 0.5f;
     static public float soundFXVolume = 0.5f;

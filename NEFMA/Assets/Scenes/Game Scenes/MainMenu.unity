@@ -3191,8 +3191,8 @@ GameObject:
   - component: {fileID: 1665704767}
   - component: {fileID: 1665704765}
   - component: {fileID: 1665704766}
-  - component: {fileID: 1665704768}
   - component: {fileID: 1665704769}
+  - component: {fileID: 1665704768}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -3258,8 +3258,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1665704768}
-        m_MethodName: LoadByIndex
-        m_Mode: 3
+        m_MethodName: LoadScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3317,7 +3317,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1665704763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba050cd4888ee74a998c25f5d12dc00, type: 3}
+  m_Script: {fileID: 11500000, guid: 196b8d2d448ec88478541c6d69aae17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1665704769
