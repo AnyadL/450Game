@@ -48,6 +48,7 @@ public class ProjectileScript : MonoBehaviour {
         {
             Vector2 oldVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
             gameObject.GetComponent<Rigidbody2D>().velocity = -oldVelocity;
+            gameObject.tag = "LittleAttack";
            
 
         }
