@@ -19,14 +19,14 @@ public class sfxEnemy : MonoBehaviour {
         {
             if (ea.isRanged == false && ea.ghostOverride == false)  //If enemy is a loafer
             {
-                if (ea.groundCheck == true && loafer_motion.isPlaying == false)
+                if (ea.groundCheck == true && loafer_motion.isPlaying == false && loafer_motion != null)
                 {
                     loafer_motion.Play();
                 }
             }
             else if (ea.isRanged == true) //If enemy is a froggy
             {
-                if(Time.time > ea.nextProjectileFire && frog_attack.isPlaying ==false)
+                if(Time.time > ea.nextProjectileFire && frog_attack.isPlaying ==false && frog_attack != null)
                 {
                     frog_attack.Play();
                 }
