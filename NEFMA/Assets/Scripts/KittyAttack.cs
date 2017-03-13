@@ -50,8 +50,7 @@ public class KittyAttack : MonoBehaviour
     void Hiss()
     {
         GameObject Hiss = Instantiate(HissPrefab, (transform.position + (transform.forward / 10)), Quaternion.identity) as GameObject;
-        if (Hiss)
-            return;
+        Hiss.GetComponent<HissScript>().owner = gameObject;
     }
 
     //Creates claw attack which persists for a second and then disappears
