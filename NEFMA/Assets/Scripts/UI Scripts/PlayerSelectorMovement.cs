@@ -12,7 +12,6 @@ public class PlayerSelectorMovement : MonoBehaviour {
     int topY = 70;
     int bottomY = -50;
     
-
     public int playerNumber;
     public Text playerText;
     public Image playerPanel;
@@ -54,7 +53,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
         agniPosition = new Vector3(topX, topY, 0);
         rykerPosition = new Vector3(0, topY, 0);
         kittyPosition = new Vector3(-bottomX, bottomY, 0);
-        
+        /*
         if (playerNumber == 0)
         {
             // Create player 1
@@ -67,26 +66,28 @@ public class PlayerSelectorMovement : MonoBehaviour {
             joinedGame = true;
             playerSelector.sprite = playerSelectorSprite;
         }
-        else
-            playerSelector.sprite = hiddenSelector;
+        else*/
+        playerSelector.sprite = hiddenSelector;
 
         GetComponent<RectTransform>().localPosition = position;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
         // check if select button (A or enter) was pressed
         inputPressed = getInputPressed("Select");
         if (inputPressed != -1)
         {
-            selectPressed();
+            if(playerNumber <= Globals.numPlayers)
+                selectPressed();
         }
         inputPressed = getInputPressed("Back");
         if (inputPressed != -1)
         {
-            backPressed();
+            if (playerNumber <= Globals.numPlayers)
+                backPressed();
         }
 
         if (!heroSelected && joinedGame)
@@ -264,6 +265,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
             if (!joinedGame && !isInputInUse())
             {
                 playerInput = inputPressed;
+                
                 player = new Player("", playerNumber, playerInput, false, null, null);
                 Globals.players.Add(player);
 
