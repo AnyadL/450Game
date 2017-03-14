@@ -55,7 +55,7 @@ public class DelilahAttack : MonoBehaviour {
         newBullet.transform.rotation = gameObject.transform.rotation; //Rotate the same direction as the ship it is fired from
         newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -25);
 
-        if (!myMovement.facingRight)
+        if (myMovement.facingRight)
         {
             Vector3 theScale = newBullet.transform.localScale;
             theScale.x *= -1;
