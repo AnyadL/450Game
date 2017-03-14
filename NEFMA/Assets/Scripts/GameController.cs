@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
+    public PauseManager pauser;
+
     public bool OVERRIDE = false;
     public int PlayerNumberOverride = 0;
     public int LivingPlayerNumberOverride = 0;
@@ -58,5 +60,15 @@ public class GameController : MonoBehaviour {
                 Application.Quit ();
             #endif
         }
+        if (pauser)
+        {
+            for (int i = 0; i <= 4; ++i)
+            {
+                if (Input.GetButtonDown("Pause_" + i))
+                {
+                    pauser.pauseGame(i);
+                }
+            }
+        }        
     }
 }
