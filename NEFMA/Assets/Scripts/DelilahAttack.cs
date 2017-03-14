@@ -40,7 +40,7 @@ public class DelilahAttack : MonoBehaviour {
             RegularFire();
         }
 
-        if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber))
+        if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber)&& (Time.time >= myAttribute.nextBigFire))
         {
             myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
             BigFire();

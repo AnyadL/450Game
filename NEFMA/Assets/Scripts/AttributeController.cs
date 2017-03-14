@@ -181,6 +181,19 @@ public class AttributeController : MonoBehaviour {
         {
             health = maxHealth;
         }
+        if (collision.gameObject.tag == "Collectable")
+        {
+            for (int i = 0; i < Globals.players.Count; ++i)
+            {
+                if (Globals.players[i].GO == gameObject)
+                {
+                    Globals.players[i].Score += 100;
+                    Debug.Log(Globals.players[i].Score);
+                    Destroy(collision);
+                }
+            }
+        }
+
     }
 
     // something has collided with an enemy
