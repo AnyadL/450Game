@@ -7,6 +7,7 @@
  * (Unity 2D Platformer Tutorial - Part 4 - Enemy Movement)
  ***********************************************************/
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent (typeof (Rigidbody2D))]
@@ -32,6 +33,10 @@ public class EnemyAI : MonoBehaviour {
     public float projectileCooldown = 0.3f;
     public GameObject projectilePrefab;
     public bool ghostOverride = false;
+    private GameObject target;
+    public float xRange = 40f;
+    public float yRange = 20f;
+    private List<GameObject> targets = new List<GameObject>();
 
     void Start() {
         myBody = this.GetComponent<Rigidbody2D>();
@@ -76,7 +81,7 @@ public class EnemyAI : MonoBehaviour {
             Flip();
         }
 
-        if (isRanged)
+        if (isRanged && gameObject.GetComponent<Renderer>().isVisible)
         {
             if (Time.time >= nextProjectileFire)
             {
@@ -122,22 +127,85 @@ public class EnemyAI : MonoBehaviour {
 
     public void RangedAttack()
     {
-        //targeter();
+        for (int i = 0; i < Globals.players.Count; i++)
+        {
+            if (Globals.players[i].Alive)
+            {
+                targeter(Globals.players[i].GO);
+            }
+        }
 
-        //Checks the direction and sets the bullet velocity to that direction
-        float velocityDirection = projectileVelocity;
+        if (targets.Count > 0)
+        {
+            choose();
+            //Debug.Log("Target: " + target);
+            float tempx = (transform.position.x - target.transform.position.x);
+            float tempy = (transform.position.y - target.transform.position.y);
+            Debug.Log("X: " + tempx);
+            Debug.Log("Y: " + tempy);
 
-        velocityDirection = velocityDirection * facingRight;
+            //Checks the direction and sets the bullet velocity to that direction
+            float velocityDirection = projectileVelocity;
 
-        //Creates the bullet and makes it move
-        GameObject newBullet = Instantiate(projectilePrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;
-        newBullet.tag = "EnemyAttack";
-        newBullet.transform.rotation = gameObject.transform.rotation;
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
+            velocityDirection = velocityDirection * facingRight;
+
+            float angle = Mathf.Atan(tempy / tempx);
+            Debug.Log("AngleD: " + Mathf.Rad2Deg* angle);
+            //Debug.Log("AngleR: " + angle);
+            float xcomp = Mathf.Cos(angle) * velocityDirection;
+            float ycomp = Mathf.Sin(angle) * velocityDirection;
+            Debug.Log("xcomp: " + xcomp);
+            Debug.Log("ycomp: " + ycomp);
+
+            //Creates the bullet and makes it move
+            GameObject newBullet = Instantiate(projectilePrefab, wallCheck.position, Quaternion.identity) as GameObject;
+            newBullet.tag = "EnemyAttack";
+            //newBullet.transform.rotation = gameObject.transform.rotation;
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(xcomp, ycomp);
+        }
     }
 
-    private GameObject targeter()
+    void targeter(GameObject target)
     {
-        return new GameObject(); // TODO: CHANGE
+        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), Color.red, 0.5f);
+        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
+        Debug.DrawLine(transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
+        Debug.DrawLine(transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
+        if (lineOfSight(target.transform))
+        {
+            float tx = target.transform.position.x;
+            float ty = target.transform.position.y;
+            float mx = gameObject.transform.position.x;
+            float my = gameObject.transform.position.y;
+            if (Mathf.Abs(mx - tx) <= xRange && Mathf.Abs(my - ty) <= yRange)
+            {
+                targets.Add(target);
+            }
+        }
+    }
+
+    bool lineOfSight(Transform target)
+    {
+        Debug.DrawLine(wallCheck.position, target.position, Color.red, 0.5f);
+        RaycastHit2D hit = Physics2D.Linecast(wallCheck.position, target.position);
+        Debug.DrawLine(crushedCheck.position, target.position, Color.red, 0.5f);
+        RaycastHit2D hit2 = Physics2D.Linecast(crushedCheck.position, target.position);
+        if (hit.collider.transform == target || hit2.collider.transform == target)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    void choose()
+    {
+        int choice = Random.Range(0, targets.Count);
+        target = targets[choice];
+        targets.Clear();
+
+        if (((target.transform.position.x > transform.position.x) && facingRight == -1) || ((target.transform.position.x < transform.position.x) && facingRight == 1))
+        {
+            Flip();
+        }
     }
 }
