@@ -192,8 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1fd664d7dec55a40b982aab47571c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xRange: 20
-  yRange: 10
+  xRange: 30
+  yRange: 15
   teleportCooldown: 5
   fadeDuration: 1
   TEST: {fileID: 0}
@@ -241,6 +241,8 @@ MonoBehaviour:
   projectileCooldown: 0.3
   projectilePrefab: {fileID: 0}
   ghostOverride: 0
+  xRange: 0
+  yRange: 0
 --- !u!212 &212246587914279798
 SpriteRenderer:
   m_ObjectHideFlags: 1

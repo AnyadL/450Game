@@ -34,8 +34,8 @@ public class EnemyAI : MonoBehaviour {
     public GameObject projectilePrefab;
     public bool ghostOverride = false;
     private GameObject target;
-    public float xRange = 40f;
-    public float yRange = 20f;
+    public float xRange = 0f;
+    public float yRange = 0f;
     private List<GameObject> targets = new List<GameObject>();
 
     void Start() {
@@ -127,6 +127,10 @@ public class EnemyAI : MonoBehaviour {
 
     public void RangedAttack()
     {
+        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), Color.red, 0.5f);
+        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
+        Debug.DrawLine(transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
+        Debug.DrawLine(transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
         for (int i = 0; i < Globals.players.Count; i++)
         {
             if (Globals.players[i].Alive)
@@ -141,8 +145,8 @@ public class EnemyAI : MonoBehaviour {
             //Debug.Log("Target: " + target);
             float tempx = (transform.position.x - target.transform.position.x);
             float tempy = (transform.position.y - target.transform.position.y);
-            Debug.Log("X: " + tempx);
-            Debug.Log("Y: " + tempy);
+            //Debug.Log("X: " + tempx);
+            //Debug.Log("Y: " + tempy);
 
             //Checks the direction and sets the bullet velocity to that direction
             float velocityDirection = projectileVelocity;
@@ -150,12 +154,12 @@ public class EnemyAI : MonoBehaviour {
             velocityDirection = velocityDirection * facingRight;
 
             float angle = Mathf.Atan(tempy / tempx);
-            Debug.Log("AngleD: " + Mathf.Rad2Deg* angle);
+            //Debug.Log("AngleD: " + Mathf.Rad2Deg* angle);
             //Debug.Log("AngleR: " + angle);
             float xcomp = Mathf.Cos(angle) * velocityDirection;
             float ycomp = Mathf.Sin(angle) * velocityDirection;
-            Debug.Log("xcomp: " + xcomp);
-            Debug.Log("ycomp: " + ycomp);
+            //Debug.Log("xcomp: " + xcomp);
+            //Debug.Log("ycomp: " + ycomp);
 
             //Creates the bullet and makes it move
             GameObject newBullet = Instantiate(projectilePrefab, wallCheck.position, Quaternion.identity) as GameObject;
@@ -167,17 +171,13 @@ public class EnemyAI : MonoBehaviour {
 
     void targeter(GameObject target)
     {
-        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), Color.red, 0.5f);
-        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
-        Debug.DrawLine(transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
-        Debug.DrawLine(transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
-        if (lineOfSight(target.transform))
+        float tx = target.transform.position.x;
+        float ty = target.transform.position.y;
+        float mx = gameObject.transform.position.x;
+        float my = gameObject.transform.position.y;
+        if (Mathf.Abs(mx - tx) <= xRange && Mathf.Abs(my - ty) <= yRange)
         {
-            float tx = target.transform.position.x;
-            float ty = target.transform.position.y;
-            float mx = gameObject.transform.position.x;
-            float my = gameObject.transform.position.y;
-            if (Mathf.Abs(mx - tx) <= xRange && Mathf.Abs(my - ty) <= yRange)
+            if (lineOfSight(target.transform))
             {
                 targets.Add(target);
             }

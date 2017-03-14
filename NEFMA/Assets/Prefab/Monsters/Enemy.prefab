@@ -286,6 +286,8 @@ MonoBehaviour:
   projectileCooldown: 0
   projectilePrefab: {fileID: 0}
   ghostOverride: 0
+  xRange: 0
+  yRange: 0
 --- !u!114 &114340048299960162
 MonoBehaviour:
   m_ObjectHideFlags: 1

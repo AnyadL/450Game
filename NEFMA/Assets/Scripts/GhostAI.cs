@@ -9,8 +9,8 @@ public class GhostAI : MonoBehaviour {
     private EnemyAI myAI;
 
     private GameObject target;
-    public float xRange = 20f;
-    public float yRange = 10f;
+    public float xRange = 0f;
+    public float yRange = 0f;
     private List<GameObject> targets = new List<GameObject>();
     public float teleportCooldown = 5f;
     private float nextTeleport = 0f;
@@ -71,6 +71,10 @@ public class GhostAI : MonoBehaviour {
             myAI.ghostOverride = false;
         }
 
+        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), Color.red, 0.1f);
+        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
+        Debug.DrawLine(transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
+        Debug.DrawLine(transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
         for (int i = 0; i < Globals.players.Count; i++)
         {
             if (Globals.players[i].Alive)
@@ -94,10 +98,6 @@ public class GhostAI : MonoBehaviour {
     void targeter(GameObject target)
     {
         //Debug.Log("Viewing " + target);
-        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), Color.red, 0.1f);
-        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
-        Debug.DrawLine(transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
-        Debug.DrawLine(transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
         float tx = target.transform.position.x;
         float ty = target.transform.position.y;
         float mx = gameObject.transform.position.x;
