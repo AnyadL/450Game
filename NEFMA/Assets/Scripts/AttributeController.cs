@@ -18,7 +18,7 @@ public class AttributeController : MonoBehaviour {
     [HideInInspector] public EnemyAI enemyAI;
     [HideInInspector] public float speed;
     [HideInInspector] float pcooldown;
-
+   
     public void Start()
     {
         myMovement = gameObject.GetComponent<HeroMovement>();
@@ -210,7 +210,7 @@ public class AttributeController : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "LittleAttack")
         {
-            if (decreaseHealth(1.0f))
+            if (decreaseHealth(2.0f))
             {
                 takenDamage();
                 knockback(collision.gameObject.transform.position.x);
