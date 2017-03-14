@@ -41,7 +41,7 @@ public class HeroMovement : MonoBehaviour {
         currentMaxSpeed = maxSpeed;
         myLayer = gameObject.layer;
         string name = gameObject.name;
-        if (name == "Kitty"){
+        if (name == "Kitty(Clone)"){
             isKitty = true;
         }
     }
@@ -98,6 +98,7 @@ public class HeroMovement : MonoBehaviour {
         {
             //anim.SetTrigger("Jump");
             //rb2d.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
             rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
             candoublejump = true;
@@ -105,6 +106,7 @@ public class HeroMovement : MonoBehaviour {
         }
         if (doublejump)
         {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
             rb2d.AddForce(new Vector2(0f, jumpForce));
             doublejump = false;
             candoublejump = false;

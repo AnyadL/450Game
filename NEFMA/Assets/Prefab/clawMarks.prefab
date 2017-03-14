@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212547971985879190}
   - component: {fileID: 61757641170963302}
   - component: {fileID: 114496925877385596}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: clawMarks
   m_TagString: LittleAttack
   m_Icon: {fileID: 0}
