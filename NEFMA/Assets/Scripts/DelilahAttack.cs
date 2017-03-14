@@ -40,7 +40,7 @@ public class DelilahAttack : MonoBehaviour {
             RegularFire();
         }
 
-        if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber))
+        if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber)&& (Time.time >= myAttribute.nextBigFire))
         {
             myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
             BigFire();
@@ -51,9 +51,9 @@ public class DelilahAttack : MonoBehaviour {
     void RegularFire()
     {
         wallRight = myMovement.facingRight ? 1 : -1;
-        GameObject newBullet = Instantiate(fistPrefab, (transform.position +  new Vector3(4 *wallRight, 2, 0)), Quaternion.identity) as GameObject;
+        GameObject newBullet = Instantiate(fistPrefab, (transform.position +  new Vector3(4 *wallRight, 4, 0)), Quaternion.identity) as GameObject;
         newBullet.transform.rotation = gameObject.transform.rotation; //Rotate the same direction as the ship it is fired from
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -10);
+        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -25);
 
         if (myMovement.facingRight)
         {

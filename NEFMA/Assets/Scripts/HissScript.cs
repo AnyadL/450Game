@@ -5,7 +5,7 @@ using UnityEngine;
 public class HissScript : MonoBehaviour {
 
     public float attackTime = 0.5f;
-    public GameObject owner;
+    [HideInInspector] public GameObject owner;
     // Use this for initialization
     void Start()
     {
