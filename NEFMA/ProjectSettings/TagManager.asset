@@ -21,6 +21,7 @@ TagManager:
   - Background
   - Deflect
   - Collectable
+  - Collect
   layers:
   - Default
   - TransparentFX
