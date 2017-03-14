@@ -36,6 +36,7 @@ public class Globals : MonoBehaviour {
     static public int livingPlayers = 0;
     static public float musicVolume = 0.5f;
     static public float soundFXVolume = 0.5f;
+    static public bool gamePaused = false;
     static public Checkpoint currentCheckpoint;
 
     static public List<Player> players = new List<Player>();

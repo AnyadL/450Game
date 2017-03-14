@@ -316,8 +316,8 @@ MonoBehaviour:
   dashPrefab: {fileID: 1810483901563008, guid: 39286301c1bf2d14181350c58a1eadaf, type: 2}
   dashCooldown: 3
   nextDash: 0
-  dashSpeed: 0
-  dashTime: 0
+  dashSpeed: 250
+  dashTime: 0.5
   myLayer: 0
 --- !u!114 &114357171226396750
 MonoBehaviour:

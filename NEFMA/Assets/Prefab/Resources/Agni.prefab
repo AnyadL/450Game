@@ -539,7 +539,7 @@ MonoBehaviour:
     type: 2}
   bigBulletPrefab: {fileID: 1203249533886494, guid: a8a8442f104a9074ba94221213e5f469,
     type: 2}
-  littleBulletVelocity: 20
+  littleBulletVelocity: 40
   bigBulletVelocity: 15
   littleCooldown: 0.3
   nextLittleFire: 0

@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClawPrefab: {fileID: 1509812033916564, guid: 1b837ce2ea1cae54a935d3147ed9db53, type: 2}
-  HissPrefab: {fileID: 1553660128809848, guid: 1c7a38808c32c78488f37a8eaae5fdc9, type: 2}
+  HissPrefab: {fileID: 1403783094703992, guid: 1282da1d5094faf4ea68244815fda6a2, type: 2}
   scratchCooldown: 5
   nextScratch: 0
 --- !u!114 &114469766115314282
