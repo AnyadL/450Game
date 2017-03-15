@@ -83,23 +83,29 @@ public class HeroMovement : MonoBehaviour {
 
         //anim.SetFloat("Speed", Mathf.Abs(h));
 
-        if (!myAttributes.knockbacked && currentSpeed * rb2d.velocity.x < currentMaxSpeed)
-            rb2d.AddForce(Vector2.right * currentSpeed * currentMoveForce);
+        //if (!myAttributes.knockbacked && currentSpeed * rb2d.velocity.x < currentMaxSpeed)
+        //    rb2d.AddForce(Vector2.right * currentSpeed * currentMoveForce);
+
+        if (currentSpeed != 0)
+        {
+            moveCharacter(currentSpeed, currentMoveForce);
+        }
 
         if (Mathf.Abs(rb2d.velocity.x) > currentMaxSpeed)
             rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * currentMaxSpeed, rb2d.velocity.y);
 
-        if (currentSpeed > 0 && !facingRight)
-            Flip();
-        else if (currentSpeed < 0 && facingRight)
-            Flip();
+        //if (currentSpeed > 0 && !facingRight)
+        //    Flip();
+        //else if (currentSpeed < 0 && facingRight)
+        //    Flip();
 
         if (jump)
         {
             //anim.SetTrigger("Jump");
             //rb2d.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-            rb2d.AddForce(new Vector2(0f, jumpForce));
+            jumpCharacter(jumpForce);
+            //rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
             candoublejump = true;
    
@@ -107,7 +113,8 @@ public class HeroMovement : MonoBehaviour {
         if (doublejump)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-            rb2d.AddForce(new Vector2(0f, jumpForce));
+            jumpCharacter(jumpForce);
+            //rb2d.AddForce(new Vector2(0f, jumpForce));
             doublejump = false;
             candoublejump = false;
         }
@@ -128,8 +135,25 @@ public class HeroMovement : MonoBehaviour {
         gameObject.layer = myLayer;
     }
 
-//Check if within hitting range of an enemy, enemies should have 2 colliders
-void OnTriggerStay2D(Collider2D other)
+    // speedVector is a value between [-1, 1]
+    public void moveCharacter(float speedVector, float force)
+    {
+        if (!myAttributes.knockbacked && speedVector * rb2d.velocity.x < currentMaxSpeed)
+            rb2d.AddForce(Vector2.right * speedVector * force);
+
+        if (speedVector > 0 && !facingRight)
+            Flip();
+        else if (speedVector < 0 && facingRight)
+            Flip();
+    }
+
+    public void jumpCharacter(float force)
+    {
+        rb2d.AddForce(new Vector2(0f, force));
+    }
+
+    //Check if within hitting range of an enemy, enemies should have 2 colliders
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {

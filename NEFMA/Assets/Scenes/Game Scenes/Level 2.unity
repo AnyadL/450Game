@@ -9303,7 +9303,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1034903816482958, guid: 5073f75282652c54bb608bb66fdb6345, type: 2}
       propertyPath: m_Name
-      value: Kitty
+      value: Kitty(Clone)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5073f75282652c54bb608bb66fdb6345, type: 2}
