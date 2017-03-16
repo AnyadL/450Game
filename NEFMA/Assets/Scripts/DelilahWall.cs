@@ -7,7 +7,7 @@ public class DelilahWall : MonoBehaviour {
     [HideInInspector] public GameObject owner;
     [HideInInspector] public int wallRight;
     [HideInInspector] public bool free = false;
-    [HideInInspector] public float timeToDie;
+    public float shieldTime;
     public int health = 30;
 
     // Use this for initialization
@@ -23,9 +23,11 @@ public class DelilahWall : MonoBehaviour {
             owner.GetComponent<DelilahAttack>().destroyWall();
             Destroy(gameObject);
         }
-		if (free && Time.time >= timeToDie)
+		if (Time.time >= shieldTime)
         {
+            owner.GetComponent<DelilahAttack>().destroyWall();
             Destroy(gameObject);
+
         }
 	}
 
