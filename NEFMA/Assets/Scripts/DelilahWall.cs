@@ -12,22 +12,16 @@ public class DelilahWall : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        StartCoroutine(AttackTime());
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         if (health <= 0)
         {
             owner.GetComponent<DelilahAttack>().destroyWall();
             Destroy(gameObject);
-        }
-		if (Time.time >= shieldTime)
-        {
-            owner.GetComponent<DelilahAttack>().destroyWall();
-            Destroy(gameObject);
-
         }
 	}
 
@@ -49,5 +43,11 @@ public class DelilahWall : MonoBehaviour {
         {
             health = health - 3;
         }
+    }
+    IEnumerator AttackTime()
+    {
+        yield return new WaitForSeconds(shieldTime);
+        owner.GetComponent<DelilahAttack>().destroyWall();
+        Destroy(gameObject);
     }
 }

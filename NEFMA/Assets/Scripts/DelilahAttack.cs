@@ -29,26 +29,30 @@ public class DelilahAttack : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(!hasWall)
-        {
-            myMovement.currentMaxSpeed = myMovement.maxSpeed;
-        }
-        if (hasWall && !myMovement.grounded)
+
+        /*if (hasWall && !myMovement.grounded)
         {
             destroyWall();
             Destroy(wall);
 
-        }
-        if ((Input.GetButtonDown("Fire1_" + myMovement.inputNumber)) && (Time.time >= nextLittleFire) && !Globals.gamePaused)
+        }*/
+        if (Time.time >= nextLittleFire)
         {
-            nextLittleFire = Time.time + littleCooldown;
-            RegularFire();
+            if (Input.GetButtonDown("Fire1_" + myMovement.inputNumber) && !Globals.gamePaused)
+            {
+                nextLittleFire = Time.time + littleCooldown;
+                RegularFire();
+            }
         }
 
-        if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber)&& (Time.time >= myAttribute.nextBigFire) && !Globals.gamePaused)
+        if (Time.time >= myAttribute.nextBigFire)
         {
-            myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
-            BigFire();
+            //Fire Big Fireballs
+            if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber) && !Globals.gamePaused)
+            {
+                myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
+                BigFire();
+            }
         }
     }
 
