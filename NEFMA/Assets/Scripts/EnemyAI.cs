@@ -39,6 +39,7 @@ public class EnemyAI : MonoBehaviour {
     public float yRange = 0f;
     private List<GameObject> targets = new List<GameObject>();
     private int rangedBurst = 0;
+    public int numberRangedBurst = 3;
 
     void Start() {
         myBody = this.GetComponent<Rigidbody2D>();
@@ -91,7 +92,7 @@ public class EnemyAI : MonoBehaviour {
             Debug.DrawLine(transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
             if (Time.time >= nextProjectileFire)
             {
-                if (rangedBurst == 3)
+                if (rangedBurst == numberRangedBurst)
                 {
                     rangedBurst = 0;
                     nextProjectileFire = Time.time + projectileCooldown;
