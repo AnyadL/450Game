@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217193743556796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.93, y: 12.44, z: 0}
+  m_LocalPosition: {x: 6.513, y: 12.309, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 4022310015705994}
@@ -316,12 +316,14 @@ MonoBehaviour:
   isRanged: 1
   projectileVelocity: 30
   nextProjectileFire: 0
-  projectileCooldown: 0.5
+  projectileCooldown: 3
+  projectileBurstCooldown: 0.3
   projectilePrefab: {fileID: 1387092101439704, guid: 57449aa2dc46d8044af4d2f55c765cc2,
     type: 2}
   ghostOverride: 0
   xRange: 40
   yRange: 20
+  numberRangedBurst: 3
 --- !u!212 &212076198423517126
 SpriteRenderer:
   m_ObjectHideFlags: 1

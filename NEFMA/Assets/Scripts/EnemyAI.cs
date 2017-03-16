@@ -30,13 +30,16 @@ public class EnemyAI : MonoBehaviour {
     public bool isRanged = false;
     public float projectileVelocity = 20;
     public float nextProjectileFire = 0;
-    public float projectileCooldown = 0.3f;
+    public float projectileCooldown = 3.0f;
+    public float projectileBurstCooldown = 0.3f;
     public GameObject projectilePrefab;
     public bool ghostOverride = false;
     private GameObject target;
     public float xRange = 0f;
     public float yRange = 0f;
     private List<GameObject> targets = new List<GameObject>();
+    private int rangedBurst = 0;
+    public int numberRangedBurst = 3;
 
     void Start() {
         myBody = this.GetComponent<Rigidbody2D>();
@@ -83,9 +86,22 @@ public class EnemyAI : MonoBehaviour {
 
         if (isRanged && gameObject.GetComponent<Renderer>().isVisible)
         {
+            Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), Color.red, 0.1f);
+            Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
+            Debug.DrawLine(transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
+            Debug.DrawLine(transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
             if (Time.time >= nextProjectileFire)
             {
-                nextProjectileFire = Time.time + projectileCooldown;
+                if (rangedBurst == numberRangedBurst)
+                {
+                    rangedBurst = 0;
+                    nextProjectileFire = Time.time + projectileCooldown;
+                }
+                else
+                {
+                    rangedBurst++;
+                    nextProjectileFire = Time.time + projectileBurstCooldown;
+                }
                 RangedAttack();
             }
         }
@@ -127,10 +143,6 @@ public class EnemyAI : MonoBehaviour {
 
     public void RangedAttack()
     {
-        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), Color.red, 0.5f);
-        Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
-        Debug.DrawLine(transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
-        Debug.DrawLine(transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.5f);
         for (int i = 0; i < Globals.players.Count; i++)
         {
             if (Globals.players[i].Alive)
