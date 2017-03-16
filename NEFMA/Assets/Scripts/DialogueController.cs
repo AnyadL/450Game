@@ -17,59 +17,33 @@ public class DialogueController : MonoBehaviour {
     private Vector3 localOffset = new Vector3(-5, 20, 0);
     private Vector3 agniOffset = new Vector3(-5, 15, 0);
 
-    //private List<GameObject> players = new List<GameObject>();
     private string[] orderedNames = new string[4] { "Agni", "Ryker", "Delilah", "Kitty" };
 
-    //private float pause = 1f;
-    //public List<string> conversation = new List<string>();
-    //private int currentLine = 0;
-    //private string currentWord;
-    //private int currentTime;
 
     private GameObject currentBubble;
     private string currentSpeaker;
 
-    //private float nextLine;
 
-    //private bool sceneOn = true;
-
-    private GameObject kitty;
+    private bool kittyHidden = false;
+    private bool rykerFlipped = false;
 
     
     // Use this for initialization
     public void initialize() {
-        //Debug.Log(Globals.players[0]) ;
+
 	    for (int i = 0; i < orderedNames.Length; ++i)
         {
             playerObject = findPlayerObject(orderedNames[i]);
-            //question = createBubble(orderedNames[i], questionPrefab);
-            //exclamation = createBubble(orderedNames[i], exclamationPrefab);
-            //ellipsis = createBubble(orderedNames[i] , ellipsisPrefab);
 
             createBubble(orderedNames[i], questionPrefab);
             createBubble(orderedNames[i], exclamationPrefab);
             createBubble(orderedNames[i] , ellipsisPrefab);
+
+            playerObject.GetComponent<HeroMovement>().moveCharacter(1, 400);
         }
-        //nextLine = Time.time + pause;       // Timing handled in ConversationRunner.cs.
-        playerObject = findPlayerObject("Kitty");   // Why is this different from the others? - because Kitty only shows up partway through!
-        kitty = playerObject;
-        playerObject.SetActive(false);
+        kittyHidden = true;
     }
 	
-//	// Update is called once per frame
-//	void Update () {
-//        if (sceneOn)
-//        {
-//            if (Time.time >= nextLine)
-//            {
-//                if (currentBubble)
-//                    currentBubble.SetActive(false);
-//                setLineVariables();
-//                playLine();
-//                ++currentLine;
-//            }
-//        }
-//    }
 
     public void setNode(Node current) {
         // End conversation.
@@ -98,8 +72,7 @@ public class DialogueController : MonoBehaviour {
     protected void deactivateSpeaker(string speaker) {
         GameObject speakerObj = findPlayerObject(speaker);
         if (speakerObj != null) {
-            //speakerObj.SetActive(false);
-            // TODO: Set any bubbles related to speaker inactive here.
+
             if (currentBubble) {
                 currentBubble.SetActive(false);
             }
@@ -107,17 +80,39 @@ public class DialogueController : MonoBehaviour {
     }
 
     protected void activateSpeaker(string speaker, string type) {
-        if (speaker == "Kitty")
-            kitty.SetActive(true);
+
+        if (rykerFlipped)
+        {
+            findPlayerObject("Ryker").GetComponent<HeroMovement>().Flip();
+            rykerFlipped = false;
+
+            findPlayerObject("Kitty").GetComponent<Rigidbody2D>().isKinematic = true;
+            findPlayerObject("Kitty").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+            findPlayerObject("Kitty").GetComponent<Rigidbody2D>().isKinematic = false;
+            findPlayerObject("Kitty").GetComponent<HeroMovement>().moveCharacter(1, 400);
+
+        }
 
         GameObject speakerObj = findPlayerObject(speaker);
+        
+
+        // Jump Kitty into the scene
+        if (speaker == "Kitty" && kittyHidden)
+        {
+            kittyHidden = false;
+
+            speakerObj.GetComponent<HeroMovement>().jumpCharacter(3500f, 3500f);
+
+            findPlayerObject("Ryker").GetComponent<HeroMovement>().Flip();
+            rykerFlipped = true;
+        }
 
         if (speakerObj != null) {
-            //speakerObj.SetActive(true);
+
             if (currentBubble)
                 currentBubble.SetActive(false);
             currentBubble = speakerObj.transform.FindChild(type + "Bubble(Clone)").gameObject;
-            //Debug.Log(currentBubble);
+            
             currentBubble.SetActive(true);
         }
     }
@@ -125,16 +120,14 @@ public class DialogueController : MonoBehaviour {
     protected void endDialogue() {
         deactivateSpeaker(currentSpeaker);
         clearUI();
-
-        //Debug.Log("END SCENE.");
-//      sceneOn = false;
+        
     }
     public void createBubble(string name, GameObject prefab)
     {
         bubble = Instantiate(prefab) as GameObject;
         bubble.transform.parent = playerObject.transform;
         bubble.transform.localScale = new Vector3(5, 5, 1);
-        if (name == "Agni")                                     // TODO: Why only different for Agni? Answer: she has a big head
+        if (name == "Agni")                                     // Why only different for Agni? Answer: she has a big head
             bubble.transform.localPosition = agniOffset;
         else
             bubble.transform.localPosition = localOffset;
