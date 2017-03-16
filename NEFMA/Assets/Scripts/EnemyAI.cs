@@ -41,6 +41,8 @@ public class EnemyAI : MonoBehaviour {
     private int rangedBurst = 0;
     public int numberRangedBurst = 3;
 
+    public GameObject bullseye = null;
+
     void Start() {
         myBody = this.GetComponent<Rigidbody2D>();
         myAttributes = this.GetComponent<AttributeController>();
@@ -177,6 +179,26 @@ public class EnemyAI : MonoBehaviour {
             GameObject newBullet = Instantiate(projectilePrefab, wallCheck.position, Quaternion.identity) as GameObject;
             newBullet.tag = "EnemyAttack";
             //newBullet.transform.rotation = gameObject.transform.rotation;
+            newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(xcomp, ycomp);
+        }
+        else if (bullseye)
+        {
+            float tempx = (transform.position.x - bullseye.transform.position.x);
+            float tempy = (transform.position.y - bullseye.transform.position.y);
+
+            //Checks the direction and sets the bullet velocity to that direction
+            float velocityDirection = projectileVelocity;
+
+            velocityDirection = velocityDirection * facingRight;
+
+            float angle = Mathf.Atan(tempy / tempx);
+            float xcomp = Mathf.Cos(angle) * velocityDirection;
+            float ycomp = Mathf.Sin(angle) * velocityDirection;
+
+            //Creates the bullet and makes it move
+            GameObject newBullet = Instantiate(projectilePrefab, wallCheck.position, Quaternion.identity) as GameObject;
+            newBullet.tag = "EnemyAttack";
+            
             newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(xcomp, ycomp);
         }
     }

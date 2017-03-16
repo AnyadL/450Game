@@ -11,6 +11,8 @@ public class DialogueController : MonoBehaviour {
     public GameObject exclamationPrefab;
     public GameObject ellipsisPrefab;
 
+    public GameObject drG;
+
     private GameObject bubble;
 
     private GameObject playerObject;
@@ -26,8 +28,10 @@ public class DialogueController : MonoBehaviour {
 
     private bool kittyHidden = false;
     private bool rykerFlipped = false;
+    private bool drGtime = false;
 
-    
+    private Vector3 tempTransform;
+
     // Use this for initialization
     public void initialize() {
 
@@ -43,7 +47,14 @@ public class DialogueController : MonoBehaviour {
         }
         kittyHidden = true;
     }
-	
+
+    void FixedUpdate()
+    {
+        if (drGtime)
+        {
+            drG.transform.position = new Vector3(drG.transform.position.x + 0.5f, drG.transform.position.y, drG.transform.position.z);
+        }
+    }
 
     public void setNode(Node current) {
         // End conversation.
@@ -83,9 +94,14 @@ public class DialogueController : MonoBehaviour {
 
         if (rykerFlipped)
         {
+            drGtime = true;
+            drG.transform.position = new Vector3(drG.transform.position.x, 27, drG.transform.position.z);
+
+            // flip ryker back
             findPlayerObject("Ryker").GetComponent<HeroMovement>().Flip();
             rykerFlipped = false;
 
+            // stop kitty's slide
             findPlayerObject("Kitty").GetComponent<Rigidbody2D>().isKinematic = true;
             findPlayerObject("Kitty").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
             findPlayerObject("Kitty").GetComponent<Rigidbody2D>().isKinematic = false;
