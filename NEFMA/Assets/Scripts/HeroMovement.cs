@@ -89,10 +89,10 @@ public class HeroMovement : MonoBehaviour {
         if (currentSpeed != 0)
         {
             moveCharacter(currentSpeed, currentMoveForce);
-        }
 
-        if (Mathf.Abs(rb2d.velocity.x) > currentMaxSpeed)
-            rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * currentMaxSpeed, rb2d.velocity.y);
+            if (Mathf.Abs(rb2d.velocity.x) > currentMaxSpeed)
+                rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * currentMaxSpeed, rb2d.velocity.y);
+        }
 
         //if (currentSpeed > 0 && !facingRight)
         //    Flip();
@@ -104,7 +104,7 @@ public class HeroMovement : MonoBehaviour {
             //anim.SetTrigger("Jump");
             //rb2d.AddForce(new Vector2(0, 10), ForceMode2D.Impulse);
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-            jumpCharacter(jumpForce);
+            jumpCharacter(0f, jumpForce);
             //rb2d.AddForce(new Vector2(0f, jumpForce));
             jump = false;
             candoublejump = true;
@@ -113,7 +113,7 @@ public class HeroMovement : MonoBehaviour {
         if (doublejump)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
-            jumpCharacter(jumpForce);
+            jumpCharacter(0f, jumpForce);
             //rb2d.AddForce(new Vector2(0f, jumpForce));
             doublejump = false;
             candoublejump = false;
@@ -147,9 +147,9 @@ public class HeroMovement : MonoBehaviour {
             Flip();
     }
 
-    public void jumpCharacter(float force)
+    public void jumpCharacter(float xForce, float yForce)
     {
-        rb2d.AddForce(new Vector2(0f, force));
+        rb2d.AddForce(new Vector2(xForce, yForce));
     }
 
     //Check if within hitting range of an enemy, enemies should have 2 colliders
@@ -162,7 +162,7 @@ public class HeroMovement : MonoBehaviour {
     }
 
     //flip the sprite in different directions when switching
-    void Flip()
+    public void Flip()
     {
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
