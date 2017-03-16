@@ -231,7 +231,7 @@ MonoBehaviour:
   groundCheck: {fileID: 4235562624006180}
   wallCheck: {fileID: 4381439997307734}
   crushedCheck: {fileID: 4442511599090586}
-  moveForce: 0
+  moveForce: 100
   currentMoveForce: 0
   maxSpeed: 2
   facingRight: -1
@@ -239,10 +239,12 @@ MonoBehaviour:
   projectileVelocity: 20
   nextProjectileFire: 0
   projectileCooldown: 0.3
+  projectileBurstCooldown: 0.3
   projectilePrefab: {fileID: 0}
   ghostOverride: 0
   xRange: 0
   yRange: 0
+  numberRangedBurst: 3
 --- !u!212 &212246587914279798
 SpriteRenderer:
   m_ObjectHideFlags: 1
