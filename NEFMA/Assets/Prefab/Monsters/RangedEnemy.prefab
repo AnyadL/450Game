@@ -321,8 +321,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1387092101439704, guid: 57449aa2dc46d8044af4d2f55c765cc2,
     type: 2}
   ghostOverride: 0
-  xRange: 40
-  yRange: 20
+  xRange: 50
+  yRange: 25
   numberRangedBurst: 3
 --- !u!212 &212076198423517126
 SpriteRenderer:
