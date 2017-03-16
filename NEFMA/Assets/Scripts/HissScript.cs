@@ -16,8 +16,8 @@ public class HissScript : MonoBehaviour {
         yield return new WaitForSeconds(attackTime);
         Destroy(gameObject);
     }
-    private void FixedUpdate()
+  /*  private void FixedUpdate()
     {
         gameObject.transform.position = owner.transform.position;
-    }
+    }*/
 }

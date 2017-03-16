@@ -13,6 +13,7 @@ public class KittyAttack : MonoBehaviour
     private AttributeController myAttribute;
     public float scratchCooldown = 5.0f;
     public float nextScratch;
+    public float hissVelocity;
 
     // Use this for initialization
     void Start()
@@ -49,8 +50,19 @@ public class KittyAttack : MonoBehaviour
     // Creates a Hiss that stuns enemies
     void Hiss()
     {
-        GameObject Hiss = Instantiate(HissPrefab, (transform.position + (transform.forward / 10)), Quaternion.identity) as GameObject;
+        float velocityDirection = hissVelocity;
+
+        GameObject Hiss = Instantiate(HissPrefab, (transform.position), Quaternion.identity) as GameObject;
         Hiss.GetComponent<HissScript>().owner = gameObject;
+        Hiss.transform.rotation = gameObject.transform.rotation;
+        if (!hm.facingRight)
+        {
+            velocityDirection = -velocityDirection;
+            Hiss.GetComponent<SpriteRenderer>().flipX = true;
+        }
+ 
+        Hiss.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
+
     }
 
     //Creates claw attack which persists for a second and then disappears
