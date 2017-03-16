@@ -47,7 +47,8 @@ public class ConversationRunner : MonoBehaviour {
             next();
         }
 
-        if (Input.GetKey("space"))
+        // Skip Cutscene
+        if (Input.GetButton("Jump_0") || Input.GetButton("Jump_1") || Input.GetButton("Jump_2") || Input.GetButton("Jump_3") || Input.GetButton("Jump_4"))
         {
             end();
         }
@@ -139,12 +140,6 @@ public class ConversationRunner : MonoBehaviour {
             playVOLine(index);
 
             dialogue.setNode(conversation.dialogue[index]);
-
-            //Debug.Log(index);
-            //Debug.Log(conversation.getSpeaker(index) );
-            //Debug.Log(conversation.getText(index) );
-            //Debug.Log(conversation.getDisplayTime(index) );
-            //Debug.Log(conversation.getType(index));
         }
     }
 

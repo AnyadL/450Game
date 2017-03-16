@@ -41,7 +41,8 @@
             "Text": "Didja miss me?",
             "voFile": "",
             "displayTime": 1,
-            "type":  "Question"
+            "type": "Question",
+            "special": 1
         },
         {
             "Speaker": "Ryker",

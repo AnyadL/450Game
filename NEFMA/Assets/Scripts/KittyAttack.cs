@@ -29,7 +29,7 @@ public class KittyAttack : MonoBehaviour
         if (Time.time >= nextScratch)
         {
             //Fire little fireballs
-            if (Input.GetButtonDown("Fire1_"+hm.inputNumber))
+            if (Input.GetButtonDown("Fire1_"+hm.inputNumber) && !Globals.gamePaused)
             {
                 nextScratch = Time.time + scratchCooldown;
                 ClawAttack();
@@ -39,7 +39,7 @@ public class KittyAttack : MonoBehaviour
         if (Time.time >= myAttribute.nextBigFire)
         {
             //Fire Big Fireballs
-            if (Input.GetButtonDown("Fire2_"+hm.inputNumber))
+            if (Input.GetButtonDown("Fire2_"+hm.inputNumber) && !Globals.gamePaused)
             {
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
                 Hiss();

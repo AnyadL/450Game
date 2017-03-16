@@ -56,7 +56,7 @@ public class HeroMovement : MonoBehaviour {
             myAttributes.knockbacked = false;
         }
 
-        if (Input.GetButtonDown("Jump_" + inputNumber))
+        if (Input.GetButtonDown("Jump_" + inputNumber) && !Globals.gamePaused)
         {
             if (grounded)
             {
@@ -68,7 +68,7 @@ public class HeroMovement : MonoBehaviour {
             }
         }
       
-        if (Input.GetButtonDown("Fire3_" + inputNumber))
+        if (Input.GetButtonDown("Fire3_" + inputNumber) && !Globals.gamePaused)
         {
             attack = true;
         }
@@ -86,7 +86,7 @@ public class HeroMovement : MonoBehaviour {
         //if (!myAttributes.knockbacked && currentSpeed * rb2d.velocity.x < currentMaxSpeed)
         //    rb2d.AddForce(Vector2.right * currentSpeed * currentMoveForce);
 
-        if (currentSpeed != 0)
+        if (currentSpeed != 0 && !Globals.gamePaused)
         {
             moveCharacter(currentSpeed, currentMoveForce);
 

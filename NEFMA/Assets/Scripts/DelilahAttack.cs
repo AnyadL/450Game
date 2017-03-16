@@ -39,13 +39,13 @@ public class DelilahAttack : MonoBehaviour {
             Destroy(wall);
 
         }
-        if ((Input.GetButtonDown("Fire1_" + myMovement.inputNumber)) && (Time.time >= nextLittleFire))
+        if ((Input.GetButtonDown("Fire1_" + myMovement.inputNumber)) && (Time.time >= nextLittleFire) && !Globals.gamePaused)
         {
             nextLittleFire = Time.time + littleCooldown;
             RegularFire();
         }
 
-        if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber)&& (Time.time >= myAttribute.nextBigFire))
+        if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber)&& (Time.time >= myAttribute.nextBigFire) && !Globals.gamePaused)
         {
             myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
             BigFire();

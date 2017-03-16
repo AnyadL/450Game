@@ -53,6 +53,11 @@ public class Conversation
         return dialogue[index].type;
     }
 
+    public int getSpecial(int index)
+    {
+        return dialogue[index].special;
+    }
+
     public bool isEOF(int index) {
         if (index >= dialogue.Count) {
             return true;
@@ -70,5 +75,6 @@ public class Node
     public string Text;
     public string voFile;
     public int displayTime;
-    public string type;
+    public string type = "Ellipsis";
+    public int special = 0;
 }

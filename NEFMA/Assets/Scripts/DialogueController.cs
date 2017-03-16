@@ -69,6 +69,7 @@ public class DialogueController : MonoBehaviour {
 
         // Activate the new speaker and bubbles.
         currentSpeaker = current.Speaker;
+        
         activateSpeaker(currentSpeaker, current.type);
 
         // Update Textbox UI elements with new data.
@@ -91,6 +92,7 @@ public class DialogueController : MonoBehaviour {
     }
 
     protected void activateSpeaker(string speaker, string type) {
+
 
         if (rykerFlipped)
         {
