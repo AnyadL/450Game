@@ -329,6 +329,7 @@ MonoBehaviour:
   HissPrefab: {fileID: 1403783094703992, guid: 1282da1d5094faf4ea68244815fda6a2, type: 2}
   scratchCooldown: 5
   nextScratch: 0
+  hissVelocity: 35
 --- !u!114 &114469766115314282
 MonoBehaviour:
   m_ObjectHideFlags: 1

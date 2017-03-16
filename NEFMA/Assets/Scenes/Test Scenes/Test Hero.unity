@@ -130,6 +130,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114392560673639600, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
+        type: 2}
+      propertyPath: inputNumber
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
   m_IsPrefabParent: 0
@@ -226,7 +231,7 @@ Prefab:
     - target: {fileID: 114232576091865976, guid: b83152af1cf5cf141a019683247045f8,
         type: 2}
       propertyPath: inputNumber
-      value: -1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114232576091865976, guid: b83152af1cf5cf141a019683247045f8,
         type: 2}
@@ -282,6 +287,11 @@ Prefab:
     - target: {fileID: 1198660775397150, guid: b83152af1cf5cf141a019683247045f8, type: 2}
       propertyPath: m_Name
       value: Delilah (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114232576091865976, guid: b83152af1cf5cf141a019683247045f8,
+        type: 2}
+      propertyPath: inputNumber
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b83152af1cf5cf141a019683247045f8, type: 2}
@@ -529,6 +539,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114512100453610130, guid: 8a6b9b2b25197dd4baadb1dc6a23d8f5,
+        type: 2}
+      propertyPath: inputNumber
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a6b9b2b25197dd4baadb1dc6a23d8f5, type: 2}
   m_IsPrefabParent: 0
@@ -612,6 +627,11 @@ Prefab:
     - target: {fileID: 4474278347237984, guid: 5d7e7b30109f1d7439b6890448e488ba, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114323212982453884, guid: 5d7e7b30109f1d7439b6890448e488ba,
+        type: 2}
+      propertyPath: moveForce
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d7e7b30109f1d7439b6890448e488ba, type: 2}
@@ -746,6 +766,11 @@ Prefab:
     - target: {fileID: 4471183000947148, guid: 5073f75282652c54bb608bb66fdb6345, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114604439935887834, guid: 5073f75282652c54bb608bb66fdb6345,
+        type: 2}
+      propertyPath: inputNumber
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5073f75282652c54bb608bb66fdb6345, type: 2}
