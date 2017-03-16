@@ -30,8 +30,12 @@ public class ConversationRunner : MonoBehaviour {
 
         dialogue.initialize();
 
+
+
         if (convName.Length > 0) {
             startConversation(convName);
+
+            Globals.gamePaused = true;
         }
 	}
 	
@@ -80,6 +84,7 @@ public class ConversationRunner : MonoBehaviour {
         conversationLoaded = false;
         currIndex = 0;
 
+        Globals.gamePaused = false;
 
         // load next scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
