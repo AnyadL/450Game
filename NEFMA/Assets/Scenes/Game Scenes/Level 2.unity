@@ -3003,8 +3003,8 @@ Transform:
   - {fileID: 1039423838}
   - {fileID: 311957787}
   - {fileID: 1690013341}
-  - {fileID: 973453225}
   - {fileID: 1265088096}
+  - {fileID: 973453225}
   m_Father: {fileID: 1108797383}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6825,7 +6825,7 @@ GameObject:
   - component: {fileID: 956030947}
   - component: {fileID: 956030946}
   m_Layer: 5
-  m_Name: ControllerPunch
+  m_Name: ControllerPause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6846,7 +6846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 398, y: 156.37}
+  m_AnchoredPosition: {x: 398, y: 166}
   m_SizeDelta: {x: 113.6, y: 49.628}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &956030946
@@ -6881,7 +6881,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.7
-  m_Text: Punch
+  m_Text: 'Pause
+
+'
 --- !u!222 &956030947
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7606,7 +7608,7 @@ GameObject:
   - component: {fileID: 1031892080}
   - component: {fileID: 1031892079}
   m_Layer: 5
-  m_Name: KeyboardPunch
+  m_Name: KeyboardPause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7662,7 +7664,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.7
-  m_Text: Punch
+  m_Text: Pause
 --- !u!222 &1031892080
 CanvasRenderer:
   m_ObjectHideFlags: 0
