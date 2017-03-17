@@ -80,10 +80,10 @@ public class RykerAttack : MonoBehaviour
 
         foreach (GameObject go in gos)
         {
-            GameObject stunObject = Instantiate(stunPrefab, (go.transform.position), Quaternion.identity) as GameObject;
-            if (!stunObject)
+            if (go.GetComponent<SpriteRenderer>().isVisible)
             {
-                return;
+                //GameObject stunObject = Instantiate(stunPrefab, (go.transform.position), Quaternion.identity) as GameObject;
+                Instantiate(stunPrefab, (go.transform.position), Quaternion.identity);
             }
         }
 
