@@ -17,7 +17,7 @@ public class AttributeController : MonoBehaviour {
     public float invincibiltyLength = 2.0f;
     [HideInInspector] public EnemyAI enemyAI;
     [HideInInspector] public float speed;
-    [HideInInspector] float pcooldown;
+    //[HideInInspector] float pcooldown;
    
     public void Start()
     {
@@ -32,7 +32,7 @@ public class AttributeController : MonoBehaviour {
         {
             enemyAI = gameObject.GetComponent<EnemyAI>();
             speed = enemyAI.maxSpeed;
-            pcooldown = enemyAI.projectileCooldown;
+            //pcooldown = enemyAI.projectileCooldown;
         }
     }
 
@@ -128,12 +128,13 @@ public class AttributeController : MonoBehaviour {
          enemyAI.maxSpeed = 0;
          if (enemyAI.isRanged)
          {
-             enemyAI.nextProjectileFire = 5;
+            enemyAI.nextProjectileFire = enemyAI.nextProjectileFire + 1.0f;
+            enemyAI.rangedBurst = 0;
          }
         yield return new WaitForSeconds(2);
         Debug.Log("Waited");
-         enemyAI.maxSpeed = speed;
-         enemyAI.projectileCooldown = pcooldown;
+        enemyAI.maxSpeed = speed;
+        //enemyAI.projectileCooldown = pcooldown;
     }
 
     // determines if the current gameobject is a player or an enemy
