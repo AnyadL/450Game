@@ -237,6 +237,14 @@ public class PlayerSelectorMovement : MonoBehaviour {
 
         if (heroSelected && (inputPressed == playerInput))
             unsetHero();
+        else if (joinedGame && !heroSelected && (inputPressed == playerInput))
+        {
+            Globals.players.Clear();
+            Globals.numPlayers = 0;
+            Globals.livingPlayers = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+
     }
 
     void joinOrSelectHero ()
