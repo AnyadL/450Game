@@ -49,9 +49,9 @@ public class PlayerSelectorMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
         position = new Vector3(0, topY, 0);
-        delilahPosition = new Vector3(-topX, topY, 0);
+        delilahPosition = new Vector3(bottomX, bottomY, 0);
         agniPosition = new Vector3(topX, topY, 0);
-        rykerPosition = new Vector3(0, topY, 0);
+        rykerPosition = new Vector3(0, bottomY, 0);
         kittyPosition = new Vector3(-bottomX, bottomY, 0);
         /*
         if (playerNumber == 0)
