@@ -318,12 +318,14 @@ MonoBehaviour:
   nextProjectileFire: 0
   projectileCooldown: 3
   projectileBurstCooldown: 0.3
-  projectilePrefab: {fileID: 1387092101439704, guid: 57449aa2dc46d8044af4d2f55c765cc2,
+  projectilePrefab: {fileID: 1536883708839126, guid: 80cacbd3318656f4386482409a7feb78,
     type: 2}
   ghostOverride: 0
   xRange: 50
   yRange: 25
+  rangedBurst: 0
   numberRangedBurst: 3
+  bullseye: {fileID: 0}
 --- !u!212 &212076198423517126
 SpriteRenderer:
   m_ObjectHideFlags: 1
