@@ -17,6 +17,7 @@ public class AttributeController : MonoBehaviour {
     public float invincibiltyLength = 2.0f;
     [HideInInspector] public EnemyAI enemyAI;
     [HideInInspector] public float speed;
+    [HideInInspector] public bool dashing = false;
    
     public void Start()
     {
@@ -149,7 +150,7 @@ public class AttributeController : MonoBehaviour {
     // something has collided with the player
     void playerCollisions(Collider2D collision)
     {
-        if (gameObject.layer != 14)
+        if (!dashing)
         {
             if (collision.gameObject.tag == "Enemy")
             {
@@ -227,7 +228,7 @@ public class AttributeController : MonoBehaviour {
             StartCoroutine(stunEnemy());
         }
         //This is for rkyer dashing through enemy or any time where a character is invincible but can still attack enemies
-        else if (collision.gameObject.layer == 14)
+        else if (collision.gameObject.tag == "Player" && collision.gameObject.GetComponent<AttributeController>().dashing)
         {
             if (decreaseHealth(1.0f))
             {

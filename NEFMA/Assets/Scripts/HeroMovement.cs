@@ -6,9 +6,6 @@ public class HeroMovement : MonoBehaviour {
 
     [HideInInspector] public bool facingRight = true;
     [HideInInspector] public bool jump = false;
-    //[HideInInspector] public bool punchRange = false;
-    //[HideInInspector] public bool attack = false;
-    [HideInInspector] public int myLayer;
 
     [HideInInspector] public bool inRange = false;
 
@@ -21,7 +18,7 @@ public class HeroMovement : MonoBehaviour {
     [HideInInspector] public float currentMaxSpeed;
     public float jumpForce = 1800f;
     public Transform groundCheck;
-    //public Transform punchCheck;
+    //public Transform punchCheck; // TODO: Remove punch check from hero prefabs
 
     [HideInInspector] public bool grounded = false;
     //private Animator anim;
@@ -31,6 +28,7 @@ public class HeroMovement : MonoBehaviour {
     private bool doublejump = false;
     private bool candoublejump = false;
     private bool isKitty = false;
+
     // Use this for initialization
     void Awake()
     {
@@ -39,7 +37,6 @@ public class HeroMovement : MonoBehaviour {
         myAttributes = GetComponent<AttributeController>();
         currentMoveForce = moveForce;
         currentMaxSpeed = maxSpeed;
-        myLayer = gameObject.layer;
         if (gameObject.name == "Kitty(Clone)")
         {
             isKitty = true;
