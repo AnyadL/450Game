@@ -15,7 +15,20 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		if (OVERRIDE)
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            if (Globals.players[i].Alive)
+            {
+                Destroy(Globals.players[i].GO);
+                Globals.players[i].GO = null;
+                Globals.players[i].Alive = false;
+            }
+        }
+        Globals.livingPlayers = 0;
+        Globals.gamePaused = false;
+        Time.timeScale = 1;
+
+        if (OVERRIDE)
         {
             if (Globals.players.Count == 0)
             {
@@ -27,12 +40,12 @@ public class GameController : MonoBehaviour {
                     if (PresetPlayers[i] != null)
                     {
                         Player player = new Player(PresetPlayers[i].name, i, PresetPlayers[i].GetComponent<HeroMovement>().inputNumber, true, (GameObject)Resources.Load(PresetPlayers[i].name), PresetPlayers[i]);
-                        //Debug.Log(player);
                         Globals.players.Add(player);
                         PresetPlayers[i].GetComponent<HeroMovement>().playerNumber = i;
                         GameObject canvas = GameObject.Find("HUDCanvas");
                         PresetPlayers[i].GetComponent<SetPlayerUI>().healthSlider = canvas.transform.GetChild(i).FindChild("HealthBar").GetComponent<Slider>();
                         PresetPlayers[i].GetComponent<SetPlayerUI>().powerSlider = canvas.transform.GetChild(i).FindChild("PowerBar").GetComponent<Slider>();
+                        //Debug.Log("Override Ending: " + Globals.players[i]);
                     }
                 }
                 GameObject HUDcanvas = GameObject.Find("HUDCanvas");
@@ -42,9 +55,11 @@ public class GameController : MonoBehaviour {
             {
                 for (int i = 0; i < PresetPlayers.Count; i++)
                 {
+                    //Debug.Log("Override Deleting: " + PresetPlayers[i]);
                     if (PresetPlayers[i] != null)
                     {
                         Destroy(PresetPlayers[i]);
+                        PresetPlayers.RemoveAt(i);
                     }
                 }
             }

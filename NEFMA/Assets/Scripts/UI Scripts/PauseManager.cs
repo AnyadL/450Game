@@ -49,14 +49,8 @@ public class PauseManager : MonoBehaviour {
 
     public void restartLevel()
     {
-        Globals.gamePaused = false;
-        Time.timeScale = 1;
-        Globals.livingPlayers = 0;
-        for (int i = 0; i < Globals.players.Count; ++i)
-        {
-            Globals.players[i].Alive = false;
-        }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //Debug.Log("Calling Restart Level");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
     Player getPlayer(int playerInput)
@@ -74,7 +68,6 @@ public class PauseManager : MonoBehaviour {
         Player player = getPlayer(playerInput);
         if (player != null)
         {
-
             if (player.Name == "Agni")
                 pauseImage.sprite = agniPause;
 
