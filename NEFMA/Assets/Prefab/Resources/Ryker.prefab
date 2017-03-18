@@ -138,9 +138,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.8, y: -0.5}
+  m_Offset: {x: -1, y: -1}
   serializedVersion: 2
-  m_Size: {x: 15, y: 26}
+  m_Size: {x: 10, y: 25}
 --- !u!82 &82035118592318408
 AudioSource:
   m_ObjectHideFlags: 1
@@ -358,8 +358,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   jump: 0
-  punchRange: 0
-  attack: 0
   myLayer: 0
   inRange: 0
   playerNumber: -1
@@ -370,7 +368,6 @@ MonoBehaviour:
   currentMaxSpeed: 0
   jumpForce: 2400
   groundCheck: {fileID: 4552635497574260}
-  punchCheck: {fileID: 4817339627959976}
   grounded: 0
   currentSpeed: 0
 --- !u!114 &114936493580927104
