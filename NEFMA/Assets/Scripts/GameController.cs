@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
         {
             if (Globals.players.Count == 0)
             {
+                //Debug.Log("Overriding");
                 Globals.numPlayers = PlayerNumberOverride;
                 Globals.livingPlayers = LivingPlayerNumberOverride;
                 for (int i = 0; i < PresetPlayers.Count; i++)
@@ -52,14 +53,6 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else
-                Application.Quit ();
-            #endif
-        }
         if (pauser)
         {
             for (int i = 0; i <= 4; ++i)

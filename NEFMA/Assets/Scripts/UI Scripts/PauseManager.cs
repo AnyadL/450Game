@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour {
 
@@ -12,6 +14,15 @@ public class PauseManager : MonoBehaviour {
     public Sprite delilahPause;
     public Sprite rykerPause;
     public Sprite kittyPause;
+
+    private Image pauseImage;
+
+    void Start()
+    {
+
+        pauseImage = pauseMenu.transform.FindChild("PausePanel").GetComponent<Image>();
+
+    }
 
     public void pauseGame(int playerInput)
     {
@@ -36,6 +47,18 @@ public class PauseManager : MonoBehaviour {
         eventSys.GetComponent<StandaloneInputModule>().submitButton = "Submit";
     }
 
+    public void restartLevel()
+    {
+        Globals.gamePaused = false;
+        Time.timeScale = 1;
+        Globals.livingPlayers = 0;
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            Globals.players[i].Alive = false;
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     Player getPlayer(int playerInput)
     {
         for (int i = 0; i < Globals.players.Count; ++i)
@@ -49,17 +72,24 @@ public class PauseManager : MonoBehaviour {
     void setPauseBackground(int playerInput)
     {
         Player player = getPlayer(playerInput);
+        if (player != null)
+        {
 
-        if (player.Name == "Agni")
-            pauseMenu.transform.FindChild("PausePanel").GetComponent<SpriteRenderer>().sprite = agniPause;
+            if (player.Name == "Agni")
+                pauseImage.sprite = agniPause;
 
-        else if (player.Name == "Kitty")
-            pauseMenu.transform.FindChild("PausePanel").GetComponent<SpriteRenderer>().sprite = kittyPause;
+            else if (player.Name == "Kitty")
+                pauseImage.sprite = kittyPause;
 
-        else if (player.Name == "Ryker")
-            pauseMenu.transform.FindChild("PausePanel").GetComponent<SpriteRenderer>().sprite = rykerPause;
+            else if (player.Name == "Ryker")
+                pauseImage.sprite = rykerPause;
 
-        else if (player.Name == "Delilah")
-            pauseMenu.transform.FindChild("PausePanel").GetComponent<SpriteRenderer>().sprite = delilahPause;
+            else if (player.Name == "Delilah")
+                pauseImage.sprite = delilahPause;
+        }
+        else
+        {
+            pauseImage.sprite = agniPause;
+        }
     }
 }

@@ -7194,6 +7194,7 @@ GameObject:
   - component: {fileID: 997919704}
   - component: {fileID: 997919703}
   - component: {fileID: 997919702}
+  - component: {fileID: 997919705}
   m_Layer: 5
   m_Name: ButtonsPanel
   m_TagString: Untagged
@@ -7278,6 +7279,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 997919700}
+--- !u!114 &997919705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 997919700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68d7ccaf87a2714c89e09725381af41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSystem: {fileID: 1429773542}
+  selectedObject: {fileID: 322669640}
 --- !u!1 &1005977907
 GameObject:
   m_ObjectHideFlags: 0
@@ -8256,6 +8270,11 @@ Prefab:
         type: 2}
       propertyPath: bigCooldown
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114512100453610130, guid: 8a6b9b2b25197dd4baadb1dc6a23d8f5,
+        type: 2}
+      propertyPath: inputNumber
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a6b9b2b25197dd4baadb1dc6a23d8f5, type: 2}
@@ -10523,7 +10542,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 322669640}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1429773543
@@ -11545,7 +11564,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1956060522}
-        m_MethodName: playGame
+        m_MethodName: restartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13349,7 +13368,6 @@ GameObject:
   - component: {fileID: 1829301889}
   - component: {fileID: 1829301888}
   - component: {fileID: 1829301887}
-  - component: {fileID: 1829301886}
   m_Layer: 5
   m_Name: PausePanel
   m_TagString: Untagged
@@ -13357,19 +13375,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1829301886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1829301885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d68d7ccaf87a2714c89e09725381af41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventSystem: {fileID: 1429773542}
-  selectedObject: {fileID: 322669640}
 --- !u!114 &1829301887
 MonoBehaviour:
   m_ObjectHideFlags: 0

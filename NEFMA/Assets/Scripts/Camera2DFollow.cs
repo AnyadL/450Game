@@ -101,15 +101,18 @@ public class Camera2DFollow : MonoBehaviour
             for (int i = 0; i < Globals.players.Count; i++)
             {
                 //Debug.Log(Globals.players[i]);
-                if (Globals.players[i].Alive && !targets.Contains(Globals.players[i].GO.transform))
+                if (Globals.players[i].Alive && Globals.players[i].GO != null)
                 {
-                    targets.Add(Globals.players[i].GO.transform);
+                    if (!targets.Contains(Globals.players[i].GO.transform))
+                    {
+                        targets.Add(Globals.players[i].GO.transform);
+                    }
                 }
             }
         }
     }
 
-    public void unLinkPlayers(Transform optionalTarget)
+    public void unLinkPlayers(Transform optionalTarget = null)
     {
         cameraForced = true;
         targets.Clear();
