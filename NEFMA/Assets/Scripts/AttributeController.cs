@@ -17,7 +17,6 @@ public class AttributeController : MonoBehaviour {
     public float invincibiltyLength = 2.0f;
     [HideInInspector] public EnemyAI enemyAI;
     [HideInInspector] public float speed;
-    //[HideInInspector] float pcooldown;
    
     public void Start()
     {
@@ -32,7 +31,6 @@ public class AttributeController : MonoBehaviour {
         {
             enemyAI = gameObject.GetComponent<EnemyAI>();
             speed = enemyAI.maxSpeed;
-            //pcooldown = enemyAI.projectileCooldown;
         }
     }
 
@@ -134,7 +132,6 @@ public class AttributeController : MonoBehaviour {
         yield return new WaitForSeconds(2);
         Debug.Log("Waited");
         enemyAI.maxSpeed = speed;
-        //enemyAI.projectileCooldown = pcooldown;
     }
 
     // determines if the current gameobject is a player or an enemy
@@ -152,29 +149,24 @@ public class AttributeController : MonoBehaviour {
     // something has collided with the player
     void playerCollisions(Collider2D collision)
     {
-        //If player is not currently punching then it will do the attack collisions
-        if (gameObject.layer != 14)
+        if (collision.gameObject.tag == "Enemy")
         {
-            if (collision.gameObject.tag == "Enemy")
+            if (decreaseHealth(1.0f))
             {
-                if (decreaseHealth(1.0f))
-                {
-                    takenDamage();
-                    knockback(collision.gameObject.transform.position.x);
-                }
-
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
             }
-            else if (collision.gameObject.tag == "EnemyAttack")
+
+        }
+        else if (collision.gameObject.tag == "EnemyAttack")
+        {
+            if (decreaseHealth(1.0f))
             {
-                if (decreaseHealth(1.0f))
-                {
-                    takenDamage();
-                    knockback(collision.gameObject.transform.position.x);
-                }
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
             }
         }
-        // LEXIE: I changed this else if to an if because we still want to die if the layer is 14. Check if this breaks your stuff
-        if (collision.gameObject.tag == "DeathLine")
+        else if (collision.gameObject.tag == "DeathLine")
         {
             health = 0;
         }
@@ -182,8 +174,7 @@ public class AttributeController : MonoBehaviour {
         {
             health = maxHealth;
         }
-
-       else if (collision.gameObject.tag == "Collect")
+        else if (collision.gameObject.tag == "Collect")
         {
             for (int i = 0; i < Globals.players.Count; ++i)
             {
@@ -195,7 +186,6 @@ public class AttributeController : MonoBehaviour {
             }
             Destroy(collision.gameObject);
         }
-
     }
 
     // something has collided with an enemy
@@ -231,23 +221,11 @@ public class AttributeController : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "Stun")
         {
-            //knockback(collision.gameObject.transform.position.x);
             StartCoroutine(stunEnemy());
-        }
-
-        //This is for rkyer dashing through enemy or any time where a character is invincible but can still attack enemies
-        else if (collision.gameObject.layer == 14)
-        {
-            if (decreaseHealth(1.0f))
-            {
-                takenDamage();
-                knockback(collision.gameObject.transform.position.x);
-            }
         }
         else if (collision.gameObject.tag == "Deflect")
         {
             knockback(collision.gameObject.transform.position.x);
         }
-
     }
 }
