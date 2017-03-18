@@ -169,7 +169,7 @@ public class AttributeController : MonoBehaviour {
                 }
             }
         }
-        else if (collision.gameObject.tag == "DeathLine")
+        if (collision.gameObject.tag == "DeathLine")
         {
             health = 0;
         }
