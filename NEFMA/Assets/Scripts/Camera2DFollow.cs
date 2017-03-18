@@ -20,20 +20,8 @@ public class Camera2DFollow : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        linkPlayers();
         float x = 0;
         float y = 0;
-        for (int i = 0; i < targets.Count; i++)
-        {
-            if (targets[i] == null)
-            {
-                x = gameObject.transform.position.x;
-                y = gameObject.transform.position.y;
-                continue;
-            }
-            x += targets[i].position.x;
-            y += targets[i].position.y;
-        }
         target = new Vector3(x / targets.Count, y / targets.Count);
         m_LastTargetPosition = target;
         m_OffsetZ = (transform.position - target).z;
