@@ -149,21 +149,24 @@ public class AttributeController : MonoBehaviour {
     // something has collided with the player
     void playerCollisions(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (gameObject.layer != 14)
         {
-            if (decreaseHealth(1.0f))
+            if (collision.gameObject.tag == "Enemy")
             {
-                takenDamage();
-                knockback(collision.gameObject.transform.position.x);
-            }
+                if (decreaseHealth(1.0f))
+                {
+                    takenDamage();
+                    knockback(collision.gameObject.transform.position.x);
+                }
 
-        }
-        else if (collision.gameObject.tag == "EnemyAttack")
-        {
-            if (decreaseHealth(1.0f))
+            }
+            else if (collision.gameObject.tag == "EnemyAttack")
             {
-                takenDamage();
-                knockback(collision.gameObject.transform.position.x);
+                if (decreaseHealth(1.0f))
+                {
+                    takenDamage();
+                    knockback(collision.gameObject.transform.position.x);
+                }
             }
         }
         else if (collision.gameObject.tag == "DeathLine")
@@ -222,6 +225,15 @@ public class AttributeController : MonoBehaviour {
         else if (collision.gameObject.tag == "Stun")
         {
             StartCoroutine(stunEnemy());
+        }
+        //This is for rkyer dashing through enemy or any time where a character is invincible but can still attack enemies
+        else if (collision.gameObject.layer == 14)
+        {
+            if (decreaseHealth(1.0f))
+            {
+                takenDamage();
+                knockback(collision.gameObject.transform.position.x);
+            }
         }
         else if (collision.gameObject.tag == "Deflect")
         {
