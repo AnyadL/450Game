@@ -227,7 +227,7 @@ public class EnemyAI : MonoBehaviour {
     bool lineOfSight(Transform target)
     {
         Debug.DrawLine(wallCheck.position, target.position, Color.red, 0.05f);
-        RaycastHit2D hit = Physics2D.Linecast(wallCheck.position, target.position, LayerMask.GetMask("Player", "Ground", "Invincible"));
+        RaycastHit2D hit = Physics2D.Linecast(wallCheck.position, target.position, LayerMask.GetMask("Player", "Ground", "Invincible", "Dash"));
         if (hit.collider.transform == target)
         {
             return true;
