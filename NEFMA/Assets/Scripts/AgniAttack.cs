@@ -83,7 +83,7 @@ public class AgniAttack : MonoBehaviour
 
         GameObject newBullet = Instantiate(bigBulletPrefab, (transform.position - (transform.up)), Quaternion.identity) as GameObject;
         newBullet.transform.rotation = gameObject.transform.rotation; //Rotate the same direction as the ship it is fired from
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 20);
+        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 30);
     }
 }
 
