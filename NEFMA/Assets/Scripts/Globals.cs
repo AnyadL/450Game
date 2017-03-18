@@ -57,6 +57,7 @@ public class Globals : MonoBehaviour {
             // should never happen, means that there is no default spawn point
             if (currentCheckpoint == null)
             {
+                Debug.Log("COULD NOT FIND CURRENT CHECKPOINT");
                 livingPlayers = numPlayers;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
@@ -65,6 +66,7 @@ public class Globals : MonoBehaviour {
             {
                 currentCheckpoint.gameObject.SetActive(true);
                 currentCheckpoint.spawning = false;
+                //Debug.Log("Globals Ressing Players");
                 currentCheckpoint.resPlayers();
             }
         }
