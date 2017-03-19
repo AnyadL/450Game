@@ -57,8 +57,9 @@ public class BossController : MonoBehaviour {
 
     void spawnAllies()
     {
-        Instantiate(allyPrefab, (transform.position + (transform.right * 30) - (transform.up * 8)), Quaternion.identity);
-        Instantiate(allyPrefab, (transform.position - (transform.right * 30) - (transform.up * 8)), Quaternion.identity);
+        Instantiate(allyPrefab, (transform.position + (transform.right * 57) - (transform.up * 11)), Quaternion.identity);
+        GameObject enemy2 = Instantiate(allyPrefab, (transform.position - (transform.right * 57) - (transform.up * 11)), Quaternion.identity);
+        enemy2.GetComponent<EnemyAI>().Flip();
     }
 
     public void registerBodyPart(GameObject part, int num)
