@@ -20,20 +20,8 @@ public class Camera2DFollow : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        linkPlayers();
         float x = 0;
         float y = 0;
-        for (int i = 0; i < targets.Count; i++)
-        {
-            if (targets[i] == null)
-            {
-                x = gameObject.transform.position.x;
-                y = gameObject.transform.position.y;
-                continue;
-            }
-            x += targets[i].position.x;
-            y += targets[i].position.y;
-        }
         target = new Vector3(x / targets.Count, y / targets.Count);
         m_LastTargetPosition = target;
         m_OffsetZ = (transform.position - target).z;
@@ -100,16 +88,24 @@ public class Camera2DFollow : MonoBehaviour
         {
             for (int i = 0; i < Globals.players.Count; i++)
             {
-                //Debug.Log(Globals.players[i]);
-                if (Globals.players[i].Alive && !targets.Contains(Globals.players[i].GO.transform))
+                if (Globals.players[i].Alive)
                 {
-                    targets.Add(Globals.players[i].GO.transform);
+                    //Debug.Log("Camera Seeing: " + Globals.players[i]);
+                    if (Globals.players[i].GO != null && !targets.Contains(Globals.players[i].GO.transform))
+                    {
+                        targets.Add(Globals.players[i].GO.transform);
+                    }
+                    else if (Globals.players[i].GO == null)
+                    {
+                        targets.Add(gameObject.transform);
+                        Debug.Log("DANGER: CAMERA SAW NULL GO");
+                    }
                 }
             }
         }
     }
 
-    public void unLinkPlayers(Transform optionalTarget)
+    public void unLinkPlayers(Transform optionalTarget = null)
     {
         cameraForced = true;
         targets.Clear();

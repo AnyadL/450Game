@@ -30,8 +30,8 @@ public class Player
     }
 }
 
-public class Globals : MonoBehaviour {
-
+public class Globals
+{
     static public int numPlayers = 0;
     static public int livingPlayers = 0;
     static public float musicVolume = 0.5f;
@@ -40,11 +40,14 @@ public class Globals : MonoBehaviour {
     static public Checkpoint currentCheckpoint;
 
     static public List<Player> players = new List<Player>();
-    
+
     static public bool delilahChosen = false;
     static public bool kittyChosen = false;
     static public bool agniChosen = false;
     static public bool rykerChosen = false;
+}
+
+public class GlobalContainer : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
@@ -52,20 +55,22 @@ public class Globals : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (livingPlayers <= 0)
+        if (Globals.livingPlayers <= 0)
         {
             // should never happen, means that there is no default spawn point
-            if (currentCheckpoint == null)
+            if (Globals.currentCheckpoint == null)
             {
-                livingPlayers = numPlayers;
+                Debug.Log("COULD NOT FIND CURRENT CHECKPOINT");
+                Globals.livingPlayers = Globals.numPlayers;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             // the whole team died, respawn them at the last checkpoint
             else
             {
-                currentCheckpoint.gameObject.SetActive(true);
-                currentCheckpoint.spawning = false;
-                currentCheckpoint.resPlayers();
+                Globals.currentCheckpoint.gameObject.SetActive(true);
+                Globals.currentCheckpoint.spawning = false;
+                //Debug.Log("Globals Ressing Players");
+                Globals.currentCheckpoint.resPlayers();
             }
         }
     }

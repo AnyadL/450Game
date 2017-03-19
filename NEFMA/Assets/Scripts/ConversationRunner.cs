@@ -101,7 +101,7 @@ public class ConversationRunner : MonoBehaviour {
         {
             string data = File.ReadAllText(filePath);
             conversation = JsonUtility.FromJson<Conversation>(data);
-            Debug.Log(conversation.dialogue.Count);
+            //Debug.Log(conversation.dialogue.Count);
             conversationLoaded = true;
             currIndex = 0;
         }

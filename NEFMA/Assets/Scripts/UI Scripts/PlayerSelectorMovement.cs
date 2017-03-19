@@ -44,7 +44,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
     private Player player;
 
     [HideInInspector] float nextMovement = 0;
-    [HideInInspector] float nextMovementCooldown = 0.25f;
+    [HideInInspector] float nextMovementCooldown = 0.15f;
 
     // Use this for initialization
     void Start () {
@@ -53,20 +53,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
         agniPosition = new Vector3(topX, topY, 0);
         rykerPosition = new Vector3(0, bottomY, 0);
         kittyPosition = new Vector3(-bottomX, bottomY, 0);
-        /*
-        if (playerNumber == 0)
-        {
-            // Create player 1
-            if (Globals.players.Count == 0)
-            {
-                player = new Player("", 0, 0, false, null, null);
-                Globals.players.Add(player);
-            }
-            playerInput = Globals.players[0].InputNum;
-            joinedGame = true;
-            playerSelector.sprite = playerSelectorSprite;
-        }
-        else*/
+
         playerSelector.sprite = hiddenSelector;
 
         GetComponent<RectTransform>().localPosition = position;
@@ -250,6 +237,14 @@ public class PlayerSelectorMovement : MonoBehaviour {
 
         if (heroSelected && (inputPressed == playerInput))
             unsetHero();
+        else if (joinedGame && !heroSelected && (inputPressed == playerInput))
+        {
+            Globals.players.Clear();
+            Globals.numPlayers = 0;
+            Globals.livingPlayers = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        }
+
     }
 
     void joinOrSelectHero ()

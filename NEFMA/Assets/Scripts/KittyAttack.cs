@@ -63,14 +63,27 @@ public class KittyAttack : MonoBehaviour
  
         Hiss.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
 
+
     }
 
     //Creates claw attack which persists for a second and then disappears
     void ClawAttack()
     {
-        GameObject ClawMarks = Instantiate(ClawPrefab, (transform.position + (transform.forward /10)), Quaternion.identity) as GameObject;
-        if (ClawMarks)
-            return;
+        float velocityDirection=1;
+        if (!hm.facingRight)
+        {
+            velocityDirection = -1;
+        }
+        GameObject ClawMarks = Instantiate(ClawPrefab, (transform.position + velocityDirection*(transform.forward /10)), Quaternion.identity) as GameObject;
+        ClawMarks.GetComponent<ClawScript>().owner = gameObject;
+        ClawMarks.GetComponent<ClawScript>().velocityDirection = velocityDirection;
+        if (hm.facingRight)
+        {
+            Vector3 theScale = ClawMarks.transform.localScale;
+            theScale.x *= -1;
+            ClawMarks.transform.localScale = theScale;
+        }
+
     }
 }
 

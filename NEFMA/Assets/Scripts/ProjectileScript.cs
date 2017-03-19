@@ -25,7 +25,13 @@ public class ProjectileScript : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-  
+        if (collision.gameObject.tag == "Platform")
+        {
+            if (gameObject.tag != "BigAttack")
+            {
+                Destroy(gameObject);
+            }
+        }
         if (collision.gameObject.tag == "Enemy")
         {
             if (gameObject.tag == "LittleAttack")
@@ -40,13 +46,11 @@ public class ProjectileScript : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
-        if(collision.gameObject.tag ==  "Deflect")
+        if (collision.gameObject.tag ==  "Deflect")
         {
             Vector2 oldVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
             gameObject.GetComponent<Rigidbody2D>().velocity = -oldVelocity;
             gameObject.tag = "LittleAttack";
-           
-
         }
     }
 }

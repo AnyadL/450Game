@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Checkpoint : MonoBehaviour {
 
@@ -16,9 +17,9 @@ public class Checkpoint : MonoBehaviour {
         {
             Globals.currentCheckpoint = this;
         }
-	}
-	
-	void Update ()
+    }
+
+    void Update ()
     {
 		if (spawning)
         {
@@ -40,6 +41,7 @@ public class Checkpoint : MonoBehaviour {
         {
             if (!Globals.players[i].Alive)
             {
+                //Debug.Log("Checkpoint Starting: " + Globals.players[i]);
                 GameObject pl = Instantiate(Globals.players[i].Prefab, transform.position, Quaternion.identity);
                 Globals.players[i].Alive = true;
                 Globals.players[i].GO = pl;
@@ -53,6 +55,7 @@ public class Checkpoint : MonoBehaviour {
                 {
                     pl.GetComponent<AttributeController>().takenDamage();
                 }
+                //Debug.Log("Checkpoint Ending: " + Globals.players[i]);
             }
         }
         Globals.livingPlayers = Globals.players.Count;

@@ -6,9 +6,6 @@ public class HeroMovement : MonoBehaviour {
 
     [HideInInspector] public bool facingRight = true;
     [HideInInspector] public bool jump = false;
-    [HideInInspector] public bool punchRange = false;
-    [HideInInspector] public bool attack = false;
-    [HideInInspector] public int myLayer;
 
     [HideInInspector] public bool inRange = false;
 
@@ -21,7 +18,7 @@ public class HeroMovement : MonoBehaviour {
     [HideInInspector] public float currentMaxSpeed;
     public float jumpForce = 1800f;
     public Transform groundCheck;
-    public Transform punchCheck;
+    //public Transform punchCheck; // TODO: Remove punch check from hero prefabs
 
     [HideInInspector] public bool grounded = false;
     //private Animator anim;
@@ -31,6 +28,7 @@ public class HeroMovement : MonoBehaviour {
     private bool doublejump = false;
     private bool candoublejump = false;
     private bool isKitty = false;
+
     // Use this for initialization
     void Awake()
     {
@@ -39,9 +37,8 @@ public class HeroMovement : MonoBehaviour {
         myAttributes = GetComponent<AttributeController>();
         currentMoveForce = moveForce;
         currentMaxSpeed = maxSpeed;
-        myLayer = gameObject.layer;
-        string name = gameObject.name;
-        if (name == "Kitty(Clone)"){
+        if (gameObject.name == "Kitty(Clone)")
+        {
             isKitty = true;
         }
     }
@@ -68,11 +65,10 @@ public class HeroMovement : MonoBehaviour {
             }
         }
       
-        if (Input.GetButtonDown("Fire3_" + inputNumber) && !Globals.gamePaused)
-        {
-            attack = true;
-        }
-
+        //if (Input.GetButtonDown("Fire3_" + inputNumber) && !Globals.gamePaused)
+        //{
+        //    attack = true;
+        //}
     }
 
     //Does the actions during the frame the hero has to do, in this case jumping, flipping and attacking
@@ -118,22 +114,22 @@ public class HeroMovement : MonoBehaviour {
             doublejump = false;
             candoublejump = false;
         }
-        punchRange = Physics2D.Linecast(transform.position, punchCheck.position, 1 << LayerMask.NameToLayer("Enemy"));
-        if (attack && punchRange)
-        {
-            Debug.Log("attack");
-            attack = false;
-            StartCoroutine(Punch());
-        }
+        //punchRange = Physics2D.Linecast(transform.position, punchCheck.position, 1 << LayerMask.NameToLayer("Enemy"));
+        //if (attack && punchRange)
+        //{
+        //    Debug.Log("attack");
+        //    attack = false;
+        //    StartCoroutine(Punch());
+        //}
     }
 
-    IEnumerator Punch()
-    {
-        Debug.Log("Punch");
-        gameObject.layer = 14;
-        yield return new WaitForSeconds(0.02f);
-        gameObject.layer = myLayer;
-    }
+    //IEnumerator Punch()
+    //{
+    //    Debug.Log("Punch");
+    //    gameObject.layer = 14;
+    //    yield return new WaitForSeconds(0.02f);
+    //    gameObject.layer = myLayer;
+    //}
 
     // speedVector is a value between [-1, 1]
     public void moveCharacter(float speedVector, float force)
@@ -153,13 +149,13 @@ public class HeroMovement : MonoBehaviour {
     }
 
     //Check if within hitting range of an enemy, enemies should have 2 colliders
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            inRange = true;
-        }
-    }
+    //void OnTriggerStay2D(Collider2D other)
+    //{
+    //    if (other.CompareTag("Enemy"))
+    //    {
+    //        inRange = true;
+    //    }
+    //}
 
     //flip the sprite in different directions when switching
     public void Flip()

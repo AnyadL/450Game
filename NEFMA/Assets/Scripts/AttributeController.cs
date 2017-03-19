@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttributeController : MonoBehaviour {
 
     private HeroMovement myMovement;
+    private Rigidbody2D myBody;
     [HideInInspector] private float health = 1;
     public float maxHealth = 1;
 
@@ -17,11 +18,12 @@ public class AttributeController : MonoBehaviour {
     public float invincibiltyLength = 2.0f;
     [HideInInspector] public EnemyAI enemyAI;
     [HideInInspector] public float speed;
-    [HideInInspector] float pcooldown;
+    [HideInInspector] public bool dashing = false;
    
     public void Start()
     {
         myMovement = gameObject.GetComponent<HeroMovement>();
+        myBody = gameObject.GetComponent<Rigidbody2D>();
         if (gameObject.layer != 13)
         {
             myLayer = gameObject.layer;
@@ -32,7 +34,6 @@ public class AttributeController : MonoBehaviour {
         {
             enemyAI = gameObject.GetComponent<EnemyAI>();
             speed = enemyAI.maxSpeed;
-            pcooldown = enemyAI.projectileCooldown;
         }
     }
 
@@ -123,17 +124,17 @@ public class AttributeController : MonoBehaviour {
 
     IEnumerator stunEnemy()
     {
-         Debug.Log("speed:" + speed);
+        Debug.Log("speed:" + speed);
  
-         enemyAI.maxSpeed = 0;
-         if (enemyAI.isRanged)
-         {
-             enemyAI.nextProjectileFire = 5;
-         }
+        enemyAI.maxSpeed = 0;
+        if (enemyAI.isRanged)
+        {
+           enemyAI.nextProjectileFire = enemyAI.nextProjectileFire + 1.0f;
+           enemyAI.rangedBurst = 0;
+        }
         yield return new WaitForSeconds(2);
         Debug.Log("Waited");
-         enemyAI.maxSpeed = speed;
-         enemyAI.projectileCooldown = pcooldown;
+        enemyAI.maxSpeed = speed;
     }
 
     // determines if the current gameobject is a player or an enemy
@@ -151,8 +152,7 @@ public class AttributeController : MonoBehaviour {
     // something has collided with the player
     void playerCollisions(Collider2D collision)
     {
-        //If player is not currently punching then it will do the attack collisions
-        if (gameObject.layer != 14)
+        if (!dashing)
         {
             if (collision.gameObject.tag == "Enemy")
             {
@@ -172,7 +172,6 @@ public class AttributeController : MonoBehaviour {
                 }
             }
         }
-        // LEXIE: I changed this else if to an if because we still want to die if the layer is 14. Check if this breaks your stuff
         if (collision.gameObject.tag == "DeathLine")
         {
             health = 0;
@@ -181,8 +180,7 @@ public class AttributeController : MonoBehaviour {
         {
             health = maxHealth;
         }
-
-       else if (collision.gameObject.tag == "Collect")
+        else if (collision.gameObject.tag == "Collect")
         {
             for (int i = 0; i < Globals.players.Count; ++i)
             {
@@ -194,7 +192,6 @@ public class AttributeController : MonoBehaviour {
             }
             Destroy(collision.gameObject);
         }
-
     }
 
     // something has collided with an enemy
@@ -230,12 +227,10 @@ public class AttributeController : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "Stun")
         {
-            //knockback(collision.gameObject.transform.position.x);
             StartCoroutine(stunEnemy());
         }
-
         //This is for rkyer dashing through enemy or any time where a character is invincible but can still attack enemies
-        else if (collision.gameObject.layer == 14)
+        else if (collision.gameObject.tag == "Player" && collision.gameObject.GetComponent<AttributeController>().dashing)
         {
             if (decreaseHealth(1.0f))
             {
@@ -247,6 +242,5 @@ public class AttributeController : MonoBehaviour {
         {
             knockback(collision.gameObject.transform.position.x);
         }
-
     }
 }

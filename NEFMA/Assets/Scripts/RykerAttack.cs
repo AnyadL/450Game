@@ -16,9 +16,6 @@ public class RykerAttack : MonoBehaviour
     public float nextDash;
     public float dashSpeed;
     public float dashTime;
-    [HideInInspector]
-    public int myLayer;
-
 
     // Use this for initialization
     void Start()
@@ -26,8 +23,6 @@ public class RykerAttack : MonoBehaviour
         //In order to figure out which way the character is facing I need to access the HeroMovement script
         hm = gameObject.GetComponent<HeroMovement>();
         myAttribute = gameObject.GetComponent<AttributeController>();
-        myLayer = gameObject.layer;
-
     }
 
     // Update is called once per frame
@@ -57,7 +52,7 @@ public class RykerAttack : MonoBehaviour
     // Creates a Hiss that stuns enemies
     IEnumerator Dash()
     {
-        gameObject.layer = 14;
+        myAttribute.dashing = true;
         GameObject dashObject = Instantiate(dashPrefab, (gameObject.transform.position), Quaternion.identity) as GameObject;
         if (hm.facingRight)
         {
@@ -68,7 +63,7 @@ public class RykerAttack : MonoBehaviour
             transform.position -= new Vector3(dashSpeed * Time.deltaTime, dashTime, 0.0f);
         }
         yield return new WaitForSeconds(dashTime);
-        gameObject.layer = myLayer;
+        myAttribute.dashing = false;
         Destroy(dashObject);
     }
 
@@ -83,7 +78,8 @@ public class RykerAttack : MonoBehaviour
             if (go.GetComponent<SpriteRenderer>().isVisible)
             {
                 //GameObject stunObject = Instantiate(stunPrefab, (go.transform.position), Quaternion.identity) as GameObject;
-                Instantiate(stunPrefab, (go.transform.position), Quaternion.identity);
+                Instantiate(stunPrefab, (go.transform.position) + (Vector3.up * 0.5f), Quaternion.identity);
+                go.GetComponent<Rigidbody2D>().velocity = new Vector2(-go.GetComponent<Rigidbody2D>().velocity.x, go.GetComponent<Rigidbody2D>().velocity.y);
             }
         }
 

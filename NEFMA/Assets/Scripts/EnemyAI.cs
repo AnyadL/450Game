@@ -38,7 +38,7 @@ public class EnemyAI : MonoBehaviour {
     public float xRange = 0f;
     public float yRange = 0f;
     private List<GameObject> targets = new List<GameObject>();
-    private int rangedBurst = 0;
+    [HideInInspector] public int rangedBurst = 0;
     public int numberRangedBurst = 3;
 
     public GameObject bullseye = null;
@@ -88,22 +88,12 @@ public class EnemyAI : MonoBehaviour {
 
         if (isRanged && gameObject.GetComponent<Renderer>().isVisible)
         {
-            Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), Color.red, 0.1f);
-            Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
-            Debug.DrawLine(transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
-            Debug.DrawLine(transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.1f);
+            Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), Color.red, 0.01f);
+            Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.01f);
+            Debug.DrawLine(transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.01f);
+            Debug.DrawLine(transform.position + (Vector3.right * xRange) - (Vector3.up * yRange), transform.position - (Vector3.right * xRange) - (Vector3.up * yRange), Color.red, 0.01f);
             if (Time.time >= nextProjectileFire)
             {
-                if (rangedBurst == numberRangedBurst)
-                {
-                    rangedBurst = 0;
-                    nextProjectileFire = Time.time + projectileCooldown;
-                }
-                else
-                {
-                    rangedBurst++;
-                    nextProjectileFire = Time.time + projectileBurstCooldown;
-                }
                 RangedAttack();
             }
         }
@@ -156,6 +146,18 @@ public class EnemyAI : MonoBehaviour {
         if (targets.Count > 0)
         {
             choose();
+
+            if (rangedBurst == numberRangedBurst - 1)
+            {
+                rangedBurst = 0;
+                nextProjectileFire = Time.time + projectileCooldown;
+            }
+            else
+            {
+                rangedBurst++;
+                nextProjectileFire = Time.time + projectileBurstCooldown;
+            }
+
             //Debug.Log("Target: " + target);
             float tempx = (transform.position.x - target.transform.position.x);
             float tempy = (transform.position.y - target.transform.position.y);
@@ -201,6 +203,10 @@ public class EnemyAI : MonoBehaviour {
             
             newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(xcomp, ycomp);
         }
+        else if (rangedBurst != 0)
+        {
+            rangedBurst = 0;
+        }
     }
 
     void targeter(GameObject target)
@@ -220,11 +226,9 @@ public class EnemyAI : MonoBehaviour {
 
     bool lineOfSight(Transform target)
     {
-        Debug.DrawLine(wallCheck.position, target.position, Color.red, 0.5f);
-        RaycastHit2D hit = Physics2D.Linecast(wallCheck.position, target.position);
-        Debug.DrawLine(crushedCheck.position, target.position, Color.red, 0.5f);
-        RaycastHit2D hit2 = Physics2D.Linecast(crushedCheck.position, target.position);
-        if (hit.collider.transform == target || hit2.collider.transform == target)
+        Debug.DrawLine(wallCheck.position, target.position, Color.red, 0.05f);
+        RaycastHit2D hit = Physics2D.Linecast(wallCheck.position, target.position, LayerMask.GetMask("Player", "Ground", "Invincible", "Dash"));
+        if (hit.collider.transform == target)
         {
             return true;
         }
