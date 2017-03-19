@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttributeController : MonoBehaviour {
 
     private HeroMovement myMovement;
+    private Rigidbody2D myBody;
     [HideInInspector] private float health = 1;
     public float maxHealth = 1;
 
@@ -22,6 +23,7 @@ public class AttributeController : MonoBehaviour {
     public void Start()
     {
         myMovement = gameObject.GetComponent<HeroMovement>();
+        myBody = gameObject.GetComponent<Rigidbody2D>();
         if (gameObject.layer != 13)
         {
             myLayer = gameObject.layer;
@@ -122,14 +124,14 @@ public class AttributeController : MonoBehaviour {
 
     IEnumerator stunEnemy()
     {
-         Debug.Log("speed:" + speed);
+        Debug.Log("speed:" + speed);
  
-         enemyAI.maxSpeed = 0;
-         if (enemyAI.isRanged)
-         {
-            enemyAI.nextProjectileFire = enemyAI.nextProjectileFire + 1.0f;
-            enemyAI.rangedBurst = 0;
-         }
+        enemyAI.maxSpeed = 0;
+        if (enemyAI.isRanged)
+        {
+           enemyAI.nextProjectileFire = enemyAI.nextProjectileFire + 1.0f;
+           enemyAI.rangedBurst = 0;
+        }
         yield return new WaitForSeconds(2);
         Debug.Log("Waited");
         enemyAI.maxSpeed = speed;
