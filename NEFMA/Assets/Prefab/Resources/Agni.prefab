@@ -483,6 +483,7 @@ MonoBehaviour:
   invincibiltyLength: 2
   enemyAI: {fileID: 0}
   speed: 0
+  dashing: 0
 --- !u!114 &114379807679598236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -509,7 +510,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   jump: 0
-  myLayer: 0
   inRange: 0
   playerNumber: -1
   inputNumber: -1
