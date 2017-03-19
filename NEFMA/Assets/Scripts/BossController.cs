@@ -6,10 +6,14 @@ public class BossController : MonoBehaviour {
 
     [HideInInspector] public GameObject myHead;
     [HideInInspector] public GameObject myLeftHand;
+    [HideInInspector] public GameObject mySecretLeftHand;
     [HideInInspector] public GameObject myRightHand;
+    [HideInInspector] public GameObject mySecretRightHand;
     [HideInInspector] public BossHead myHeadScript;
     [HideInInspector] public BossHand myLeftHandScript;
     [HideInInspector] public BossHand myRightHandScript;
+    [HideInInspector] public BossSecretHands mySecretLeftHandScript;
+    [HideInInspector] public BossSecretHands mySecretRightHandScript;
     public GameObject allyPrefab;
     private int parts = 0;
     public int numberOfParts = 3;
@@ -65,12 +69,33 @@ public class BossController : MonoBehaviour {
     public void registerBodyPart(GameObject part, int num)
     {
         Debug.Log("registerBodyPart called with num = " + num);
-        if (num == -1)
+        if (num == -2)
+        {
+            if (mySecretLeftHand == null)
+            {
+                mySecretLeftHand = part;
+                mySecretLeftHandScript = mySecretLeftHand.GetComponent<BossSecretHands>();
+                if (myLeftHand != null)
+                {
+                    mySecretLeftHandScript.linkHand(myLeftHand);
+                }
+            }
+            else
+            {
+                Debug.Log("Bad body part number given to registerBodyPart (Received num = -2) (Already recieved -2)");
+                return;
+            }
+        }
+        else if (num == -1)
         {
             if (myLeftHand == null)
             {
                 myLeftHand = part;
                 myLeftHandScript = myLeftHand.GetComponent<BossHand>();
+                if (mySecretLeftHandScript != null)
+                {
+                    mySecretLeftHandScript.linkHand(myLeftHand);
+                }
             }
             else
             {
@@ -97,10 +122,31 @@ public class BossController : MonoBehaviour {
             {
                 myRightHand = part;
                 myRightHandScript = myRightHand.GetComponent<BossHand>();
+                if (mySecretRightHandScript != null)
+                {
+                    mySecretRightHandScript.linkHand(myRightHand);
+                }
             }
             else
             {
                 Debug.Log("Bad body part number given to registerBodyPart (Received num = 1) (Already recieved 1)");
+                return;
+            }
+        }
+        else if (num == 2)
+        {
+            if (mySecretRightHand == null)
+            {
+                mySecretRightHand = part;
+                mySecretRightHandScript = mySecretRightHand.GetComponent<BossSecretHands>();
+                if (myRightHand != null)
+                {
+                    mySecretRightHandScript.linkHand(myRightHand);
+                }
+            }
+            else
+            {
+                Debug.Log("Bad body part number given to registerBodyPart (Received num = 2) (Already recieved 2)");
                 return;
             }
         }
