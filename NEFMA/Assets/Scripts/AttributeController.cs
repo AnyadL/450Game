@@ -83,17 +83,17 @@ public class AttributeController : MonoBehaviour {
     }
 
     // responsible for knocking the current gameobject away from whatever hit them
-    private void knockback(float x)
+    private void knockback(float x, float forceX = 20, float forceY = 10)
     {
         knockbacked = true;
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         if (x < gameObject.transform.position.x)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(20, 10, 0), ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(forceX, forceY, 0), ForceMode2D.Impulse);
         }
         else
         {
-            gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(-20, 10, 0), ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(-forceX, forceY, 0), ForceMode2D.Impulse);
         }
     }
 
@@ -135,6 +135,18 @@ public class AttributeController : MonoBehaviour {
         yield return new WaitForSeconds(2);
         Debug.Log("Waited");
         enemyAI.maxSpeed = speed;
+    }
+
+    IEnumerator bossCrush(Collider2D collision)
+    {
+        GameObject hand = collision.GetComponent<BossSecretHands>().myHand;
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), hand.GetComponents<Collider2D>()[0], true);
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), hand.GetComponents<Collider2D>()[1], true);
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), hand.GetComponent<PolygonCollider2D>(), true);
+        yield return new WaitForSeconds(0.5f);
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), hand.GetComponents<Collider2D>()[0], false);
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), hand.GetComponents<Collider2D>()[1], false);
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), hand.GetComponent<PolygonCollider2D>(), false);
     }
 
     // determines if the current gameobject is a player or an enemy
@@ -192,6 +204,17 @@ public class AttributeController : MonoBehaviour {
             }
             Destroy(collision.gameObject);
         }
+        else if (collision.gameObject.tag == "Secret Boss Hand")
+        {
+            if (decreaseHealth(1.0f))
+            {
+                takenDamage();
+                StartCoroutine(bossCrush(collision));
+                myBody.velocity = new Vector2(0, 0);
+                float mag = (collision.gameObject.transform.localScale.x / 2) - Mathf.Abs(collision.gameObject.transform.position.x - transform.position.x);
+                knockback(collision.gameObject.transform.position.x, mag * 3, 10 + mag);
+            }
+        }
     }
 
     // something has collided with an enemy
@@ -241,6 +264,17 @@ public class AttributeController : MonoBehaviour {
         else if (collision.gameObject.tag == "Deflect")
         {
             knockback(collision.gameObject.transform.position.x);
+        }
+        else if (collision.gameObject.tag == "Secret Boss Hand")
+        {
+            if (decreaseHealth(1.0f))
+            {
+                takenDamage();
+                StartCoroutine(bossCrush(collision));
+                myBody.velocity = new Vector2(0, 0);
+                float mag = (collision.gameObject.transform.localScale.x / 2) - Mathf.Abs(collision.gameObject.transform.position.x - transform.position.x);
+                knockback(collision.gameObject.transform.position.x, mag * 3, 10 + mag);
+            }
         }
     }
 }
