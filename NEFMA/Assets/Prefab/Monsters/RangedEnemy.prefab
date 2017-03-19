@@ -295,6 +295,7 @@ MonoBehaviour:
   invincibiltyLength: 2
   enemyAI: {fileID: 0}
   speed: 0
+  dashing: 0
 --- !u!114 &114752082635900038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,7 +319,7 @@ MonoBehaviour:
   nextProjectileFire: 0
   projectileCooldown: 3
   projectileBurstCooldown: 0.3
-  projectilePrefab: {fileID: 1536883708839126, guid: 80cacbd3318656f4386482409a7feb78,
+  projectilePrefab: {fileID: 1189529625296280, guid: 41594cb40641f034fa2f3c86b7d33894,
     type: 2}
   ghostOverride: 0
   xRange: 50
