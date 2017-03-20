@@ -56,6 +56,11 @@ public class AttributeController : MonoBehaviour {
                 // Defeated Boss, should call some script here
                 health = 1;
             }
+            if (gameObject.tag == "Enemy")
+            {
+                // enemy killed, increasse tracker
+                ++Globals.enemiesKilled;
+            }
             Destroy(gameObject);
         }
 
