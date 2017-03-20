@@ -28,7 +28,7 @@ public class ConversationRunner : MonoBehaviour {
         conversationLoaded = false;
         currIndex = 0;
 
-        dialogue.initialize();
+        dialogue.initialize(convName);
 
 
 
