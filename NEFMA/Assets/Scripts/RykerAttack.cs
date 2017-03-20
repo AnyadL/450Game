@@ -78,7 +78,8 @@ public class RykerAttack : MonoBehaviour
             if (go.GetComponent<SpriteRenderer>().isVisible)
             {
                 //GameObject stunObject = Instantiate(stunPrefab, (go.transform.position), Quaternion.identity) as GameObject;
-                Instantiate(stunPrefab, (go.transform.position) + (Vector3.up * 0.5f), Quaternion.identity);
+                Vector3 stunPosition = new Vector3(go.transform.position.x, go.transform.position.y + 1, go.transform.position.z);
+                Instantiate(stunPrefab, (stunPosition) + (Vector3.up * 0.5f), Quaternion.identity);
                 go.GetComponent<Rigidbody2D>().velocity = new Vector2(-go.GetComponent<Rigidbody2D>().velocity.x, go.GetComponent<Rigidbody2D>().velocity.y);
             }
         }
