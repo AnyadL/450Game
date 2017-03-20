@@ -183,6 +183,28 @@ public class AttributeController : MonoBehaviour {
                     knockback(collision.gameObject.transform.position.x);
                 }
             }
+            else if (collision.gameObject.tag == "Fire")
+            {
+                if (!isAgni())
+                {
+                    if (decreaseHealth(1.0f))
+                    {
+                        takenDamage();
+                        knockback(collision.gameObject.transform.position.x);
+                    }
+                }
+            }
+            else if (collision.gameObject.tag == "Water")
+            {
+                if (isAgni() || isKitty())
+                {
+                    if (decreaseHealth(1.0f))
+                    {
+                        takenDamage();
+                        knockback(collision.gameObject.transform.position.x);
+                    }
+                }
+            }
         }
         if (collision.gameObject.tag == "DeathLine")
         {
@@ -215,6 +237,58 @@ public class AttributeController : MonoBehaviour {
                 knockback(collision.gameObject.transform.position.x, mag * 3, 10 + mag);
             }
         }
+    }
+
+    bool isAgni()
+    {
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            if (Globals.players[i].Number == gameObject.GetComponent<HeroMovement>().playerNumber)
+            {
+                if (Globals.players[i].Name == "Agni")
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    bool isRyker()
+    {
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            if (Globals.players[i].Number == gameObject.GetComponent<HeroMovement>().playerNumber)
+            {
+                if (Globals.players[i].Name == "Ryker")
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    bool isDelilah()
+    {
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            if (Globals.players[i].Number == gameObject.GetComponent<HeroMovement>().playerNumber)
+            {
+                if (Globals.players[i].Name == "Delilah")
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    bool isKitty()
+    {
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            if (Globals.players[i].Number == gameObject.GetComponent<HeroMovement>().playerNumber)
+            {
+                if (Globals.players[i].Name == "Kitty")
+                    return true;
+            }
+        }
+        return false;
     }
 
     // something has collided with an enemy

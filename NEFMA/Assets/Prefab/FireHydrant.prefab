@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61466094257090480}
   m_Layer: 9
   m_Name: FireHydrant
-  m_TagString: EnemyAttack
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

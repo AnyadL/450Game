@@ -23,6 +23,8 @@ TagManager:
   - Collectable
   - Collect
   - Secret Boss Hand
+  - Fire
+  - Water
   layers:
   - Default
   - TransparentFX
