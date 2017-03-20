@@ -319,7 +319,7 @@ MonoBehaviour:
   nextProjectileFire: 0
   projectileCooldown: 3
   projectileBurstCooldown: 0.3
-  projectilePrefab: {fileID: 1189529625296280, guid: 41594cb40641f034fa2f3c86b7d33894,
+  projectilePrefab: {fileID: 1315576730718708, guid: 304a65aa8b5992e449c12bac4ecdd568,
     type: 2}
   ghostOverride: 0
   xRange: 50
