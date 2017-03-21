@@ -13,13 +13,15 @@ public class DialogueController : MonoBehaviour {
 
     public GameObject drG;
 
+    public Sprite sittingMilo;
+
     private GameObject bubble;
 
     private GameObject playerObject;
     private Vector3 localOffset = new Vector3(-5, 20, 0);
     private Vector3 agniOffset = new Vector3(-5, 15, 0);
 
-    private string[] orderedNames = new string[4] { "Agni", "Ryker", "Delilah", "Kitty" };
+    private string[] orderedNames = new string[6] { "Agni", "Ryker", "Delilah", "Kitty", "Milo", "Dr. G" };
 
 
     private GameObject currentBubble;
@@ -31,6 +33,8 @@ public class DialogueController : MonoBehaviour {
     private string convoName;
     
     private bool drGtime = false;
+    private bool monsterTime = false;
+    private bool miloMoved = false;
 
     private Vector3 tempTransform;
 
@@ -42,10 +46,14 @@ public class DialogueController : MonoBehaviour {
 	    for (int i = 0; i < orderedNames.Length; ++i)
         {
             playerObject = findPlayerObject(orderedNames[i]);
-            // create bubbles for each hero
-            createBubble(orderedNames[i], questionPrefab);
-            createBubble(orderedNames[i], exclamationPrefab);
-            createBubble(orderedNames[i] , ellipsisPrefab);
+            if (playerObject != null)
+            {
+                // create bubbles for each hero
+                createBubble(orderedNames[i], questionPrefab);
+                createBubble(orderedNames[i], exclamationPrefab);
+                createBubble(orderedNames[i], ellipsisPrefab);
+
+            }
         }
     }
 
@@ -53,89 +61,23 @@ public class DialogueController : MonoBehaviour {
     {
         if (convoName == "introConversation.json")
         {
-            switch(currentSpecial)
-            {
-                case 0:
-                    break;
-                case 1:
-                    // start walking
-                    currentSpecial = 0;
-                    for (int i = 0; i < orderedNames.Length; ++i)
-                    {
-                        playerObject = findPlayerObject(orderedNames[i]);
-                        playerObject.GetComponent<HeroMovement>().moveCharacter(1, 400);
-                    }
-                    break;
-                case 2:
-                    if (timePause == 0)
-                    {
-                        // Jump Kitty onto screen
-
-                        timePause = 1f;// stop Kitty jump in 1 second
-
-                        updateTime = Time.time + timePause;
-
-                        findPlayerObject("Kitty").GetComponent<HeroMovement>().jumpCharacter(3500f, 3500f);
-                    }
-                    else if (Time.time >= updateTime)
-                    {
-                        
-                        // stop kitty's slide
-                        findPlayerObject("Kitty").GetComponent<Rigidbody2D>().isKinematic = true;
-                        findPlayerObject("Kitty").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-                        findPlayerObject("Kitty").GetComponent<Rigidbody2D>().isKinematic = false;
-                        findPlayerObject("Kitty").GetComponent<HeroMovement>().moveCharacter(1, 400);
-
-                        // Flip Ryker
-                        findPlayerObject("Ryker").GetComponent<HeroMovement>().Flip();
-                        findPlayerObject("Ryker").GetComponent<HeroMovement>().jumpCharacter(0, 1000f);
-
-                        currentSpecial = 0;
-                        timePause = 0;
-                    }
-                    break;
-                case 3:
-                    // Flip Ryker back
-
-                    findPlayerObject("Ryker").GetComponent<HeroMovement>().Flip();
-                    currentSpecial = 0;
-                    break;
-                case 4:
-                    if (timePause == 0)
-                    {
-                        // Wait a bit then flip Agni
-
-                        timePause = 3f;
-
-                        updateTime = Time.time + timePause;
-                    }
-                    else if (Time.time >= updateTime)
-                    {
-                        findPlayerObject("Agni").GetComponent<HeroMovement>().Flip();
-
-                        currentSpecial = 0;
-                        timePause = 0;
-                    }
-                    break;
-                case 5:
-                    // Start moving Dr G
-                    findPlayerObject("Agni").GetComponent<HeroMovement>().Flip();
-                    drGtime = true;
-                    currentSpecial = 0;
-                    timePause = 0;
-                    break;
-                case 6:
-                    // faster heroes
-                    for (int i = 0; i < orderedNames.Length; ++i)
-                    {
-                        playerObject = findPlayerObject(orderedNames[i]);
-                        // considered making Ryker faster, but he's a chicken
-                        playerObject.GetComponent<HeroMovement>().moveCharacter(1, 700);
-                    }
-                    break;
-            }
-            if (drGtime)
-                drG.transform.position = new Vector3(drG.transform.position.x + 0.5f, 25f + (Mathf.Sin(2*Time.time)* 5), drG.transform.position.z);
+            doIntro();
+        }
+        else if (convoName == "preBoss.json")
+        {
+            doPreBoss();
+        }
+        else if (convoName == "noExcuse.json")
+        {
+            doNoExcuse();
+        }
+        else if (convoName == "monsterAbuse.json")
+        {
+            doMonsterAbuse();
+        }
+        else if (convoName == "noMonsterAbuse.json")
+        {
+            doNoMonsterAbuse();
         }
     }
 
@@ -231,4 +173,177 @@ public class DialogueController : MonoBehaviour {
         return GameObject.Find(name);
     }
 
+    void doIntro()
+    {
+        switch (currentSpecial)
+        {
+            case 0:
+                break;
+            case 1:
+                // start walking
+                currentSpecial = 0;
+                for (int i = 0; i < orderedNames.Length; ++i)
+                {
+                    playerObject = findPlayerObject(orderedNames[i]);
+                    if (playerObject != null)
+                        playerObject.GetComponent<HeroMovement>().moveCharacter(1, 400);
+                }
+                break;
+            case 2:
+                if (timePause == 0)
+                {
+                    // Jump Kitty onto screen
+
+                    timePause = 1f;// stop Kitty jump in 1 second
+
+                    updateTime = Time.time + timePause;
+
+                    findPlayerObject("Kitty").GetComponent<HeroMovement>().jumpCharacter(3500f, 3500f);
+                }
+                else if (Time.time >= updateTime)
+                {
+
+                    // stop kitty's slide
+                    findPlayerObject("Kitty").GetComponent<Rigidbody2D>().isKinematic = true;
+                    findPlayerObject("Kitty").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                    findPlayerObject("Kitty").GetComponent<Rigidbody2D>().isKinematic = false;
+                    findPlayerObject("Kitty").GetComponent<HeroMovement>().moveCharacter(1, 400);
+
+                    // Flip Ryker
+                    findPlayerObject("Ryker").GetComponent<HeroMovement>().Flip();
+                    findPlayerObject("Ryker").GetComponent<HeroMovement>().jumpCharacter(0, 1000f);
+
+                    currentSpecial = 0;
+                    timePause = 0;
+                }
+                break;
+            case 3:
+                // Flip Ryker back
+
+                findPlayerObject("Ryker").GetComponent<HeroMovement>().Flip();
+                currentSpecial = 0;
+                break;
+            case 4:
+                if (timePause == 0)
+                {
+                    // Wait a bit then flip Agni
+
+                    timePause = 3f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (Time.time >= updateTime)
+                {
+                    findPlayerObject("Agni").GetComponent<HeroMovement>().Flip();
+
+                    currentSpecial = 0;
+                    timePause = 0;
+                }
+                break;
+            case 5:
+                // Start moving Dr G
+                findPlayerObject("Agni").GetComponent<HeroMovement>().Flip();
+                drGtime = true;
+                currentSpecial = 0;
+                timePause = 0;
+                break;
+            case 6:
+                // faster heroes
+                for (int i = 0; i < orderedNames.Length; ++i)
+                {
+                    playerObject = findPlayerObject(orderedNames[i]);
+                    // considered making Ryker faster, but he's a chicken
+                    if (playerObject != null)
+                        playerObject.GetComponent<HeroMovement>().moveCharacter(1, 700);
+                }
+                break;
+        }
+        if (drGtime)
+            drG.transform.position = new Vector3(drG.transform.position.x + 0.5f, 25f + (Mathf.Sin(2 * Time.time) * 5), drG.transform.position.z);
+    }
+
+    void doPreBoss()
+    {
+        switch (currentSpecial)
+        {
+            case 0:
+                break;
+            case 1:
+                currentSpecial = 0;
+                findPlayerObject("Milo").GetComponent<HeroMovement>().Flip();
+                drGtime = true;
+                break;
+            case 2:
+                currentSpecial = 0;
+                findPlayerObject("Milo").GetComponent<HeroMovement>().Flip();
+                break;
+            case 3:
+                if (timePause == 0)
+                {
+                    timePause = 1f;
+
+                    updateTime = Time.time + timePause;
+                    currentSpecial = 0;
+                    
+
+                    monsterTime = true;
+                    
+                }
+                break;
+        }
+        if (drGtime)
+            drG.transform.position = new Vector3(drG.transform.position.x, 15f + (Mathf.Sin(2 * Time.time) * 5), drG.transform.position.z);
+        if (monsterTime)
+        {
+            GameObject bosshead = findPlayerObject("BossHead");
+            bosshead.transform.position = new Vector3(bosshead.transform.position.x, bosshead.transform.position.y + 0.4f, bosshead.transform.position.z);
+            if (Time.time >= updateTime)
+            {
+                if (!miloMoved)
+                {
+                    timePause = 0;
+                    miloMoved = true;
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().jumpCharacter(-2050f, 4400f);
+                    findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = sittingMilo;
+                    Vector2 milosize = findPlayerObject("Milo").GetComponent<BoxCollider2D>().size;
+                    findPlayerObject("Milo").GetComponent<BoxCollider2D>().size = new Vector2(milosize.x, 17f);
+                    findPlayerObject("Main Camera").GetComponent<Camera2DFollow>().unLinkPlayers(findPlayerObject("BossHead").transform);
+                }
+
+            }
+            if (bosshead.transform.position.y >= 25f)
+                monsterTime = false;
+
+            // attach to below boss head
+            
+        }
+            
+    }
+
+    void doNoExcuse ()
+    {
+        switch (currentSpecial)
+        {
+            case 0:
+                break;
+        }
+    }
+
+    void doMonsterAbuse ()
+    {
+        switch (currentSpecial)
+        {
+            case 0:
+                break;
+        }
+    }
+
+    void doNoMonsterAbuse ()
+    {
+        switch (currentSpecial)
+        {
+            case 0:
+                break;
+        }
+    }
 }

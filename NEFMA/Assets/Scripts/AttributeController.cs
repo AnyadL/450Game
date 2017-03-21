@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AttributeController : MonoBehaviour {
 
@@ -210,6 +211,10 @@ public class AttributeController : MonoBehaviour {
                     }
                 }
             }
+        }
+        if (collision.gameObject.tag == "SceneChanger")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         if (collision.gameObject.tag == "DeathLine")
         {

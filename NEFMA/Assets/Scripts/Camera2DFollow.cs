@@ -109,7 +109,7 @@ public class Camera2DFollow : MonoBehaviour
     {
         cameraForced = true;
         targets.Clear();
-        if (optionalTarget == null)
+        if (optionalTarget != null)
         {
             targets.Add(optionalTarget);
         }

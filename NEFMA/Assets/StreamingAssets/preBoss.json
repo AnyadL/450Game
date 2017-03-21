@@ -1,0 +1,99 @@
+﻿{
+    "dialogue": 
+[
+    {
+        "Speaker": "Agni",
+        "Text": "Stop right there!",
+        "voFile": "",
+        "displayTime": 2,
+        "type": "Exclamation",
+        "special": 1
+    },
+    {
+        "Speaker": "Kitty",
+        "Text": "Do you have any idea what you’ve done?!",
+        "voFile": "",
+        "displayTime": 3,
+        "type": "Exclamation"
+    },
+    {
+        "Speaker": "Ryker",
+        "Text": "Yeah!",
+        "voFile": "",
+        "displayTime": 1,
+        "type": "Exclamation"
+    },
+    {
+        "Speaker": "Delilah",
+        "Text": "Not cool.",
+        "voFile": "",
+        "displayTime": 2,
+        "type": "Ellipsis"
+    },
+    {
+        "Speaker": "Agni",
+        "Text": "Milo?!",
+        "voFile": "",
+        "displayTime": 1,
+        "type": "Exclamation",
+        "special": 2
+    },
+    {
+        "Speaker": "Milo",
+        "Text": "Yes, it is me, Milo!  Saviour of Monsters!",
+        "voFile": "",
+        "displayTime": 3,
+        "type": "Exclamation"
+    },
+    {
+        "Speaker": "Kitty",
+        "Text": "Do you have any idea how many people you hurt?!",
+        "voFile": "",
+        "displayTime": 3,
+        "type": "Question"
+    },
+    {
+        "Speaker": "Milo",
+        "Text": "What did those monsters do to you?!  Well, you’re not getting the Doctor, not now!",
+        "voFile": "",
+        "displayTime": 5,
+        "type": "Exclamation"
+    },
+    {
+        "Speaker": "Dr. G",
+        "Text": "Calm down, Milo.",
+        "voFile": "",
+        "displayTime": 2,
+        "type": "Ellipsis"
+    },
+    {
+        "Speaker": "Ryker",
+        "Text": "Yeah, slow down a little.  It’s all over now.",
+        "voFile": "",
+        "displayTime": 4,
+        "type": "Ellipsis"
+    },
+    {
+        "Speaker": "Milo",
+        "Text": "No, I won't! You killed them!",
+        "voFile": "",
+        "displayTime": 3,
+        "type": "Exclamation"
+    },
+    {
+        "Speaker": "Dr. G",
+        "Text": "Come on Milo, you're better than this!",
+        "voFile": "",
+        "displayTime": 4,
+        "type": "Exclamation"
+    },
+    {
+        "Speaker": "Milo",
+        "Text": "Monsters, monsters, come and help your friend! Miiiiilllloooooo!",
+        "voFile": "",
+        "displayTime": 5,
+        "type": "Exclamation",
+        "special": 3
+    }
+]
+}
