@@ -38,6 +38,7 @@ public class AgniAttack : MonoBehaviour
             {
                 nextLittleFire = Time.time + littleCooldown;
                 RegularFire();
+                sfxSmallFireBall.pitch = Random.Range(1.0f, 1.5f);
                 sfxSmallFireBall.Play();
             }
         }
