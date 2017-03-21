@@ -25,6 +25,7 @@ TagManager:
   - Secret Boss Hand
   - Fire
   - Water
+  - SceneChanger
   layers:
   - Default
   - TransparentFX

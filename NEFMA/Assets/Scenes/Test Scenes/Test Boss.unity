@@ -205,6 +205,21 @@ Prefab:
       propertyPath: targets.Array.data[0]
       value: 
       objectReference: {fileID: 1936397641}
+    - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0.39607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0.6313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f3b871b52a79fa49a641d1700387c80, type: 2}
   m_IsPrefabParent: 0
