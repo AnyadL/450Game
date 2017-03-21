@@ -45,6 +45,8 @@ public class Globals
     static public bool kittyChosen = false;
     static public bool agniChosen = false;
     static public bool rykerChosen = false;
+
+    static public int enemiesKilled = 0;
 }
 
 public class GlobalContainer : MonoBehaviour {

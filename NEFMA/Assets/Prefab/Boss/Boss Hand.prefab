@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33569115105146606}
   - component: {fileID: 23743466952589098}
   - component: {fileID: 61068599187266318}
+  - component: {fileID: 61829736317933566}
   - component: {fileID: 60526989922755570}
   - component: {fileID: 114213381888708802}
   - component: {fileID: 50955785128957378}
@@ -39,8 +40,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1296378600162086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 5, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 1}
+  m_LocalPosition: {x: 20, y: 10, z: 0}
+  m_LocalScale: {x: 15, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -111,15 +112,15 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1296378600162086}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ec0eefc74ac5abe4d94349b0a366b4d2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0, y: -2}
+    - - {x: -0.495, y: -0.5}
+      - {x: 0.495, y: -0.5}
+      - {x: 0, y: -1}
 --- !u!61 &61068599187266318
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -128,12 +129,26 @@ BoxCollider2D:
   m_GameObject: {fileID: 1296378600162086}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e5eead331cbe42c4f850aa3f812cab2e, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.45}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.96, y: 0.1}
+--- !u!61 &61829736317933566
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1296378600162086}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: ec0eefc74ac5abe4d94349b0a366b4d2, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -0.05}
+  serializedVersion: 2
+  m_Size: {x: 0.99, y: 0.9}
 --- !u!114 &114213381888708802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,10 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7dd03da98a5a248a4379bab1e7d96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftHand: 1
-  maxHeight: 0
+  leftHand: 0
+  maxHeight: 20
   minHeight: 0
-  velocity: {x: 0, y: 0}
+  velocity: {x: 0, y: 20}
   nextSwipe: 0
   swipeCooldown: 5
   moving: 1

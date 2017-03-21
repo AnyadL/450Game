@@ -483,6 +483,7 @@ MonoBehaviour:
   invincibiltyLength: 2
   enemyAI: {fileID: 0}
   speed: 0
+  dashing: 0
 --- !u!114 &114379807679598236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -509,7 +510,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   jump: 0
-  myLayer: 0
   inRange: 0
   playerNumber: -1
   inputNumber: -1
@@ -532,9 +532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd5bef391fe2824bb7c447be76e3d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  littleBulletPrefab: {fileID: 1387092101439704, guid: 57449aa2dc46d8044af4d2f55c765cc2,
+  littleBulletPrefab: {fileID: 1625668124173136, guid: 57449aa2dc46d8044af4d2f55c765cc2,
     type: 2}
-  bigBulletPrefab: {fileID: 1203249533886494, guid: a8a8442f104a9074ba94221213e5f469,
+  bigBulletPrefab: {fileID: 1931764051687336, guid: 89064f4c69a1d8b469d256f0ecfd7eda,
     type: 2}
   littleBulletVelocity: 40
   bigBulletVelocity: 15

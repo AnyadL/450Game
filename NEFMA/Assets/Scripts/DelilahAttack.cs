@@ -84,7 +84,7 @@ public class DelilahAttack : MonoBehaviour {
         {
             createWall();
             wallRight = myMovement.facingRight ? 1 : -1;
-            wall = Instantiate(wallPrefab, (transform.position + new Vector3(6 * wallRight, 1, 0)), Quaternion.identity);
+            wall = Instantiate(wallPrefab, (transform.position + new Vector3(6 * wallRight, 1.8f, 0)), Quaternion.identity);
             wall.GetComponent<DelilahWall>().owner = gameObject;
             wall.GetComponent<DelilahWall>().wallRight = wallRight;
         }

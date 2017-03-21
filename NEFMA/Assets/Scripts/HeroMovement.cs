@@ -55,15 +55,17 @@ public class HeroMovement : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump_" + inputNumber) && !Globals.gamePaused)
         {
-            if (grounded)
+            if (grounded && !myAttributes.knockbacked)
             {
                 jump = true;
             }
-            else if (candoublejump && isKitty)
+            else if (candoublejump && isKitty && !myAttributes.knockbacked)
             {
                 doublejump = true;
             }
         }
+
+        //Debug.Log(rb2d.velocity);
       
         //if (Input.GetButtonDown("Fire3_" + inputNumber) && !Globals.gamePaused)
         //{

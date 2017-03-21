@@ -6,7 +6,8 @@
             "Text": "OMG, can you believe Dr. G cancelled class on us again yesterday?",
             "voFile": "",
             "displayTime": 4,
-            "type":  "Question"
+            "type": "Question",
+            "special":  1
         },
         {
             "Speaker": "Agni",
@@ -40,30 +41,33 @@
             "Speaker": "Kitty",
             "Text": "Didja miss me?",
             "voFile": "",
-            "displayTime": 1,
+            "displayTime": 2,
             "type": "Question",
-            "special": 1
+            "special": 2
         },
         {
             "Speaker": "Ryker",
             "Text": "Holy crap!  You just about gave me a heart attack, Kitty!",
             "voFile": "",
             "displayTime": 3,
-            "type":  "Exclamation"
+            "type": "Exclamation",
+            "special": 3
         },
         {
             "Speaker": "Ryker",
             "Text": "Hey, so… does something seem odd to you guys today?",
             "voFile": "",
             "displayTime": 4,
-            "type":  "Question"
+            "type":  "Question",
+            "special": 4
         },
         {
             "Speaker": "Agni",
             "Text": "Hey, isn't that - ",
             "voFile": "",
             "displayTime": 2,
-            "type":  "Ellipsis"
+            "type":  "Ellipsis",
+            "special": 5
         },
         {
             "Speaker": "Kitty",
@@ -98,7 +102,8 @@
             "Text": "We have to go after him!",
             "voFile": "",
             "displayTime": 2,
-            "type":  "Exclamation"
+            "type": "Exclamation",
+            "special":  6
         },
         {
             "Speaker": "Ryker",
