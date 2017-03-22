@@ -86,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321060816576830}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 54.7, y: -8.797, z: 0}
+  m_LocalPosition: {x: 54.7, y: -8.97, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 4821684112757508}
@@ -188,12 +188,12 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321060816576830}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9ea286d65a8681a46b5d1985ba174e0a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.332
+  m_Volume: 0
   m_Pitch: 1.33
   Loop: 0
   Mute: 0
@@ -284,10 +284,14 @@ MonoBehaviour:
   projectileVelocity: 0
   nextProjectileFire: 0
   projectileCooldown: 0
+  projectileBurstCooldown: 0.3
   projectilePrefab: {fileID: 0}
   ghostOverride: 0
   xRange: 0
   yRange: 0
+  rangedBurst: 0
+  numberRangedBurst: 3
+  bullseye: {fileID: 0}
 --- !u!114 &114340048299960162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,6 +312,7 @@ MonoBehaviour:
   invincibiltyLength: 2
   enemyAI: {fileID: 0}
   speed: 0
+  dashing: 0
 --- !u!114 &114526745114914402
 MonoBehaviour:
   m_ObjectHideFlags: 1
