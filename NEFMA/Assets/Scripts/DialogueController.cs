@@ -189,7 +189,7 @@ public class DialogueController : MonoBehaviour {
                 for (int i = 0; i < orderedNames.Length; ++i)
                 {
                     playerObject = findPlayerObject(orderedNames[i]);
-                    if (playerObject != null)
+                    if (playerObject != null && playerObject.name != "Dr. G")
                         playerObject.GetComponent<HeroMovement>().moveCharacter(1, 400);
                 }
                 break;
@@ -257,8 +257,23 @@ public class DialogueController : MonoBehaviour {
                 {
                     playerObject = findPlayerObject(orderedNames[i]);
                     // considered making Ryker faster, but he's a chicken
-                    if (playerObject != null)
+                    if (playerObject != null && playerObject.name != "Dr. G")
                         playerObject.GetComponent<HeroMovement>().moveCharacter(1, 700);
+                }
+                break;
+            case 7:
+                if (timePause == 0)
+                {
+                    timePause = 3f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (Time.time >= updateTime)
+                {
+                    // fade out
+                    Globals.gamePaused = false;
+                    Globals.fading = true;
+                    Globals.fadeDir = 1;
                 }
                 break;
         }
@@ -273,9 +288,7 @@ public class DialogueController : MonoBehaviour {
             case 0:
                 break;
             case 1:
-                print("Fading");
-                Globals.fading = true;
-                Globals.fadeDir = -1;
+
                 currentSpecial = 0;
                 findPlayerObject("Milo").GetComponent<HeroMovement>().Flip();
                 drGtime = true;
@@ -321,6 +334,7 @@ public class DialogueController : MonoBehaviour {
                 }
                 else
                 {
+                    // fade out
                     Globals.gamePaused = false;
                     Globals.fading = true;
                     Globals.fadeDir = 1;

@@ -124,7 +124,8 @@
             "Text": "We’re the only ones here.",
             "voFile": "",
             "displayTime": 2,
-            "type":  "Ellipsis"
+            "type": "Ellipsis",
+            "special": 7
         }
     ] 
 }

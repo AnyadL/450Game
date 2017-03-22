@@ -12,6 +12,13 @@ public class sceneTransition : MonoBehaviour {
 
     private Color tmpColor;
 
+    void Start()
+    {
+        // fade in
+        Globals.fading = true;
+        Globals.fadeDir = -1;
+    }
+
     void Update()
     {
         if (Globals.fading)
