@@ -214,7 +214,7 @@ public class AttributeController : MonoBehaviour {
         }
         if (collision.gameObject.tag == "SceneChanger")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            collision.GetComponent<LoadNextScene>().LoadScene();
         }
         if (collision.gameObject.tag == "DeathLine")
         {

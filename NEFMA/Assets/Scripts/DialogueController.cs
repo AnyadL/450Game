@@ -15,6 +15,8 @@ public class DialogueController : MonoBehaviour {
 
     public Sprite sittingMilo;
 
+    public Texture2D fadeTexture;
+
     private GameObject bubble;
 
     private GameObject playerObject;
@@ -33,10 +35,12 @@ public class DialogueController : MonoBehaviour {
     private string convoName;
     
     private bool drGtime = false;
+    private float drGmove = 0f;
     private bool monsterTime = false;
     private bool miloMoved = false;
-
+    
     private Vector3 tempTransform;
+    
 
     // Use this for initialization
     public void initialize(string conversationName) {
@@ -185,7 +189,7 @@ public class DialogueController : MonoBehaviour {
                 for (int i = 0; i < orderedNames.Length; ++i)
                 {
                     playerObject = findPlayerObject(orderedNames[i]);
-                    if (playerObject != null)
+                    if (playerObject != null && playerObject.name != "Dr. G")
                         playerObject.GetComponent<HeroMovement>().moveCharacter(1, 400);
                 }
                 break;
@@ -253,8 +257,23 @@ public class DialogueController : MonoBehaviour {
                 {
                     playerObject = findPlayerObject(orderedNames[i]);
                     // considered making Ryker faster, but he's a chicken
-                    if (playerObject != null)
+                    if (playerObject != null && playerObject.name != "Dr. G")
                         playerObject.GetComponent<HeroMovement>().moveCharacter(1, 700);
+                }
+                break;
+            case 7:
+                if (timePause == 0)
+                {
+                    timePause = 3f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (Time.time >= updateTime)
+                {
+                    // fade out
+                    Globals.gamePaused = false;
+                    Globals.fading = true;
+                    Globals.fadeDir = 1;
                 }
                 break;
         }
@@ -269,6 +288,7 @@ public class DialogueController : MonoBehaviour {
             case 0:
                 break;
             case 1:
+
                 currentSpecial = 0;
                 findPlayerObject("Milo").GetComponent<HeroMovement>().Flip();
                 drGtime = true;
@@ -287,12 +307,13 @@ public class DialogueController : MonoBehaviour {
                     
 
                     monsterTime = true;
-                    
+                    drGmove = 0.05f;
+
                 }
                 break;
         }
         if (drGtime)
-            drG.transform.position = new Vector3(drG.transform.position.x, 15f + (Mathf.Sin(2 * Time.time) * 5), drG.transform.position.z);
+            drG.transform.position = new Vector3(drG.transform.position.x + drGmove, 12f + (Mathf.Sin(2 * Time.time) * 2), drG.transform.position.z);
         if (monsterTime)
         {
             GameObject bosshead = findPlayerObject("BossHead");
@@ -308,13 +329,20 @@ public class DialogueController : MonoBehaviour {
                     Vector2 milosize = findPlayerObject("Milo").GetComponent<BoxCollider2D>().size;
                     findPlayerObject("Milo").GetComponent<BoxCollider2D>().size = new Vector2(milosize.x, 17f);
                     findPlayerObject("Main Camera").GetComponent<Camera2DFollow>().unLinkPlayers(findPlayerObject("BossHead").transform);
+                    timePause = 1f;
+                    updateTime = Time.time + timePause;
+                }
+                else
+                {
+                    // fade out
+                    Globals.gamePaused = false;
+                    Globals.fading = true;
+                    Globals.fadeDir = 1;
                 }
 
             }
             if (bosshead.transform.position.y >= 25f)
                 monsterTime = false;
-
-            // attach to below boss head
             
         }
             

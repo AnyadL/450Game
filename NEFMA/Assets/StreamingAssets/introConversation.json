@@ -25,9 +25,16 @@
         },
         {
             "Speaker": "Agni",
-            "Text": "Not everyone’s a speedster like you, Ryker!  Well, he better not have cancelled class again or I’m gonna flip!",
+            "Text": "Not everyone’s a speedster like you, Ryker!",
             "voFile": "",
-            "displayTime": 5,
+            "displayTime": 3,
+            "type":  "Exclamation"
+        },
+        {
+            "Speaker": "Agni",
+            "Text": "He better not have cancelled class again or I’m gonna flip!",
+            "voFile": "",
+            "displayTime": 4,
             "type":  "Exclamation"
         },
         {
@@ -92,7 +99,7 @@
         },
         {
             "Speaker": "Dr. G",
-            "Text": "I’m kinda being kidnapped hereeeeeee!",
+            "Text": "I’m being kidnapped!",
             "voFile": "",
             "displayTime": 3,
             "type":  "Exclamation"
@@ -117,7 +124,8 @@
             "Text": "We’re the only ones here.",
             "voFile": "",
             "displayTime": 2,
-            "type":  "Ellipsis"
+            "type": "Ellipsis",
+            "special": 7
         }
     ] 
 }
