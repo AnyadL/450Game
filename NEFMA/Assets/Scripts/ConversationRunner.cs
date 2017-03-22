@@ -84,11 +84,6 @@ public class ConversationRunner : MonoBehaviour {
 
         conversationLoaded = false;
         currIndex = 0;
-
-        Globals.gamePaused = false;
-
-        // load next scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     // Load a conversation from the provided file path.
