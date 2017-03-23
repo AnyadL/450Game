@@ -19,8 +19,9 @@ public class sfxWalking : MonoBehaviour {
             sfxFootstep.pitch = Random.Range(1.2f, 1.5f);
             sfxFootstep.Play();
         }
-        if(hm.jump == true)
+        if(hm.jump == true && sfxJump.isPlaying == false)
         {
+            sfxJump.pitch = Random.Range(1.0f, 1.3f);
             sfxJump.Play();
         }
 	}
