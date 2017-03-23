@@ -3,8 +3,9 @@
     "Speaker":"Milo",
     "Text":"Gah!  You’re strong, but I’m not done yet!",
     "voFile":"",
-    "displayTime":3,
-    "type": "Exclamation"
+    "displayTime":9,
+    "type": "Exclamation",
+    "special":  1
   },
   {
     "Speaker":"Agni",
@@ -46,14 +47,15 @@
     "Text":"Like that’ll sway - wait, what?",
     "voFile":"",
     "displayTime":4,
-    "type": "Question"
+    "type": "Question",
+    "special":  2
   }, 
   {
     "Speaker":"Milo",
     "Text":"Mr. Fluffy! You're okay!",
     "voFile":"",
     "displayTime":4,
-    "type": "Ellipsis"
+    "type": "Exclamation"
   }, 
   {
     "Speaker":"Agni",
@@ -122,14 +124,16 @@
     "Speaker":"Milo",
     "Text":"Monsters, monsters, come and help your friend! Miiiiilllloooooo!",
     "voFile":"",
-    "displayTime":3,
-    "type": "Ellipsis"
+    "displayTime":9,
+    "type": "Exclamation",
+    "special":  3
   },
   {
     "Speaker":"Milo",
     "Text":"What was that about a park?",
     "voFile":"",
-    "displayTime":3,
-    "type": "Question"
+    "displayTime":10,
+    "type": "Question",
+    "special":  4
   }
 ] }
