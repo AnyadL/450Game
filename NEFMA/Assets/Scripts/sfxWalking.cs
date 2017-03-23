@@ -16,6 +16,7 @@ public class sfxWalking : MonoBehaviour {
 	void Update () {
 		if(hm.grounded == true && hm.currentSpeed != 0 && sfxFootstep.isPlaying == false)
         {
+            sfxFootstep.pitch = Random.Range(1.2f, 1.5f);
             sfxFootstep.Play();
         }
         if(hm.jump == true)

@@ -11,11 +11,10 @@ public class BossHand : MonoBehaviour {
     public float minHeight = 0;
     private float currentMaxHeight = 0;
     private float currentMinHeight = 0;
-    public Vector2 velocity = new Vector2(0, 0);
-    [HideInInspector] public float nextSwipe;
-    public float swipeCooldown = 10f;
     public bool moving = true;
-    [HideInInspector] public float nextMove = 0;
+    public float downForce = 6;
+    public float upForce = 0.2f;
+    [HideInInspector] public float midpoint = 0;
 
     // Use this for initialization
     void Start () {
@@ -23,53 +22,37 @@ public class BossHand : MonoBehaviour {
         myController = GameObject.FindWithTag("Boss Controller").GetComponent<BossController>();
         if (leftHand)
         {
-            myController.registerBodyPart(gameObject, -1);
+            myController.registerHand(gameObject, -1);
         }
         else
         {
-            myController.registerBodyPart(gameObject, 1);
+            myController.registerHand(gameObject, 1);
         }
+        midpoint = (Mathf.Abs(maxHeight - minHeight) / 2) + 0.2f;
         currentMaxHeight = maxHeight;
         currentMinHeight = minHeight;
-        nextSwipe = Time.time + swipeCooldown;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (!moving)
-        {
-            if (nextMove <= Time.time && nextMove != 0)
-            {
-                moving = true;
-            }
-        }
-        //if (nextSwipe <= Time.time && nextSwipe != 0)
-        //{
-        //    raiseHand(maxHeight);
-        //}
     }
 
-    public void raiseHand(float height)
+    public void handDown()
     {
-        currentMaxHeight = height;
-        currentMinHeight = height;
-        velocity.y = Mathf.Abs(velocity.y);
-        moving = true;
-        nextSwipe = 0;
+        myBody.velocity -= new Vector2(0, downForce);
     }
 
-    public void resetHands(int hand)
+    public void handUp()
     {
-        currentMaxHeight = maxHeight;
-        currentMinHeight = minHeight;
-        if (hand == 1)
+        // Speeding up
+        if (myBody.position.y <= midpoint)
         {
-            moving = true;
+            myBody.velocity += new Vector2(0, upForce);
         }
+        // Slowing down
         else
         {
-            moving = false;
-            nextMove = Time.time + velocity.y / maxHeight;
+            myBody.velocity -= new Vector2(0, upForce);
         }
     }
 
@@ -79,18 +62,47 @@ public class BossHand : MonoBehaviour {
         {
             return;
         }
-        if (currentMaxHeight != currentMinHeight || myBody.position.y <= currentMaxHeight)
+        // Headed Downwards
+        if (myBody.velocity.y <= 0)
         {
-            if ((myBody.position.y >= currentMaxHeight || myBody.position.y <= currentMinHeight ) && currentMaxHeight != currentMinHeight)
+            if (myBody.position.y > currentMinHeight)
             {
-                velocity.y = -velocity.y;
+                handDown();
             }
-            myBody.MovePosition(myBody.position + velocity * Time.fixedDeltaTime);
+            else
+            {
+                myBody.velocity = new Vector2(0, 0);
+                StartCoroutine(slamHands());
+            }
         }
-        if (currentMaxHeight == currentMinHeight && myBody.position.y >= currentMaxHeight)
+        // Headed Upwards
+        else
         {
-            moving = false;
-            nextMove = 0;
+            if (myBody.position.y < currentMaxHeight)
+            {
+                handUp();
+            }
+            else
+            {
+                myBody.velocity = new Vector2(0, 0);
+                StartCoroutine(waitHands());
+            }
         }
+    }
+
+    IEnumerator slamHands()
+    {
+        moving = false;
+        yield return new WaitForSeconds(1);
+        handUp();
+        moving = true;
+    }
+
+    IEnumerator waitHands()
+    {
+        moving = false;
+        yield return new WaitForSeconds(1);
+        handDown();
+        moving = true;
     }
 }

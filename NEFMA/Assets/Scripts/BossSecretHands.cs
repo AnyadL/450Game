@@ -15,11 +15,11 @@ public class BossSecretHands : MonoBehaviour {
         myController = GameObject.FindWithTag("Boss Controller").GetComponent<BossController>();
         if (leftHand)
         {
-            myController.registerBodyPart(gameObject, -2);
+            myController.registerSecretHand(gameObject, -1);
         }
         else
         {
-            myController.registerBodyPart(gameObject, 2);
+            myController.registerSecretHand(gameObject, 1);
         }
     }
 	

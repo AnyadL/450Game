@@ -42,12 +42,15 @@ public class EnemyAI : MonoBehaviour {
     public int numberRangedBurst = 3;
 
     public GameObject bullseye = null;
+    public AudioSource sfxfrog_attack;
+
+  
+    
 
     void Start() {
         myBody = this.GetComponent<Rigidbody2D>();
         myAttributes = this.GetComponent<AttributeController>();
         currentMoveForce = moveForce;
-
         // dont need anymore?
         if (this.GetComponent<SpriteRenderer>().flipX)
         {
@@ -181,6 +184,11 @@ public class EnemyAI : MonoBehaviour {
             GameObject newBullet = Instantiate(projectilePrefab, wallCheck.position, Quaternion.identity) as GameObject;
             newBullet.tag = "EnemyAttack";
             //newBullet.transform.rotation = gameObject.transform.rotation;
+            if (sfxfrog_attack != null)
+            {
+                sfxfrog_attack.pitch = Random.Range(1.0f, 1.5f);    
+                sfxfrog_attack.Play();
+            }
             newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(xcomp, ycomp);
         }
         else if (bullseye)
@@ -212,7 +220,13 @@ public class EnemyAI : MonoBehaviour {
             //Creates the bullet and makes it move
             GameObject newBullet = Instantiate(projectilePrefab, wallCheck.position, Quaternion.identity) as GameObject;
             newBullet.tag = "EnemyAttack";
-
+            //Play sound of bullet being created
+            if(sfxfrog_attack != null)
+            {
+                sfxfrog_attack.pitch = Random.Range(1.0f, 1.5f);
+                sfxfrog_attack.Play();
+            }
+            
             newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(xcomp, ycomp);
         }
         else if (rangedBurst != 0)
