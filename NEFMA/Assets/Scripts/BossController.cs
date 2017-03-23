@@ -15,11 +15,6 @@ public class BossController : MonoBehaviour {
     [HideInInspector] public BossSecretHands mySecretLeftHandScript;
     [HideInInspector] public BossSecretHands mySecretRightHandScript;
     public GameObject allyPrefab;
-    private int parts = 0;
-    public int numberOfParts = 3;
-    [HideInInspector] public float lowerHands = 0;
-    [HideInInspector] public float nextSwipe;
-    public float swipeCooldown = 10f;
     [HideInInspector] public float nextFireball;
     public float fireballCooldown = 15f;
     [HideInInspector] public float nextSpawn;
@@ -27,26 +22,12 @@ public class BossController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        nextSwipe = Time.time + swipeCooldown;
         nextFireball = Time.time + fireballCooldown;
         nextSpawn = Time.time + spawnCooldown;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (lowerHands <= Time.time && lowerHands != 0)
-        {
-            myLeftHandScript.resetHands(0);
-            myRightHandScript.resetHands(1);
-            lowerHands = 0;
-        }
-        if (nextSwipe <= Time.time)
-        {
-            myLeftHandScript.raiseHand(myLeftHandScript.maxHeight);
-            myRightHandScript.raiseHand(myLeftHandScript.maxHeight);
-            nextSwipe = Time.time + swipeCooldown;
-            lowerHands = Time.time + 2;
-        }
         if (nextFireball <= Time.time)
         {
             myHeadScript.fireballs();
@@ -66,27 +47,10 @@ public class BossController : MonoBehaviour {
         enemy2.GetComponent<EnemyAI>().Flip();
     }
 
-    public void registerBodyPart(GameObject part, int num)
+    // left = -1, right = 1
+    public void registerHand(GameObject part, int num)
     {
-        Debug.Log("registerBodyPart called with num = " + num);
-        if (num == -2)
-        {
-            if (mySecretLeftHand == null)
-            {
-                mySecretLeftHand = part;
-                mySecretLeftHandScript = mySecretLeftHand.GetComponent<BossSecretHands>();
-                if (myLeftHand != null)
-                {
-                    mySecretLeftHandScript.linkHand(myLeftHand);
-                }
-            }
-            else
-            {
-                Debug.Log("Bad body part number given to registerBodyPart (Received num = -2) (Already recieved -2)");
-                return;
-            }
-        }
-        else if (num == -1)
+        if (num == -1)
         {
             if (myLeftHand == null)
             {
@@ -96,24 +60,6 @@ public class BossController : MonoBehaviour {
                 {
                     mySecretLeftHandScript.linkHand(myLeftHand);
                 }
-            }
-            else
-            {
-                Debug.Log("Bad body part number given to registerBodyPart (Received num = -1) (Already recieved -1)");
-                return;
-            }
-        }
-        else if (num == 0)
-        {
-            if (myHead == null)
-            {
-                myHead = part;
-                myHeadScript = myHead.GetComponent<BossHead>();
-            }
-            else
-            {
-                Debug.Log("Bad body part number given to registerBodyPart (Received num = 0) (Already recieved 0)");
-                return;
             }
         }
         else if (num == 1)
@@ -127,13 +73,25 @@ public class BossController : MonoBehaviour {
                     mySecretRightHandScript.linkHand(myRightHand);
                 }
             }
-            else
+        }
+    }
+
+    // left = -1, right = 1
+    public void registerSecretHand(GameObject part, int num)
+    {
+        if (num == -1)
+        {
+            if (mySecretLeftHand == null)
             {
-                Debug.Log("Bad body part number given to registerBodyPart (Received num = 1) (Already recieved 1)");
-                return;
+                mySecretLeftHand = part;
+                mySecretLeftHandScript = mySecretLeftHand.GetComponent<BossSecretHands>();
+                if (myLeftHand != null)
+                {
+                    mySecretLeftHandScript.linkHand(myLeftHand);
+                }
             }
         }
-        else if (num == 2)
+        else if (num == 1)
         {
             if (mySecretRightHand == null)
             {
@@ -144,17 +102,15 @@ public class BossController : MonoBehaviour {
                     mySecretRightHandScript.linkHand(myRightHand);
                 }
             }
-            else
-            {
-                Debug.Log("Bad body part number given to registerBodyPart (Received num = 2) (Already recieved 2)");
-                return;
-            }
         }
-        else
+    }
+
+    public void registerHead(GameObject part)
+    {
+        if (myHead == null)
         {
-            Debug.Log("Bad body part number given to registerBodyPart (Received num = " + num + ")");
-            return;
+            myHead = part;
+            myHeadScript = myHead.GetComponent<BossHead>();
         }
-        parts++;
     }
 }

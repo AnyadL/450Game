@@ -12,7 +12,7 @@ public class BossHead : MonoBehaviour {
     void Start () {
         //myBody = this.GetComponent<Rigidbody2D>();
         myController = GameObject.FindWithTag("Boss Controller").GetComponent<BossController>();
-        myController.registerBodyPart(gameObject, 0);
+        myController.registerHead(gameObject);
     }
 	
 	// Update is called once per frame
