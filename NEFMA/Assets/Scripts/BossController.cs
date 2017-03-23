@@ -5,11 +5,13 @@ using UnityEngine;
 public class BossController : MonoBehaviour {
 
     [HideInInspector] public GameObject myHead;
+    [HideInInspector] public GameObject myTail;
     [HideInInspector] public GameObject myLeftHand;
     [HideInInspector] public GameObject mySecretLeftHand;
     [HideInInspector] public GameObject myRightHand;
     [HideInInspector] public GameObject mySecretRightHand;
     [HideInInspector] public BossHead myHeadScript;
+    [HideInInspector] public BossTail myTailScript;
     [HideInInspector] public BossHand myLeftHandScript;
     [HideInInspector] public BossHand myRightHandScript;
     [HideInInspector] public BossSecretHands mySecretLeftHandScript;
@@ -111,6 +113,15 @@ public class BossController : MonoBehaviour {
         {
             myHead = part;
             myHeadScript = myHead.GetComponent<BossHead>();
+        }
+    }
+
+    public void registerTail(GameObject part)
+    {
+        if (myTail == null)
+        {
+            myTail = part;
+            myTailScript = myTail.GetComponent<BossTail>();
         }
     }
 }
