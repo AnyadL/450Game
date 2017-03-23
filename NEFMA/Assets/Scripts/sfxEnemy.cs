@@ -26,10 +26,7 @@ public class sfxEnemy : MonoBehaviour {
             }
             else if (ea.isRanged == true) //If enemy is a froggy
             {
-                if(Time.time > ea.nextProjectileFire && frog_attack.isPlaying ==false && frog_attack != null)
-                {
-                    frog_attack.Play();
-                }
+ 
             }
             else if (ea.ghostOverride == true) //If ghost
             {

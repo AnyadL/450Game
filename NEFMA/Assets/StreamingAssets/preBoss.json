@@ -17,22 +17,8 @@
         "type": "Exclamation"
     },
     {
-        "Speaker": "Ryker",
-        "Text": "Yeah!",
-        "voFile": "",
-        "displayTime": 1,
-        "type": "Exclamation"
-    },
-    {
         "Speaker": "Delilah",
-        "Text": "Not cool.",
-        "voFile": "",
-        "displayTime": 2,
-        "type": "Ellipsis"
-    },
-    {
-        "Speaker": "Agni",
-        "Text": "Milo?!",
+        "Text": "Wait... Milo?!",
         "voFile": "",
         "displayTime": 1,
         "type": "Exclamation",
@@ -40,23 +26,30 @@
     },
     {
         "Speaker": "Milo",
-        "Text": "Yes, it is me, Milo!  Saviour of Monsters!",
+        "Text": "Yes, it is me, Milo! Saviour of Monsters!",
         "voFile": "",
         "displayTime": 3,
         "type": "Exclamation"
     },
     {
         "Speaker": "Kitty",
-        "Text": "Do you have any idea how many people you hurt?!",
+        "Text": "Do you have any idea how many people you hurt?",
         "voFile": "",
         "displayTime": 3,
         "type": "Question"
     },
     {
         "Speaker": "Milo",
-        "Text": "What did those monsters do to you?!  Well, you’re not getting the Doctor, not now!",
+        "Text": "What did those monsters do to you?!",
         "voFile": "",
-        "displayTime": 5,
+        "displayTime": 3,
+        "type": "Question"
+    },
+    {
+        "Speaker": "Milo",
+        "Text": "You're not getting the Professor, not now!",
+        "voFile": "",
+        "displayTime": 3,
         "type": "Exclamation"
     },
     {
@@ -68,7 +61,7 @@
     },
     {
         "Speaker": "Ryker",
-        "Text": "Yeah, slow down a little.  It’s all over now.",
+        "Text": "Yeah, slow down a little.  It’s over now.",
         "voFile": "",
         "displayTime": 4,
         "type": "Ellipsis"
