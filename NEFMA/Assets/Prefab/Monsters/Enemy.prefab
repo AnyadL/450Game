@@ -188,7 +188,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321060816576830}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9ea286d65a8681a46b5d1985ba174e0a, type: 3}
@@ -292,6 +292,7 @@ MonoBehaviour:
   rangedBurst: 0
   numberRangedBurst: 3
   bullseye: {fileID: 0}
+  sfxfrog_attack: {fileID: 0}
 --- !u!114 &114340048299960162
 MonoBehaviour:
   m_ObjectHideFlags: 1
