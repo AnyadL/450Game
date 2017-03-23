@@ -350,10 +350,38 @@ public class DialogueController : MonoBehaviour {
 
     void doNoExcuse ()
     {
+
         switch (currentSpecial)
         {
             case 0:
                 break;
+            case 1:
+                drGmove = -0.05f;
+                currentSpecial = 0;
+
+                drGtime = true;
+                break;
+            case 2:
+                if (timePause == 0)
+                {
+                    timePause = 3f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (Time.time >= updateTime)
+                {
+                    // fade out
+                    Globals.gamePaused = false;
+                    Globals.fading = true;
+                    Globals.fadeDir = 1;
+                }
+                break;
+        }
+        if (drGtime)
+        {
+            if (drG.transform.position.x <= 45f)
+                drGmove = 0;
+            drG.transform.position = new Vector3(drG.transform.position.x + drGmove, 12f + (Mathf.Sin(2 * Time.time) * 2), drG.transform.position.z);
         }
     }
 
@@ -363,15 +391,99 @@ public class DialogueController : MonoBehaviour {
         {
             case 0:
                 break;
+            case 1:
+                drGmove = -0.05f;
+                currentSpecial = 0;
+
+                drGtime = true;
+                break;
+            case 2:
+                if (timePause == 0)
+                {
+                    timePause = 2f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (timePause == 2f && Time.time >= updateTime)
+                {
+                    timePause = 0.4f;
+
+                    updateTime = Time.time + timePause;
+
+                    findPlayerObject("Ryker").GetComponent<HeroMovement>().moveCharacter(1, 10600);
+                }
+                else if (Time.time >= updateTime)
+                {
+
+                    // stop kitty's slide
+                    findPlayerObject("Ryker").GetComponent<Rigidbody2D>().isKinematic = true;
+                    findPlayerObject("Ryker").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                    findPlayerObject("Ryker").GetComponent<Rigidbody2D>().isKinematic = false;
+
+                    currentSpecial = 0;
+                    timePause = 0;
+                }
+
+                break;
+            case 3:
+                if (timePause == 0)
+                {
+                    timePause = 3f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (Time.time >= updateTime)
+                {
+                    // fade out
+                    Globals.gamePaused = false;
+                    Globals.fading = true;
+                    Globals.fadeDir = 1;
+                }
+                break;
         }
+        if (drGtime)
+        {
+            if (drG.transform.position.x <= 45f)
+                drGmove = 0;
+            drG.transform.position = new Vector3(drG.transform.position.x + drGmove, 12f + (Mathf.Sin(2 * Time.time) * 2), drG.transform.position.z);
+        }
+            
     }
 
     void doNoMonsterAbuse ()
     {
+
         switch (currentSpecial)
         {
             case 0:
                 break;
+            case 1:
+                drGmove = -0.05f;
+                currentSpecial = 0;
+
+                drGtime = true;
+                break;
+            case 2:
+                if (timePause == 0)
+                {
+                    timePause = 3f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (Time.time >= updateTime)
+                {
+                    // fade out
+                    Globals.gamePaused = false;
+                    Globals.fading = true;
+                    Globals.fadeDir = 1;
+                }
+                break;
+        }
+        if (drGtime)
+        {
+            if (drG.transform.position.x <= 45f)
+                drGmove = 0;
+            drG.transform.position = new Vector3(drG.transform.position.x + drGmove, 12f + (Mathf.Sin(2 * Time.time) * 2), drG.transform.position.z);
         }
     }
 }
