@@ -41,7 +41,7 @@ public class DialogueController : MonoBehaviour {
     private bool drGtime = false;
     private float drGmove = 0f;
     private bool monsterTime = false;
-    private bool monstersMoving = false;
+    //private bool monstersMoving = false;
     private bool miloMoved = false;
     private float[] schreiHeights = new float[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     
@@ -67,15 +67,19 @@ public class DialogueController : MonoBehaviour {
         }
 
         int j = 0;
-        for (int i = 0; i < monsterList.Length; ++i)
+        if (monsterList != null)
         {
-            if (monsterList[i].name == "Schrei")
+            for (int i = 0; i < monsterList.Length; ++i)
             {
-                schreiHeights[j] = monsterList[i].transform.position.y;
-                ++j;
-            }
+                if (monsterList[i].name == "Schrei")
+                {
+                    schreiHeights[j] = monsterList[i].transform.position.y;
+                    ++j;
+                }
 
+            }
         }
+        
     }
 
     void FixedUpdate()
@@ -588,7 +592,7 @@ public class DialogueController : MonoBehaviour {
                     
 
                     monsterTime = true;
-                    monstersMoving = false;
+                    //monstersMoving = false;
                 }
                 break;
             case 4:
@@ -623,7 +627,7 @@ public class DialogueController : MonoBehaviour {
                 if (monsterList[i].name == "Loafer" && monsterList[i].GetComponent<Rigidbody2D>().velocity.x == 0f)
                 {
                     monsterList[i].GetComponent<HeroMovement>().moveCharacter(-1, 800f);
-                    monstersMoving = true;
+                    //monstersMoving = true;
                 }
                 else if (monsterList[i].name == "Soaker" && monsterList[i].transform.position.y < -9f)
                 {
