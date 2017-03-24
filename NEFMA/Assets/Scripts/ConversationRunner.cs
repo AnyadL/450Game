@@ -51,6 +51,10 @@ public class ConversationRunner : MonoBehaviour {
         if (Input.GetButton("Jump_0") || Input.GetButton("Jump_1") || Input.GetButton("Jump_2") || Input.GetButton("Jump_3") || Input.GetButton("Jump_4"))
         {
             end();
+            // fade out
+            Globals.gamePaused = false;
+            Globals.fading = true;
+            Globals.fadeDir = 1;
         }
     }
 
