@@ -67,15 +67,19 @@ public class DialogueController : MonoBehaviour {
         }
 
         int j = 0;
-        for (int i = 0; i < monsterList.Length; ++i)
+        if (monsterList != null)
         {
-            if (monsterList[i].name == "Schrei")
+            for (int i = 0; i < monsterList.Length; ++i)
             {
-                schreiHeights[j] = monsterList[i].transform.position.y;
-                ++j;
-            }
+                if (monsterList[i].name == "Schrei")
+                {
+                    schreiHeights[j] = monsterList[i].transform.position.y;
+                    ++j;
+                }
 
+            }
         }
+        
     }
 
     void FixedUpdate()
