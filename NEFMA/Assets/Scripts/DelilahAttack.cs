@@ -19,6 +19,9 @@ public class DelilahAttack : MonoBehaviour {
     [HideInInspector] public bool hasWall = false;
     [HideInInspector] public int wallRight;
 
+    public AudioSource sfxWallUp;
+    public AudioSource sfxWallDown;
+
     // Use this for initialization
     void Start()
     {
@@ -79,6 +82,12 @@ public class DelilahAttack : MonoBehaviour {
         {
             destroyWall();
             Destroy(wall);
+            
+            /*if (sfxWallDown != null && !sfxWallDown.isPlaying ) {
+                sfxWallDown.pitch = Random.Range(1.0f, 1.2f);
+                sfxWallDown.Play();
+            }*/
+
         }
         else
         {
@@ -87,6 +96,12 @@ public class DelilahAttack : MonoBehaviour {
             wall = Instantiate(wallPrefab, (transform.position + new Vector3(6 * wallRight, 1.8f, 0)), Quaternion.identity);
             wall.GetComponent<DelilahWall>().owner = gameObject;
             wall.GetComponent<DelilahWall>().wallRight = wallRight;
+
+            if (sfxWallUp != null && !sfxWallUp.isPlaying) {
+                sfxWallUp.pitch = Random.Range(1.2f, 1.5f);
+                sfxWallUp.Play();
+            }
+
         }
     }
 
