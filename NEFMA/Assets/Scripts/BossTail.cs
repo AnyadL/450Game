@@ -8,6 +8,8 @@ public class BossTail : MonoBehaviour {
     private BossController myController;
     public float maxX = 68;
     public float minX = -68;
+    public float maxY = 70;
+    public float minY = 60;
     private float startTime = 0;
     private float direction = -1;
     private float oldval = 0;
@@ -63,9 +65,9 @@ public class BossTail : MonoBehaviour {
     public void moveUp()
     {
         myBody.MovePosition(myBody.position + (Vector2.up * 10 * Time.fixedDeltaTime));
-        if (myBody.position.y >= 65)
+        if (myBody.position.y >= maxY)
         {
-            myBody.MovePosition(new Vector2(myBody.position.x, 65));
+            myBody.MovePosition(new Vector2(myBody.position.x, maxY));
             movingY = false;
             yDown = true;
             startTime = Time.time;
@@ -77,9 +79,9 @@ public class BossTail : MonoBehaviour {
     public void moveDown()
     {
         myBody.MovePosition(myBody.position - (Vector2.up * 10 * Time.fixedDeltaTime));
-        if (myBody.position.y <= 55)
+        if (myBody.position.y <= minY)
         {
-            myBody.MovePosition(new Vector2(myBody.position.x, 55));
+            myBody.MovePosition(new Vector2(myBody.position.x, minY));
             movingY = false;
             yDown = false;
             StartCoroutine(prepAttack());
