@@ -91,8 +91,8 @@ public class EnemyAI : MonoBehaviour {
 
         if (!isGrounded && !ghostOverride && !isBlocked)
         {
-            Debug.Log(groundCheck.position);
-            Debug.Log(groundCheck.position + (Vector3.right * 16));
+            //Debug.Log(groundCheck.position);
+            //Debug.Log(groundCheck.position + (Vector3.right * 16));
             isGrounded = Physics2D.Linecast(transform.position, groundCheck.position - (Vector3.right * 3 * facingRight), 1 << LayerMask.NameToLayer("Ground"));
             if (isGrounded)
             {

@@ -19,12 +19,17 @@ public class LoadNextScene : MonoBehaviour
     public void LoadScene()
     {
         print("Load Scene");
+        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1)
+            updateTime = Time.time;
+        else
+        {
+            updateTime = Time.time + 1f;
+            // fade out
+            Globals.gamePaused = false;
+            Globals.fading = true;
+            Globals.fadeDir = 1;
 
-        updateTime = Time.time + 1f;
-        // fade out
-        Globals.gamePaused = false;
-        Globals.fading = true;
-        Globals.fadeDir = 1;
+        }
     }
 
 
