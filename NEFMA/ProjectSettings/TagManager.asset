@@ -26,6 +26,7 @@ TagManager:
   - Fire
   - Water
   - SceneChanger
+  - BossAttack
   layers:
   - Default
   - TransparentFX

@@ -162,7 +162,8 @@ public class AttributeController : MonoBehaviour {
         {
             enemyCollisions(collision);
         }
-        if (gameObject.tag == "Player"){
+        if (gameObject.tag == "Player")
+        {
             playerCollisions(collision);
         }
     }
@@ -182,6 +183,14 @@ public class AttributeController : MonoBehaviour {
 
             }
             else if (collision.gameObject.tag == "EnemyAttack")
+            {
+                if (decreaseHealth(1.0f))
+                {
+                    takenDamage();
+                    knockback(collision.gameObject.transform.position.x);
+                }
+            }
+            else if (collision.gameObject.tag == "BossAttack")
             {
                 if (decreaseHealth(1.0f))
                 {
@@ -316,6 +325,10 @@ public class AttributeController : MonoBehaviour {
             return;
         }
         else if (collision.gameObject.tag == "EnemyAttack")
+        {
+            return;
+        }
+        else if (collision.gameObject.tag == "BossAttack")
         {
             return;
         }
