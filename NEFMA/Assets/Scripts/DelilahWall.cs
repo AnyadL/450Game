@@ -29,7 +29,7 @@ public class DelilahWall : MonoBehaviour {
     {
         if (!free)
         {
-            transform.position = owner.transform.position + new Vector3(6 * wallRight, 1.8f, 0);
+            transform.position = owner.transform.position + new Vector3(4 * wallRight, 1.8f, 0);
         }
     }
 

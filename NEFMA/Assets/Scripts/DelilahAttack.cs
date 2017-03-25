@@ -82,24 +82,27 @@ public class DelilahAttack : MonoBehaviour {
         {
             destroyWall();
             Destroy(wall);
-            
-            /*if (sfxWallDown != null && !sfxWallDown.isPlaying ) {
-                sfxWallDown.pitch = Random.Range(1.0f, 1.2f);
-                sfxWallDown.Play();
-            }*/
+
 
         }
         else
         {
             createWall();
             wallRight = myMovement.facingRight ? 1 : -1;
-            wall = Instantiate(wallPrefab, (transform.position + new Vector3(6 * wallRight, 1.8f, 0)), Quaternion.identity);
+            wall = Instantiate(wallPrefab, (transform.position + new Vector3(4* wallRight, 1.8f, 0)), Quaternion.identity);
             wall.GetComponent<DelilahWall>().owner = gameObject;
             wall.GetComponent<DelilahWall>().wallRight = wallRight;
 
             if (sfxWallUp != null && !sfxWallUp.isPlaying) {
                 sfxWallUp.pitch = Random.Range(1.2f, 1.5f);
                 sfxWallUp.Play();
+            }
+
+            if(myMovement.facingRight)
+            {
+                Vector3 theScale = wall.transform.localScale;
+                theScale.x *= -1;
+                wall.transform.localScale = theScale;
             }
 
         }
