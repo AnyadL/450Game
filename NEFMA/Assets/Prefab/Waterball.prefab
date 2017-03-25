@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61589948876979292}
   m_Layer: 0
   m_Name: Waterball
-  m_TagString: LittleAttack
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
