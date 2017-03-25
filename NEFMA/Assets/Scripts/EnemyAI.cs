@@ -84,9 +84,20 @@ public class EnemyAI : MonoBehaviour {
 
         isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
         // If theres no ground, turn around. Or if I hit a wall, turn around
-        if (!isBlocked && !isGrounded && !ghostOverride)
+        //if (!isBlocked && !isGrounded && !ghostOverride)
+        //{
+        //    Flip();
+        //}
+
+        if (!isGrounded && !ghostOverride && !isBlocked)
         {
-            Flip();
+            Debug.Log(groundCheck.position);
+            Debug.Log(groundCheck.position + (Vector3.right * 16));
+            isGrounded = Physics2D.Linecast(transform.position, groundCheck.position - (Vector3.right * 3 * facingRight), 1 << LayerMask.NameToLayer("Ground"));
+            if (isGrounded)
+            {
+                Flip();
+            }
         }
 
         if (isRanged && gameObject.GetComponent<Renderer>().isVisible)
