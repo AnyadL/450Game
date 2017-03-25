@@ -16,11 +16,14 @@ public class BossController : MonoBehaviour {
     [HideInInspector] public BossHand myRightHandScript;
     [HideInInspector] public BossSecretHands mySecretLeftHandScript;
     [HideInInspector] public BossSecretHands mySecretRightHandScript;
-    public GameObject allyPrefab;
+    public GameObject allyPrefab1;
+    public GameObject allyPrefab2;
+    public GameObject allyPrefab3;
     [HideInInspector] public float nextFireball;
     public float fireballCooldown = 15f;
     [HideInInspector] public float nextSpawn;
     public float spawnCooldown = 15f;
+    private int waveCount = 1;
 
     // Use this for initialization
     void Start () {
@@ -44,9 +47,35 @@ public class BossController : MonoBehaviour {
 
     void spawnAllies()
     {
-        Instantiate(allyPrefab, (transform.position + (transform.right * 72.5f) - (transform.up * 20)), Quaternion.identity);
-        GameObject enemy2 = Instantiate(allyPrefab, (transform.position - (transform.right * 72.5f) - (transform.up * 16)), Quaternion.identity);
+        if (waveCount % 3 == 0)
+        {
+            wave2();
+        }
+        else
+        {
+            wave1();
+        }
+        waveCount++;
+    }
+
+    void wave1()
+    {
+        Instantiate(allyPrefab1, (transform.position + (transform.right * 72.5f) - (transform.up * 20)), Quaternion.identity);
+        GameObject enemy2 = Instantiate(allyPrefab1, (transform.position - (transform.right * 72.5f) - (transform.up * 20)), Quaternion.identity);
         enemy2.GetComponent<EnemyAI>().Flip();
+    }
+
+    void wave2()
+    {
+        if (waveCount % 6 == 0)
+        {
+            GameObject enemy = Instantiate(allyPrefab3, (transform.position - (transform.right * 65) + (transform.up * 50)), Quaternion.identity);
+            enemy.GetComponent<EnemyAI>().Flip();
+        }
+        else
+        {
+            GameObject enemy = Instantiate(allyPrefab3, (transform.position + (transform.right * 65) + (transform.up * 50)), Quaternion.identity);
+        }
     }
 
     // left = -1, right = 1

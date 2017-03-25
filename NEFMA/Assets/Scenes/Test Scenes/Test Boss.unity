@@ -1088,13 +1088,31 @@ Prefab:
     - target: {fileID: 114617931778922626, guid: 17acafe0d1d53ce46be0121beddb8481,
         type: 2}
       propertyPath: spawnCooldown
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114617931778922626, guid: 17acafe0d1d53ce46be0121beddb8481,
         type: 2}
       propertyPath: swipeCooldown
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114617931778922626, guid: 17acafe0d1d53ce46be0121beddb8481,
+        type: 2}
+      propertyPath: allyPrefab1
+      value: 
+      objectReference: {fileID: 1321060816576830, guid: f4fd4d4a7176cf94dbe991af96777567,
+        type: 2}
+    - target: {fileID: 114617931778922626, guid: 17acafe0d1d53ce46be0121beddb8481,
+        type: 2}
+      propertyPath: allyPrefab2
+      value: 
+      objectReference: {fileID: 1217193743556796, guid: f26eb8cc3d1fbef4aa78c6f2b344b852,
+        type: 2}
+    - target: {fileID: 114617931778922626, guid: 17acafe0d1d53ce46be0121beddb8481,
+        type: 2}
+      propertyPath: allyPrefab3
+      value: 
+      objectReference: {fileID: 1323327057391826, guid: 5d7e7b30109f1d7439b6890448e488ba,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 17acafe0d1d53ce46be0121beddb8481, type: 2}
   m_IsPrefabParent: 0
