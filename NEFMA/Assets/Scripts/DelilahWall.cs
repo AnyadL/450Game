@@ -58,6 +58,8 @@ public class DelilahWall : MonoBehaviour {
     {
         yield return new WaitForSeconds(shieldTime);
         owner.GetComponent<DelilahAttack>().destroyWall();
+// var exp = GetComponent<ParticleSystem>();
+// exp.Play();
         Destroy(gameObject);
     }
 }

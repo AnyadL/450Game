@@ -132,6 +132,7 @@ void MakeWall()
 
     public void destroyWall()
     {
+
         hasWall = false;
         myMovement.currentMaxSpeed = myMovement.maxSpeed;
     }
