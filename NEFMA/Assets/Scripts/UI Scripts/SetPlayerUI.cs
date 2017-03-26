@@ -20,10 +20,12 @@ public class SetPlayerUI : MonoBehaviour {
         if (healthSlider != null)
         {
             health = myAttribute.getHealth();
+            healthSlider.maxValue = health;
             healthSlider.value = health;
         }
         if (powerSlider != null)
         {
+            powerSlider.maxValue = myAttribute.bigCooldown;
             powerSlider.value = myAttribute.bigCooldown;
             oldFire = 0;
         }

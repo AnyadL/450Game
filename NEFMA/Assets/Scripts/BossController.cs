@@ -47,7 +47,7 @@ public class BossController : MonoBehaviour {
 
     void spawnAllies()
     {
-        if (waveCount % 3 == 0)
+        if (waveCount % 6 == 0)
         {
             wave2();
         }
@@ -67,7 +67,7 @@ public class BossController : MonoBehaviour {
 
     void wave2()
     {
-        if (waveCount % 6 == 0)
+        if (waveCount % 12 == 0)
         {
             GameObject enemy = Instantiate(allyPrefab3, (transform.position - (transform.right * 65) + (transform.up * 50)), Quaternion.identity);
             enemy.GetComponent<EnemyAI>().Flip();
