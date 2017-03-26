@@ -384,7 +384,7 @@ public class AttributeController : MonoBehaviour {
 
             float velocityDirection = deflectVelocity;
 
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(velocityDirection, 100, 0), ForceMode2D.Impulse);
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(velocityDirection, 10, 0), ForceMode2D.Impulse);
 
 
         }
