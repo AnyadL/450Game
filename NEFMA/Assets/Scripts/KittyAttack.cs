@@ -15,12 +15,20 @@ public class KittyAttack : MonoBehaviour
     public float nextScratch;
     public float hissVelocity;
 
+    public Animator animator;
+    [HideInInspector] public bool BigAttack = false;
+    [HideInInspector] public bool LittleAttack = false;
+
     // Use this for initialization
     void Start()
     {
         //In order to figure out which way the character is facing I need to access the HeroMovement script
         hm = gameObject.GetComponent<HeroMovement>();
         myAttribute = gameObject.GetComponent<AttributeController>();
+        BigAttack = false;
+        LittleAttack = false;
+        animator = gameObject.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -31,9 +39,16 @@ public class KittyAttack : MonoBehaviour
             //Fire little fireballs
             if (Input.GetButtonDown("Fire1_"+hm.inputNumber) && !Globals.gamePaused)
             {
+                LittleAttack = true;
+                animator.SetBool("AttackLittle", LittleAttack);
                 nextScratch = Time.time + scratchCooldown;
                 ClawAttack();
             }
+        }
+        else
+        {
+            LittleAttack = false;
+            animator.SetBool("AttackLittle", LittleAttack);
         }
 
         if (Time.time >= myAttribute.nextBigFire)
@@ -41,9 +56,16 @@ public class KittyAttack : MonoBehaviour
             //Fire Big Fireballs
             if (Input.GetButtonDown("Fire2_"+hm.inputNumber) && !Globals.gamePaused)
             {
+                BigAttack = true;
+                animator.SetBool("AttackBig", BigAttack);
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
                 Hiss();
             }
+        }
+        else
+        {
+            BigAttack = false;
+            animator.SetBool("AttackBig", BigAttack);
         }
     }
 

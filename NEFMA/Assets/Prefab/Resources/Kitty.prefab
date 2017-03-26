@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114535607356744340}
   - component: {fileID: 82364402929636614}
   - component: {fileID: 82782871344199156}
+  - component: {fileID: 95623631146983276}
   m_Layer: 11
   m_Name: Kitty
   m_TagString: Player
@@ -301,6 +302,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95623631146983276
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034903816482958}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3fdc2a18e7cb57d46adfc2387f9acd76, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114132467024783754
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,6 +348,9 @@ MonoBehaviour:
   scratchCooldown: 1
   nextScratch: 0
   hissVelocity: 35
+  animator: {fileID: 0}
+  BigAttack: 0
+  LittleAttack: 0
 --- !u!114 &114469766115314282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,6 +372,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 1000
 --- !u!114 &114535607356744340
 MonoBehaviour:
   m_ObjectHideFlags: 1
