@@ -9,8 +9,9 @@ public class DelilahAttack : MonoBehaviour {
     public float fistVelocity;
     [HideInInspector] public GameObject wall;
 
-    public float wallVelocity = 10;
+    public float wallVelocity = 100;
     public float wallLifeTime = 5;
+    public float pushTime = 2;
 
     private HeroMovement myMovement;
     private AttributeController myAttribute;
@@ -18,15 +19,18 @@ public class DelilahAttack : MonoBehaviour {
     [HideInInspector] public float nextLittleFire;
     [HideInInspector] public bool hasWall = false;
     [HideInInspector] public int wallRight;
+    [HideInInspector] public bool wallFaceRight = false;
 
     public AudioSource sfxWallUp;
     public AudioSource sfxWallDown;
+    
 
     // Use this for initialization
     void Start()
     {
         myMovement = gameObject.GetComponent<HeroMovement>();
         myAttribute = gameObject.GetComponent<AttributeController>();
+        hasWall = false;
     }
 
     // Update is called once per frame
@@ -54,7 +58,14 @@ public class DelilahAttack : MonoBehaviour {
             if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber) && !Globals.gamePaused)
             {
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
-                BigFire();
+                MakeWall();
+            }
+        }
+        else if (wall)
+        {
+            if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber) && !Globals.gamePaused)
+            {
+                PushWall();
             }
         }
     }
@@ -73,22 +84,18 @@ public class DelilahAttack : MonoBehaviour {
             theScale.x *= -1;
             newBullet.transform.localScale = theScale;
         }
-    }
+        wallFaceRight = myMovement.facingRight;
 
-    //Does the same as RegularFire except with big fireballs
-    void BigFire()
+
+}
+
+//Does the same as RegularFire except with big fireballs
+void MakeWall()
     {
-        if (hasWall)
-        {
-            destroyWall();
-            Destroy(wall);
-
-
-        }
-        else
-        {
+        Debug.Log("Big Fire");
             createWall();
             wallRight = myMovement.facingRight ? 1 : -1;
+
             wall = Instantiate(wallPrefab, (transform.position + new Vector3(4* wallRight, 1.8f, 0)), Quaternion.identity);
             wall.GetComponent<DelilahWall>().owner = gameObject;
             wall.GetComponent<DelilahWall>().wallRight = wallRight;
@@ -105,11 +112,27 @@ public class DelilahAttack : MonoBehaviour {
                 wall.transform.localScale = theScale;
             }
 
-        }
+ 
+    }
+
+    void PushWall()
+    {
+        Debug.Log("here");
+        wall.GetComponent<DelilahWall>().free = true;
+        StartCoroutine(ExplodeWall());
+
+    }
+    IEnumerator ExplodeWall()
+    {
+        yield return new WaitForSeconds(pushTime);
+
+        destroyWall();
+        Destroy(wall);
     }
 
     public void destroyWall()
     {
+
         hasWall = false;
         myMovement.currentMaxSpeed = myMovement.maxSpeed;
     }

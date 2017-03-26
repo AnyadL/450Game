@@ -235,6 +235,11 @@ Prefab:
       propertyPath: littleCooldown
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114528341687823494, guid: b83152af1cf5cf141a019683247045f8,
+        type: 2}
+      propertyPath: wallVelocity
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b83152af1cf5cf141a019683247045f8, type: 2}
   m_IsPrefabParent: 0

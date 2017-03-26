@@ -9,6 +9,7 @@ public class DelilahWall : MonoBehaviour {
     [HideInInspector] public bool free = false;
     public float shieldTime;
     public int health = 30;
+   
 
     // Use this for initialization
     void Start () {
@@ -31,6 +32,15 @@ public class DelilahWall : MonoBehaviour {
         {
             transform.position = owner.transform.position + new Vector3(4 * wallRight, 1.8f, 0);
         }
+        else{
+            Debug.Log("free");
+            float velocityDirection = owner.GetComponent<DelilahAttack>().wallVelocity;
+            if (!owner.GetComponent<HeroMovement>().facingRight)
+            {
+                velocityDirection = -velocityDirection;
+            }
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,6 +58,8 @@ public class DelilahWall : MonoBehaviour {
     {
         yield return new WaitForSeconds(shieldTime);
         owner.GetComponent<DelilahAttack>().destroyWall();
+// var exp = GetComponent<ParticleSystem>();
+// exp.Play();
         Destroy(gameObject);
     }
 }
