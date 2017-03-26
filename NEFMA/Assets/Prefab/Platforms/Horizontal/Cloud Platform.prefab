@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 61482327777021140}
   - component: {fileID: 61226781345123752}
   - component: {fileID: 212617914657805778}
+  - component: {fileID: 61672774361092014}
   m_Layer: 8
   m_Name: Cloud Platform
   m_TagString: Platform
@@ -86,37 +87,37 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: ec0eefc74ac5abe4d94349b0a366b4d2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.45}
+  m_Offset: {x: -0.4876, y: 0.45}
   serializedVersion: 2
-  m_Size: {x: 0.99, y: 0.1}
+  m_Size: {x: 0.015, y: 0.1}
 --- !u!61 &61438721484917650
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1066825728343786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.49, y: -0.025}
+  m_Offset: {x: 0.48, y: -0.025}
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.95}
+  m_Size: {x: 0.04, y: 0.95}
 --- !u!61 &61478018319067236
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1066825728343786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -0.49, y: -0.025}
+  m_Offset: {x: -0.48, y: -0.025}
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.95}
+  m_Size: {x: 0.04, y: 0.95}
 --- !u!61 &61482327777021140
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -142,9 +143,23 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.4}
+  m_Offset: {x: 0, y: -0.3}
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.2}
+  m_Size: {x: 1, y: 0.6}
+--- !u!61 &61672774361092014
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1759253677681764}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: ec0eefc74ac5abe4d94349b0a366b4d2, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.4876, y: 0.45}
+  serializedVersion: 2
+  m_Size: {x: 0.015, y: 0.1}
 --- !u!114 &114389489141115710
 MonoBehaviour:
   m_ObjectHideFlags: 1

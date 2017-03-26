@@ -57,6 +57,8 @@ public class AttributeController : MonoBehaviour {
             {
                 // Defeated Boss, should call some script here
                 health = 1;
+                Debug.Log("Boss Died");
+                return;
             }
             if (gameObject.tag == "Enemy")
             {
@@ -167,6 +169,10 @@ public class AttributeController : MonoBehaviour {
         {
             playerCollisions(collision);
         }
+        if (gameObject.tag == "BossHead")
+        {
+            bossCollisions(collision);
+        }
     }
 
     // something has collided with the player
@@ -199,6 +205,14 @@ public class AttributeController : MonoBehaviour {
                     knockback(collision.gameObject.transform.position.x);
                 }
             }
+            else if (collision.gameObject.tag == "BossHead")
+            {
+                if (decreaseHealth(1.0f))
+                {
+                    takenDamage();
+                    knockback(collision.gameObject.transform.position.x);
+                }
+            }
             else if (collision.gameObject.tag == "Fire")
             {
                 if (!isAgni())
@@ -217,16 +231,13 @@ public class AttributeController : MonoBehaviour {
                     if (decreaseHealth(1.0f))
                     {
                         takenDamage();
-                        knockback(collision.gameObject.transform.position.x);
+                        //knockback(collision.gameObject.transform.position.x);
                     }
                 }
-                else
-                {
-                    gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0f, 3500f, 0));
-                    Vector3 tempVel = gameObject.GetComponent<Rigidbody2D>().velocity;
-                    tempVel.y = 0;
-                    gameObject.GetComponent<Rigidbody2D>().velocity = tempVel;
-                }
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0f, 3500f, 0));
+                Vector3 tempVel = gameObject.GetComponent<Rigidbody2D>().velocity;
+                tempVel.y = 0;
+                gameObject.GetComponent<Rigidbody2D>().velocity = tempVel;
             }
         }
         if (collision.gameObject.tag == "SceneChanger")
@@ -386,6 +397,40 @@ public class AttributeController : MonoBehaviour {
                 myBody.velocity = new Vector2(0, 0);
                 float mag = (collision.gameObject.transform.localScale.x / 2) - Mathf.Abs(collision.gameObject.transform.position.x - transform.position.x);
                 knockback(collision.gameObject.transform.position.x, mag * 3, 10 + mag);
+            }
+        }
+    }
+
+    // something has collided with the boss head
+    void bossCollisions(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyAttack")
+        {
+            return;
+        }
+        else if (collision.gameObject.tag == "BossAttack")
+        {
+            return;
+        }
+        else if (collision.gameObject.tag == "LittleAttack")
+        {
+            if (decreaseHealth(2.0f))
+            {
+                takenDamage();
+            }
+        }
+        else if (collision.gameObject.tag == "BigAttack")
+        {
+            if (decreaseHealth(3.0f))
+            {
+                takenDamage();
+            }
+        }
+        else if (collision.gameObject.tag == "Player" && collision.gameObject.GetComponent<AttributeController>().dashing)
+        {
+            if (decreaseHealth(1.0f))
+            {
+                takenDamage();
             }
         }
     }
