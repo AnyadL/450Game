@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  bigCooldown: 10
+  bigCooldown: 7
   nextBigFire: 0
   myLayer: 0
   nextVulnerable: 0

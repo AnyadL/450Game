@@ -385,6 +385,11 @@ Prefab:
       propertyPath: bigBulletVelocity
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 114244758743622684, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
+        type: 2}
+      propertyPath: bigCooldown
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
   m_IsPrefabParent: 0
