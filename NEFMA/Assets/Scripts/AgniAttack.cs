@@ -16,6 +16,9 @@ public class AgniAttack : MonoBehaviour
     private AttributeController myAttribute;
     public float littleCooldown = 0.3f;
     public float nextLittleFire;
+    [HideInInspector]public bool BigAttacking = false;
+    [HideInInspector]public bool LittleAttacking = false; 
+    public Animator animator;
 
     public AudioSource sfxSmallFireBall;
     public AudioSource sfxBigFireBall;
@@ -26,20 +29,31 @@ public class AgniAttack : MonoBehaviour
         //In order to figure out which way the character is facing I need to access the HeroMovement script
         hm = gameObject.GetComponent<HeroMovement>();
         myAttribute = gameObject.GetComponent<AttributeController>();
+        BigAttacking = false;
+        LittleAttacking = false;
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Time.time >= nextLittleFire)
         {
             //Fire little fireballs
             if (Input.GetButtonDown("Fire1_" + hm.inputNumber) && !Globals.gamePaused)
             {
+                LittleAttacking = true;
+                animator.SetBool("LittleAttacking", LittleAttacking);
                 nextLittleFire = Time.time + littleCooldown;
                 RegularFire();
                 sfxSmallFireBall.pitch = Random.Range(1.0f, 1.5f);
                 sfxSmallFireBall.Play();
+            }
+            else
+            {
+                LittleAttacking = false;
+                animator.SetBool("LittleAttacking", LittleAttacking);
             }
         }
 
@@ -47,16 +61,26 @@ public class AgniAttack : MonoBehaviour
             //Fire Big Fireballs
             if (Input.GetButtonDown("Fire2_" + hm.inputNumber) && !Globals.gamePaused)
             {
+                BigAttacking = true;
+                animator.SetBool("BigAttacking", BigAttacking);
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
                 BigFire();
                 sfxBigFireBall.Play();
             }
+
         }
+        else
+        {
+            BigAttacking = false;
+            animator.SetBool("BigAttacking", BigAttacking);
+        }
+
     }
 
     // Fire a bullet
     void RegularFire()
     {
+
 
         //Checks the direction and sets the bullet velocity to that direction
         float velocityDirection = littleBulletVelocity;

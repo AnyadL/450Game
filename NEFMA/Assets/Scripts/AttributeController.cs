@@ -20,6 +20,7 @@ public class AttributeController : MonoBehaviour {
     [HideInInspector] public EnemyAI enemyAI;
     [HideInInspector] public float speed;
     [HideInInspector] public bool dashing = false;
+    [HideInInspector] public float deflectVelocity = 1000;
    
     public void Start()
     {
@@ -367,7 +368,14 @@ public class AttributeController : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "Deflect")
         {
-            knockback(collision.gameObject.transform.position.x);
+            Debug.Log("Hit");
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+            float velocityDirection = deflectVelocity;
+
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(1000, 100, 0), ForceMode2D.Impulse);
+
+
         }
         else if (collision.gameObject.tag == "Secret Boss Hand")
         {

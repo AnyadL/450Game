@@ -56,13 +56,14 @@ public class RykerAttack : MonoBehaviour
         GameObject dashObject = Instantiate(dashPrefab, (gameObject.transform.position), Quaternion.identity) as GameObject;
         if (hm.facingRight)
         {
-            transform.position += new Vector3(dashSpeed * Time.deltaTime, dashTime, 0.0f);
+            //transform.position += new Vector3(dashSpeed * Time.deltaTime, dashTime, 0.0f);
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(100, 0);
         }
         else
         {
             transform.position -= new Vector3(dashSpeed * Time.deltaTime, dashTime, 0.0f);
         }
-        yield return new WaitForSeconds(dashTime);
+        yield return new WaitForSeconds(0.5f);
         myAttribute.dashing = false;
         Destroy(dashObject);
     }
