@@ -360,9 +360,9 @@ MonoBehaviour:
   inRange: 0
   playerNumber: -1
   inputNumber: -1
-  moveForce: 100
+  moveForce: 400
   currentMoveForce: 0
-  maxSpeed: 10
+  maxSpeed: 30
   currentMaxSpeed: 0
   jumpForce: 2400
   groundCheck: {fileID: 4552635497574260}
