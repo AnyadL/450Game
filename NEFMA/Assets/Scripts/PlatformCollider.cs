@@ -26,6 +26,7 @@ public class PlatformCollider : MonoBehaviour {
         //Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponent<Collider2D>(), true);
         Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[0], true);
         Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[1], true);
+        Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[2], true);
     }
 
     private void OnTriggerExit2D(Collider2D jumper)
@@ -35,6 +36,7 @@ public class PlatformCollider : MonoBehaviour {
         //Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponent<Collider2D>(), false);
         Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[0], false);
         Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[1], false);
+        Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[2], false);
         //print("--------------------------------------------------");
     }
 }

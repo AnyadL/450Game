@@ -57,6 +57,7 @@ public class AttributeController : MonoBehaviour {
             {
                 // Defeated Boss, should call some script here
                 health = 1;
+                Debug.Log("Boss Died");
                 return;
             }
             if (gameObject.tag == "Enemy")
