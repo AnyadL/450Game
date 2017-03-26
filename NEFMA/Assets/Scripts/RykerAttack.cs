@@ -16,6 +16,9 @@ public class RykerAttack : MonoBehaviour
     public float nextDash;
     public float dashSpeed;
     public float dashTime;
+    public Animator animator;
+
+    [HideInInspector] public bool LittleAttack;
 
     // Use this for initialization
     void Start()
@@ -23,6 +26,8 @@ public class RykerAttack : MonoBehaviour
         //In order to figure out which way the character is facing I need to access the HeroMovement script
         hm = gameObject.GetComponent<HeroMovement>();
         myAttribute = gameObject.GetComponent<AttributeController>();
+        animator = gameObject.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -33,9 +38,16 @@ public class RykerAttack : MonoBehaviour
             //Dashes through enemies
             if (Input.GetButtonDown("Fire1_"+hm.inputNumber) && !Globals.gamePaused)
             {
+                LittleAttack = true;
+                animator.SetBool("AttackLittle", LittleAttack);
                 nextDash = Time.time + dashCooldown;
                 StartCoroutine(Dash());
             }
+        }
+        else
+        {
+            LittleAttack = false;
+            animator.SetBool("AttackLittle", LittleAttack);
         }
 
         if (Time.time >= myAttribute.nextBigFire)
@@ -61,9 +73,9 @@ public class RykerAttack : MonoBehaviour
         }
         else
         {
-            transform.position -= new Vector3(dashSpeed * Time.deltaTime, dashTime, 0.0f);
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-100, 0);
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(dashTime);
         myAttribute.dashing = false;
         Destroy(dashObject);
     }
