@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 82810375224561512}
   - component: {fileID: 82129126859932930}
   - component: {fileID: 114379807679598236}
+  - component: {fileID: 95696558752254844}
   m_Layer: 11
   m_Name: Agni
   m_TagString: Player
@@ -463,6 +464,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95696558752254844
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1880801342426786}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4fc937f140bc9fa4cbb2e7ef46bf2da3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114244758743622684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -484,6 +502,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 1000
 --- !u!114 &114379807679598236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -540,6 +559,9 @@ MonoBehaviour:
   bigBulletVelocity: 15
   littleCooldown: 0.3
   nextLittleFire: 0
+  BigAttacking: 0
+  LittleAttacking: 0
+  animator: {fileID: 0}
   sfxSmallFireBall: {fileID: 82810375224561512}
   sfxBigFireBall: {fileID: 82394582967527132}
 --- !u!114 &114895260963106988

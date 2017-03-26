@@ -12,6 +12,7 @@ public class DelilahAttack : MonoBehaviour {
     public float wallVelocity = 100;
     public float wallLifeTime = 5;
     public float pushTime = 2;
+    //public ParticleSystem explosion;
 
     private HeroMovement myMovement;
     private AttributeController myAttribute;
@@ -124,10 +125,13 @@ void MakeWall()
     }
     IEnumerator ExplodeWall()
     {
+
+        //ParticleSystem expl = Instantiate(explosion, wall.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(pushTime);
 
         destroyWall();
         Destroy(wall);
+       // Destroy(expl, 3);
     }
 
     public void destroyWall()
