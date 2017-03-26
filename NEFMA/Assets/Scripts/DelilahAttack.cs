@@ -14,6 +14,10 @@ public class DelilahAttack : MonoBehaviour {
     public float pushTime = 2;
     //public ParticleSystem explosion;
 
+    public Animator animator;
+    [HideInInspector] public bool BigAttack = false;
+    [HideInInspector] public bool LittleAttack = false;
+
     private HeroMovement myMovement;
     private AttributeController myAttribute;
     public float littleCooldown = 3.0f;
@@ -32,6 +36,10 @@ public class DelilahAttack : MonoBehaviour {
         myMovement = gameObject.GetComponent<HeroMovement>();
         myAttribute = gameObject.GetComponent<AttributeController>();
         hasWall = false;
+        BigAttack = false;
+        LittleAttack = false;
+        animator = gameObject.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -48,9 +56,16 @@ public class DelilahAttack : MonoBehaviour {
         {
             if (Input.GetButtonDown("Fire1_" + myMovement.inputNumber) && !Globals.gamePaused)
             {
+                LittleAttack = true;
+                animator.SetBool("AttackLittle", LittleAttack);
                 nextLittleFire = Time.time + littleCooldown;
                 RegularFire();
             }
+        }
+        else
+        {
+            LittleAttack = false;
+            animator.SetBool("AttackLittle", LittleAttack);
         }
 
         if (Time.time >= myAttribute.nextBigFire)
@@ -66,8 +81,15 @@ public class DelilahAttack : MonoBehaviour {
         {
             if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber) && !Globals.gamePaused)
             {
+                BigAttack = true;
+                animator.SetBool("AttackBig", BigAttack);
                 PushWall();
             }
+        }
+        else
+        {
+            BigAttack = false;
+            animator.SetBool("AttackBig", BigAttack);
         }
     }
 

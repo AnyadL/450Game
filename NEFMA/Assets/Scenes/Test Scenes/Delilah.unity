@@ -130,6 +130,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
+        type: 2}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
+        type: 2}
+      propertyPath: field of view
+      value: 76.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8f3b871b52a79fa49a641d1700387c80, type: 2}
   m_IsPrefabParent: 0
@@ -218,27 +228,6 @@ Prefab:
     - target: {fileID: 4809369325167958, guid: b83152af1cf5cf141a019683247045f8, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114528341687823494, guid: b83152af1cf5cf141a019683247045f8,
-        type: 2}
-      propertyPath: fistPrefab
-      value: 
-      objectReference: {fileID: 1943681581046884, guid: f190a506b5ae16c4a9b57e077d42207c,
-        type: 2}
-    - target: {fileID: 114528341687823494, guid: b83152af1cf5cf141a019683247045f8,
-        type: 2}
-      propertyPath: fistVelocity
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114528341687823494, guid: b83152af1cf5cf141a019683247045f8,
-        type: 2}
-      propertyPath: littleCooldown
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114528341687823494, guid: b83152af1cf5cf141a019683247045f8,
-        type: 2}
-      propertyPath: wallVelocity
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b83152af1cf5cf141a019683247045f8, type: 2}

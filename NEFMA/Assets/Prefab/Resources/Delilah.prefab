@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 82413697593257970}
   - component: {fileID: 82921599158424096}
   - component: {fileID: 82786087372906646}
+  - component: {fileID: 95725971035733416}
   m_Layer: 11
   m_Name: Delilah
   m_TagString: Player
@@ -100,8 +101,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1198660775397150}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.16, y: 0.87, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 4461802130450952}
@@ -463,6 +464,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95725971035733416
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198660775397150}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f89234070612e1e439835c22d5a7206c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114232576091865976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -500,12 +518,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 1848929815094622, guid: 59412a3ea2d0b59428b82f31fe692789, type: 2}
   fistPrefab: {fileID: 1943681581046884, guid: f190a506b5ae16c4a9b57e077d42207c, type: 2}
-  fistVelocity: 0
+  fistVelocity: 10
   wall: {fileID: 0}
   wallVelocity: 10
   wallLifeTime: 5
   pushTime: 2
-  littleCooldown: 0.5
+  animator: {fileID: 0}
+  BigAttack: 0
+  LittleAttack: 0
+  littleCooldown: 2
   nextLittleFire: 0
   hasWall: 0
   wallRight: 0
@@ -559,6 +580,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 1000
 --- !u!212 &212354671295307794
 SpriteRenderer:
   m_ObjectHideFlags: 1
