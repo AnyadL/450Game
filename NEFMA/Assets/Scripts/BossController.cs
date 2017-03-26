@@ -74,7 +74,7 @@ public class BossController : MonoBehaviour {
         }
         else
         {
-            GameObject enemy = Instantiate(allyPrefab3, (transform.position + (transform.right * 65) + (transform.up * 50)), Quaternion.identity);
+            Instantiate(allyPrefab3, (transform.position + (transform.right * 65) + (transform.up * 50)), Quaternion.identity);
         }
     }
 
