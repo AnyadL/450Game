@@ -56,7 +56,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0.4975, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.01, y: 1}
+  m_Size: {x: 0.005, y: 1}
 --- !u!61 &61685840627628242
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -70,7 +70,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -0.4975, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.01, y: 1}
+  m_Size: {x: 0.005, y: 1}
 --- !u!61 &61826056794128384
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -84,7 +84,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.985, y: 1}
+  m_Size: {x: 0.99, y: 1}
 --- !u!212 &212531563072807210
 SpriteRenderer:
   m_ObjectHideFlags: 1
