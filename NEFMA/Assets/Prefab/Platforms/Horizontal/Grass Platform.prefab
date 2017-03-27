@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 61826056794128384}
   - component: {fileID: 61685840627628242}
   - component: {fileID: 212531563072807210}
+  - component: {fileID: 61206427237640712}
   m_Layer: 8
   m_Name: Grass Platform
   m_TagString: Platform
@@ -42,6 +43,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61206427237640712
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1230426916476740}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: ec0eefc74ac5abe4d94349b0a366b4d2, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0.4975, y: -0.1}
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 1.2}
 --- !u!61 &61685840627628242
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -53,9 +68,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: ec0eefc74ac5abe4d94349b0a366b4d2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.1}
+  m_Offset: {x: -0.4975, y: -0.1}
   serializedVersion: 2
-  m_Size: {x: 1.001, y: 1.2}
+  m_Size: {x: 0.01, y: 1.2}
 --- !u!61 &61826056794128384
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -69,7 +84,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.98, y: 1}
+  m_Size: {x: 0.985, y: 1}
 --- !u!212 &212531563072807210
 SpriteRenderer:
   m_ObjectHideFlags: 1
