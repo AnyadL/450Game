@@ -37,7 +37,7 @@ public class HeroMovement : MonoBehaviour {
         myAttributes = GetComponent<AttributeController>();
         currentMoveForce = moveForce;
         currentMaxSpeed = maxSpeed;
-        if (gameObject.name == "Kitty(Clone)")
+        if (gameObject.name == "Kitty(Clone)" || gameObject.name == "Kitty")
         {
             isKitty = true;
         }
