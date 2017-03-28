@@ -338,6 +338,7 @@ MonoBehaviour:
   dashTime: 0.5
   animator: {fileID: 0}
   LittleAttack: 0
+  BigAttack: 0
 --- !u!114 &114357171226396750
 MonoBehaviour:
   m_ObjectHideFlags: 1
