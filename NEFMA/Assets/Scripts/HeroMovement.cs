@@ -25,7 +25,7 @@ public class HeroMovement : MonoBehaviour {
     private Rigidbody2D rb2d;
     private AttributeController myAttributes;
     [HideInInspector] public float currentSpeed;
-    private bool doublejump = false;
+    [HideInInspector] public bool doublejump = false;
     private bool candoublejump = false;
     private bool isKitty = false;
     private int jumpCount = 0;

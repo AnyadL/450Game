@@ -27,8 +27,8 @@ public class DelilahAttack : MonoBehaviour {
     [HideInInspector] public bool wallFaceRight = false;
 
     public AudioSource sfxWallUp;
-    public AudioSource sfxWallDown;
-    
+    public AudioSource sfxWallPush;
+    public AudioSource sfxFist;
 
     // Use this for initialization
     void Start()
@@ -109,8 +109,14 @@ public class DelilahAttack : MonoBehaviour {
         }
         wallFaceRight = myMovement.facingRight;
 
+        if (sfxFist != null && !sfxFist.isPlaying)
+        {
+            sfxFist.pitch = Random.Range(1.0f, 1.5f);
+            sfxFist.Play();
+        }
 
-}
+
+    }
 
 //Does the same as RegularFire except with big fireballs
 void MakeWall()
@@ -143,6 +149,12 @@ void MakeWall()
         Debug.Log("here");
         wall.GetComponent<DelilahWall>().free = true;
         StartCoroutine(ExplodeWall());
+
+        if (sfxWallPush != null && !sfxWallPush.isPlaying)
+        {
+            sfxWallPush.pitch = Random.Range(1.2f, 1.5f);
+            sfxWallPush.Play();
+        }
 
     }
     IEnumerator ExplodeWall()
