@@ -18,7 +18,9 @@ public class RykerAttack : MonoBehaviour
     public float dashTime;
     public Animator animator;
 
+
     [HideInInspector] public bool LittleAttack;
+    [HideInInspector] public bool BigAttack;
 
     // Use this for initialization
     void Start()
@@ -55,9 +57,16 @@ public class RykerAttack : MonoBehaviour
             //Stuns all enemies on the screen 
             if (Input.GetButtonDown("Fire2_"+hm.inputNumber) && !Globals.gamePaused)
             {
+                BigAttack = true;
+                animator.SetBool("AttackBig", BigAttack);
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
                 StunAttack();
             }
+        }
+        else
+        {
+            BigAttack = false;
+            animator.SetBool("AttackBig", BigAttack);
         }
     }
 
