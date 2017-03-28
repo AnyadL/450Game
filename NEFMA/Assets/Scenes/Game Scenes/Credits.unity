@@ -2166,7 +2166,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Designed and Produced by:'
+  m_Text: Designed and Produced by
 --- !u!222 &439078296
 CanvasRenderer:
   m_ObjectHideFlags: 0
