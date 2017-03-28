@@ -505,6 +505,7 @@ MonoBehaviour:
   groundCheck: {fileID: 4461802130450952}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &114528341687823494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,7 +533,8 @@ MonoBehaviour:
   wallRight: 0
   wallFaceRight: 0
   sfxWallUp: {fileID: 82786087372906646}
-  sfxWallDown: {fileID: 82921599158424096}
+  sfxWallPush: {fileID: 0}
+  sfxFist: {fileID: 0}
 --- !u!114 &114713408670370730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -570,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692b94a5dbc7bee4b9f6f62af6c3cd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 5
   bigCooldown: 10
   nextBigFire: 0
   myLayer: 0
