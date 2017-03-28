@@ -28,6 +28,7 @@ public class HeroMovement : MonoBehaviour {
     private bool doublejump = false;
     private bool candoublejump = false;
     private bool isKitty = false;
+    private int jumpCount = 0;
 
     // Use this for initialization
     void Awake()
@@ -47,7 +48,11 @@ public class HeroMovement : MonoBehaviour {
     void Update()
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-
+        
+        if (grounded)
+        {
+            jumpCount = 0;
+        }
         if (myAttributes.knockbacked && grounded && Time.time + myAttributes.invincibiltyLength - 0.25f >= myAttributes.nextVulnerable)
         {
             myAttributes.knockbacked = false;
@@ -58,11 +63,19 @@ public class HeroMovement : MonoBehaviour {
             if (grounded && !myAttributes.knockbacked)
             {
                 jump = true;
+                jumpCount = 1;
             }
             else if (candoublejump && isKitty && !myAttributes.knockbacked)
             {
                 doublejump = true;
+                jumpCount = 2;
             }
+            else if (isKitty && jumpCount == 0)
+            {
+                doublejump = true;
+                jumpCount = 2;
+            }
+
         }
 
         //Debug.Log(rb2d.velocity);
