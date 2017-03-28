@@ -135,15 +135,16 @@ public class AttributeController : MonoBehaviour {
     {
         Debug.Log("speed:" + speed);
  
-        enemyAI.maxSpeed = 0;
+        enemyAI.currentMoveForce = 0;
         if (enemyAI.isRanged)
         {
            enemyAI.nextProjectileFire = enemyAI.nextProjectileFire + 1.0f;
            enemyAI.rangedBurst = 0;
+
         }
         yield return new WaitForSeconds(2);
         Debug.Log("Waited");
-        enemyAI.maxSpeed = speed;
+        enemyAI.currentMoveForce = enemyAI.moveForce;
     }
     IEnumerator deflectEnemy()
     {

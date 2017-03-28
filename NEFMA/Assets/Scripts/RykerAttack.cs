@@ -94,7 +94,6 @@ public class RykerAttack : MonoBehaviour
     {
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("Enemy");
-
         foreach (GameObject go in gos)
         {
             if (go.GetComponent<SpriteRenderer>().isVisible)
