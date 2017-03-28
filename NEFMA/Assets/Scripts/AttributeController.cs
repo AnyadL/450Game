@@ -20,7 +20,7 @@ public class AttributeController : MonoBehaviour {
     [HideInInspector] public EnemyAI enemyAI;
     [HideInInspector] public float speed;
     [HideInInspector] public bool dashing = false;
-    [HideInInspector] public float deflectVelocity = 1000;
+    [HideInInspector] public float deflectVelocity = 10;
    
     public void Start()
     {
@@ -144,6 +144,22 @@ public class AttributeController : MonoBehaviour {
         yield return new WaitForSeconds(2);
         Debug.Log("Waited");
         enemyAI.maxSpeed = speed;
+    }
+    IEnumerator deflectEnemy()
+    {
+
+        gameObject.GetComponent<EnemyAI>().currentMoveForce = 0;
+
+
+
+        float velocityDirection = 11* (-gameObject.GetComponent<EnemyAI>().facingRight);
+
+
+        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(velocityDirection, 2, 0), ForceMode2D.Impulse);
+        yield return new WaitForSeconds(1.5f);
+
+        gameObject.GetComponent<EnemyAI>().currentMoveForce = gameObject.GetComponent<EnemyAI>().moveForce;
+
     }
 
     IEnumerator bossCrush(Collider2D collision)
@@ -379,12 +395,9 @@ public class AttributeController : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "Deflect")
         {
-            Debug.Log("Hit");
-            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-            float velocityDirection = deflectVelocity;
+            StartCoroutine(deflectEnemy());
 
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(velocityDirection, 10, 0), ForceMode2D.Impulse);
 
 
         }
