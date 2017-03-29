@@ -8,7 +8,7 @@ public class AttributeController : MonoBehaviour {
     private HeroMovement myMovement;
     private Rigidbody2D myBody;
     [HideInInspector] private float health = 1;
-    public float maxHealth = 1;
+    public float maxHealth = 30;
 
     public float bigCooldown = 10f;
     [HideInInspector] public float nextBigFire;

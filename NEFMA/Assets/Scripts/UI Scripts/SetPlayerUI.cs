@@ -22,6 +22,7 @@ public class SetPlayerUI : MonoBehaviour {
             health = myAttribute.getHealth();
             healthSlider.maxValue = health;
             healthSlider.value = health;
+            print("getting health: " + health);
         }
         if (powerSlider != null)
         {
@@ -37,7 +38,11 @@ public class SetPlayerUI : MonoBehaviour {
         {
             if (myAttribute.getHealth() != health) {
                 health = myAttribute.getHealth();
+                if (health > healthSlider.maxValue)
+                    healthSlider.maxValue = health;
                 healthSlider.value = health;
+                
+                print("getting health: " + health);
             }
         }
         if (powerSlider != null)
