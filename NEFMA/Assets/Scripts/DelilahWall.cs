@@ -30,7 +30,26 @@ public class DelilahWall : MonoBehaviour {
     {
         if (!free)
         {
-            transform.position = owner.transform.position + new Vector3(4 * wallRight, 1.8f, 0);
+            //bool facingRight = false;
+            float wallXDistance = 4 * wallRight;
+            if (!owner.GetComponent<HeroMovement>().facingRight )
+            {
+  
+                wallXDistance = -wallXDistance;
+
+        /*        if (facingRight == false)
+                {
+                    facingRight = true;
+                    Vector3 theScale = gameObject.transform.localScale;
+                    theScale.x *= -1;
+                    gameObject.transform.localScale = theScale;
+                }*/
+            }
+          /*  else
+            {
+                facingRight = false;
+            }*/
+            transform.position = owner.transform.position + new Vector3(wallXDistance, 1.8f, 0);
         }
         else{
             Debug.Log("free");
