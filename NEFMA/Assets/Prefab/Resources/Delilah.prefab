@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 82921599158424096}
   - component: {fileID: 82786087372906646}
   - component: {fileID: 95725971035733416}
+  - component: {fileID: 82459918109004874}
   m_Layer: 11
   m_Name: Delilah
   m_TagString: Player
@@ -193,7 +194,87 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.291
+      value: 0.201
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82459918109004874
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198660775397150}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 61aa0cb8ca2948b4b887060461a7f70b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.336
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -353,7 +434,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 0.331
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -393,7 +474,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 61aa0cb8ca2948b4b887060461a7f70b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0533ceb9672bbc441811e83b5a07e34c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -433,7 +514,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 0.347
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -505,6 +586,7 @@ MonoBehaviour:
   groundCheck: {fileID: 4461802130450952}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &114528341687823494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,7 +614,8 @@ MonoBehaviour:
   wallRight: 0
   wallFaceRight: 0
   sfxWallUp: {fileID: 82786087372906646}
-  sfxWallDown: {fileID: 82921599158424096}
+  sfxWallPush: {fileID: 82459918109004874}
+  sfxFist: {fileID: 82921599158424096}
 --- !u!114 &114713408670370730
 MonoBehaviour:
   m_ObjectHideFlags: 1

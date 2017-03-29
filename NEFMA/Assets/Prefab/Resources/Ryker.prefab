@@ -271,7 +271,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 0.213
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -389,6 +389,7 @@ MonoBehaviour:
   groundCheck: {fileID: 4552635497574260}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &114936493580927104
 MonoBehaviour:
   m_ObjectHideFlags: 1
