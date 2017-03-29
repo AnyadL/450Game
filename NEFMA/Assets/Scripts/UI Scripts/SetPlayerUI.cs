@@ -37,6 +37,8 @@ public class SetPlayerUI : MonoBehaviour {
         {
             if (myAttribute.getHealth() != health) {
                 health = myAttribute.getHealth();
+                if (health > healthSlider.maxValue)
+                    healthSlider.maxValue = health;
                 healthSlider.value = health;
             }
         }

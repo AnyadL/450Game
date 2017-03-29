@@ -134,7 +134,7 @@ public class ConversationRunner : MonoBehaviour {
     protected void updateLine(int index) {
         if (conversation == null) { return; }
 
-        if (conversationLoaded) {
+        if (conversationLoaded && !conversation.isEOF(index)) {
             timeOfUpdate = Time.time + conversation.getDisplayTime(index);
             playVOLine(index);
 
