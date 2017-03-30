@@ -1442,6 +1442,8 @@ MonoBehaviour:
     type: 2}
   drG: {fileID: 1391836890}
   sittingMilo: {fileID: 21300000, guid: 8cfcc8d2e8f091c43b426b3340498619, type: 3}
+  mrFluffy: {fileID: 0}
+  monsterList: []
   fadeTexture: {fileID: 0}
 --- !u!4 &1495081774
 Transform:
@@ -1552,6 +1554,16 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224999722800209548, guid: 07f5a6557a15aad41a5c48d336bf1fe8,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224999722800209548, guid: 07f5a6557a15aad41a5c48d336bf1fe8,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07f5a6557a15aad41a5c48d336bf1fe8, type: 2}

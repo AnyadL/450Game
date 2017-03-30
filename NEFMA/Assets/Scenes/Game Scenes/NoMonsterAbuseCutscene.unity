@@ -431,6 +431,7 @@ MonoBehaviour:
   groundCheck: {fileID: 538406161}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &73414449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +453,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!82 &73414450
 AudioSource:
   m_ObjectHideFlags: 0
@@ -668,6 +670,7 @@ MonoBehaviour:
   groundCheck: {fileID: 739769928}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &111176625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,6 +692,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!82 &111176626
 AudioSource:
   m_ObjectHideFlags: 0
@@ -904,6 +908,7 @@ MonoBehaviour:
   groundCheck: {fileID: 376022891}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!61 &133880898
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -941,6 +946,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!50 &133880900
 Rigidbody2D:
   serializedVersion: 4
@@ -1199,6 +1205,7 @@ MonoBehaviour:
   groundCheck: {fileID: 182814565}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!4 &182814567
 Transform:
   m_ObjectHideFlags: 0
@@ -1253,6 +1260,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!50 &182814570
 Rigidbody2D:
   serializedVersion: 4
@@ -1491,6 +1499,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1086659780}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!61 &286211011
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1528,6 +1537,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!50 &286211013
 Rigidbody2D:
   serializedVersion: 4
@@ -1648,6 +1658,7 @@ MonoBehaviour:
   groundCheck: {fileID: 301711143}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!82 &288437938
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1766,6 +1777,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!50 &288437941
 Rigidbody2D:
   serializedVersion: 4
@@ -2095,6 +2107,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1170826064}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!61 &460733801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2132,6 +2145,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!50 &460733803
 Rigidbody2D:
   serializedVersion: 4
@@ -2639,6 +2653,7 @@ MonoBehaviour:
   groundCheck: {fileID: 580619638}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!82 &660828054
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2757,6 +2772,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!50 &660828057
 Rigidbody2D:
   serializedVersion: 4
@@ -3094,12 +3110,12 @@ Prefab:
     - target: {fileID: 224999722800209548, guid: 07f5a6557a15aad41a5c48d336bf1fe8,
         type: 2}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224999722800209548, guid: 07f5a6557a15aad41a5c48d336bf1fe8,
         type: 2}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224999722800209548, guid: 07f5a6557a15aad41a5c48d336bf1fe8,
         type: 2}
@@ -3182,6 +3198,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1353536176}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &788920826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3203,6 +3220,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!82 &788920827
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3626,6 +3644,7 @@ MonoBehaviour:
   groundCheck: {fileID: 617132137}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!61 &1020554771
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3663,6 +3682,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!50 &1020554773
 Rigidbody2D:
   serializedVersion: 4
@@ -3783,6 +3803,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1789858200}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!82 &1042026410
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3901,6 +3922,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!50 &1042026413
 Rigidbody2D:
   serializedVersion: 4
@@ -4544,6 +4566,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1937719140}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!61 &1331480939
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4581,6 +4604,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!50 &1331480941
 Rigidbody2D:
   serializedVersion: 4
@@ -4935,6 +4959,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1863269933}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &1425933748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4956,6 +4981,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!82 &1425933749
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5560,6 +5586,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1706982064}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!4 &1706982066
 Transform:
   m_ObjectHideFlags: 0
@@ -5695,6 +5722,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!50 &1706982071
 Rigidbody2D:
   serializedVersion: 4
@@ -6034,6 +6062,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!114 &1777396903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6058,6 +6087,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1752939465}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!82 &1777396904
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6273,6 +6303,7 @@ MonoBehaviour:
   groundCheck: {fileID: 35341332}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!61 &1789050542
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6310,6 +6341,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!50 &1789050544
 Rigidbody2D:
   serializedVersion: 4
@@ -6490,6 +6522,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1468764184}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &1814752275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6511,6 +6544,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!82 &1814752276
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6757,6 +6791,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1136502625}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &1861921805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6778,6 +6813,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!82 &1861921806
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6994,6 +7030,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1882990841}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &1862757380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7015,6 +7052,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!82 &1862757381
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7619,6 +7657,7 @@ MonoBehaviour:
   groundCheck: {fileID: 2076275427}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &2124280822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7640,6 +7679,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!82 &2124280823
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7883,6 +7923,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!114 &2132313112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7907,6 +7948,7 @@ MonoBehaviour:
   groundCheck: {fileID: 392093789}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!82 &2132313113
 AudioSource:
   m_ObjectHideFlags: 0

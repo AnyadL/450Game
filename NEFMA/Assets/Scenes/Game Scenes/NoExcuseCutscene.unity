@@ -409,12 +409,12 @@ Prefab:
     - target: {fileID: 224999722800209548, guid: 07f5a6557a15aad41a5c48d336bf1fe8,
         type: 2}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224999722800209548, guid: 07f5a6557a15aad41a5c48d336bf1fe8,
         type: 2}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224999722800209548, guid: 07f5a6557a15aad41a5c48d336bf1fe8,
         type: 2}
@@ -1214,6 +1214,7 @@ MonoBehaviour:
   groundCheck: {fileID: 524452028}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
 --- !u!114 &1738179573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1235,6 +1236,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!82 &1738179574
 AudioSource:
   m_ObjectHideFlags: 0
