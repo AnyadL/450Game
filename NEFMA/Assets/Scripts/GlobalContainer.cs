@@ -11,9 +11,10 @@ public class Player
     public bool Alive; // Whether the player is alive
     public GameObject Prefab; // The hero prefab
     public GameObject GO; // The hero game object
-    public int Score; //This is the heros score
+    public int Score; //This is the heros score (number of collectibles
+    public int Deaths; // This is the number of times the player has died
 
-    public Player(string name, int number, int inputnum, bool alive, GameObject prefab, GameObject go,int score=0)
+    public Player(string name, int number, int inputnum, bool alive, GameObject prefab, GameObject go,int score=0, int deaths=0)
     {
         Name = name;
         Number = number;
@@ -22,6 +23,7 @@ public class Player
         Prefab = prefab;
         GO = go;
         Score = score;
+        Deaths = deaths;
     }
 
     public override string ToString()

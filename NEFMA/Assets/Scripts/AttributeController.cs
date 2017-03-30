@@ -88,6 +88,7 @@ public class AttributeController : MonoBehaviour {
     {
         Globals.players[playerNumber].Alive = false;
         Globals.players[playerNumber].GO = null;
+        ++Globals.players[playerNumber].Deaths;
         --Globals.livingPlayers;
     }
 
