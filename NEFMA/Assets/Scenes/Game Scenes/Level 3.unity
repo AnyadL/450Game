@@ -3228,7 +3228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 552202120}
   - component: {fileID: 552202121}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: building_tol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3792,7 +3792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 624289421}
   - component: {fileID: 624289422}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: building_bsns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4698,7 +4698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 736294308}
   - component: {fileID: 736294309}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: building_tol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5220,7 +5220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 801501965}
   - component: {fileID: 801501966}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: building_bsnsvariantbroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5284,7 +5284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 806765439}
   - component: {fileID: 806765440}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: building_apt1variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5908,7 +5908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 967004275}
   - component: {fileID: 967004276}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: building_tolvariant copy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6836,7 +6836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1147837639}
   - component: {fileID: 1147837640}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: building_bsnsvariant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7706,7 +7706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1236557325}
   - component: {fileID: 1236557326}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: building_apt1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7888,7 +7888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1314984770}
   - component: {fileID: 1314984771}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: building_apt1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9309,7 +9309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1558089689}
   - component: {fileID: 1558089690}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: building_tolvariant copy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10190,7 +10190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1745568505}
   - component: {fileID: 1745568506}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: building_tol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
