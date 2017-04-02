@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27556157c5a27f44838b4446df85b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTime: 0.3
+  attackTime: 0.1
   owner: {fileID: 0}
   velocityDirection: 0
 --- !u!212 &212547971985879190
