@@ -9,7 +9,7 @@ public class sfxWalking : MonoBehaviour {
     public AudioSource sfxFootstep;
     public AudioSource sfxJump;
 
-    private bool doublejump = false;
+    //private bool doublejump = false;
     private bool candoublejump = false;
     private bool isKitty = false;
     private int jumpCount = 0;

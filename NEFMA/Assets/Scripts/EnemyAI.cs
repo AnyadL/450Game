@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour {
     public float moveForce = 365f;
     [HideInInspector] public float currentMoveForce;
     public float maxSpeed = 5f;
-    [HideInInspector] private bool isGrounded = true;
+    [HideInInspector] public bool isGrounded = true;
     [HideInInspector] private bool isBlocked = false;
     [HideInInspector] public int facingRight = -1;
     public bool isRanged = false;

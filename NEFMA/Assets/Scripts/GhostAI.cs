@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GhostAI : MonoBehaviour {
 
-    //private Rigidbody2D myBody;
+    private Rigidbody2D myBody;
     //private AttributeController myAttributes;
     private EnemyAI myAI;
 
@@ -22,7 +22,7 @@ public class GhostAI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //myBody = this.GetComponent<Rigidbody2D>();
+        myBody = this.GetComponent<Rigidbody2D>();
         //myAttributes = this.GetComponent<AttributeController>();
         myAI = this.GetComponent<EnemyAI>();
     }
@@ -31,11 +31,17 @@ public class GhostAI : MonoBehaviour {
 	void Update () {
         if (fadeTime >= Time.time)
         {
+            // fading out
             if (fade == -1)
             {
                 //Debug.Log("Time: " + Mathf.Abs(Time.time - fadeTime) + " Sin(" + 0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime) + ") = " + Mathf.Sin(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, Mathf.Sin(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
+                if (myAI.isGrounded)
+                {
+                    myBody.velocity = new Vector2(myBody.velocity.x, 0);
+                }
             }
+            // fading in
             else if (fade == 1)
             {
                 //Debug.Log("Time: " + Mathf.Abs(Time.time - fadeTime) + " Cos(" + 0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime) + ") = " + Mathf.Cos(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
@@ -43,14 +49,18 @@ public class GhostAI : MonoBehaviour {
             }
             return;
         }
+        // done fading out
         if (fade == -1)
         {
             teleport();
             return;
         }
+        // done fading in
         else if (fade == 1)
         {
             //myAI.currentMoveForce = myAI.moveForce;
+            gameObject.GetComponents<Collider2D>()[0].enabled = true;
+            gameObject.GetComponents<Collider2D>()[1].enabled = true;
             fade = 0;
         }
         if (!gameObject.GetComponent<Renderer>().isVisible)
@@ -119,14 +129,16 @@ public class GhostAI : MonoBehaviour {
         nextTeleport = Time.time + teleportCooldown;
         fadeTime = Time.time + fadeDuration;
         fade = -1;
+        gameObject.GetComponents<Collider2D>()[0].enabled = false;
+        gameObject.GetComponents<Collider2D>()[1].enabled = false;
     }
 
     void teleport()
     {
-        
         bool dir = target.GetComponent<HeroMovement>().facingRight;
         //Debug.Log("Chosen " + targets[choice]);
-        gameObject.transform.position = target.transform.position - new Vector3((dir? 1.5f : -1.5f), -0.25f, 0);
+        myBody.velocity = new Vector2(0, 0);
+        gameObject.transform.position = target.transform.position - new Vector3((dir? 5.5f : -5.5f), -2.5f, 0);
         if ((myAI.facingRight == -1 && dir) || (myAI.facingRight == 1 && !dir))
         {
             myAI.Flip();
@@ -139,7 +151,7 @@ public class GhostAI : MonoBehaviour {
     {
         float tx = target.transform.position.x;
         float mx = gameObject.transform.position.x;
-        if ((tx > mx && myAI.facingRight == -1) || (tx < mx && myAI.facingRight == 1))
+        if ((tx > mx && myAI.facingRight == -1 && tx - mx > 5) || (tx < mx && myAI.facingRight == 1 && mx - tx > 5))
         {
             myAI.Flip();
         }
