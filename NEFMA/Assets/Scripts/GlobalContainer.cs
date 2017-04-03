@@ -49,6 +49,7 @@ public class Globals
     static public bool rykerChosen = false;
 
     static public int enemiesKilled = 0;
+    static public int totalEnemies = 0;
 
     static public float fadeDir = 1f;
     static public bool fading = false;
