@@ -15,6 +15,7 @@ public class BossHand : MonoBehaviour {
     public float downForce = 6;
     public float upForce = 0.2f;
     [HideInInspector] public float midpoint = 0;
+    public GameObject handArt;
 
     // Use this for initialization
     void Start () {
@@ -87,6 +88,10 @@ public class BossHand : MonoBehaviour {
                 myBody.velocity = new Vector2(0, 0);
                 StartCoroutine(waitHands());
             }
+        }
+        if (handArt != null)
+        {
+            handArt.transform.position = transform.position - (Vector3.up * 0.6f);
         }
     }
 
