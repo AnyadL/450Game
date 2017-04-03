@@ -20,13 +20,16 @@ public class PlatformCollider : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D jumper)
     {
-        //print("--------------------------------------------------");
-        Transform platform = transform.parent;
-        //print("Entered: " + platform + " | at: " + jumper.transform.position);
-        //Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponent<Collider2D>(), true);
-        Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[0], true);
-        Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[1], true);
-        Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[2], true);
+        if (jumper.GetComponent<Rigidbody2D>().velocity.y >= 0)
+        {
+            //print("--------------------------------------------------");
+            Transform platform = transform.parent;
+            //print("Entered: " + platform + " | at: " + jumper.transform.position);
+            //Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponent<Collider2D>(), true);
+            Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[0], true);
+            Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[1], true);
+            Physics2D.IgnoreCollision(jumper.GetComponent<Collider2D>(), platform.GetComponents<Collider2D>()[2], true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D jumper)

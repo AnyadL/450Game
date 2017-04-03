@@ -105,9 +105,9 @@ public class HeroMovement : MonoBehaviour {
                 rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * currentMaxSpeed, rb2d.velocity.y);
         }
 
-        if (rb2d.velocity.y <= -85f && !Globals.gamePaused)
+        if (rb2d.velocity.y <= -95f && !Globals.gamePaused)
         {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, -85f);
+            rb2d.velocity = new Vector2(rb2d.velocity.x, -95f);
         }
 
         //if (currentSpeed > 0 && !facingRight)
