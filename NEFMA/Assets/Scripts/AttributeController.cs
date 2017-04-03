@@ -287,11 +287,11 @@ public class AttributeController : MonoBehaviour {
             if (decreaseHealth(1.0f))
             {
                 takenDamage();
-                StartCoroutine(bossCrush(collision));
-                myBody.velocity = new Vector2(0, 0);
-                float mag = (collision.gameObject.transform.localScale.x / 2) - Mathf.Abs(collision.gameObject.transform.position.x - transform.position.x);
-                knockback(collision.gameObject.transform.position.x, mag * 3, 10 + mag);
             }
+            StartCoroutine(bossCrush(collision));
+            myBody.velocity = new Vector2(0, 0);
+            float mag = (collision.gameObject.transform.localScale.x / 2) - Mathf.Abs(collision.gameObject.transform.position.x - transform.position.x);
+            knockback(collision.gameObject.transform.position.x, mag * 3, 15 + mag);
         }
     }
 
@@ -408,11 +408,11 @@ public class AttributeController : MonoBehaviour {
             if (decreaseHealth(1.0f))
             {
                 takenDamage();
-                StartCoroutine(bossCrush(collision));
-                myBody.velocity = new Vector2(0, 0);
-                float mag = (collision.gameObject.transform.localScale.x / 2) - Mathf.Abs(collision.gameObject.transform.position.x - transform.position.x);
-                knockback(collision.gameObject.transform.position.x, mag * 3, 10 + mag);
             }
+            StartCoroutine(bossCrush(collision));
+            myBody.velocity = new Vector2(0, 0);
+            float mag = (collision.gameObject.transform.localScale.x / 2) - Mathf.Abs(collision.gameObject.transform.position.x - transform.position.x);
+            knockback(collision.gameObject.transform.position.x, mag * 3, 15 + mag);
         }
     }
 
