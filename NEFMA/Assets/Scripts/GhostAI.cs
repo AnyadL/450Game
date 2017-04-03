@@ -17,6 +17,8 @@ public class GhostAI : MonoBehaviour {
     public float fadeDuration = 1f;
     private float fadeTime = 0f;
     private int fade = 0;
+    public Animator animator;
+    [HideInInspector] public bool teleporting;
 
     public GameObject TEST;
 
@@ -25,15 +27,21 @@ public class GhostAI : MonoBehaviour {
         myBody = this.GetComponent<Rigidbody2D>();
         //myAttributes = this.GetComponent<AttributeController>();
         myAI = this.GetComponent<EnemyAI>();
+        animator = gameObject.GetComponent<Animator>();
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if (fadeTime >= Time.time)
         {
+            teleporting = true;
+            animator.SetBool("teleporting", teleporting);
+
             // fading out
             if (fade == -1)
             {
+
                 //Debug.Log("Time: " + Mathf.Abs(Time.time - fadeTime) + " Sin(" + 0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime) + ") = " + Mathf.Sin(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, Mathf.Sin(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
                 if (myAI.isGrounded)
@@ -49,9 +57,11 @@ public class GhostAI : MonoBehaviour {
             }
             return;
         }
+
         // done fading out
         if (fade == -1)
         {
+
             teleport();
             return;
         }
@@ -62,6 +72,8 @@ public class GhostAI : MonoBehaviour {
             gameObject.GetComponents<Collider2D>()[0].enabled = true;
             gameObject.GetComponents<Collider2D>()[1].enabled = true;
             fade = 0;
+            teleporting = false;
+            animator.SetBool("teleporting", teleporting);
         }
         if (!gameObject.GetComponent<Renderer>().isVisible)
         {

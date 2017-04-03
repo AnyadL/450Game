@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 114193321496659480}
   - component: {fileID: 61956348595354200}
   - component: {fileID: 114117086278311314}
+  - component: {fileID: 95101646042315090}
   m_Layer: 9
   m_Name: Teleporting Enemy
   m_TagString: Enemy
@@ -124,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1323327057391826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.23, y: -5.86, z: 0}
+  m_LocalPosition: {x: 14.478115, y: 15.148336, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 4235562624006180}
@@ -181,6 +182,23 @@ BoxCollider2D:
   m_Offset: {x: -1, y: 0}
   serializedVersion: 2
   m_Size: {x: 14, y: 25}
+--- !u!95 &95101646042315090
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323327057391826}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8b127168ca119364ca81073f52fae683, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114117086278311314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -196,6 +214,8 @@ MonoBehaviour:
   yRange: 25
   teleportCooldown: 5
   fadeDuration: 1
+  animator: {fileID: 95101646042315090}
+  teleporting: 0
   TEST: {fileID: 0}
 --- !u!114 &114193321496659480
 MonoBehaviour:
@@ -218,6 +238,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!114 &114323212982453884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,6 +256,7 @@ MonoBehaviour:
   moveForce: 100
   currentMoveForce: 0
   maxSpeed: 2
+  isGrounded: 1
   facingRight: -1
   isRanged: 0
   projectileVelocity: 20
