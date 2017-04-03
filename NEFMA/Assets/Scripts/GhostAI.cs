@@ -31,11 +31,17 @@ public class GhostAI : MonoBehaviour {
 	void Update () {
         if (fadeTime >= Time.time)
         {
+            // fading out
             if (fade == -1)
             {
                 //Debug.Log("Time: " + Mathf.Abs(Time.time - fadeTime) + " Sin(" + 0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime) + ") = " + Mathf.Sin(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, Mathf.Sin(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
+                if (myAI.isGrounded)
+                {
+                    myBody.velocity = new Vector2(myBody.velocity.x, 0);
+                }
             }
+            // fading in
             else if (fade == 1)
             {
                 //Debug.Log("Time: " + Mathf.Abs(Time.time - fadeTime) + " Cos(" + 0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime) + ") = " + Mathf.Cos(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
@@ -43,17 +49,18 @@ public class GhostAI : MonoBehaviour {
             }
             return;
         }
+        // done fading out
         if (fade == -1)
         {
             teleport();
             return;
         }
+        // done fading in
         else if (fade == 1)
         {
             //myAI.currentMoveForce = myAI.moveForce;
             gameObject.GetComponents<Collider2D>()[0].enabled = true;
             gameObject.GetComponents<Collider2D>()[1].enabled = true;
-            myAI.ghostOverride = false;
             fade = 0;
         }
         if (!gameObject.GetComponent<Renderer>().isVisible)
@@ -71,6 +78,7 @@ public class GhostAI : MonoBehaviour {
         else if (target != null)
         {
             target = null;
+            myAI.ghostOverride = false;
         }
 
         Debug.DrawLine(transform.position + (Vector3.right * xRange) + (Vector3.up * yRange), transform.position - (Vector3.right * xRange) + (Vector3.up * yRange), Color.red, 0.01f);
@@ -121,8 +129,8 @@ public class GhostAI : MonoBehaviour {
         nextTeleport = Time.time + teleportCooldown;
         fadeTime = Time.time + fadeDuration;
         fade = -1;
-        //gameObject.GetComponents<Collider2D>()[0].enabled = false;
-        //gameObject.GetComponents<Collider2D>()[1].enabled = false;
+        gameObject.GetComponents<Collider2D>()[0].enabled = false;
+        gameObject.GetComponents<Collider2D>()[1].enabled = false;
     }
 
     void teleport()
@@ -143,7 +151,7 @@ public class GhostAI : MonoBehaviour {
     {
         float tx = target.transform.position.x;
         float mx = gameObject.transform.position.x;
-        if ((tx > mx && myAI.facingRight == -1) || (tx < mx && myAI.facingRight == 1))
+        if ((tx > mx && myAI.facingRight == -1 && tx - mx > 5) || (tx < mx && myAI.facingRight == 1 && mx - tx > 5))
         {
             myAI.Flip();
         }
