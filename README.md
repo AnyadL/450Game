@@ -1,4 +1,4 @@
-# 450Gameddd
+# 450Game
 
 No Excuse for Monster Abuse is a game created by the Panthers, a group of students at the University of Alberta for the capstone course of the Game Development Certificate.
 
