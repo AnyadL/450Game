@@ -29,6 +29,9 @@ public class HeroMovement : MonoBehaviour {
     private bool candoublejump = false;
     private bool isKitty = false;
     private int jumpCount = 0;
+    public Animator animator;
+    public bool walking = false;
+
 
     // Use this for initialization
     void Awake()
@@ -38,6 +41,8 @@ public class HeroMovement : MonoBehaviour {
         myAttributes = GetComponent<AttributeController>();
         currentMoveForce = moveForce;
         currentMaxSpeed = maxSpeed;
+        animator = gameObject.GetComponent<Animator>();
+
         if (gameObject.name == "Kitty(Clone)" || gameObject.name == "Kitty")
         {
             isKitty = true;
@@ -108,6 +113,8 @@ public class HeroMovement : MonoBehaviour {
             }
             else if ((rb2d.velocity.x > 1 || rb2d.velocity.x < -1))
             {
+                walking = false;
+                animator.SetBool("Walk", walking);
                 if (rb2d.velocity.y == 0)
                 {
                     rb2d.velocity = new Vector2(rb2d.velocity.x - (rb2d.velocity.x / 8), 0);
@@ -116,6 +123,11 @@ public class HeroMovement : MonoBehaviour {
                 {
                     rb2d.velocity = new Vector2(rb2d.velocity.x - (rb2d.velocity.x / 32), rb2d.velocity.y);
                 }
+            }
+            else
+            {
+                walking = false;
+                animator.SetBool("Walk", walking);
             }
 
             if (rb2d.velocity.y <= -95f)
@@ -168,6 +180,9 @@ public class HeroMovement : MonoBehaviour {
     // speedVector is a value between [-1, 1]
     public void moveCharacter(float speedVector, float force)
     {
+        walking = true;
+        animator.SetBool("Walk", walking);
+
         if (!myAttributes.knockbacked && speedVector * rb2d.velocity.x < currentMaxSpeed)
             rb2d.AddForce(Vector2.right * speedVector * force);
 
