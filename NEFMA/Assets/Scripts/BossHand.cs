@@ -91,7 +91,7 @@ public class BossHand : MonoBehaviour {
         }
         if (handArt != null)
         {
-            handArt.transform.position = transform.position - (Vector3.up * 0.6f);
+            handArt.transform.position = transform.position - (Vector3.up * 1.1f);
         }
     }
 

@@ -24,6 +24,7 @@ public class BossTail : MonoBehaviour {
     public bool yDown = true;
     private float cycler = 0;
     private bool shooting = false;
+    public GameObject tailArt;
 
     // Use this for initialization
     void Start () {
@@ -60,6 +61,10 @@ public class BossTail : MonoBehaviour {
                 moveUp();
             }
         }
+        if (tailArt != null)
+        {
+            tailArt.transform.position = transform.position;
+        }
     }
 
     public void moveUp()
@@ -67,11 +72,18 @@ public class BossTail : MonoBehaviour {
         myBody.MovePosition(myBody.position + (Vector2.up * 10 * Time.fixedDeltaTime));
         if (myBody.position.y >= maxY)
         {
-            myBody.MovePosition(new Vector2(myBody.position.x, maxY));
+            if (myBody.position.x > 0)
+            {
+                myBody.MovePosition(new Vector2(maxX, maxY));
+            }
+            else
+            {
+                myBody.MovePosition(new Vector2(minX, maxY));
+            }
             movingY = false;
             yDown = true;
             startTime = Time.time;
-            cycler = Time.time + (2 * Mathf.PI);
+            cycler = Time.time + (2 * 3.14f);
             shooting = false;
         }
     }
@@ -81,26 +93,21 @@ public class BossTail : MonoBehaviour {
         myBody.MovePosition(myBody.position - (Vector2.up * 10 * Time.fixedDeltaTime));
         if (myBody.position.y <= minY)
         {
-            myBody.MovePosition(new Vector2(myBody.position.x, minY));
+            if (myBody.position.x > 0)
+            {
+                myBody.MovePosition(new Vector2(maxX, minY));
+            }
+            else
+            {
+                myBody.MovePosition(new Vector2(minX, minY));
+            }
             movingY = false;
             yDown = false;
-            StartCoroutine(prepAttack());
             startTime = Time.time;
             shooting = true;
             direction = -direction; // this fixes a bug
+            spawnNeedles();
         }
-    }
-
-    IEnumerator prepAttack()
-    {
-        yield return new WaitForSeconds(Mathf.PI);
-        spawnNeedles();
-    }
-
-    IEnumerator stopAttack()
-    {
-        yield return new WaitForSeconds(Mathf.PI - needleDelayTime);
-        movingY = true;
     }
 
     // maybe change this to just use increasing and decreasing velocities like BossHand?
@@ -155,11 +162,15 @@ public class BossTail : MonoBehaviour {
             needle++;
             StartCoroutine(attack());
         }
-        else if (needle >= numberOfNeedles)
+        if (needle == numberOfNeedles)
+        {
+            needle++;
+            movingY = true;
+            return;
+        }
+        if (needle > numberOfNeedles)
         {
             needle = 0;
-            StartCoroutine(stopAttack());
-            return;
         }
     }
 
@@ -172,9 +183,9 @@ public class BossTail : MonoBehaviour {
         GameObject newNeedle3 = Instantiate(needePrefab, (transform.position + (transform.right * x) - (transform.up * y)), Quaternion.Euler(0, 0, needleAngleSpread));
 
         ///*
-        Debug.DrawLine((transform.position - (transform.right * x) - (transform.up * y)), (transform.position - ((transform.right * x) * 40.25454f) - ((transform.up * y) * 50)), debugColor, 60);
-        Debug.DrawLine((transform.position + (transform.right * 0) - (transform.up * y)), (transform.position + ((transform.right * 0) * 50) - ((transform.up * y) * 50)), debugColor, 60);
-        Debug.DrawLine((transform.position + (transform.right * x) - (transform.up * y)), (transform.position + ((transform.right * x) * 40.25454f) - ((transform.up * y) * 50)), debugColor, 60);
+        Debug.DrawLine((transform.position - (transform.right * x) - (transform.up * y)), (transform.position - ((transform.right * x) * 40.25454f) - ((transform.up * y) * 50)), debugColor, 300);
+        Debug.DrawLine((transform.position + (transform.right * 0) - (transform.up * y)), (transform.position + ((transform.right * 0) * 50) - ((transform.up * y) * 50)), debugColor, 300);
+        Debug.DrawLine((transform.position + (transform.right * x) - (transform.up * y)), (transform.position + ((transform.right * x) * 40.25454f) - ((transform.up * y) * 50)), debugColor, 300);
         //*/
 
         float xcomp, ycomp;
