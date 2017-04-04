@@ -348,6 +348,16 @@ Prefab:
       propertyPath: bigCooldown
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114608651482724496, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
+        type: 2}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1305773878}
+    - target: {fileID: 114392560673639600, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
+        type: 2}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1305773878}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
   m_IsPrefabParent: 0
@@ -726,6 +736,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9598bc9c8dc9f114884f3cb85527d48c, type: 2}
   m_IsPrefabParent: 0
+--- !u!95 &1305773878 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95696558752254844, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
+    type: 2}
+  m_PrefabInternal: {fileID: 479436209}
 --- !u!1001 &1513560623
 Prefab:
   m_ObjectHideFlags: 0

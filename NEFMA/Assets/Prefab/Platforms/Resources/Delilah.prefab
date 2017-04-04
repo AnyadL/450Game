@@ -587,8 +587,6 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
-  animator: {fileID: 95725971035733416}
-  walking: 0
 --- !u!114 &114528341687823494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -607,7 +605,7 @@ MonoBehaviour:
   wallVelocity: 10
   wallLifeTime: 5
   pushTime: 2
-  animator: {fileID: 95725971035733416}
+  animator: {fileID: 0}
   BigAttack: 0
   LittleAttack: 0
   littleCooldown: 2

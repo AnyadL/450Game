@@ -541,6 +541,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 95696558752254844}
+  walking: 0
 --- !u!114 &114608651482724496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -562,7 +564,7 @@ MonoBehaviour:
   nextLittleFire: 0
   BigAttacking: 0
   LittleAttacking: 0
-  animator: {fileID: 0}
+  animator: {fileID: 95696558752254844}
   sfxSmallFireBall: {fileID: 82810375224561512}
   sfxBigFireBall: {fileID: 82394582967527132}
 --- !u!114 &114895260963106988

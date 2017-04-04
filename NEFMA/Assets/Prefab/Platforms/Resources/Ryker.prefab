@@ -336,7 +336,7 @@ MonoBehaviour:
   nextDash: 0
   dashSpeed: 250
   dashTime: 0.5
-  animator: {fileID: 95483858603040556}
+  animator: {fileID: 0}
   LittleAttack: 0
   BigAttack: 0
 --- !u!114 &114357171226396750
@@ -390,8 +390,6 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
-  animator: {fileID: 95483858603040556}
-  walking: 0
 --- !u!114 &114936493580927104
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -348,7 +348,7 @@ MonoBehaviour:
   scratchCooldown: 0.5
   nextScratch: 0
   hissVelocity: 35
-  animator: {fileID: 0}
+  animator: {fileID: 95623631146983276}
   BigAttack: 0
   LittleAttack: 0
 --- !u!114 &114469766115314282
@@ -411,6 +411,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 95623631146983276}
+  walking: 0
 --- !u!212 &212490725946953966
 SpriteRenderer:
   m_ObjectHideFlags: 1
