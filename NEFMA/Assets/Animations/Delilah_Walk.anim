@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Agni_Attack_Little
+  m_Name: Delilah_Walk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -18,10 +18,12 @@ AnimationClip:
   m_FloatCurves: []
   m_PPtrCurves:
   - curve:
-    - time: 0.016666668
-      value: {fileID: 21300000, guid: 06b22e817a0095a498f77333eebbd05a, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: 06b22e817a0095a498f77333eebbd05a, type: 3}
+    - time: 0
+      value: {fileID: 21300000, guid: ec23e2eb1c53c2042a2d199a2932cdef, type: 3}
+    - time: 0.26666668
+      value: {fileID: 21300000, guid: b3fa414f31f37d34b86cc5877f8c5db3, type: 3}
+    - time: 0.48333332
+      value: {fileID: 21300000, guid: b3fa414f31f37d34b86cc5877f8c5db3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -40,14 +42,15 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 06b22e817a0095a498f77333eebbd05a, type: 3}
-    - {fileID: 21300000, guid: 06b22e817a0095a498f77333eebbd05a, type: 3}
+    - {fileID: 21300000, guid: ec23e2eb1c53c2042a2d199a2932cdef, type: 3}
+    - {fileID: 21300000, guid: b3fa414f31f37d34b86cc5877f8c5db3, type: 3}
+    - {fileID: 21300000, guid: b3fa414f31f37d34b86cc5877f8c5db3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.51666665
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

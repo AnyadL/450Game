@@ -28,6 +28,9 @@ public class GameController : MonoBehaviour {
         Globals.gamePaused = false;
         Time.timeScale = 1;
 
+        Globals.totalEnemies += GameObject.FindGameObjectsWithTag("Enemy").Length;
+        Debug.Log(Globals.totalEnemies);
+
         if (OVERRIDE)
         {
             if (Globals.players.Count == 0)
