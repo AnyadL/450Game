@@ -41,9 +41,8 @@ public class HeroMovement : MonoBehaviour {
         myAttributes = GetComponent<AttributeController>();
         currentMoveForce = moveForce;
         currentMaxSpeed = maxSpeed;
-        if (animator != null)
-            animator = gameObject.GetComponent<Animator>();
-
+        animator = gameObject.GetComponent<Animator>();
+        
         if (gameObject.name == "Kitty(Clone)" || gameObject.name == "Kitty")
         {
             isKitty = true;
