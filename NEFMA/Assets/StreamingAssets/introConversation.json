@@ -5,7 +5,7 @@
             "Speaker": "Agni",
             "Text": "OMG, can you believe Dr. G cancelled class on us again yesterday?",
             "voFile": "",
-            "displayTime": 4,
+            "displayTime": 6,
             "type": "Question",
             "special":  1
         },
@@ -20,21 +20,21 @@
             "Speaker": "Ryker",
             "Text": "Why didn’t you just run home, Agni?",
             "voFile": "",
-            "displayTime": 2,
+            "displayTime": 4,
             "type":  "Question"
         },
         {
             "Speaker": "Agni",
             "Text": "Not everyone’s a speedster like you, Ryker!",
             "voFile": "",
-            "displayTime": 3,
+            "displayTime": 4,
             "type":  "Exclamation"
         },
         {
             "Speaker": "Agni",
             "Text": "He better not have cancelled class again or I’m gonna flip!",
             "voFile": "",
-            "displayTime": 4,
+            "displayTime": 4.5,
             "type":  "Exclamation"
         },
         {
@@ -56,7 +56,7 @@
             "Speaker": "Ryker",
             "Text": "Holy crap!  You just about gave me a heart attack, Kitty!",
             "voFile": "",
-            "displayTime": 3,
+            "displayTime": 5,
             "type": "Exclamation",
             "special": 3
         },
@@ -72,7 +72,7 @@
             "Speaker": "Agni",
             "Text": "Hey, isn't that - ",
             "voFile": "",
-            "displayTime": 2,
+            "displayTime": 1.5,
             "type":  "Ellipsis",
             "special": 5
         },
@@ -87,21 +87,21 @@
             "Speaker": "Dr. G",
             "Text": "Help!",
             "voFile": "",
-            "displayTime": 1,
+            "displayTime": 2,
             "type":  "Exclamation"
         },
         {
             "Speaker": "Agni",
             "Text": "Oh, hell no!  There’s no way you’re cancelling class again!",
             "voFile": "",
-            "displayTime": 3,
+            "displayTime": 4.5,
             "type":  "Exclamation"
         },
         {
             "Speaker": "Dr. G",
             "Text": "I’m being kidnapped!",
             "voFile": "",
-            "displayTime": 3,
+            "displayTime": 6,
             "type":  "Exclamation"
         },
         {
@@ -116,7 +116,7 @@
             "Speaker": "Ryker",
             "Text": "Shouldn’t we let the real heroes deal with this?",
             "voFile": "",
-            "displayTime": 3,
+            "displayTime": 2.5,
             "type":  "Question"
         },
         {
