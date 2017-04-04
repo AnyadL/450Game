@@ -73,6 +73,7 @@ public class BossHand : MonoBehaviour {
             else
             {
                 myBody.velocity = new Vector2(0, 0);
+                transform.position = new Vector3(transform.position.x, currentMinHeight, transform.position.z);
                 StartCoroutine(slamHands());
             }
         }
@@ -86,6 +87,7 @@ public class BossHand : MonoBehaviour {
             else
             {
                 myBody.velocity = new Vector2(0, 0);
+                transform.position = new Vector3(transform.position.x, currentMaxHeight, transform.position.z);
                 StartCoroutine(waitHands());
             }
         }

@@ -394,23 +394,19 @@ public class AttributeController : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "Deflect")
         {
-
             StartCoroutine(deflectEnemy());
-
-
-
         }
-        else if (collision.gameObject.tag == "Secret Boss Hand")
-        {
-            if (decreaseHealth(1.0f))
-            {
-                takenDamage();
-            }
-            StartCoroutine(bossCrush(collision));
-            myBody.velocity = new Vector2(0, 0);
-            float mag = (collision.gameObject.transform.localScale.x / 2) - Mathf.Abs(collision.gameObject.transform.position.x - transform.position.x);
-            knockback(collision.gameObject.transform.position.x, mag * 3, 15 + mag);
-        }
+        //else if (collision.gameObject.tag == "Secret Boss Hand")
+        //{
+        //    //if (decreaseHealth(1.0f))
+        //    //{
+        //    //    takenDamage();
+        //    //}
+        //    StartCoroutine(bossCrush(collision));
+        //    myBody.velocity = new Vector2(0, 0);
+        //    float mag = (collision.gameObject.transform.localScale.x / 2) - Mathf.Abs(collision.gameObject.transform.position.x - transform.position.x);
+        //    knockback(collision.gameObject.transform.position.x, mag * 3, 15 + mag);
+        //}
     }
 
     // something has collided with the boss head
