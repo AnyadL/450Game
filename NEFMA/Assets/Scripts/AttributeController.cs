@@ -270,6 +270,11 @@ public class AttributeController : MonoBehaviour {
                 {
                     Globals.players[i].Score += 1;
                     Debug.Log(Globals.players[i].Score);
+                    if (Globals.players[i].ScoreCounter != null)
+                    {
+                        print("Got one!");
+                        Globals.players[i].ScoreCounter.text = Globals.players[i].Score.ToString();
+                    }
                 }
             }
             Destroy(collision.gameObject);

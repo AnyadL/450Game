@@ -25,6 +25,13 @@ public class CollectableScript : MonoBehaviour
                 Globals.players[i].Score += 100;
                 Debug.Log(Globals.players[i].Score);
                 Destroy(gameObject);
+                Debug.Log(Globals.players[i].ScoreCounter.text);
+                Globals.players[i].ScoreCounter.text = Globals.players[i].Score.ToString();
+                if (Globals.players[i].ScoreCounter != null)
+                {
+                    print("Got one!");
+                    Globals.players[i].ScoreCounter.text = Globals.players[i].Score.ToString();
+                }
             }
         }
 

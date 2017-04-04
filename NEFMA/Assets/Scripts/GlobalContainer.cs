@@ -12,9 +12,10 @@ public class Player
     public GameObject Prefab; // The hero prefab
     public GameObject GO; // The hero game object
     public int Score; //This is the heros score (number of collectibles
+    public UnityEngine.UI.Text ScoreCounter;
     public int Deaths; // This is the number of times the player has died
 
-    public Player(string name, int number, int inputnum, bool alive, GameObject prefab, GameObject go,int score=0, int deaths=0)
+    public Player(string name, int number, int inputnum, bool alive, GameObject prefab, GameObject go,int score=0, UnityEngine.UI.Text scoreCounter =null, int deaths=0)
     {
         Name = name;
         Number = number;
@@ -23,6 +24,7 @@ public class Player
         Prefab = prefab;
         GO = go;
         Score = score;
+        ScoreCounter = scoreCounter;
         Deaths = deaths;
     }
 
