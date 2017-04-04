@@ -49,7 +49,7 @@ public class BossController : MonoBehaviour {
     {
         if (waveCount % 6 == 0)
         {
-            wave2();
+            wave3();
         }
         else
         {
@@ -58,6 +58,7 @@ public class BossController : MonoBehaviour {
         waveCount++;
     }
 
+    // spawns loafers
     void wave1()
     {
         Instantiate(allyPrefab1, (transform.position + (transform.right * 72.5f) - (transform.up * 20)), Quaternion.identity);
@@ -65,7 +66,16 @@ public class BossController : MonoBehaviour {
         enemy2.GetComponent<EnemyAI>().Flip();
     }
 
+    // spawns soakers
     void wave2()
+    {
+        Instantiate(allyPrefab2, (transform.position + (transform.right * 72.5f) - (transform.up * 20)), Quaternion.identity);
+        GameObject enemy2 = Instantiate(allyPrefab1, (transform.position - (transform.right * 72.5f) - (transform.up * 20)), Quaternion.identity);
+        enemy2.GetComponent<EnemyAI>().Flip();
+    }
+
+    // spawns ghosts
+    void wave3()
     {
         if (waveCount % 12 == 0)
         {

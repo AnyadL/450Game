@@ -141,7 +141,7 @@ public class SetHUDs : MonoBehaviour {
             child.GetChild(0).GetComponent<Image>().sprite = player.Alive || ignoreDeath ? delilahPortrait : delilahDead;
         else if (player.Name == "Kitty")
             child.GetChild(0).GetComponent<Image>().sprite = player.Alive || ignoreDeath ? kittyPortrait : kittyDead;
-        if (player.Name != null)
+        if (player.Name != null && child.childCount > 3)
         {
             Globals.players[i].ScoreCounter = child.GetChild(3).GetComponent<UnityEngine.UI.Text>();
             Globals.players[i].ScoreCounter.text = Globals.players[i].Score.ToString();

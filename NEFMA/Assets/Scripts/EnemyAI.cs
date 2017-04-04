@@ -16,7 +16,7 @@ public class EnemyAI : MonoBehaviour {
 
     // Cache vars
     private Rigidbody2D myBody;
-    private AttributeController myAttributes;
+    //private AttributeController myAttributes;
 
     public Transform groundCheck;
     public Transform wallCheck;
@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour {
 
     void Start() {
         myBody = this.GetComponent<Rigidbody2D>();
-        myAttributes = this.GetComponent<AttributeController>();
+        //myAttributes = this.GetComponent<AttributeController>();
         currentMoveForce = moveForce;
         // dont need anymore?
         if (this.GetComponent<SpriteRenderer>().flipX)
@@ -68,18 +68,18 @@ public class EnemyAI : MonoBehaviour {
 
         if (isBlocked)
         {
-            bool crushed = Physics2D.Linecast(transform.position, crushedCheck.position, 1 << LayerMask.NameToLayer("Ground"));
-            if (crushed)
-            {
-                myAttributes.decreaseHealth(myAttributes.maxHealth);
-            }
-            else
-            {
+            //bool crushed = Physics2D.Linecast(transform.position, crushedCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+            //if (crushed)
+            //{
+            //    myAttributes.decreaseHealth(myAttributes.maxHealth);
+            //}
+            //else
+            //{
                 if (!ghostOverride)
                 {
                     Flip();
                 }
-            }
+            //}
         }
 
         isGrounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));

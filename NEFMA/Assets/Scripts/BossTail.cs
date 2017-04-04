@@ -11,7 +11,7 @@ public class BossTail : MonoBehaviour {
     public float maxY = 70;
     public float minY = 60;
     private float startTime = 0;
-    private float direction = -1;
+    public float direction = -1;
     private float oldval = 0;
     public float needle = 0;
     public float numberOfNeedles = 0;
@@ -87,6 +87,16 @@ public class BossTail : MonoBehaviour {
             startTime = Time.time;
             cycler = Time.time + (2 * 3.14f);
             shooting = false;
+            // headed left
+            if (myBody.position.x > 0)
+            {
+                direction = -1;
+            }
+            // headed right
+            else
+            {
+                direction = 1;
+            }
         }
     }
 
@@ -108,7 +118,16 @@ public class BossTail : MonoBehaviour {
             startTime = Time.time;
             shooting = true;
             spawnNeedles();
-            direction = -direction; // this fixes a bug
+            // headed left
+            if (myBody.position.x > 0)
+            {
+                direction = -1;
+            }
+            // headed right
+            else
+            {
+                direction = 1;
+            }
         }
     }
 
@@ -119,10 +138,12 @@ public class BossTail : MonoBehaviour {
         if ((val > 0 && oldval < 0) || (val < 0 && oldval > 0))
         {
             //Debug.Log("val: " + val + " | oldval: " + oldval + " | Highest X: " + myBody.position.x);
+            // at right side
             if (direction >= 0)
             {
                 myBody.MovePosition(new Vector2(maxX, myBody.position.y));
             }
+            // at left side
             else
             {
                 myBody.MovePosition(new Vector2(minX, myBody.position.y));

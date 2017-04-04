@@ -432,6 +432,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!114 &73414449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,6 +673,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!114 &111176625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,6 +913,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!61 &133880898
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1077,7 +1083,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.39607844, g: 0.6313726, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.6627451, g: 0.4862745, b: 0.4862745, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1206,6 +1212,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!4 &182814567
 Transform:
   m_ObjectHideFlags: 0
@@ -1500,6 +1508,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!61 &286211011
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1659,6 +1669,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!82 &288437938
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2108,6 +2120,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!61 &460733801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2233,107 +2247,6 @@ Transform:
   m_Father: {fileID: 182814567}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &513824393
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1561513693}
-    m_Modifications:
-    - target: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 45.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -7.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_LocalScale.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114392560673639600, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
-        type: 2}
-      propertyPath: moveForce
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114392560673639600, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
-        type: 2}
-      propertyPath: maxSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1880801342426786, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-      propertyPath: m_Name
-      value: Milo
-      objectReference: {fileID: 0}
-    - target: {fileID: 212085618491722214, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: e5dbab3ab00eaef44aaebec022caf5a8,
-        type: 3}
-    - target: {fileID: 61183141974903798, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 61183141974903798, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 61183141974903798, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 61183141974903798, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
-        type: 2}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114608651482724496, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-    - {fileID: 114895260963106988, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: 2b9720cbcdf5c6147b9d2a4d03285ece, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &513824394 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4998275180768812, guid: 2b9720cbcdf5c6147b9d2a4d03285ece,
-    type: 2}
-  m_PrefabInternal: {fileID: 513824393}
 --- !u!1 &538406160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,6 +2567,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!82 &660828054
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3199,6 +3114,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!114 &788920826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3645,6 +3562,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!61 &1020554771
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3804,6 +3723,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!82 &1042026410
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4567,6 +4488,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!61 &1331480939
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4960,6 +4883,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!114 &1425933748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5352,7 +5277,7 @@ Transform:
   - {fileID: 1069000851}
   - {fileID: 7617717}
   - {fileID: 1464644597}
-  - {fileID: 513824394}
+  - {fileID: 2088198434}
   - {fileID: 2132313110}
   - {fileID: 1864307223}
   m_Father: {fileID: 0}
@@ -5587,6 +5512,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!4 &1706982066
 Transform:
   m_ObjectHideFlags: 0
@@ -6088,6 +6015,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!82 &1777396904
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6304,6 +6233,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!61 &1789050542
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6523,6 +6454,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!114 &1814752275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6792,6 +6725,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!114 &1861921805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7031,6 +6966,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!114 &1862757380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7594,6 +7531,57 @@ Transform:
   m_Father: {fileID: 2124280820}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2088198433
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1561513693}
+    m_Modifications:
+    - target: {fileID: 4690015853192296, guid: becaf0f9e07e65648ae2e00751045240, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 45.55499
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690015853192296, guid: becaf0f9e07e65648ae2e00751045240, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -7.2038093
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690015853192296, guid: becaf0f9e07e65648ae2e00751045240, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690015853192296, guid: becaf0f9e07e65648ae2e00751045240, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690015853192296, guid: becaf0f9e07e65648ae2e00751045240, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690015853192296, guid: becaf0f9e07e65648ae2e00751045240, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690015853192296, guid: becaf0f9e07e65648ae2e00751045240, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690015853192296, guid: becaf0f9e07e65648ae2e00751045240, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4690015853192296, guid: becaf0f9e07e65648ae2e00751045240, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: becaf0f9e07e65648ae2e00751045240, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &2088198434 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4690015853192296, guid: becaf0f9e07e65648ae2e00751045240,
+    type: 2}
+  m_PrefabInternal: {fileID: 2088198433}
 --- !u!1 &2124280819
 GameObject:
   m_ObjectHideFlags: 0
@@ -7658,6 +7646,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!114 &2124280822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7949,6 +7939,8 @@ MonoBehaviour:
   grounded: 0
   currentSpeed: 0
   doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!82 &2132313113
 AudioSource:
   m_ObjectHideFlags: 0

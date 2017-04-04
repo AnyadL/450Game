@@ -163,7 +163,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 1.5, y: 1}
   serializedVersion: 2
@@ -177,7 +177,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 1.5, y: 1}
   serializedVersion: 2
@@ -296,6 +296,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!114 &114752082635900038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,6 +314,7 @@ MonoBehaviour:
   moveForce: 0
   currentMoveForce: 0
   maxSpeed: 8
+  isGrounded: 1
   facingRight: -1
   isRanged: 1
   projectileVelocity: 30
