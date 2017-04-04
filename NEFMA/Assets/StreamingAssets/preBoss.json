@@ -20,36 +20,36 @@
         "Speaker": "Delilah",
         "Text": "Wait... Milo?!",
         "voFile": "",
-        "displayTime": 1,
+        "displayTime": 2.5,
         "type": "Exclamation",
         "special": 2
     },
     {
         "Speaker": "Milo",
-        "Text": "Yes, it is me, Milo! Saviour of Monsters!",
+        "Text": "Yes, it is me, Milo! The Saviour of Monsters!",
         "voFile": "",
-        "displayTime": 3,
+        "displayTime": 7,
         "type": "Exclamation"
     },
     {
         "Speaker": "Kitty",
         "Text": "Do you have any idea how many people you hurt?",
         "voFile": "",
-        "displayTime": 3,
+        "displayTime": 4,
         "type": "Question"
     },
     {
         "Speaker": "Milo",
         "Text": "What did those monsters do to you?!",
         "voFile": "",
-        "displayTime": 3,
+        "displayTime": 2.5,
         "type": "Question"
     },
     {
         "Speaker": "Milo",
         "Text": "You're not getting the Professor, not now!",
         "voFile": "",
-        "displayTime": 3,
+        "displayTime": 4,
         "type": "Exclamation"
     },
     {
@@ -63,28 +63,28 @@
         "Speaker": "Ryker",
         "Text": "Yeah, slow down a little.  It’s over now.",
         "voFile": "",
-        "displayTime": 4,
+        "displayTime": 2.5,
         "type": "Ellipsis"
     },
     {
         "Speaker": "Milo",
         "Text": "No, I won't! You killed them!",
         "voFile": "",
-        "displayTime": 3,
+        "displayTime": 4,
         "type": "Exclamation"
     },
     {
         "Speaker": "Dr. G",
         "Text": "Come on Milo, you're better than this!",
         "voFile": "",
-        "displayTime": 4,
+        "displayTime": 3.5,
         "type": "Exclamation"
     },
     {
         "Speaker": "Milo",
         "Text": "Monsters, monsters, come and help your friend! Miiiiilllloooooo!",
         "voFile": "",
-        "displayTime": 5,
+        "displayTime": 20.5,
         "type": "Exclamation",
         "special": 3
     }
