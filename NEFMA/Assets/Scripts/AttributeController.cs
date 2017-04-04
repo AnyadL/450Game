@@ -272,7 +272,6 @@ public class AttributeController : MonoBehaviour {
                     Debug.Log(Globals.players[i].Score);
                     if (Globals.players[i].ScoreCounter != null)
                     {
-                        print("Got one!");
                         Globals.players[i].ScoreCounter.text = Globals.players[i].Score.ToString();
                     }
                 }
