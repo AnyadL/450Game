@@ -2230,7 +2230,7 @@ Prefab:
     - target: {fileID: 114617931778922626, guid: 17acafe0d1d53ce46be0121beddb8481,
         type: 2}
       propertyPath: fireballCooldown
-      value: 1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 114617931778922626, guid: 17acafe0d1d53ce46be0121beddb8481,
         type: 2}
