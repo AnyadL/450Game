@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 70510113357531558}
   - component: {fileID: 70596516939725798}
   - component: {fileID: 212977513333045192}
+  - component: {fileID: 114541350013122290}
   m_Layer: 9
   m_Name: Boss Head
   m_TagString: BossHead
@@ -39,8 +40,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1914016230368488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 22, z: 1}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalPosition: {x: 0, y: 26, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,8 +77,8 @@ CapsuleCollider2D:
   m_Material: {fileID: 6200000, guid: ec0eefc74ac5abe4d94349b0a366b4d2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.65}
-  m_Size: {x: 2.3, y: 2}
+  m_Offset: {x: 0, y: -1}
+  m_Size: {x: 10, y: 8}
   m_Direction: 1
 --- !u!70 &70596516939725798
 CapsuleCollider2D:
@@ -90,8 +91,8 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.65}
-  m_Size: {x: 2.3, y: 2}
+  m_Offset: {x: 0, y: -1}
+  m_Size: {x: 10, y: 8}
   m_Direction: 1
 --- !u!114 &114178584252465892
 MonoBehaviour:
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692b94a5dbc7bee4b9f6f62af6c3cd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 30
+  maxHealth: 150
   bigCooldown: 10
   nextBigFire: 0
   myLayer: 0
@@ -114,6 +115,7 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!114 &114375727665884820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +129,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 1203249533886494, guid: a8a8442f104a9074ba94221213e5f469,
     type: 2}
+--- !u!114 &114541350013122290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914016230368488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03aab4c3cff95a34babe4415e74a5a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  powerSlider: {fileID: 0}
 --- !u!212 &212977513333045192
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -158,7 +173,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1e7c07f84df809a48959bb33188ff1af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4d1b581cfdad1641a202293d34482d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
