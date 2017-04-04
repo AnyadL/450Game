@@ -41,7 +41,8 @@ public class HeroMovement : MonoBehaviour {
         myAttributes = GetComponent<AttributeController>();
         currentMoveForce = moveForce;
         currentMaxSpeed = maxSpeed;
-        animator = gameObject.GetComponent<Animator>();
+        if (animator != null)
+            animator = gameObject.GetComponent<Animator>();
 
         if (gameObject.name == "Kitty(Clone)" || gameObject.name == "Kitty")
         {
@@ -52,7 +53,7 @@ public class HeroMovement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+        grounded = Physics2D.Linecast(transform.position, groundCheck.position, LayerMask.GetMask("Ground", "BossHand"));
         
         if (grounded)
         {
@@ -114,7 +115,8 @@ public class HeroMovement : MonoBehaviour {
             else if ((rb2d.velocity.x > 1 || rb2d.velocity.x < -1))
             {
                 walking = false;
-                animator.SetBool("Walk", walking);
+                if (animator != null)
+                    animator.SetBool("Walk", walking);
                 if (rb2d.velocity.y == 0)
                 {
                     rb2d.velocity = new Vector2(rb2d.velocity.x - (rb2d.velocity.x / 8), 0);
@@ -127,7 +129,8 @@ public class HeroMovement : MonoBehaviour {
             else
             {
                 walking = false;
-                animator.SetBool("Walk", walking);
+                if (animator != null)
+                    animator.SetBool("Walk", walking);
             }
 
             if (rb2d.velocity.y <= -95f)
@@ -181,7 +184,8 @@ public class HeroMovement : MonoBehaviour {
     public void moveCharacter(float speedVector, float force)
     {
         walking = true;
-        animator.SetBool("Walk", walking);
+        if (animator != null)
+            animator.SetBool("Walk", walking);
 
         if (!myAttributes.knockbacked && speedVector * rb2d.velocity.x < currentMaxSpeed)
             rb2d.AddForce(Vector2.right * speedVector * force);
