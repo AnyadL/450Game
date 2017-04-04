@@ -927,16 +927,21 @@ Prefab:
     - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
         type: 2}
       propertyPath: m_BackGroundColor.r
-      value: 0.39607844
+      value: 0.66176474
       objectReference: {fileID: 0}
     - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
         type: 2}
       propertyPath: m_BackGroundColor.g
-      value: 0.6313726
+      value: 0.48659173
       objectReference: {fileID: 0}
     - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
         type: 2}
       propertyPath: m_BackGroundColor.b
+      value: 0.48659173
+      objectReference: {fileID: 0}
+    - target: {fileID: 20432441064001956, guid: 8f3b871b52a79fa49a641d1700387c80,
+        type: 2}
+      propertyPath: m_BackGroundColor.a
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1120,7 +1125,7 @@ Transform:
   m_Children:
   - {fileID: 1737559336}
   m_Father: {fileID: 2082005549}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1494715183
 Rigidbody2D:
@@ -1589,8 +1594,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: -1}
   m_Children:
   - {fileID: 1406573021}
-  - {fileID: 170648377}
   - {fileID: 1494715182}
+  - {fileID: 170648377}
   - {fileID: 670116672}
   - {fileID: 769262942}
   - {fileID: 115892026}
