@@ -35,21 +35,21 @@
         "Speaker": "Kitty",
         "Text": "Do you have any idea how many people you hurt?",
         "voFile": "",
-        "displayTime": 4,
+        "displayTime": 3.5,
         "type": "Question"
     },
     {
         "Speaker": "Milo",
         "Text": "What did those monsters do to you?!",
         "voFile": "",
-        "displayTime": 2.5,
+        "displayTime": 3,
         "type": "Question"
     },
     {
         "Speaker": "Milo",
         "Text": "You're not getting the Professor, not now!",
         "voFile": "",
-        "displayTime": 4,
+        "displayTime": 3.5,
         "type": "Exclamation"
     },
     {
@@ -63,7 +63,7 @@
         "Speaker": "Ryker",
         "Text": "Yeah, slow down a little.  It’s over now.",
         "voFile": "",
-        "displayTime": 2.5,
+        "displayTime": 3,
         "type": "Ellipsis"
     },
     {
@@ -77,12 +77,12 @@
         "Speaker": "Dr. G",
         "Text": "Come on Milo, you're better than this!",
         "voFile": "",
-        "displayTime": 3.5,
+        "displayTime": 3.6,
         "type": "Exclamation"
     },
     {
         "Speaker": "Milo",
-        "Text": "Monsters, monsters, it's time to come and help your saviour! Miiiiilllloooooo!",
+        "Text": "Monsters, it's time to come and help your saviour! Miiiiilllloooooo!",
         "voFile": "",
         "displayTime": 21,
         "type": "Exclamation",
