@@ -18,6 +18,7 @@ public class BossTail : MonoBehaviour {
     public GameObject needePrefab;
     public float needleSpeed = 0;
     public float needleDelayTime = 0;
+    private float internalNeedleDelayTime = 0;
     public float needleAngleSpread = 0;
     private Color debugColor = Color.red;
     public bool movingY = false;
@@ -33,6 +34,7 @@ public class BossTail : MonoBehaviour {
         myController.registerTail(gameObject);
         startTime = Time.time;
         cycler = 0;
+        internalNeedleDelayTime = needleDelayTime;
     }
 	
 	// Update is called once per frame
@@ -105,8 +107,8 @@ public class BossTail : MonoBehaviour {
             yDown = false;
             startTime = Time.time;
             shooting = true;
-            direction = -direction; // this fixes a bug
             spawnNeedles();
+            direction = -direction; // this fixes a bug
         }
     }
 
@@ -150,6 +152,7 @@ public class BossTail : MonoBehaviour {
             if (needle == 0 || needle == 3 || needle == 6) 
             {
                 debugColor = Color.green;
+                internalNeedleDelayTime = needleDelayTime;
             }
             else if (needle == 4 || needle == 5)
             {
@@ -204,7 +207,21 @@ public class BossTail : MonoBehaviour {
         //Debug.Log(newNeedle2 + " | position: " + newNeedle2.transform.position + " | Velocity: " + newNeedle2.GetComponent<Rigidbody2D>().velocity);
         //Debug.Log(newNeedle3 + " | position: " + newNeedle3.transform.position + " | Velocity: " + newNeedle3.GetComponent<Rigidbody2D>().velocity);
         //Debug.Log("Waiting");
-        yield return new WaitForSeconds(needleDelayTime);
+        float waitTime;
+        float rand = Random.value;
+        float value = (Random.value / 8);
+        if (rand > 0.5f)
+        {
+            waitTime = internalNeedleDelayTime + value;
+            internalNeedleDelayTime = internalNeedleDelayTime - value;
+        }
+        else
+        {
+            waitTime = internalNeedleDelayTime - value;
+            internalNeedleDelayTime = internalNeedleDelayTime + value;
+        }
+
+        yield return new WaitForSeconds(waitTime);
         spawnNeedles();
     }
 }
