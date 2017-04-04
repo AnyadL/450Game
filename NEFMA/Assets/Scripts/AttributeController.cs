@@ -244,14 +244,6 @@ public class AttributeController : MonoBehaviour {
             }
             else if (collision.gameObject.tag == "Water")
             {
-                if (isAgni())
-                {
-                    if (decreaseHealth(1.0f))
-                    {
-                        takenDamage();
-                        //knockback(collision.gameObject.transform.position.x);
-                    }
-                }
                 gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0f, 3500f, 0));
                 Vector3 tempVel = gameObject.GetComponent<Rigidbody2D>().velocity;
                 tempVel.y = 0;
