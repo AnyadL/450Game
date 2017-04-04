@@ -3,7 +3,7 @@
     "Speaker":"Milo",
     "Text":"Gah!  You’re strong, but I’m not done yet!",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":4.25,
     "type": "Exclamation",
     "special":  1
   },
@@ -18,14 +18,14 @@
     "Speaker":"Milo",
     "Text":"No!  You didn’t show mercy to Mr. Fluffy!",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":4,
     "type": "Exclamation"
   }, 
   {
     "Speaker":"Milo",
     "Text":"This is payback!",
     "voFile":"",
-    "displayTime":2,
+    "displayTime":3,
     "type": "Exclamation"
   }, 
   {
@@ -46,29 +46,29 @@
     "Speaker":"Milo",
     "Text":"Like that’ll sway - wait, what?",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":4.5,
     "type": "Question",
     "special":  2
   }, 
   {
     "Speaker":"Milo",
-    "Text":"Mr. Fluffy! You're okay!",
+    "Text":"Mr. Fluffy? You're okay!",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":5,
     "type": "Ellipsis"
   }, 
   {
     "Speaker":"Agni",
     "Text":"See, we didn't even touch Mr. Fluffy. What the hell.",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":4.5,
     "type": "Ellipsis"
   },
   {
     "Speaker":"Milo",
     "Text":"Well fine, but what about the others?",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":3.5,
     "type": "Question"
   },
   {
@@ -89,7 +89,7 @@
     "Speaker":"Milo",
     "Text":"That's no excuse!",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":2.8,
     "type": "Exclamation"
   },
   {
@@ -103,7 +103,7 @@
     "Speaker":"Milo",
     "Text":"You could have spared them.",
     "voFile":"",
-    "displayTime":2,
+    "displayTime":3,
     "type": "Exclamation"
   },
   {
@@ -115,9 +115,9 @@
   },
   {
     "Speaker":"Agni",
-    "Text":"Look, Milo.  We saved as many as we could, okay?",
+    "Text":"Look, Milo.  We spared as many as we could, okay?",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":4,
     "type": "Ellipsis"
   },
   {
@@ -138,42 +138,42 @@
     "Speaker":"Dr. G",
     "Text":"Milo, let’s put a stop to this before anyone else is hurt - monster or otherwise.",
     "voFile":"",
-    "displayTime":5,
+    "displayTime":6,
     "type": "Ellipsis"
   },
   {
     "Speaker":"Milo",
     "Text":"No, they’re depending on me!",
     "voFile":"",
-    "displayTime":2,
+    "displayTime":2.75,
     "type": "Exclamation"
   },
   {
     "Speaker":"Milo",
     "Text":"There’s nothing to stop you from saying that and then mistreating them again!",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":5,
     "type": "Exclamation"
   },
   {
     "Speaker":"Delilah",
     "Text":"Sure there is. You will.",
     "voFile":"",
-    "displayTime":2,
+    "displayTime":4,
     "type": "Ellipsis"
   },
   {
     "Speaker":"Milo",
     "Text":"Yes, I will. Tread carefully.",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":5.5,
     "type": "Ellipsis"
   },
   {
     "Speaker":"Milo",
     "Text":"Let's go home.",
     "voFile":"",
-    "displayTime":10,
+    "displayTime":4,
     "type": "Ellipsis",
     "special":  3
   }

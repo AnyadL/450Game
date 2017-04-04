@@ -82,9 +82,9 @@
     },
     {
         "Speaker": "Milo",
-        "Text": "Monsters, monsters, come and help your friend! Miiiiilllloooooo!",
+        "Text": "Monsters, monsters, it's time to come and help your saviour! Miiiiilllloooooo!",
         "voFile": "",
-        "displayTime": 20.5,
+        "displayTime": 21,
         "type": "Exclamation",
         "special": 3
     }

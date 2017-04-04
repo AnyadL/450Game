@@ -3,7 +3,7 @@
     "Speaker":"Milo",
     "Text":"Gah!  You’re strong, but I’m not done yet!",
     "voFile":"",
-    "displayTime":9,
+    "displayTime":4.25,
     "type": "Exclamation",
     "special":  1
   },
@@ -18,14 +18,14 @@
     "Speaker":"Milo",
     "Text":"No!  You didn’t show mercy to Mr. Fluffy!",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":4,
     "type": "Exclamation"
   }, 
   {
     "Speaker":"Milo",
     "Text":"This is payback!",
     "voFile":"",
-    "displayTime":2,
+    "displayTime":3,
     "type": "Exclamation"
   }, 
   {
@@ -46,29 +46,29 @@
     "Speaker":"Milo",
     "Text":"Like that’ll sway - wait, what?",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":4.5,
     "type": "Question",
     "special":  2
   }, 
   {
     "Speaker":"Milo",
-    "Text":"Mr. Fluffy! You're okay!",
+    "Text":"Mr. Fluffy? You're okay!",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":5,
     "type": "Exclamation"
   }, 
   {
     "Speaker":"Agni",
     "Text":"See, we didn't even touch Mr. Fluffy. What the hell.",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":4.5,
     "type": "Ellipsis"
   },
   {
     "Speaker":"Milo",
     "Text":"Well fine, but what about the others?",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":3.5,
     "type": "Question"
   },
   {
@@ -82,7 +82,7 @@
     "Speaker":"Kitty",
     "Text":"You were right, what we were doing to the monsters was wrong.",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":5.5,
     "type": "Ellipsis"
   },
   {
@@ -96,7 +96,7 @@
     "Speaker":"Ryker",
     "Text":"We’ll find a home for your friends.  Come on, bring Mr. Fluffy with you and let’s all go home.",
     "voFile":"",
-    "displayTime":5,
+    "displayTime":6,
     "type": "Ellipsis"
   },
   {
