@@ -14,6 +14,9 @@ public class DialogueController : MonoBehaviour {
     public GameObject drG;
 
     public Sprite sittingMilo;
+    public Sprite pointingMilo;
+    public Sprite visibleMilo;
+
 
     public GameObject mrFluffy;
 
@@ -41,6 +44,7 @@ public class DialogueController : MonoBehaviour {
     private bool drGtime = false;
     private float drGmove = 0f;
     private bool monsterTime = false;
+    private bool endTime = false;
     //private bool monstersMoving = false;
     private bool miloMoved = false;
     private float[] schreiHeights = new float[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -311,34 +315,53 @@ public class DialogueController : MonoBehaviour {
             case 1:
 
                 currentSpecial = 0;
-                findPlayerObject("Milo").GetComponent<HeroMovement>().Flip();
                 drGtime = true;
                 break;
             case 2:
                 currentSpecial = 0;
-                findPlayerObject("Milo").GetComponent<HeroMovement>().Flip();
+                findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = visibleMilo;
                 break;
             case 3:
+                currentSpecial = 0;
+                findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = pointingMilo;
+                break;
+            case 4:
+                currentSpecial = 0;
+                findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = visibleMilo;
+                break;
+            case 5:
                 if (timePause == 0)
+                {
+                    timePause = 15f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (Time.time >= updateTime)
                 {
                     timePause = 1f;
 
                     updateTime = Time.time + timePause;
                     currentSpecial = 0;
-                    
 
+                    endTime = true;
                     monsterTime = true;
                     drGmove = 0.05f;
-
                 }
                 break;
         }
         if (drGtime)
             drG.transform.position = new Vector3(drG.transform.position.x + drGmove, 12f + (Mathf.Sin(2 * Time.time) * 2), drG.transform.position.z);
-        if (monsterTime)
+        if (endTime)
         {
-            GameObject bosshead = findPlayerObject("BossHead");
-            bosshead.transform.position = new Vector3(bosshead.transform.position.x, bosshead.transform.position.y + 0.4f, bosshead.transform.position.z);
+            if(monsterTime)
+            {
+                GameObject bosshead = findPlayerObject("BossHead");
+                bosshead.transform.position = new Vector3(bosshead.transform.position.x, bosshead.transform.position.y + 0.4f, bosshead.transform.position.z);
+
+                if (bosshead.transform.position.y >= 25f)
+                    monsterTime = false;
+            }
+
             if (Time.time >= updateTime)
             {
                 if (!miloMoved)
@@ -350,7 +373,7 @@ public class DialogueController : MonoBehaviour {
                     Vector2 milosize = findPlayerObject("Milo").GetComponent<BoxCollider2D>().size;
                     findPlayerObject("Milo").GetComponent<BoxCollider2D>().size = new Vector2(milosize.x, 17f);
                     findPlayerObject("Main Camera").GetComponent<Camera2DFollow>().unLinkPlayers(findPlayerObject("BossHead").transform);
-                    timePause = 1f;
+                    timePause = 2f;
                     updateTime = Time.time + timePause;
                 }
                 else
@@ -362,8 +385,6 @@ public class DialogueController : MonoBehaviour {
                 }
 
             }
-            if (bosshead.transform.position.y >= 25f)
-                monsterTime = false;
             
         }
             
