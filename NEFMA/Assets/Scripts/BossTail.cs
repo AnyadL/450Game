@@ -26,7 +26,7 @@ public class BossTail : MonoBehaviour {
     private float cycler = 0;
     private bool shooting = false;
     public GameObject tailArt;
-    private int tempCount = 0;
+    //private int tempCount = 0;
 
     // Use this for initialization
     void Start () {
