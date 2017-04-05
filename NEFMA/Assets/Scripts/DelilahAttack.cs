@@ -12,7 +12,7 @@ public class DelilahAttack : MonoBehaviour {
     public float wallVelocity = 100;
     public float wallLifeTime = 5;
     public float pushTime = 2;
-    //public ParticleSystem explosion;
+    public GameObject explosion;
 
     public Animator animator;
     [HideInInspector] public bool BigAttack = false;
@@ -146,7 +146,7 @@ void MakeWall()
 
     void PushWall()
     {
-        Debug.Log("here");
+        Debug.Log("PUSHING WALL");
         wall.GetComponent<DelilahWall>().free = true;
         StartCoroutine(ExplodeWall());
 
@@ -159,13 +159,17 @@ void MakeWall()
     }
     IEnumerator ExplodeWall()
     {
-
-        //ParticleSystem expl = Instantiate(explosion, wall.transform.position, Quaternion.identity);
+        Debug.Log("Waiting");
         yield return new WaitForSeconds(pushTime);
 
+        if (explosion != null)
+        {
+            GameObject expl = Instantiate(explosion, wall.transform.position, Quaternion.identity);
+            Debug.Log("Boom");
+            Destroy(expl, 1f);
+        }
         destroyWall();
         Destroy(wall);
-       // Destroy(expl, 3);
     }
 
     public void destroyWall()
