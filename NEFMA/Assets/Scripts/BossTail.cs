@@ -26,6 +26,7 @@ public class BossTail : MonoBehaviour {
     private float cycler = 0;
     private bool shooting = false;
     public GameObject tailArt;
+    private int tempCount = 0;
 
     // Use this for initialization
     void Start () {
@@ -48,6 +49,9 @@ public class BossTail : MonoBehaviour {
 
     void FixedUpdate()
     {
+        //tempCount++;
+        //Debug.Log("--------------------------------------------------");
+        //Debug.Log("Frame: " + tempCount);
         if (!movingY)
         {
             sway();
@@ -71,6 +75,7 @@ public class BossTail : MonoBehaviour {
 
     public void moveUp()
     {
+        //Debug.Log("Moving Up");
         myBody.MovePosition(myBody.position + (Vector2.up * 10 * Time.fixedDeltaTime));
         if (myBody.position.y >= maxY)
         {
@@ -102,6 +107,7 @@ public class BossTail : MonoBehaviour {
 
     public void moveDown()
     {
+        //Debug.Log("Moving Down");
         myBody.MovePosition(myBody.position - (Vector2.up * 10 * Time.fixedDeltaTime));
         if (myBody.position.y <= minY)
         {
