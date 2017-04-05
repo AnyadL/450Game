@@ -44,6 +44,9 @@ public class DialogueController : MonoBehaviour {
     private bool drGtime = false;
     private float drGmove = 0f;
     private bool monsterTime = false;
+    private bool handsTime = false;
+    private bool headTime = false;
+    private bool handsUp = true;
     private bool endTime = false;
     //private bool monstersMoving = false;
     private bool miloMoved = false;
@@ -332,7 +335,8 @@ public class DialogueController : MonoBehaviour {
             case 5:
                 if (timePause == 0)
                 {
-                    timePause = 15f;
+                    //timePause = 15f;
+                    timePause = 1f;
 
                     updateTime = Time.time + timePause;
                 }
@@ -345,6 +349,7 @@ public class DialogueController : MonoBehaviour {
 
                     endTime = true;
                     monsterTime = true;
+                    handsTime = true;
                     drGmove = 0.05f;
                 }
                 break;
@@ -355,11 +360,46 @@ public class DialogueController : MonoBehaviour {
         {
             if(monsterTime)
             {
-                GameObject bosshead = findPlayerObject("BossHead");
-                bosshead.transform.position = new Vector3(bosshead.transform.position.x, bosshead.transform.position.y + 0.4f, bosshead.transform.position.z);
+                if (handsTime)
+                {
+                    GameObject bosshandright = findPlayerObject("BossHandRight");
+                    GameObject bosshandleft = findPlayerObject("BossHandLeft");
+                    print("bosshandleft y:" + bosshandleft.transform.position.y);
+                    if (handsUp)
+                    {
+                        bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y + 1f, bosshandright.transform.position.z);
+                        bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y + 1f, bosshandleft.transform.position.z);
+                    }
+                    else
+                    {
+                        bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y - 1f, -1);
+                        bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y - 1f, -1);
+                    }
+                    
+                    if (bosshandright.transform.position.y >= -6 && handsUp)
+                    {
+                        handsUp = false;
+                    }
+                    else if (bosshandright.transform.position.y < -9 && !handsUp)
+                    {
+                        headTime = true;
+                        handsTime = false;
+                    }
+                }
+                if (headTime)
+                {
+                    GameObject bosshead = findPlayerObject("BossHead");
+                    GameObject bosshandright = findPlayerObject("BossHandRight");
+                    GameObject bosshandleft = findPlayerObject("BossHandLeft");
 
-                if (bosshead.transform.position.y >= 25f)
-                    monsterTime = false;
+                    bosshead.transform.position = new Vector3(bosshead.transform.position.x, bosshead.transform.position.y + 0.4f, bosshead.transform.position.z);
+
+                    bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y - 0.4f, -1);
+                    bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y - 0.4f, -1);
+                    if (bosshead.transform.position.y >= 13f)
+                        monsterTime = false;
+                }
+
             }
 
             if (Time.time >= updateTime)
@@ -368,7 +408,7 @@ public class DialogueController : MonoBehaviour {
                 {
                     timePause = 0;
                     miloMoved = true;
-                    findPlayerObject("Milo").GetComponent<HeroMovement>().jumpCharacter(-2050f, 4400f);
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().jumpCharacter(-2050f, 3300f);
                     findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = sittingMilo;
                     Vector2 milosize = findPlayerObject("Milo").GetComponent<BoxCollider2D>().size;
                     findPlayerObject("Milo").GetComponent<BoxCollider2D>().size = new Vector2(milosize.x, 17f);
