@@ -75,7 +75,7 @@
     "Speaker":"Agni",
     "Text":"Didn’t touch them either.  Get with the program, here.",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":4.5,
     "type": "Ellipsis"
   },
   {
@@ -89,7 +89,7 @@
     "Speaker":"Milo",
     "Text":"Wait, I need a minute here.",
     "voFile":"",
-    "displayTime":2,
+    "displayTime":3.5,
     "type": "Ellipsis"
   },
   {
@@ -110,21 +110,21 @@
     "Speaker":"Dr. G",
     "Text":"That’s all well and good, but we still need to deal with the civilians.",
     "voFile":"",
-    "displayTime":5,
+    "displayTime":6,
     "type": "Ellipsis"
   },
   {
     "Speaker":"Milo",
     "Text":"Yeah… Okay.  I can stop the monsters.",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":5,
     "type": "Ellipsis"
   },
   {
     "Speaker":"Milo",
-    "Text":"Monsters, monsters, come and help your friend! Miiiiilllloooooo!",
+    "Text":"Miiiiilllloooooo!",
     "voFile":"",
-    "displayTime":9,
+    "displayTime":6.5,
     "type": "Exclamation",
     "special":  3
   },
@@ -132,7 +132,7 @@
     "Speaker":"Milo",
     "Text":"What was that about a park?",
     "voFile":"",
-    "displayTime":10,
+    "displayTime":4,
     "type": "Question",
     "special":  4
   }
