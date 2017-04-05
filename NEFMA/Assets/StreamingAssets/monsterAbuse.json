@@ -3,7 +3,7 @@
     "Speaker":"Milo",
     "Text":"Gah!  You’re strong, but I’m not done yet!",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":4.25,
     "type": "Exclamation",
     "special":  1
   },
@@ -18,28 +18,28 @@
     "Speaker":"Milo",
     "Text":"No!  You didn’t show mercy to Mr. Fluffy!",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":4,
     "type": "Exclamation"
   }, 
   {
     "Speaker":"Milo",
     "Text":"This is payback!",
     "voFile":"",
-    "displayTime":2,
+    "displayTime":3,
     "type": "Exclamation"
   }, 
   {
     "Speaker":"Dr. G",
     "Text":"Stop this Milo!  Stop it now before it’s too late!",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":4.5,
     "type": "Exclamation"
   }, 
   {
     "Speaker":"Milo",
     "Text":"Too late?! It’s already too late for Mr. Fluffy!",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":5,
     "type": "Exclamation"
   },
   {
@@ -60,14 +60,14 @@
     "Speaker":"Delilah",
     "Text":"Rude.",
     "voFile":"",
-    "displayTime":1,
+    "displayTime":2,
     "type": "Ellipsis"
   },
   {
     "Speaker":"Milo",
     "Text":"You murdered my friends! How did you think I’d react!?",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":4.5,
     "type": "Exclamation"
   },
   {
@@ -103,28 +103,28 @@
     "Speaker":"Ryker",
     "Text":"No! I don’t want to hurt you, Milo!",
     "voFile":"",
-    "displayTime":3,
+    "displayTime":4,
     "type": "Exclamation"
   },
   {
     "Speaker":"Dr. G",
     "Text":"I’m sorry, Milo. I was hoping things would work out, but the Superhero Police are on their way.",
     "voFile":"",
-    "displayTime":5,
+    "displayTime":7,
     "type": "Ellipsis"
   },
   {
     "Speaker":"Milo",
     "Text":"This isn’t over!",
     "voFile":"",
-    "displayTime":2,
+    "displayTime":3,
     "type": "Exclamation"
   },
   {
     "Speaker":"Dr. G",
     "Text":"I wish it was. There’s nothing I can do for you now.",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":10,
     "type": "Ellipsis",
     "special": 3
   }
