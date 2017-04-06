@@ -2430,7 +2430,7 @@ Prefab:
     - target: {fileID: 114617931778922626, guid: 17acafe0d1d53ce46be0121beddb8481,
         type: 2}
       propertyPath: fireballCooldown
-      value: 3.14
+      value: 6.28
       objectReference: {fileID: 0}
     - target: {fileID: 114617931778922626, guid: 17acafe0d1d53ce46be0121beddb8481,
         type: 2}

@@ -176,6 +176,11 @@ public class BossController : MonoBehaviour {
     }
 
     public void headChange(int num) {
+        if (headChoice == 2)
+        {
+            headChoice = num;
+            return;
+        }
         if (num == 0)
         {
             myHead.GetComponent<SpriteRenderer>().sprite = neutralHead;
@@ -189,13 +194,14 @@ public class BossController : MonoBehaviour {
         else if (num == 2)
         {
             myHead.GetComponent<SpriteRenderer>().sprite = openHead;
+            headChoice = 2;
         }
     }
 
     IEnumerator fireballHead()
     {
         headChange(2);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(2f);
         headChange(headChoice);
     }
 

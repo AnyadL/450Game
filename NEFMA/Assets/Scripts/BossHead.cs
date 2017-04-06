@@ -72,7 +72,9 @@ public class BossHead : MonoBehaviour {
 
     public void fireballs()
     {
-        GameObject newBullet = Instantiate(fireballPrefab, (transform.position + (transform.up / 20)), Quaternion.identity) as GameObject;
-        newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -30);
+        Vector3 bulletPosition = new Vector3(transform.position.x + 0.64f, transform.position.y - 8f, -3);
+        
+        Instantiate(fireballPrefab, bulletPosition, Quaternion.identity);
+        //newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -30);
     }
 }
