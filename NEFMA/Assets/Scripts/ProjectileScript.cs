@@ -12,7 +12,7 @@ public class ProjectileScript : MonoBehaviour {
 
     private void Update()
     {
-        if (!gameObject.GetComponent<Renderer>().isVisible)
+        if (!gameObject.GetComponent<Renderer>().isVisible && gameObject.tag!="BigAttack")
         {
             Destroy(gameObject);
         }
@@ -20,7 +20,10 @@ public class ProjectileScript : MonoBehaviour {
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        if (gameObject.tag != "BigAttack")
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

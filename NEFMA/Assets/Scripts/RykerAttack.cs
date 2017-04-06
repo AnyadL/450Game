@@ -22,6 +22,9 @@ public class RykerAttack : MonoBehaviour
     [HideInInspector] public bool LittleAttack;
     [HideInInspector] public bool BigAttack;
 
+    public AudioSource sfxDash;
+    public AudioSource sfxStun;
+
     // Use this for initialization
     void Start()
     {
@@ -44,6 +47,12 @@ public class RykerAttack : MonoBehaviour
                 animator.SetBool("AttackLittle", LittleAttack);
                 nextDash = Time.time + dashCooldown;
                 StartCoroutine(Dash());
+
+                if (sfxDash != null && !sfxDash.isPlaying)
+                {
+                    sfxDash.pitch = Random.Range(0.9f, 1.2f);
+                    sfxDash.Play();
+                }
             }
         }
         else
@@ -87,6 +96,7 @@ public class RykerAttack : MonoBehaviour
         yield return new WaitForSeconds(dashTime);
         myAttribute.dashing = false;
         Destroy(dashObject);
+
     }
 
     //Creates claw attack which persists for a second and then disappears
@@ -94,6 +104,13 @@ public class RykerAttack : MonoBehaviour
     {
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (sfxStun != null && !sfxStun.isPlaying)
+        {
+            sfxStun.pitch = Random.Range(0.9f, 1.2f);
+            sfxStun.Play();
+        }
+
         foreach (GameObject go in gos)
         {
             if (go.GetComponent<SpriteRenderer>().isVisible)
