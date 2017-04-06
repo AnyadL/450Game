@@ -45,8 +45,42 @@ public class sceneTransition : MonoBehaviour {
             else if (alpha == 1)
             {
                 Globals.fading = false;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                if (SceneManager.GetActiveScene().buildIndex == 7)
+                {
+                    // Boss just ended, determine which ending they should get
+                    int ind = determineEnding();
+                    SceneManager.LoadScene(ind);
+                }
+                else if (SceneManager.GetActiveScene().buildIndex > 7)
+                {
+                    // End cutscene ended, load credits
+                    SceneManager.LoadScene(11);
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
             }
+        }
+    }
+
+    private int determineEnding()
+    {
+        if (Globals.enemiesKilled == 0)
+        {
+            // no monster abuse
+            return 10;
+        }
+        else if (Globals.enemiesKilled < (Globals.totalEnemies / 2))
+        {
+            // less than half of enemies killed
+            // no excuse
+            return 9;
+        }
+        else
+        {
+            // monster abuse
+            return 8;
         }
     }
 }

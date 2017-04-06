@@ -62,8 +62,11 @@ public class AttributeController : MonoBehaviour {
             }
             if (gameObject.tag == "Enemy")
             {
-                // enemy killed, increasse tracker
-                ++Globals.enemiesKilled;
+                // enemy killed, increase tracker (unless in boss scene)
+                if (SceneManager.GetActiveScene().buildIndex != 7)
+                    ++Globals.enemiesKilled;
+
+                print("Enemy killed. Updated death count: " + Globals.enemiesKilled);
             }
             Destroy(gameObject);
         }
