@@ -21,7 +21,7 @@ public class sfxEnemy : MonoBehaviour {
             {
                 if (ea.groundCheck == true && loafer_motion.isPlaying == false && loafer_motion != null)
                 {
-                    loafer_motion.pitch = Random.Range(0.9f,1.2f);
+                    loafer_motion.pitch = Random.Range(1f,1.5f);
                     loafer_motion.Play();
                 }
             }
