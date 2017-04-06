@@ -19,6 +19,9 @@ public class KittyAttack : MonoBehaviour
     [HideInInspector] public bool BigAttack = false;
     [HideInInspector] public bool LittleAttack = false;
 
+    public AudioSource sfxHiss;
+    public AudioSource sfxClaw;
+
     // Use this for initialization
     void Start()
     {
@@ -82,7 +85,13 @@ public class KittyAttack : MonoBehaviour
             velocityDirection = -velocityDirection;
             Hiss.GetComponent<SpriteRenderer>().flipX = true;
         }
- 
+
+        if (sfxHiss != null && !sfxHiss.isPlaying)
+        {
+            sfxHiss.pitch = Random.Range(0.9f, 1.2f);
+            sfxHiss.Play();
+        }
+
         Hiss.GetComponent<Rigidbody2D>().velocity = new Vector2(velocityDirection, 0);
 
 
@@ -104,6 +113,12 @@ public class KittyAttack : MonoBehaviour
             Vector3 theScale = ClawMarks.transform.localScale;
             theScale.x *= -1;
             ClawMarks.transform.localScale = theScale;
+        }
+
+        if (sfxClaw != null && !sfxClaw.isPlaying)
+        {
+            sfxClaw.pitch = Random.Range(1.0f, 1.4f);
+            sfxClaw.Play();
         }
 
     }

@@ -96,11 +96,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1034903816482958, guid: 5073f75282652c54bb608bb66fdb6345,
     type: 2}
   m_PrefabInternal: {fileID: 1999491034}
---- !u!95 &310271647 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95623631146983276, guid: 5073f75282652c54bb608bb66fdb6345,
-    type: 2}
-  m_PrefabInternal: {fileID: 1999491034}
 --- !u!1001 &390234281
 Prefab:
   m_ObjectHideFlags: 0
@@ -492,21 +487,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114257790058881830, guid: 5073f75282652c54bb608bb66fdb6345,
-        type: 2}
-      propertyPath: scratchCooldown
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114257790058881830, guid: 5073f75282652c54bb608bb66fdb6345,
-        type: 2}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 310271647}
-    - target: {fileID: 114604439935887834, guid: 5073f75282652c54bb608bb66fdb6345,
-        type: 2}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 310271647}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5073f75282652c54bb608bb66fdb6345, type: 2}
   m_IsPrefabParent: 0
