@@ -11,7 +11,7 @@ public class BossTail : MonoBehaviour {
     public float maxY = 70;
     public float minY = 60;
     private float startTime = 0;
-    public float direction = -1;
+    public float direction = 1;
     private float oldval = 0;
     public float needle = 0;
     public float numberOfNeedles = 0;
@@ -26,6 +26,8 @@ public class BossTail : MonoBehaviour {
     private float cycler = 0;
     private bool shooting = false;
     public GameObject tailArt;
+    [HideInInspector] public bool attacking = false;
+    [HideInInspector] public bool ready = false;
     //private int tempCount = 0;
 
     // Use this for initialization
@@ -41,9 +43,16 @@ public class BossTail : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Time.time >= cycler && !shooting)
+        if (Time.time >= cycler && !shooting && ready)
         {
             movingY = true;
+        }
+        if (attacking && !ready)
+        {
+            if ((myBody.position.x >= maxX) || (myBody.position.x <= minX))
+            {
+                ready = true;
+            }
         }
     }
 
@@ -56,7 +65,7 @@ public class BossTail : MonoBehaviour {
         {
             sway();
         }
-        if (movingY)
+        if (movingY && ready)
         {
             if (yDown)
             {

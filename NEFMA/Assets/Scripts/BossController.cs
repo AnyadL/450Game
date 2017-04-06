@@ -24,6 +24,14 @@ public class BossController : MonoBehaviour {
     [HideInInspector] public float nextSpawn;
     public float spawnCooldown = 15f;
     private int waveCount = 1;
+    public Sprite angryHead;
+    public Sprite neutralHead;
+    public Sprite openHead;
+    private int headChoice = 0;
+    public GameObject bottomLeft;
+    public GameObject bottomRight;
+    public GameObject topLeft;
+    public GameObject topRight;
 
     // Use this for initialization
     void Start () {
@@ -35,6 +43,7 @@ public class BossController : MonoBehaviour {
 	void Update () {
         if (nextFireball <= Time.time)
         {
+            StartCoroutine(fireballHead());
             myHeadScript.fireballs();
             nextFireball = Time.time + fireballCooldown;
         }
@@ -47,7 +56,7 @@ public class BossController : MonoBehaviour {
 
     void spawnAllies()
     {
-        if (waveCount % 6 == 0)
+        if (waveCount % 5 == 0)
         {
             wave3();
         }
@@ -67,17 +76,19 @@ public class BossController : MonoBehaviour {
     }
 
     // spawns soakers
-    void wave2()
+    void wave2(float xForce, float yForce)
     {
-        Instantiate(allyPrefab2, (transform.position + (transform.right * 72.5f) - (transform.up * 20)), Quaternion.identity);
-        GameObject enemy2 = Instantiate(allyPrefab1, (transform.position - (transform.right * 72.5f) - (transform.up * 20)), Quaternion.identity);
+        GameObject enemy1 = Instantiate(allyPrefab2, (transform.position + (transform.right * 73f) - (transform.up * 20)), Quaternion.identity);
+        GameObject enemy2 = Instantiate(allyPrefab2, (transform.position - (transform.right * 73f) - (transform.up * 20)), Quaternion.identity);
         enemy2.GetComponent<EnemyAI>().Flip();
+        enemy1.GetComponent<Rigidbody2D>().AddForce(new Vector2(-xForce, yForce));
+        enemy2.GetComponent<Rigidbody2D>().AddForce(new Vector2(xForce, yForce));
     }
 
     // spawns ghosts
     void wave3()
     {
-        if (waveCount % 12 == 0)
+        if (waveCount % 10 == 0)
         {
             GameObject enemy = Instantiate(allyPrefab3, (transform.position - (transform.right * 65) + (transform.up * 50)), Quaternion.identity);
             enemy.GetComponent<EnemyAI>().Flip();
@@ -86,6 +97,106 @@ public class BossController : MonoBehaviour {
         {
             Instantiate(allyPrefab3, (transform.position + (transform.right * 65) + (transform.up * 50)), Quaternion.identity);
         }
+    }
+
+    // Boss has more than 75% health
+    public void phaseOne()
+    {
+        Debug.Log("------------------------------");
+        Debug.Log("Enter Phase 1");
+        printValues();
+    }
+
+    // Boss health between 50% - 75%
+    public void phaseTwo()
+    {
+        Debug.Log("------------------------------");
+        Debug.Log("Entering Phase 2");
+        myTailScript.attacking = true;
+        myLeftHandScript.waitTime = 0.833f;
+        myRightHandScript.waitTime = 0.833f;
+        myLeftHandScript.downForce += 1;
+        myLeftHandScript.upForce += 0.1f;
+        myRightHandScript.downForce += 1;
+        myRightHandScript.upForce += 0.1f;
+        spawnCooldown -= 2.5f;
+        printValues();
+        wave2(800, 3500);
+    }
+
+    // Boss health between 25% - 50%
+    public void phaseThree()
+    {
+        Debug.Log("------------------------------");
+        Debug.Log("Entering Phase 3");
+        myTailScript.numberOfNeedles += 3;
+        myLeftHandScript.waitTime = 0.667f;
+        myRightHandScript.waitTime = 0.667f;
+        myLeftHandScript.downForce += 1;
+        myLeftHandScript.upForce += 0.1f;
+        myRightHandScript.downForce += 1;
+        myRightHandScript.upForce += 0.1f;
+        spawnCooldown -= 2.5f;
+        //fireballCooldown += 3.14f;
+        Debug.Log("Destroying Lower Clouds");
+        DestroyObject(bottomLeft);
+        DestroyObject(bottomRight);
+        printValues();
+    }
+
+    // Boss health between 0% - 25%
+    public void phaseFour()
+    {
+        Debug.Log("------------------------------");
+        Debug.Log("Entering Phase 4");
+        myTailScript.numberOfNeedles += 3;
+        myLeftHandScript.waitTime = 0.50f;
+        myRightHandScript.waitTime = 0.50f;
+        myLeftHandScript.downForce += 1;
+        myLeftHandScript.upForce += 0.1f;
+        myRightHandScript.downForce += 1;
+        myRightHandScript.upForce += 0.1f;
+        spawnCooldown -= 2.5f;
+        //fireballCooldown += 3.14f;
+        Debug.Log("Destroying Upper Clouds");
+        DestroyObject(topLeft);
+        DestroyObject(topRight);
+        printValues();
+        wave2(1500, 1500);
+    }
+
+    public void printValues()
+    {
+        Debug.Log("numberOfNeedles: " + myTailScript.numberOfNeedles);
+        Debug.Log("hand waitTime: " + myLeftHandScript.waitTime);
+        Debug.Log("hand downForce: " + myLeftHandScript.downForce);
+        Debug.Log("hand upForce: " + myLeftHandScript.upForce);
+        Debug.Log("spawnCooldown: " + spawnCooldown);
+        //Debug.Log("fireballCooldown: " + fireballCooldown);
+    }
+
+    public void headChange(int num) {
+        if (num == 0)
+        {
+            myHead.GetComponent<SpriteRenderer>().sprite = neutralHead;
+            headChoice = 0;
+        }
+        else if (num == 1)
+        {
+            myHead.GetComponent<SpriteRenderer>().sprite = angryHead;
+            headChoice = 1;
+        }
+        else if (num == 2)
+        {
+            myHead.GetComponent<SpriteRenderer>().sprite = openHead;
+        }
+    }
+
+    IEnumerator fireballHead()
+    {
+        headChange(2);
+        yield return new WaitForSeconds(0.25f);
+        headChange(headChoice);
     }
 
     // left = -1, right = 1

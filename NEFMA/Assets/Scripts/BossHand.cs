@@ -16,6 +16,7 @@ public class BossHand : MonoBehaviour {
     public float upForce = 0.2f;
     [HideInInspector] public float midpoint = 0;
     public GameObject handArt;
+    [HideInInspector] public float waitTime = 1;
 
     // Use this for initialization
     void Start () {
@@ -100,16 +101,24 @@ public class BossHand : MonoBehaviour {
     IEnumerator slamHands()
     {
         moving = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(waitTime);
         handUp();
         moving = true;
+        if (leftHand)
+        {
+            myController.headChange(0);
+        }
     }
 
     IEnumerator waitHands()
     {
         moving = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(waitTime);
         handDown();
         moving = true;
+        if (leftHand)
+        {
+            myController.headChange(1);
+        }
     }
 }
