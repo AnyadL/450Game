@@ -71,22 +71,24 @@
         "Text": "No, I won't! You killed them!",
         "voFile": "",
         "displayTime": 4,
-        "type": "Exclamation"
+        "type": "Exclamation",
+        "special":  3
     },
     {
         "Speaker": "Dr. G",
         "Text": "Come on Milo, you're better than this!",
         "voFile": "",
         "displayTime": 3.6,
-        "type": "Exclamation"
+        "type": "Exclamation",
+        "special":  4
     },
     {
         "Speaker": "Milo",
         "Text": "Monsters, it's time to come and help your saviour! Miiiiilllloooooo!",
         "voFile": "",
-        "displayTime": 21,
+        "displayTime": 50,
         "type": "Exclamation",
-        "special": 3
+        "special": 5
     }
 ]
 }
