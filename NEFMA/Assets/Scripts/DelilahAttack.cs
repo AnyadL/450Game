@@ -29,6 +29,7 @@ public class DelilahAttack : MonoBehaviour {
     public AudioSource sfxWallUp;
     public AudioSource sfxWallPush;
     public AudioSource sfxFist;
+    public AudioSource sfxExplosion;
 
     // Use this for initialization
     void Start()
@@ -168,6 +169,13 @@ void MakeWall()
             Debug.Log("Boom");
             Destroy(expl, 1f);
         }
+
+        if (sfxExplosion != null && !sfxExplosion.isPlaying)
+        {
+            sfxExplosion.pitch = Random.Range(1f, 1.4f);
+            sfxExplosion.Play();
+        }
+
         destroyWall();
         Destroy(wall);
     }
