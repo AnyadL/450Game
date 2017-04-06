@@ -7,7 +7,8 @@ public class AttributeController : MonoBehaviour {
 
     private HeroMovement myMovement;
     private Rigidbody2D myBody;
-    [HideInInspector] private float health = 1;
+    public float health = 1;
+    //[HideInInspector] private float health = 1; // Todo put back in
     public float maxHealth = 30;
 
     public float bigCooldown = 10f;
@@ -58,12 +59,18 @@ public class AttributeController : MonoBehaviour {
                 // Defeated Boss, should call some script here
                 health = 1;
                 Debug.Log("Boss Died");
+                Globals.gamePaused = false;
+                Globals.fading = true;
+                Globals.fadeDir = 1;
                 return;
             }
             if (gameObject.tag == "Enemy")
             {
-                // enemy killed, increasse tracker
-                ++Globals.enemiesKilled;
+                // enemy killed, increase tracker (unless in boss scene)
+                if (SceneManager.GetActiveScene().buildIndex != 7)
+                    ++Globals.enemiesKilled;
+
+                print("Enemy killed. Updated death count: " + Globals.enemiesKilled);
             }
             Destroy(gameObject);
         }
