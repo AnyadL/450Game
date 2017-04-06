@@ -52,7 +52,7 @@ public class DelilahAttack : MonoBehaviour {
             Destroy(wall);
 
         }*/
-        if (Time.time >= nextLittleFire)
+        if (Time.time >= nextLittleFire && !wall)
         {
             if (Input.GetButtonDown("Fire1_" + myMovement.inputNumber) && !Globals.gamePaused)
             {
