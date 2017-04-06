@@ -12,9 +12,11 @@ public class BossHead : MonoBehaviour {
     public bool gateTwo = false;
     public bool gateThree = false;
     public bool gateFour = false;
+    public bool gateFive = false;
     public bool FORCEPHASE2 = false;
     public bool FORCEPHASE3 = false;
     public bool FORCEPHASE4 = false;
+    public bool FORCEPHASE5 = false;
 
     // Use this for initialization
     void Start () {
@@ -57,6 +59,14 @@ public class BossHead : MonoBehaviour {
             {
                 myAttributes.decreaseHealth(50);
             }
+        }
+        else if (!gateFive && FORCEPHASE5)
+        {
+            gateFive = true;
+            FORCEPHASE2 = true;
+            FORCEPHASE3 = true;
+            FORCEPHASE4 = true;
+            myAttributes.decreaseHealth(25);
         }
     }
 
