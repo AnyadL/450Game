@@ -73,7 +73,7 @@
   },
   {
     "Speaker":"Agni",
-    "Text":"Didn’t touch them either.  Get with the program, here.",
+    "Text":"Didn’t touch 'em either.  Get with the program, here.",
     "voFile":"",
     "displayTime":4.5,
     "type": "Ellipsis"
@@ -132,7 +132,7 @@
     "Speaker":"Milo",
     "Text":"What was that about a park?",
     "voFile":"",
-    "displayTime":4,
+    "displayTime":20,
     "type": "Question",
     "special":  4
   }

@@ -447,11 +447,11 @@ public class DialogueController : MonoBehaviour {
             case 2:
                 if (timePause == 0)
                 {
-                    timePause = 1f;
+                    timePause = 1.5f;
 
                     updateTime = Time.time + timePause;
                 }
-                else if (timePause == 1f && Time.time >= updateTime)
+                else if (timePause == 1.5f && Time.time >= updateTime)
                 {
                     timePause = 2f;
 
@@ -611,11 +611,11 @@ public class DialogueController : MonoBehaviour {
             case 2:
                 if (timePause == 0)
                 {
-                    timePause = 1f;
+                    timePause = 1.5f;
 
                     updateTime = Time.time + timePause;
                 }
-                else if (timePause == 1f && Time.time >= updateTime)
+                else if (timePause == 1.5f && Time.time >= updateTime)
                 {
                     timePause = 2f;
 
@@ -648,40 +648,39 @@ public class DialogueController : MonoBehaviour {
                     findPlayerObject("Milo").transform.FindChild("ExclamationBubble(Clone)").gameObject.SetActive(false);
                     mrFluffy.GetComponent<HeroMovement>().moveCharacter(-1, 600f);
                     findPlayerObject("Milo").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().Flip();
 
-                    timePause = 5.5f;
-
-                    updateTime = Time.time + timePause;
-
-                }
-                else if (timePause == 5.5f && Time.time >= updateTime)
-                {
-
-                    findPlayerObject("Ryker").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
-                    findPlayerObject("Agni").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
-                    findPlayerObject("Kitty").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
-                    findPlayerObject("Delilah").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
-                    
-
-                    monsterTime = true;
-                    //monstersMoving = false;
+                    timePause = 0;
+                    currentSpecial = 0;
                 }
                 break;
             case 4:
                 if (timePause == 0)
                 {
                     
-                    timePause = 3f;
+                    timePause = 2.5f;
 
                     updateTime = Time.time + timePause;
                 }
-                else if (timePause == 3f && Time.time >= updateTime)
+                else if (timePause == 2.5f && Time.time >= updateTime)
+                {
+
+                    findPlayerObject("Ryker").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
+                    findPlayerObject("Agni").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
+                    findPlayerObject("Kitty").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
+                    findPlayerObject("Delilah").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
+
+                    monsterTime = true;
+                    //monstersMoving = false;
+                    timePause = 12f;
+                    updateTime = Time.time + timePause;
+                }
+                else if (timePause == 12f && Time.time >= updateTime)
                 {
                     // fade out
                     Globals.gamePaused = false;
                     Globals.fading = true;
                     Globals.fadeDir = 1;
-
                 }
                 break;
         }

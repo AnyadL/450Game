@@ -861,7 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68d7ccaf87a2714c89e09725381af41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
+  eventSystem: {fileID: 1506763544}
   selectedObject: {fileID: 2073309457}
 --- !u!114 &115475587
 MonoBehaviour:
@@ -9069,17 +9069,17 @@ Prefab:
     - target: {fileID: 224535166988199448, guid: 9598bc9c8dc9f114884f3cb85527d48c,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224535166988199448, guid: 9598bc9c8dc9f114884f3cb85527d48c,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224535166988199448, guid: 9598bc9c8dc9f114884f3cb85527d48c,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9598bc9c8dc9f114884f3cb85527d48c, type: 2}
@@ -9687,7 +9687,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1975502263}
         m_MethodName: playGame
         m_Mode: 1
         m_Arguments:
@@ -9926,7 +9926,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1975502263}
         m_MethodName: restartLevel
         m_Mode: 1
         m_Arguments:
@@ -10519,9 +10519,36 @@ Prefab:
       propertyPath: LivingPlayerNumberOverride
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114462253976316184, guid: 325a7915afdd96a499bc45fc481afd20,
+        type: 2}
+      propertyPath: pauser
+      value: 
+      objectReference: {fileID: 1975502263}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 325a7915afdd96a499bc45fc481afd20, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1975502262 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1756033028894920, guid: 325a7915afdd96a499bc45fc481afd20,
+    type: 2}
+  m_PrefabInternal: {fileID: 1975502261}
+--- !u!114 &1975502263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1975502262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51875e1d22a2a1a4ea2260f5ea5a671e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 1227276486}
+  eventSys: {fileID: 1506763544}
+  agniPause: {fileID: 21300000, guid: 24703fd1f846a474ab014bb31e068591, type: 3}
+  delilahPause: {fileID: 21300000, guid: 5fff4693cbafbd1498b169a5e15e5438, type: 3}
+  rykerPause: {fileID: 21300000, guid: 86e28ae1de881194884c30bf0be0bdf5, type: 3}
+  kittyPause: {fileID: 21300000, guid: a412e6cd21c0019479322824f0206293, type: 3}
 --- !u!1 &1999919760
 GameObject:
   m_ObjectHideFlags: 0
