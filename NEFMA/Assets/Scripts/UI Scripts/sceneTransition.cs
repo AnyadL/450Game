@@ -42,7 +42,7 @@ public class sceneTransition : MonoBehaviour {
             {
                 Globals.fading = false;
             }
-            else if (alpha == 1)
+            else if (alpha == 1 && Globals.fadeDir != -1)
             {
                 Globals.fading = false;
                 if (SceneManager.GetActiveScene().buildIndex == 7)
