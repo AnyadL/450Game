@@ -532,6 +532,14 @@ public class DialogueController : MonoBehaviour {
                 drGtime = true;
                 break;
             case 2:
+                currentSpecial = 0;
+                findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = pointingMilo;
+                break;
+            case 3:
+                currentSpecial = 0;
+                findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = visibleMilo;
+                break;
+            case 4:
                 if (timePause == 0)
                 {
                     timePause = 2f;
@@ -545,23 +553,26 @@ public class DialogueController : MonoBehaviour {
                     updateTime = Time.time + timePause;
 
                     findPlayerObject("Ryker").GetComponent<HeroMovement>().moveCharacter(1, 10600);
+                    findPlayerObject("Ryker").GetComponent<Animator>().SetBool("AttackLittle", true);
                 }
                 else if (Time.time >= updateTime)
                 {
                     
-                    findPlayerObject("Ryker").GetComponent<Rigidbody2D>().isKinematic = true;
+                    //findPlayerObject("Ryker").GetComponent<Rigidbody2D>().isKinematic = true;
                     findPlayerObject("Ryker").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
-                    findPlayerObject("Ryker").GetComponent<Rigidbody2D>().isKinematic = false;
+                    findPlayerObject("Ryker").GetComponent<Animator>().SetBool("Walk", false);
+                    findPlayerObject("Ryker").GetComponent<Animator>().SetBool("AttackLittle", false);
+                    //findPlayerObject("Ryker").GetComponent<Rigidbody2D>().isKinematic = false;
 
                     currentSpecial = 0;
                     timePause = 0;
                 }
 
                 break;
-            case 3:
+            case 5:
                 if (timePause == 0)
                 {
-                    timePause = 3f;
+                    timePause = 5f;
 
                     updateTime = Time.time + timePause;
                 }

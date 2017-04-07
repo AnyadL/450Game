@@ -377,6 +377,8 @@ MonoBehaviour:
     type: 2}
   drG: {fileID: 1494715181}
   sittingMilo: {fileID: 21300000, guid: 8cfcc8d2e8f091c43b426b3340498619, type: 3}
+  pointingMilo: {fileID: 21300000, guid: e189fb466f2d71f4fb306293257cc42e, type: 3}
+  visibleMilo: {fileID: 21300000, guid: e90d2cad92d532d43ae2633cef47c2c2, type: 3}
   mrFluffy: {fileID: 0}
   monsterList: []
   fadeTexture: {fileID: 0}

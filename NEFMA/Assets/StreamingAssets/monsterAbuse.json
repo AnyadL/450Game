@@ -19,14 +19,16 @@
     "Text":"No!  You didn’t show mercy to Mr. Fluffy!",
     "voFile":"",
     "displayTime":4,
-    "type": "Exclamation"
+    "type": "Exclamation",
+    "special": 2
   }, 
   {
     "Speaker":"Milo",
     "Text":"This is payback!",
     "voFile":"",
     "displayTime":3,
-    "type": "Exclamation"
+    "type": "Exclamation",
+    "special": 3
   }, 
   {
     "Speaker":"Dr. G",
@@ -90,11 +92,11 @@
     "voFile":"",
     "displayTime":3,
     "type": "Exclamation",
-    "special": 2
+    "special": 4
   },
   {
     "Speaker":"Milo",
-    "Text":"Get off me!",
+    "Text":"Get off of me!",
     "voFile":"",
     "displayTime":2,
     "type": "Exclamation"
@@ -126,6 +128,6 @@
     "voFile":"",
     "displayTime":10,
     "type": "Ellipsis",
-    "special": 3
+    "special": 5
   }
 ] }
