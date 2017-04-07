@@ -21,6 +21,10 @@ public class QuitOnClick : MonoBehaviour
         Globals.players.Clear();
         Globals.numPlayers = 0;
         Globals.livingPlayers = 0;
+        Globals.rykerChosen = false;
+        Globals.agniChosen = false;
+        Globals.delilahChosen = false;
+        Globals.kittyChosen = false;
         SceneManager.LoadScene(0);
     }
 }
