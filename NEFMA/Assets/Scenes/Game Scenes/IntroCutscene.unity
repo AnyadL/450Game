@@ -1141,7 +1141,7 @@ MonoBehaviour:
   currentMoveForce: 0
   maxSpeed: 30
   currentMaxSpeed: 0
-  jumpForce: 2400
+  jumpForce: 0
   groundCheck: {fileID: 1045366901}
   groundCheck2: {fileID: 1719388131}
   grounded: 0
@@ -2567,7 +2567,7 @@ MonoBehaviour:
   currentMoveForce: 0
   maxSpeed: 30
   currentMaxSpeed: 0
-  jumpForce: 2400
+  jumpForce: 0
   groundCheck: {fileID: 673834594}
   groundCheck2: {fileID: 881455461}
   grounded: 0
@@ -4362,7 +4362,7 @@ MonoBehaviour:
   currentMoveForce: 0
   maxSpeed: 30
   currentMaxSpeed: 0
-  jumpForce: 2400
+  jumpForce: 0
   groundCheck: {fileID: 857077034}
   groundCheck2: {fileID: 1969180511}
   grounded: 0
@@ -5537,7 +5537,7 @@ MonoBehaviour:
   currentMoveForce: 0
   maxSpeed: 30
   currentMaxSpeed: 0
-  jumpForce: 2400
+  jumpForce: 0
   groundCheck: {fileID: 1620512615}
   groundCheck2: {fileID: 1500699408}
   grounded: 0
