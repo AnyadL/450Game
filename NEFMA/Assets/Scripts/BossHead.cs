@@ -24,6 +24,7 @@ public class BossHead : MonoBehaviour {
         myController = GameObject.FindWithTag("Boss Controller").GetComponent<BossController>();
         myController.registerHead(gameObject);
         myAttributes = gameObject.GetComponent<AttributeController>();
+        //fireballs();
     }
 	
 	// Update is called once per frame

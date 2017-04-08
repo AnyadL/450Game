@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class BossSpit : MonoBehaviour {
 
-    public float attackTime = 1.5f;
+    public float lifeTime = 3.0f;
+    private float preTime = 1.0f;
     private BoxCollider2D myCollider;
 
     // Use this for initialization
     void Start () {
         myCollider = gameObject.GetComponent<BoxCollider2D>();
-        myCollider.enabled = false;
-        StartCoroutine(AttackTime());
+        StartCoroutine(hitboxOn());
     }
 	
 	// Update is called once per frame
@@ -19,9 +19,17 @@ public class BossSpit : MonoBehaviour {
 		
 	}
 
+    IEnumerator hitboxOn()
+    {
+        yield return new WaitForSeconds(preTime);
+        myCollider.enabled = true;
+        gameObject.GetComponent<Rigidbody2D>().MovePosition(transform.position - (Vector3.up * 0.01f));
+        StartCoroutine(AttackTime());
+    }
+
     IEnumerator AttackTime()
     {
-        yield return new WaitForSeconds(attackTime);
+        yield return new WaitForSeconds(lifeTime - preTime);
         Destroy(gameObject);
     }
 }
