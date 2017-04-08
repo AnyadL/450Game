@@ -1351,14 +1351,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 22
       objectReference: {fileID: 0}
-    - target: {fileID: 4067096328456276, guid: 2f099f48993a5844ab3e6dbdf5078ab1, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4067096328456276, guid: 2f099f48993a5844ab3e6dbdf5078ab1, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1759253677681764, guid: 2f099f48993a5844ab3e6dbdf5078ab1, type: 2}
       propertyPath: m_IsActive
       value: 0
