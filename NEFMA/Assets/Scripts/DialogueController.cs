@@ -226,11 +226,11 @@ public class DialogueController : MonoBehaviour {
                 {
                     // Jump Kitty onto screen
 
-                    timePause = 1f;// stop Kitty jump in 1 second
+                    timePause = 1.4f;// stop Kitty jump in 1 second
 
                     updateTime = Time.time + timePause;
 
-                    findPlayerObject("Kitty").GetComponent<HeroMovement>().jumpCharacter(3500f, 3500f);
+                    findPlayerObject("Kitty").GetComponent<HeroMovement>().jumpCharacter(3000f, 3300f);
                 }
                 else if (Time.time >= updateTime)
                 {
