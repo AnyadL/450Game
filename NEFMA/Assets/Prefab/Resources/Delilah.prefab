@@ -55,6 +55,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1436814272348196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4686256643422712}
+  m_Layer: 11
+  m_Name: ground check 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1857414780406618
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,10 +93,10 @@ Transform:
   m_GameObject: {fileID: 1008697963557068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 15, y: -5, z: 0}
-  m_LocalScale: {x: 12.570398, y: 13.452799, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4809369325167958}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4461802130450952
 Transform:
@@ -90,11 +105,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857414780406618}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -15, z: 0}
-  m_LocalScale: {x: 12.570405, y: 13.452761, z: 1}
+  m_LocalPosition: {x: 4.133, y: -14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4809369325167958}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4686256643422712
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436814272348196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.733, y: -14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4809369325167958}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4809369325167958
 Transform:
@@ -103,10 +131,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1198660775397150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 0.87, z: 0}
+  m_LocalPosition: {x: 1.5, y: -6.96, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 4461802130450952}
+  - {fileID: 4686256643422712}
   - {fileID: 4152098520219624}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -584,7 +613,9 @@ MonoBehaviour:
   currentMaxSpeed: 0
   jumpForce: 2400
   groundCheck: {fileID: 4461802130450952}
+  groundCheck2: {fileID: 4686256643422712}
   grounded: 0
+  grounded2: 0
   currentSpeed: 0
   doublejump: 0
   animator: {fileID: 95725971035733416}
@@ -619,6 +650,7 @@ MonoBehaviour:
   sfxWallUp: {fileID: 82786087372906646}
   sfxWallPush: {fileID: 82459918109004874}
   sfxFist: {fileID: 82921599158424096}
+  sfxExplosion: {fileID: 0}
 --- !u!114 &114713408670370730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -656,13 +688,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692b94a5dbc7bee4b9f6f62af6c3cd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   maxHealth: 5
   bigCooldown: 10
   nextBigFire: 0
   myLayer: 0
   nextVulnerable: 0
   knockbacked: 0
-  invincibiltyLength: 2
+  invincibiltyLength: 1
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0

@@ -67,6 +67,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1899568415983080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4869043371585610}
+  m_Layer: 11
+  m_Name: ground check 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4374332082063758
 Transform:
   m_ObjectHideFlags: 1
@@ -74,10 +89,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840161315393440}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.5, y: -6.96, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 4552635497574260}
+  - {fileID: 4869043371585610}
   - {fileID: 4817339627959976}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -89,8 +105,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1127368016360944}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -15, z: 0}
-  m_LocalScale: {x: 12.570405, y: 13.452761, z: 1}
+  m_LocalPosition: {x: 3.933, y: -14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4374332082063758}
   m_RootOrder: 0
@@ -103,7 +119,20 @@ Transform:
   m_GameObject: {fileID: 1738040988945736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 15, y: -5, z: 0}
-  m_LocalScale: {x: 11.784749, y: 13.634594, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4374332082063758}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4869043371585610
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1899568415983080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.933, y: -14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4374332082063758}
   m_RootOrder: 1
@@ -339,6 +368,8 @@ MonoBehaviour:
   animator: {fileID: 95483858603040556}
   LittleAttack: 0
   BigAttack: 0
+  sfxDash: {fileID: 0}
+  sfxStun: {fileID: 0}
 --- !u!114 &114357171226396750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,7 +418,9 @@ MonoBehaviour:
   currentMaxSpeed: 0
   jumpForce: 2400
   groundCheck: {fileID: 4552635497574260}
+  groundCheck2: {fileID: 4869043371585610}
   grounded: 0
+  grounded2: 0
   currentSpeed: 0
   doublejump: 0
   animator: {fileID: 95483858603040556}
@@ -403,13 +436,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692b94a5dbc7bee4b9f6f62af6c3cd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   maxHealth: 5
   bigCooldown: 10
   nextBigFire: 0
   myLayer: 0
   nextVulnerable: 0
   knockbacked: 0
-  invincibiltyLength: 2
+  invincibiltyLength: 1
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
