@@ -10,6 +10,7 @@ public class Checkpoint : MonoBehaviour {
     [HideInInspector] private float aliveTime;
     public float checkpointDuration = 2.0f;
     public bool initalSpawn = false;
+    public Animator animator;
 
     void Start ()
     {
@@ -17,6 +18,7 @@ public class Checkpoint : MonoBehaviour {
         {
             Globals.currentCheckpoint = this;
         }
+        animator = gameObject.GetComponent<Animator>();
     }
 
     void Update ()
@@ -25,7 +27,7 @@ public class Checkpoint : MonoBehaviour {
         {
             if (aliveTime <= Time.time)
             {
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
             }
             if (Globals.livingPlayers < Globals.numPlayers)
             {
@@ -69,6 +71,8 @@ public class Checkpoint : MonoBehaviour {
             spawning = true;
             aliveTime = Time.time + checkpointDuration;
             Globals.currentCheckpoint = this;
+            print("Activated");
+            animator.SetBool("Activated", true);
         }
     }
 }
