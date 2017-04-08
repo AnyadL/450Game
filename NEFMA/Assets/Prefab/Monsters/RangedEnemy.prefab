@@ -293,7 +293,7 @@ MonoBehaviour:
   myLayer: 0
   nextVulnerable: 0
   knockbacked: 0
-  invincibiltyLength: 2
+  invincibiltyLength: 1
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0

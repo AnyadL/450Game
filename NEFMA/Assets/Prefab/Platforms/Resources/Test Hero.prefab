@@ -174,6 +174,9 @@ MonoBehaviour:
   groundCheck: {fileID: 4327794520927888}
   grounded: 0
   currentSpeed: 0
+  doublejump: 0
+  animator: {fileID: 0}
+  walking: 0
 --- !u!114 &114995039413363500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,16 +188,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692b94a5dbc7bee4b9f6f62af6c3cd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   maxHealth: 3
   bigCooldown: 10
   nextBigFire: 0
   myLayer: 0
   nextVulnerable: 0
   knockbacked: 0
-  invincibiltyLength: 2
+  invincibiltyLength: 1
   enemyAI: {fileID: 0}
   speed: 0
   dashing: 0
+  deflectVelocity: 10
 --- !u!212 &212679551546079216
 SpriteRenderer:
   m_ObjectHideFlags: 1

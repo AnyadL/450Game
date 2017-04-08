@@ -268,7 +268,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1217193743556796, guid: f26eb8cc3d1fbef4aa78c6f2b344b852, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f26eb8cc3d1fbef4aa78c6f2b344b852, type: 2}
@@ -549,7 +549,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1571041034229850, guid: 7a49b54ca2a38924ca7301d4e713bbf2, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a49b54ca2a38924ca7301d4e713bbf2, type: 2}
@@ -1125,7 +1125,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1321060816576830, guid: f4fd4d4a7176cf94dbe991af96777567, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4fd4d4a7176cf94dbe991af96777567, type: 2}
@@ -1705,6 +1705,11 @@ Prefab:
         type: 2}
       propertyPath: inputNumber
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114917935538880668, guid: b83152af1cf5cf141a019683247045f8,
+        type: 2}
+      propertyPath: invincibiltyLength
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b83152af1cf5cf141a019683247045f8, type: 2}
