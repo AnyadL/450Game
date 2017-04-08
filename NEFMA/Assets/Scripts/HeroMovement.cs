@@ -18,9 +18,11 @@ public class HeroMovement : MonoBehaviour {
     [HideInInspector] public float currentMaxSpeed;
     public float jumpForce = 1800f;
     public Transform groundCheck;
+    public Transform groundCheck2;
     //public Transform punchCheck; // TODO: Remove punch check from hero prefabs
 
     [HideInInspector] public bool grounded = false;
+    [HideInInspector] public bool grounded2 = false;
     //private Animator anim;
     private Rigidbody2D rb2d;
     private AttributeController myAttributes;
@@ -53,19 +55,20 @@ public class HeroMovement : MonoBehaviour {
     void Update()
     {
         grounded = Physics2D.Linecast(transform.position, groundCheck.position, LayerMask.GetMask("Ground", "BossHand"));
-        
-        if (grounded)
+        grounded2 = Physics2D.Linecast(transform.position, groundCheck2.position, LayerMask.GetMask("Ground", "BossHand"));
+
+        if (grounded || grounded2)
         {
             jumpCount = 0;
         }
-        if (myAttributes.knockbacked && grounded && Time.time + myAttributes.invincibiltyLength - 0.25f >= myAttributes.nextVulnerable)
+        if (myAttributes.knockbacked && (grounded || grounded2) && Time.time + myAttributes.invincibiltyLength - 0.25f >= myAttributes.nextVulnerable)
         {
             myAttributes.knockbacked = false;
         }
 
         if (Input.GetButtonDown("Jump_" + inputNumber) && !Globals.gamePaused)
         {
-            if (grounded && !myAttributes.knockbacked)
+            if ((grounded || grounded2) && !myAttributes.knockbacked)
             {
                 jump = true;
                 jumpCount = 1;

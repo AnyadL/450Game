@@ -26,7 +26,7 @@ public class sfxWalking : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //walking sfx
-		if(hm.grounded == true && hm.currentSpeed != 0 && sfxFootstep.isPlaying == false)
+		if((hm.grounded || hm.grounded2) && hm.currentSpeed != 0 && sfxFootstep.isPlaying == false)
         {
             sfxFootstep.pitch = Random.Range(1.2f, 1.5f);
             sfxFootstep.Play();
