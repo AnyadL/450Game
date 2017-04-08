@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 212042380258290444}
   m_Layer: 11
   m_Name: Delilah Wall
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,8 +107,9 @@ MonoBehaviour:
   wallRight: 0
   free: 0
   shieldTime: 10
-  freeWallTime: 0
   health: 30
+  facingRight: 0
+  originalScale: {x: 0, y: 0, z: 0}
 --- !u!212 &212042380258290444
 SpriteRenderer:
   m_ObjectHideFlags: 1

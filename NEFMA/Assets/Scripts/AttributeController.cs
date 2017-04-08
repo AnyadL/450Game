@@ -390,13 +390,15 @@ public class AttributeController : MonoBehaviour {
             StartCoroutine(stunEnemy());
         }
         //This is for rkyer dashing through enemy or any time where a character is invincible but can still attack enemies
-        else if (collision.gameObject.tag == "Player" && collision.gameObject.GetComponent<AttributeController>().dashing)
+        else if (collision.gameObject.tag == "Player")
         {
-            if (decreaseHealth(1.0f))
-            {
-                takenDamage();
-                knockback(collision.gameObject.transform.position.x);
-            }
+            if (collision.gameObject.GetComponent<AttributeController>().dashing) { 
+                if (decreaseHealth(1.0f))
+                 {
+                    takenDamage();
+                    knockback(collision.gameObject.transform.position.x);
+                 }
+         }
         }
         else if (collision.gameObject.tag == "Deflect")
         {

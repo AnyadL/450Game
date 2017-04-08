@@ -9,12 +9,14 @@ public class DelilahWall : MonoBehaviour {
     [HideInInspector] public bool free = false;
     public float shieldTime;
     public int health = 30;
-  
-   
+    public bool facingRight;
+    public Vector3 originalScale;
 
     // Use this for initialization
     void Start () {
         StartCoroutine(AttackTime());
+        originalScale = gameObject.transform.localScale;
+        facingRight = owner.GetComponent<HeroMovement>().facingRight;
     }
 
     // Update is called once per frame
@@ -31,30 +33,13 @@ public class DelilahWall : MonoBehaviour {
     {
         if (!free)
         {
-            //bool facingRight = false;
-            float wallXDistance = 4 * wallRight;
-            if (!owner.GetComponent<HeroMovement>().facingRight )
-            {
-  
-                wallXDistance = -wallXDistance;
 
-        /*        if (facingRight == false)
-                {
-                    facingRight = true;
-                    Vector3 theScale = gameObject.transform.localScale;
-                    theScale.x *= -1;
-                    gameObject.transform.localScale = theScale;
-                }*/
-            }
-          /*  else
-            {
-                facingRight = false;
-            }*/
-            transform.position = owner.transform.position + new Vector3(wallXDistance, 1.8f, 0);
+            float wallXDistance = 4 * wallRight;
+            transform.position = owner.transform.position + new Vector3(wallXDistance, 1.8f, 0); 
         }
-        else{
+         else{
             float velocityDirection = owner.GetComponent<DelilahAttack>().wallVelocity;
-            if (!owner.GetComponent<HeroMovement>().facingRight)
+            if (!facingRight)
             {
                 velocityDirection = -velocityDirection;
             }
