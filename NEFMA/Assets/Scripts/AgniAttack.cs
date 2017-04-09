@@ -65,6 +65,7 @@ public class AgniAttack : MonoBehaviour
                 animator.SetBool("BigAttacking", BigAttacking);
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
                 BigFire();
+                sfxBigFireBall.pitch = Random.Range(1.0f, 1.2f);
                 sfxBigFireBall.Play();
             }
 

@@ -5,6 +5,9 @@ using UnityEngine;
 //This script so far just makes the fireballs disappear when they go off screen, more will probably be added later
 public class ProjectileScript : MonoBehaviour {
 
+    public AudioSource sfxSmallExplosion;
+    public AudioSource sfxBigExplosion;
+
 	// Use this for initialization
 	void Start () {
  
@@ -52,7 +55,12 @@ public class ProjectileScript : MonoBehaviour {
         if (collision.gameObject.tag == "Enemy")
         {
             if (gameObject.tag == "LittleAttack")
-            {
+            {          
+                if (sfxSmallExplosion != null && !sfxSmallExplosion.isPlaying)
+                {
+                    sfxSmallExplosion.pitch = Random.Range(0.9f, 1.3f);
+                    sfxSmallExplosion.Play();
+                }
                 Destroy(gameObject);
             }
         }
