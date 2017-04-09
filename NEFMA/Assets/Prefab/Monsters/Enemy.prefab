@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 61857374953878520}
   - component: {fileID: 82313423473287080}
   - component: {fileID: 114526745114914402}
+  - component: {fileID: 114382987082755828}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -317,6 +318,17 @@ MonoBehaviour:
   speed: 0
   dashing: 0
   deflectVelocity: 10
+--- !u!114 &114382987082755828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321060816576830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4adcace17d4f88c47814bc9eac97567f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114526745114914402
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 61956348595354200}
   - component: {fileID: 114117086278311314}
   - component: {fileID: 95101646042315090}
+  - component: {fileID: 114730851478671510}
   m_Layer: 9
   m_Name: Teleporting Enemy
   m_TagString: Enemy
@@ -272,6 +273,17 @@ MonoBehaviour:
   numberRangedBurst: 3
   bullseye: {fileID: 0}
   sfxfrog_attack: {fileID: 0}
+--- !u!114 &114730851478671510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323327057391826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4adcace17d4f88c47814bc9eac97567f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212246587914279798
 SpriteRenderer:
   m_ObjectHideFlags: 1

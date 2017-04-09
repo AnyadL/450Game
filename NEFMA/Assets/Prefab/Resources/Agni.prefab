@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 82129126859932930}
   - component: {fileID: 114379807679598236}
   - component: {fileID: 95696558752254844}
+  - component: {fileID: 114028571234112736}
   m_Layer: 11
   m_Name: Agni
   m_TagString: Player
@@ -510,6 +511,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114028571234112736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1880801342426786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4adcace17d4f88c47814bc9eac97567f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114244758743622684
 MonoBehaviour:
   m_ObjectHideFlags: 1
