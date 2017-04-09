@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class onSoundLoad : MonoBehaviour {
 
-    public AudioSource sound;
+    private AudioSource[] allAudioSources;
 
 	// Use this for initialization
 	void Start () {
-        if (sound.tag == "Music")
-            sound.volume = Globals.musicVolume;
-        else if (sound.tag == "SoundFX")
-            sound.volume = Globals.soundFXVolume;
-        else
-            print("There is an untagged sound. Please tag your sounds as Music or SoundFX. Sound:" + sound.name);
+        allAudioSources = GetComponents<AudioSource>();
+        foreach( AudioSource sound in allAudioSources)
+        {
+            if (sound.tag == "Music")
+                sound.volume = Globals.musicVolume;
+            else if (sound.tag == "SoundFX" || sound.tag == "Player" || sound.tag == "Enemy")
+                sound.volume = Globals.soundFXVolume;
+            else
+                print("There is an untagged sound. Please tag your sounds as Music or SoundFX. Sound:" + sound.name);
+        }
 
     }
 	
