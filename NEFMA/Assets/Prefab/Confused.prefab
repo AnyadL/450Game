@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212950614741476106}
   - component: {fileID: 61650604518430512}
   - component: {fileID: 114756060005434650}
+  - component: {fileID: 114254085403996494}
   m_Layer: 0
   m_Name: Confused
   m_TagString: Stun
@@ -56,6 +57,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 6.4, y: 4}
+--- !u!114 &114254085403996494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1690809506629254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a886e0b96f670442ac8fef011b7738e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114756060005434650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8428a29bcc3c4d94aa7a01a0c4969f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTime: 1.5
+  attackTime: 3
 --- !u!212 &212950614741476106
 SpriteRenderer:
   m_ObjectHideFlags: 1
