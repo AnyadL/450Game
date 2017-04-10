@@ -66,17 +66,12 @@ public class RykerAttack : MonoBehaviour
             //Stuns all enemies on the screen 
             if (Input.GetButtonDown("Fire2_"+hm.inputNumber) && !Globals.gamePaused)
             {
-                BigAttack = true;
-                animator.SetBool("AttackBig", BigAttack);
+
                 myAttribute.nextBigFire = Time.time + myAttribute.bigCooldown;
                 StunAttack();
             }
         }
-        else
-        {
-            BigAttack = false;
-            animator.SetBool("AttackBig", BigAttack);
-        }
+
     }
 
     // Creates a Hiss that stuns enemies
@@ -87,11 +82,11 @@ public class RykerAttack : MonoBehaviour
         if (hm.facingRight)
         {
             //transform.position += new Vector3(dashSpeed * Time.deltaTime, dashTime, 0.0f);
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(100, 0);
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(150, 0);
         }
         else
         {
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-100, 0);
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-150, 0);
         }
         yield return new WaitForSeconds(dashTime);
         myAttribute.dashing = false;
@@ -121,6 +116,21 @@ public class RykerAttack : MonoBehaviour
                 go.GetComponent<Rigidbody2D>().velocity = new Vector2(-go.GetComponent<Rigidbody2D>().velocity.x, go.GetComponent<Rigidbody2D>().velocity.y);
             }
         }
+        StartCoroutine(Stun());
 
+
+    }
+
+    IEnumerator Stun()
+    {
+        BigAttack = true;
+        animator.SetBool("AttackBig", BigAttack);
+        myAttribute.dashing = true;
+        hm.currentMoveForce = 0;
+        yield return new WaitForSeconds(0.5f);
+        BigAttack = false;
+        animator.SetBool("AttackBig", BigAttack);
+        myAttribute.dashing = false;
+        hm.currentMoveForce = hm.moveForce;
     }
 }

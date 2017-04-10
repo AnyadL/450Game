@@ -141,7 +141,6 @@ public class AttributeController : MonoBehaviour {
 
     IEnumerator stunEnemy()
     {
-        Debug.Log("speed:" + speed);
  
         enemyAI.currentMoveForce = 0;
         if (enemyAI.isRanged)
@@ -150,8 +149,7 @@ public class AttributeController : MonoBehaviour {
            enemyAI.rangedBurst = 0;
 
         }
-        yield return new WaitForSeconds(2);
-        Debug.Log("Waited");
+        yield return new WaitForSeconds(3);
         enemyAI.currentMoveForce = enemyAI.moveForce;
     }
     IEnumerator deflectEnemy()
@@ -255,6 +253,13 @@ public class AttributeController : MonoBehaviour {
                 Vector3 tempVel = gameObject.GetComponent<Rigidbody2D>().velocity;
                 tempVel.y = 0;
                 gameObject.GetComponent<Rigidbody2D>().velocity = tempVel;
+            }
+        }
+        else if (dashing)
+        {
+             if (collision.gameObject.tag == "EnemyAttack")
+            {
+                Destroy(collision.gameObject);
             }
         }
         if (collision.gameObject.tag == "SceneChanger")
