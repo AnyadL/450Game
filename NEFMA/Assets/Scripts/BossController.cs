@@ -32,6 +32,8 @@ public class BossController : MonoBehaviour {
     public GameObject bottomRight;
     public GameObject topLeft;
     public GameObject topRight;
+    public AudioSource sfxRoar;
+    public AudioSource sfxGrowl;
 
     // Use this for initialization
     void Start () {
@@ -190,11 +192,21 @@ public class BossController : MonoBehaviour {
         {
             myHead.GetComponent<SpriteRenderer>().sprite = angryHead;
             headChoice = 1;
+            if (sfxGrowl != null && !sfxGrowl.isPlaying)
+            {
+                sfxGrowl.pitch = Random.Range(0.9f, 1.2f);
+                sfxGrowl.Play();
+            }
         }
         else if (num == 2)
         {
             myHead.GetComponent<SpriteRenderer>().sprite = openHead;
             headChoice = 2;
+            if (sfxRoar != null && !sfxRoar.isPlaying)
+            {
+                sfxRoar.pitch = Random.Range(0.9f, 1.2f);
+                sfxRoar.Play();
+            }
         }
     }
 
@@ -203,6 +215,7 @@ public class BossController : MonoBehaviour {
         headChange(2);
         yield return new WaitForSeconds(2f);
         headChange(headChoice);
+
     }
 
     // left = -1, right = 1

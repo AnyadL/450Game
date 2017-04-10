@@ -18,6 +18,8 @@ public class BossHand : MonoBehaviour {
     public GameObject handArt;
     [HideInInspector] public float waitTime = 1;
 
+    public AudioSource sfxSlam;
+
     // Use this for initialization
     void Start () {
         myBody = this.GetComponent<Rigidbody2D>();
@@ -70,12 +72,21 @@ public class BossHand : MonoBehaviour {
             if (myBody.position.y > currentMinHeight)
             {
                 handDown();
+                if (sfxSlam != null && !sfxSlam.isPlaying)
+                {
+                    sfxSlam.Play();
+                }
             }
             else
             {
                 myBody.velocity = new Vector2(0, 0);
                 transform.position = new Vector3(transform.position.x, currentMinHeight, transform.position.z);
                 StartCoroutine(slamHands());
+
+               /* if(sfxSlam!= null && !sfxSlam.isPlaying)
+                {
+                    sfxSlam.Play();
+                }*/
             }
         }
         // Headed Upwards
@@ -108,6 +119,7 @@ public class BossHand : MonoBehaviour {
         {
             myController.headChange(0);
         }
+       
     }
 
     IEnumerator waitHands()
