@@ -74,6 +74,7 @@ public class BossHand : MonoBehaviour {
                 handDown();
                 if (sfxSlam != null && !sfxSlam.isPlaying)
                 {
+                    sfxSlam.pitch = Random.Range(0.9f, 1.2f);
                     sfxSlam.Play();
                 }
             }
@@ -82,11 +83,6 @@ public class BossHand : MonoBehaviour {
                 myBody.velocity = new Vector2(0, 0);
                 transform.position = new Vector3(transform.position.x, currentMinHeight, transform.position.z);
                 StartCoroutine(slamHands());
-
-               /* if(sfxSlam!= null && !sfxSlam.isPlaying)
-                {
-                    sfxSlam.Play();
-                }*/
             }
         }
         // Headed Upwards

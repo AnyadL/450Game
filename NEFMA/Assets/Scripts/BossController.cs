@@ -194,7 +194,7 @@ public class BossController : MonoBehaviour {
             headChoice = 1;
             if (sfxGrowl != null && !sfxGrowl.isPlaying)
             {
-                sfxGrowl.pitch = Random.Range(0.9f, 1.2f);
+                sfxGrowl.pitch = Random.Range(0.8f, 1.4f);
                 sfxGrowl.Play();
             }
         }
@@ -204,7 +204,7 @@ public class BossController : MonoBehaviour {
             headChoice = 2;
             if (sfxRoar != null && !sfxRoar.isPlaying)
             {
-                sfxRoar.pitch = Random.Range(0.9f, 1.2f);
+                sfxRoar.pitch = Random.Range(0.8f, 1.4f);
                 sfxRoar.Play();
             }
         }
