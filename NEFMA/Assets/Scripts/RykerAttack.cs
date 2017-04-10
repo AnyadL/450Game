@@ -127,7 +127,9 @@ public class RykerAttack : MonoBehaviour
         animator.SetBool("AttackBig", BigAttack);
         myAttribute.dashing = true;
         hm.currentMoveForce = 0;
+
         yield return new WaitForSeconds(0.5f);
+
         BigAttack = false;
         animator.SetBool("AttackBig", BigAttack);
         myAttribute.dashing = false;

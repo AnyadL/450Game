@@ -25,6 +25,7 @@ public class DelilahAttack : MonoBehaviour {
     [HideInInspector] public bool hasWall = false;
     [HideInInspector] public int wallRight;
     [HideInInspector] public bool wallFaceRight = false;
+    [HideInInspector] public bool freeWall = false;
 
     public AudioSource sfxWallUp;
     public AudioSource sfxWallPush;
@@ -47,14 +48,21 @@ public class DelilahAttack : MonoBehaviour {
     void Update()
     {
 
-        /*if (hasWall && !myMovement.grounded)
+        if (wall)
         {
-            destroyWall();
-            Destroy(wall);
+            if (wall.GetComponent<DelilahWall>().free)
+            {
+                Debug.Log("Wall is Free");
+                myMovement.currentMaxSpeed = myMovement.maxSpeed;
+                BigAttack = false;
+                animator.SetBool("AttackBig", BigAttack);
+                freeWall = true;
+            }
 
-        }*/
-        if (Time.time >= nextLittleFire && !wall)
+        }
+        if (Time.time >= nextLittleFire && (!wall || freeWall))
         {
+
             if (Input.GetButtonDown("Fire1_" + myMovement.inputNumber) && !Globals.gamePaused)
             {
                 LittleAttack = true;
@@ -80,18 +88,15 @@ public class DelilahAttack : MonoBehaviour {
         }
         else if (wall)
         {
-            if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber) && !Globals.gamePaused)
-            {
-                BigAttack = true;
-                animator.SetBool("AttackBig", BigAttack);
-                PushWall();
-            }
+                if (Input.GetButtonDown("Fire2_" + myMovement.inputNumber) && !Globals.gamePaused)
+                {
+                    BigAttack = true;
+                    animator.SetBool("AttackBig", BigAttack);
+                    PushWall();
+                }
+   
         }
-        else
-        {
-            BigAttack = false;
-            animator.SetBool("AttackBig", BigAttack);
-        }
+
     }
 
     // Fire a bullet
@@ -122,6 +127,7 @@ public class DelilahAttack : MonoBehaviour {
 //Does the same as RegularFire except with big fireballs
 void MakeWall()
     {
+        freeWall = false;
         Debug.Log("Big Fire");
             createWall();
             wallRight = myMovement.facingRight ? 1 : -1;
