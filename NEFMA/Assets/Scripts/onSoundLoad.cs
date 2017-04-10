@@ -13,7 +13,7 @@ public class onSoundLoad : MonoBehaviour {
         {
             if (sound.tag == "Music")
                 sound.volume = Globals.musicVolume;
-            else if (sound.tag == "SoundFX" || sound.tag == "Player" || sound.tag == "Enemy")
+            else if (sound.tag != "Music" && sound.tag != "Untagged")
                 sound.volume = Globals.soundFXVolume;
             else
                 print("There is an untagged sound. Please tag your sounds as Music or SoundFX. Sound:" + sound.name);
