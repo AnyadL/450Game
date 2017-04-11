@@ -31,44 +31,88 @@ public class BossHead : MonoBehaviour {
 	void Update () {
         if ((!gateOne && (myAttributes.getHealth() / myAttributes.maxHealth) <= 1.00))
         {
-            gateOne = true;
-            myController.phaseOne();
+            startPhase1();
         }
         else if ((!gateTwo && (myAttributes.getHealth() / myAttributes.maxHealth) <= 0.75) || (!gateTwo && FORCEPHASE2))
         {
-            gateTwo = true;
-            myController.phaseTwo();
-            if (FORCEPHASE2)
-            {
-                myAttributes.decreaseHealth(50);
-            }
+            startPhase2();
         }
         else if ((!gateThree && (myAttributes.getHealth() / myAttributes.maxHealth) <= 0.5) || (!gateThree && FORCEPHASE3))
         {
-            gateThree = true;
-            myController.phaseThree();
-            if (FORCEPHASE3)
-            {
-                myAttributes.decreaseHealth(25);
-            }
+            startPhase3();
         }
         else if ((!gateFour && (myAttributes.getHealth() / myAttributes.maxHealth) <= 0.25) || (!gateFour && FORCEPHASE4))
         {
-            gateFour = true;
-            myController.phaseFour();
-            if (FORCEPHASE4)
-            {
-                myAttributes.decreaseHealth(50);
-            }
+            startPhase4();
         }
         else if (!gateFive && FORCEPHASE5)
         {
             gateFive = true;
+            if (!gateOne)
+            {
+                startPhase1();
+            }
             FORCEPHASE2 = true;
+            if (!gateTwo)
+            {
+                startPhase2();
+            }
             FORCEPHASE3 = true;
+            if (!gateThree)
+            {
+                startPhase3();
+            }
             FORCEPHASE4 = true;
+            if (!gateFour)
+            {
+                startPhase4();
+            }
             myAttributes.decreaseHealth(25);
         }
+    }
+
+    public void startPhase1()
+    {
+        gateOne = true;
+        myController.phaseOne();
+    }
+
+    public void startPhase2()
+    {
+        gateTwo = true;
+        myController.phaseTwo();
+        if (FORCEPHASE2)
+        {
+            myAttributes.decreaseHealth(50);
+            myAttributes.takenDamage();
+        }
+    }
+
+    public void startPhase3()
+    {
+        gateThree = true;
+        myController.phaseThree();
+        if (FORCEPHASE3)
+        {
+            myAttributes.decreaseHealth(25);
+            myAttributes.takenDamage();
+        }
+    }
+
+    public void startPhase4()
+    {
+        gateFour = true;
+        myController.phaseFour();
+        if (FORCEPHASE4)
+        {
+            myAttributes.decreaseHealth(50);
+            myAttributes.takenDamage();
+        }
+    }
+
+    public void startPhase5()
+    {
+
     }
 
     public void fireballs()

@@ -218,6 +218,13 @@ public class BossController : MonoBehaviour {
 
     }
 
+    public void bossKill()
+    {
+        //Globals.gamePaused = false;
+        //Globals.fading = true;
+        //Globals.fadeDir = 1;
+    }
+
     // left = -1, right = 1
     public void registerHand(GameObject part, int num)
     {

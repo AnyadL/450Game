@@ -56,12 +56,10 @@ public class AttributeController : MonoBehaviour {
             }
             if (gameObject.tag == "BossHead")
             {
-                // Defeated Boss, should call some script here
                 health = 1;
                 Debug.Log("Boss Died");
-                Globals.gamePaused = false;
-                Globals.fading = true;
-                Globals.fadeDir = 1;
+                StartCoroutine(deactivateBoss());
+                GameObject.FindWithTag("Boss Controller").GetComponent<BossController>().bossKill();
                 return;
             }
             if (gameObject.tag == "Enemy")
@@ -89,6 +87,12 @@ public class AttributeController : MonoBehaviour {
             }
         }
 	}
+
+    IEnumerator deactivateBoss()
+    {
+        yield return new WaitForSeconds(invincibiltyLength);
+        this.enabled = false;
+    }
 
     // Sets global variables for the player identified by playerNumber, marking them as killed
     public void killPlayer(int playerNumber)
@@ -152,6 +156,7 @@ public class AttributeController : MonoBehaviour {
         yield return new WaitForSeconds(3);
         enemyAI.currentMoveForce = enemyAI.moveForce;
     }
+
     IEnumerator deflectEnemy()
     {
 
