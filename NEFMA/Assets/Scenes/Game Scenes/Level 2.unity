@@ -7432,7 +7432,7 @@ Prefab:
         type: 2}
       propertyPath: PresetPlayers.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 48717648}
     - target: {fileID: 114462253976316184, guid: 325a7915afdd96a499bc45fc481afd20,
         type: 2}
       propertyPath: pauser
