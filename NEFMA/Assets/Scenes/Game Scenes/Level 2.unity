@@ -1301,7 +1301,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4894732396193968, guid: 9ff79de26ff0ded42a88c1b245b7d262, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -15.67
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 4894732396193968, guid: 9ff79de26ff0ded42a88c1b245b7d262, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7432,7 +7432,7 @@ Prefab:
         type: 2}
       propertyPath: PresetPlayers.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 48717648}
     - target: {fileID: 114462253976316184, guid: 325a7915afdd96a499bc45fc481afd20,
         type: 2}
       propertyPath: pauser

@@ -45,7 +45,18 @@ public class Checkpoint : MonoBehaviour {
             if (!Globals.players[i].Alive)
             {
                 //Debug.Log("Checkpoint Starting: " + Globals.players[i]);
-                GameObject pl = Instantiate(Globals.players[i].Prefab, transform.position, Quaternion.identity);
+                Vector3 myPosition;
+                float rand = Random.value;
+                float posi = Random.value * 3;
+                if (rand > 0.5f)
+                {
+                    myPosition = transform.position + (Vector3.right * posi);
+                }
+                else
+                {
+                    myPosition = transform.position - (Vector3.right * posi);
+                }
+                GameObject pl = Instantiate(Globals.players[i].Prefab, myPosition, Quaternion.identity);
                 Globals.players[i].Alive = true;
                 Globals.players[i].GO = pl;
                 pl.GetComponent<HeroMovement>().playerNumber = Globals.players[i].Number;

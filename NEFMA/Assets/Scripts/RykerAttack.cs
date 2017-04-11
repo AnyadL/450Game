@@ -78,6 +78,8 @@ public class RykerAttack : MonoBehaviour
     IEnumerator Dash()
     {
         myAttribute.dashing = true;
+        int myLayer = gameObject.layer;
+        gameObject.layer = 11;
         GameObject dashObject = Instantiate(dashPrefab, (gameObject.transform.position), Quaternion.identity) as GameObject;
         if (hm.facingRight)
         {
@@ -89,6 +91,7 @@ public class RykerAttack : MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-150, 0);
         }
         yield return new WaitForSeconds(dashTime);
+        gameObject.layer = myLayer;
         myAttribute.dashing = false;
         Destroy(dashObject);
 
@@ -130,6 +133,7 @@ public class RykerAttack : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+    
         BigAttack = false;
         animator.SetBool("AttackBig", BigAttack);
         myAttribute.dashing = false;
