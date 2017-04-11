@@ -36,18 +36,20 @@ public class BossHead : MonoBehaviour {
         else if ((!gateTwo && (myAttributes.getHealth() / myAttributes.maxHealth) <= 0.75) || (!gateTwo && FORCEPHASE2))
         {
             startPhase2();
+            FORCEPHASE2 = true;
         }
         else if ((!gateThree && (myAttributes.getHealth() / myAttributes.maxHealth) <= 0.5) || (!gateThree && FORCEPHASE3))
         {
             startPhase3();
+            FORCEPHASE3 = true;
         }
         else if ((!gateFour && (myAttributes.getHealth() / myAttributes.maxHealth) <= 0.25) || (!gateFour && FORCEPHASE4))
         {
             startPhase4();
+            FORCEPHASE4 = true;
         }
         else if (!gateFive && FORCEPHASE5)
         {
-            gateFive = true;
             if (!gateOne)
             {
                 startPhase1();
@@ -67,7 +69,7 @@ public class BossHead : MonoBehaviour {
             {
                 startPhase4();
             }
-            myAttributes.decreaseHealth(25);
+            startPhase5();
         }
     }
 
@@ -83,7 +85,7 @@ public class BossHead : MonoBehaviour {
         myController.phaseTwo();
         if (FORCEPHASE2)
         {
-            myAttributes.decreaseHealth(50);
+            myAttributes.health -= 50;
             myAttributes.takenDamage();
         }
     }
@@ -94,7 +96,7 @@ public class BossHead : MonoBehaviour {
         myController.phaseThree();
         if (FORCEPHASE3)
         {
-            myAttributes.decreaseHealth(25);
+            myAttributes.health -= 25;
             myAttributes.takenDamage();
         }
     }
@@ -105,14 +107,16 @@ public class BossHead : MonoBehaviour {
         myController.phaseFour();
         if (FORCEPHASE4)
         {
-            myAttributes.decreaseHealth(50);
+            myAttributes.health -= 50;
             myAttributes.takenDamage();
         }
     }
 
     public void startPhase5()
     {
-
+        gateFive = true;
+        myAttributes.health -= 25;
+        myAttributes.takenDamage();
     }
 
     public void fireballs()

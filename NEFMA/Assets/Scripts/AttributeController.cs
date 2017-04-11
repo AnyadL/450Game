@@ -59,6 +59,8 @@ public class AttributeController : MonoBehaviour {
                 health = 1;
                 Debug.Log("Boss Died");
                 StartCoroutine(deactivateBoss());
+                gameObject.GetComponents<CapsuleCollider2D>()[0].enabled = false;
+                gameObject.GetComponents<CapsuleCollider2D>()[1].enabled = false;
                 GameObject.FindWithTag("Boss Controller").GetComponent<BossController>().bossKill();
                 return;
             }

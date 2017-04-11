@@ -3737,11 +3737,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4461802130450952, guid: 4f87a623eb85ffc41afa46d7c3bb5b29, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -20
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 4686256643422712, guid: 4f87a623eb85ffc41afa46d7c3bb5b29, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -20
+      value: -15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f87a623eb85ffc41afa46d7c3bb5b29, type: 2}
