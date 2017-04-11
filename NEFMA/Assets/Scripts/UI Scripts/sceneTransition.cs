@@ -41,6 +41,7 @@ public class sceneTransition : MonoBehaviour {
             if (alpha == 0)
             {
                 Globals.fading = false;
+                Globals.bossReset = false;
             }
             else if (alpha == 1 && Globals.fadeDir != -1)
             {

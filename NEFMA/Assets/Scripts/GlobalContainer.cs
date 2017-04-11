@@ -55,9 +55,15 @@ public class Globals
 
     static public float fadeDir = 1f;
     static public bool fading = false;
+
+    static public bool bossReset = false;
+    static public bool bossStart = false;
 }
 
 public class GlobalContainer : MonoBehaviour {
+
+    public bool BOSSLEVEL = false;
+    //public bool bossReset = false;
 
     // Use this for initialization
     void Start () {
@@ -71,16 +77,27 @@ public class GlobalContainer : MonoBehaviour {
             if (Globals.currentCheckpoint == null)
             {
                 Debug.Log("COULD NOT FIND CURRENT CHECKPOINT");
-                Globals.livingPlayers = Globals.numPlayers;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
             // the whole team died, respawn them at the last checkpoint
-            else
+            else if (!BOSSLEVEL)
             {
-                Globals.currentCheckpoint.gameObject.SetActive(true);
+                //Globals.currentCheckpoint.gameObject.SetActive(true);
                 Globals.currentCheckpoint.spawning = false;
                 //Debug.Log("Globals Ressing Players");
                 Globals.currentCheckpoint.resPlayers();
+                return;
+            }
+            else if (!Globals.bossStart)
+            {
+                Globals.bossStart = true;
+                Globals.currentCheckpoint.spawning = false;
+                Globals.currentCheckpoint.resPlayers();
+            }
+            else if (!Globals.bossReset)
+            {
+                Globals.bossReset = true;
+                Globals.bossStart = false;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
             }
         }
     }

@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour {
                 }
                 GameObject HUDcanvas = GameObject.Find("HUDCanvas");
                 HUDcanvas.GetComponent<SetHUDs>().Start();
+                Globals.bossStart = true;
             }
             else
             {
