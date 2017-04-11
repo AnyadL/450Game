@@ -217,31 +217,17 @@ public class BossController : MonoBehaviour {
         headChange(headChoice);
     }
 
-    // TODO: DAYNA EDIT HERE
-    // Called when boss dies
     public void bossKill()
     {
-        // Do some things
-
-        // Wait some time
         StartCoroutine(bossMove());
-
-        // Enter Cutscene
-        //Globals.gamePaused = false;
-        //Globals.fading = true;
-        //Globals.fadeDir = 1;
     }
 
-    // TODO: DAYNA EDIT HERE
-    // Called by bossKill()
     IEnumerator bossMove()
     {
-        // Pre wait
-
-        // Wait 1 second (for example)
         yield return new WaitForSeconds(1f);
-        
-        // After wait
+        Globals.gamePaused = false;
+        Globals.fading = true;
+        Globals.fadeDir = 1;
     }
 
     // left = -1, right = 1
