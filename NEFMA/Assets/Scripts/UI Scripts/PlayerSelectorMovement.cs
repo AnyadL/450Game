@@ -31,10 +31,10 @@ public class PlayerSelectorMovement : MonoBehaviour {
     Vector3 rykerPosition;
     Vector3 kittyPosition;
 
-    string delilahText = "I may be shy, but don’t let that fool you!  I can summon giant energy hands to protect people.  I can even use my shields to send foes flying!  Is it any wonder I'm the leader of the school’s anti-bullying club?";
-    string agniText = "I'm a real firebrand, blessed with the super power to manipulate flames. Unfortunately, I'm not so hot at controlling my powers, and my wardrobe has gone up in flames more often than I can count.";
-    string rykerText = "I'm a very good runner. I can run past my enemies so quickly I completely disorient them.  Someday I'm going to be a supersonic hero.";
-    string kittyText = "I am the queen of the school improv club. I'm a  social butterfly, and my feline agility makes me the acrobat of the team. In battle, I am “furocious”, favoring a barrage of quick strikes and huge leaps.";
+    //string delilahText = "I may be shy, but don’t let that fool you!  I can summon giant energy hands to protect people.  I can even use my shields to send foes flying!  Is it any wonder I'm the leader of the school’s anti-bullying club?";
+    //string agniText = "I'm a real firebrand, blessed with the super power to manipulate flames. Unfortunately, I'm not so hot at controlling my powers, and my wardrobe has gone up in flames more often than I can count.";
+    //string rykerText = "I'm a very good runner. I can run past my enemies so quickly I completely disorient them.  Someday I'm going to be a supersonic hero.";
+    //string kittyText = "I am the queen of the school improv club. I'm a  social butterfly, and my feline agility makes me the acrobat of the team. In battle, I am “furocious”, favoring a barrage of quick strikes and huge leaps.";
 
     private bool heroSelected = false;
     private bool joinedGame = false;
