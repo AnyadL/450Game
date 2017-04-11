@@ -120,7 +120,6 @@ public class KittyAttack : MonoBehaviour
             sfxClaw.pitch = Random.Range(1.0f, 1.4f);
             sfxClaw.Play();
         }
-
     }
 }
 

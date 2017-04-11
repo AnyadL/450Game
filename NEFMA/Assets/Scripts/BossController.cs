@@ -114,6 +114,7 @@ public class BossController : MonoBehaviour {
     {
         Debug.Log("------------------------------");
         Debug.Log("Entering Phase 2");
+        Globals.currentCheckpoint.resPlayers();
         myTailScript.attacking = true;
         myLeftHandScript.waitTime = 0.833f;
         myRightHandScript.waitTime = 0.833f;
@@ -131,6 +132,7 @@ public class BossController : MonoBehaviour {
     {
         Debug.Log("------------------------------");
         Debug.Log("Entering Phase 3");
+        Globals.currentCheckpoint.resPlayers();
         myTailScript.numberOfNeedles += 3;
         myLeftHandScript.waitTime = 0.667f;
         myRightHandScript.waitTime = 0.667f;
@@ -151,6 +153,7 @@ public class BossController : MonoBehaviour {
     {
         Debug.Log("------------------------------");
         Debug.Log("Entering Phase 4");
+        Globals.currentCheckpoint.resPlayers();
         myTailScript.numberOfNeedles += 3;
         myLeftHandScript.waitTime = 0.50f;
         myRightHandScript.waitTime = 0.50f;
@@ -194,7 +197,7 @@ public class BossController : MonoBehaviour {
             headChoice = 1;
             if (sfxGrowl != null && !sfxGrowl.isPlaying)
             {
-                sfxGrowl.pitch = Random.Range(0.9f, 1.2f);
+                sfxGrowl.pitch = Random.Range(0.8f, 1.4f);
                 sfxGrowl.Play();
             }
         }
@@ -204,7 +207,7 @@ public class BossController : MonoBehaviour {
             headChoice = 2;
             if (sfxRoar != null && !sfxRoar.isPlaying)
             {
-                sfxRoar.pitch = Random.Range(0.9f, 1.2f);
+                sfxRoar.pitch = Random.Range(0.8f, 1.4f);
                 sfxRoar.Play();
             }
         }
@@ -215,7 +218,19 @@ public class BossController : MonoBehaviour {
         headChange(2);
         yield return new WaitForSeconds(2f);
         headChange(headChoice);
+    }
 
+    public void bossKill()
+    {
+        StartCoroutine(bossMove());
+    }
+
+    IEnumerator bossMove()
+    {
+        yield return new WaitForSeconds(1f);
+        Globals.gamePaused = false;
+        Globals.fading = true;
+        Globals.fadeDir = 1;
     }
 
     // left = -1, right = 1

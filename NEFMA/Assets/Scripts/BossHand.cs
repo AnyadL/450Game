@@ -14,7 +14,7 @@ public class BossHand : MonoBehaviour {
     public bool moving = true;
     public float downForce = 6;
     public float upForce = 0.2f;
-    [HideInInspector] public float midpoint = 0;
+    public float midpoint = 0;
     public GameObject handArt;
     [HideInInspector] public float waitTime = 1;
 
@@ -32,7 +32,7 @@ public class BossHand : MonoBehaviour {
         {
             myController.registerHand(gameObject, 1);
         }
-        midpoint = (Mathf.Abs(maxHeight - minHeight) / 2) + 0.2f;
+        midpoint = maxHeight - (Mathf.Abs(maxHeight - minHeight) / 2) + 0.1f;
         currentMaxHeight = maxHeight;
         currentMinHeight = minHeight;
     }
@@ -74,6 +74,7 @@ public class BossHand : MonoBehaviour {
                 handDown();
                 if (sfxSlam != null && !sfxSlam.isPlaying)
                 {
+                    sfxSlam.pitch = Random.Range(0.9f, 1.2f);
                     sfxSlam.Play();
                 }
             }
@@ -82,11 +83,6 @@ public class BossHand : MonoBehaviour {
                 myBody.velocity = new Vector2(0, 0);
                 transform.position = new Vector3(transform.position.x, currentMinHeight, transform.position.z);
                 StartCoroutine(slamHands());
-
-               /* if(sfxSlam!= null && !sfxSlam.isPlaying)
-                {
-                    sfxSlam.Play();
-                }*/
             }
         }
         // Headed Upwards
@@ -119,7 +115,6 @@ public class BossHand : MonoBehaviour {
         {
             myController.headChange(0);
         }
-       
     }
 
     IEnumerator waitHands()
