@@ -27,7 +27,8 @@ public class Checkpoint : MonoBehaviour {
         {
             if (aliveTime <= Time.time)
             {
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
+                spawning = false;
             }
             if (Globals.livingPlayers < Globals.numPlayers)
             {
