@@ -72,8 +72,11 @@ public class Checkpoint : MonoBehaviour {
             spawning = true;
             aliveTime = Time.time + checkpointDuration;
             Globals.currentCheckpoint = this;
-            print("Activated");
-            animator.SetBool("Activated", true);
+            if (animator != null)
+            {
+                print("Activated");
+                animator.SetBool("Activated", true);
+            }
         }
     }
 }

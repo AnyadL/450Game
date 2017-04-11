@@ -52,6 +52,10 @@ public class ProjectileScript : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+        if(collision.gameObject.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
         if (collision.gameObject.tag == "Enemy")
         {
             if (gameObject.tag == "LittleAttack")
