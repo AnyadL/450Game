@@ -13,7 +13,6 @@ public class PlayerSelectorMovement : MonoBehaviour {
     int bottomY = -50;
     
     public int playerNumber;
-    public Text playerText;
     public Image playerPanel;
     public Image playerSelector;
     public Sprite playerSelectorSprite;
@@ -160,34 +159,28 @@ public class PlayerSelectorMovement : MonoBehaviour {
         if (playerSelector.sprite == hiddenSelector)
         {
             playerPanel.sprite = startPoster;
-            playerText.text = null;
         }
         else
         {
             if (position == rykerPosition)
             {
                 playerPanel.sprite = rykerPoster;
-                playerText.text = rykerText;
             }
             else if (position == delilahPosition)
             {
                 playerPanel.sprite = delilahPoster;
-                playerText.text = delilahText;
             }
             else if (position == agniPosition)
             {
                 playerPanel.sprite = agniPoster;
-                playerText.text = agniText;
             }
             else if (position == kittyPosition)
             {
                 playerPanel.sprite = kittyPoster;
-                playerText.text = kittyText;
             }
             else
             {
                 playerPanel.sprite = blankPoster;
-                playerText.text = null;
             }
         }
     }
