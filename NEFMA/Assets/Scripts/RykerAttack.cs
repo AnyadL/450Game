@@ -81,14 +81,22 @@ public class RykerAttack : MonoBehaviour
         int myLayer = gameObject.layer;
         gameObject.layer = 11;
         GameObject dashObject = Instantiate(dashPrefab, (gameObject.transform.position), Quaternion.identity) as GameObject;
+
         if (hm.facingRight)
         {
             //transform.position += new Vector3(dashSpeed * Time.deltaTime, dashTime, 0.0f);
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(150, 0);
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(150, 1);
+            dashObject.transform.rotation = Quaternion.identity;
+
+
         }
         else
         {
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-150, 0);
+           
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-150, 1);
+            dashObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+
+
         }
         yield return new WaitForSeconds(dashTime);
         gameObject.layer = myLayer;
