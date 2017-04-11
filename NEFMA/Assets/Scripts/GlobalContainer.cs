@@ -82,7 +82,7 @@ public class GlobalContainer : MonoBehaviour {
             else if (!BOSSLEVEL)
             {
                 //Globals.currentCheckpoint.gameObject.SetActive(true);
-                Globals.currentCheckpoint.spawning = false;
+                //Globals.currentCheckpoint.spawning = false;
                 //Debug.Log("Globals Ressing Players");
                 Globals.currentCheckpoint.resPlayers();
                 return;
@@ -90,7 +90,7 @@ public class GlobalContainer : MonoBehaviour {
             else if (!Globals.bossStart)
             {
                 Globals.bossStart = true;
-                Globals.currentCheckpoint.spawning = false;
+                //Globals.currentCheckpoint.spawning = false;
                 Globals.currentCheckpoint.resPlayers();
             }
             else if (!Globals.bossReset)

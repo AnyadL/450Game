@@ -114,6 +114,7 @@ public class BossController : MonoBehaviour {
     {
         Debug.Log("------------------------------");
         Debug.Log("Entering Phase 2");
+        Globals.currentCheckpoint.resPlayers();
         myTailScript.attacking = true;
         myLeftHandScript.waitTime = 0.833f;
         myRightHandScript.waitTime = 0.833f;
@@ -131,6 +132,7 @@ public class BossController : MonoBehaviour {
     {
         Debug.Log("------------------------------");
         Debug.Log("Entering Phase 3");
+        Globals.currentCheckpoint.resPlayers();
         myTailScript.numberOfNeedles += 3;
         myLeftHandScript.waitTime = 0.667f;
         myRightHandScript.waitTime = 0.667f;
@@ -151,6 +153,7 @@ public class BossController : MonoBehaviour {
     {
         Debug.Log("------------------------------");
         Debug.Log("Entering Phase 4");
+        Globals.currentCheckpoint.resPlayers();
         myTailScript.numberOfNeedles += 3;
         myLeftHandScript.waitTime = 0.50f;
         myRightHandScript.waitTime = 0.50f;

@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour {
                     if (PresetPlayers[i] != null)
                     {
                         Destroy(PresetPlayers[i]);
-                        PresetPlayers.RemoveAt(i);
+                        //PresetPlayers.RemoveAt(i);
                     }
                 }
             }
