@@ -16,6 +16,7 @@ public class DialogueController : MonoBehaviour {
     public Sprite sittingMilo;
     public Sprite pointingMilo;
     public Sprite visibleMilo;
+    public Sprite miloOnLoafer;
 
 
     public GameObject mrFluffy;
@@ -480,7 +481,7 @@ public class DialogueController : MonoBehaviour {
                 }
                 else if (timePause == 1.5f && Time.time >= updateTime)
                 {
-                    timePause = 1.9f;
+                    timePause = 1.85f;
 
                     updateTime = Time.time + timePause;
 
@@ -501,23 +502,38 @@ public class DialogueController : MonoBehaviour {
             case 3:
                 if (timePause == 0)
                 {
-                    timePause = 3f;
+                    timePause = 2f;
 
                     updateTime = Time.time + timePause;
                 }
-                else if (timePause == 3f && Time.time >= updateTime)
+                else if (timePause == 2f && Time.time >= updateTime)
+                {
+                    // jump onto Mr. Fluffy
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().jumpCharacter(-500f, 2000f);
+                    timePause = 0.8f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (timePause == 0.8f && Time.time >= updateTime)
                 {
                     drGmove = -0.3f;
-                    findPlayerObject("Milo").transform.FindChild("EllipsisBubble(Clone)").gameObject.SetActive(false);
-                    mrFluffy.GetComponent<HeroMovement>().moveCharacter(-1, 600f);
-                    findPlayerObject("Milo").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
+                    findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = miloOnLoafer;
 
-                    timePause = 5.5f;
+                    findPlayerObject("Milo").GetComponent<Transform>().localScale = new Vector3(0.45f, 0.45f, 1f);
+                    findPlayerObject("Milo").GetComponent<BoxCollider2D>().size = new Vector2(20f, 17f);
+
+                    findPlayerObject("Milo").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                    findPlayerObject("Milo").transform.FindChild("ExclamationBubble(Clone)").gameObject.SetActive(false);
+                    mrFluffy.SetActive(false);
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().Flip();
+
+                    timePause = 4.4f;
 
                     updateTime = Time.time + timePause;
                     
                 }
-                else if (timePause == 5.5f && Time.time >= updateTime)
+                else if (timePause == 4.4f && Time.time >= updateTime)
                 {
                     
                     findPlayerObject("Ryker").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
@@ -785,7 +801,7 @@ public class DialogueController : MonoBehaviour {
                 }
                 else if (timePause == 1.5f && Time.time >= updateTime)
                 {
-                    timePause = 1.9f;
+                    timePause = 1.85f;
 
                     updateTime = Time.time + timePause;
 
@@ -806,15 +822,29 @@ public class DialogueController : MonoBehaviour {
             case 3:
                 if (timePause == 0)
                 {
-                    timePause = 3f;
+                    timePause = 2f;
 
                     updateTime = Time.time + timePause;
                 }
-                else if (timePause == 3f && Time.time >= updateTime)
+                else if (timePause == 2f && Time.time >= updateTime)
+                {
+                    // jump onto Mr. Fluffy
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().jumpCharacter(-500f, 2000f);
+                    timePause = 0.8f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (timePause == 0.8f && Time.time >= updateTime)
                 {
                     drGmove = -0.3f;
+                    findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = miloOnLoafer;
+
+                    findPlayerObject("Milo").GetComponent<Transform>().localScale = new Vector3(0.45f, 0.45f, 1f);
+                    findPlayerObject("Milo").GetComponent<BoxCollider2D>().size = new Vector2(20f, 17f);
+
+                    findPlayerObject("Milo").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
                     findPlayerObject("Milo").transform.FindChild("ExclamationBubble(Clone)").gameObject.SetActive(false);
-                    mrFluffy.GetComponent<HeroMovement>().moveCharacter(-1, 600f);
+                    mrFluffy.SetActive(false);
                     findPlayerObject("Milo").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
                     findPlayerObject("Milo").GetComponent<HeroMovement>().Flip();
 
@@ -826,11 +856,11 @@ public class DialogueController : MonoBehaviour {
                 if (timePause == 0)
                 {
                     
-                    timePause = 2.5f;
+                    timePause = 1.5f;
 
                     updateTime = Time.time + timePause;
                 }
-                else if (timePause == 2.5f && Time.time >= updateTime)
+                else if (timePause == 1.5f && Time.time >= updateTime)
                 {
 
                     findPlayerObject("Ryker").GetComponent<HeroMovement>().moveCharacter(-1, 600f);

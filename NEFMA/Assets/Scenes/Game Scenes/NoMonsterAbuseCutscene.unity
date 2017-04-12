@@ -3767,6 +3767,7 @@ MonoBehaviour:
   sittingMilo: {fileID: 21300000, guid: 8cfcc8d2e8f091c43b426b3340498619, type: 3}
   pointingMilo: {fileID: 0}
   visibleMilo: {fileID: 21300000, guid: e90d2cad92d532d43ae2633cef47c2c2, type: 3}
+  miloOnLoafer: {fileID: 21300000, guid: 796037a2be472ac4a9b4ac8cf223824c, type: 3}
   mrFluffy: {fileID: 2132313109}
   monsterList:
   - {fileID: 182814564}
@@ -11222,8 +11223,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2132313109}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -56.15, y: -9.7, z: 0}
-  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: -1}
+  m_LocalPosition: {x: -56.87, y: -8.71, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: -1}
   m_Children:
   - {fileID: 392093789}
   - {fileID: 273433897}
@@ -11377,9 +11378,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.5, y: 1}
+  m_Offset: {x: -0.5, y: -2.5}
   serializedVersion: 2
-  m_Size: {x: 23, y: 21}
+  m_Size: {x: 23, y: 15}
 --- !u!50 &2132313115
 Rigidbody2D:
   serializedVersion: 4
