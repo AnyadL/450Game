@@ -11,6 +11,8 @@ public class Checkpoint : MonoBehaviour {
     public float checkpointDuration = 2.0f;
     public bool initalSpawn = false;
     public Animator animator;
+    public AudioSource sfxCheck;
+    public bool checkActivated = false;
 
     void Start ()
     {
@@ -80,6 +82,11 @@ public class Checkpoint : MonoBehaviour {
         // if we collided with a player and we are not currently spawning
         if (other.gameObject.tag == "Player" && !spawning)
         {
+            if (sfxCheck != null && !sfxCheck.isPlaying && !checkActivated && !initalSpawn)
+            {
+                sfxCheck.Play();
+            }
+            checkActivated = true;
             spawning = true;
             aliveTime = Time.time + checkpointDuration;
             Globals.currentCheckpoint = this;
@@ -88,6 +95,7 @@ public class Checkpoint : MonoBehaviour {
                 print("Activated");
                 animator.SetBool("Activated", true);
             }
+
         }
     }
 }
