@@ -19,6 +19,8 @@ public class GhostAI : MonoBehaviour {
     private int fade = 0;
     public Animator animator;
     [HideInInspector] public bool teleporting;
+    public AudioSource sfxFadeOut;
+    public AudioSource sfxFadeIn;
 
     public GameObject TEST;
 
@@ -48,12 +50,23 @@ public class GhostAI : MonoBehaviour {
                 {
                     myBody.velocity = new Vector2(myBody.velocity.x, 0);
                 }
+                if(sfxFadeOut != null && !sfxFadeOut.isPlaying)
+                {
+                    sfxFadeOut.pitch = Random.Range(0.8f,1.0f);
+                    sfxFadeOut.Play();
+                }
+
             }
             // fading in
             else if (fade == 1)
             {
                 //Debug.Log("Time: " + Mathf.Abs(Time.time - fadeTime) + " Cos(" + 0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime) + ") = " + Mathf.Cos(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, Mathf.Cos(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
+                if (sfxFadeIn != null && !sfxFadeIn.isPlaying)
+                {
+                    sfxFadeIn.pitch = Random.Range(0.8f, 1.0f);
+                    sfxFadeIn.Play();
+                }
             }
             return;
         }
