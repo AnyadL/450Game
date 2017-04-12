@@ -28,6 +28,7 @@ public class BossTail : MonoBehaviour {
     public GameObject tailArt;
     [HideInInspector] public bool attacking = false;
     [HideInInspector] public bool ready = false;
+    public Animator tailAnimation;
     //private int tempCount = 0;
 
     // Use this for initialization
@@ -46,7 +47,7 @@ public class BossTail : MonoBehaviour {
     {
         if ((cycler - Time.time <= 3.14f) && (attacking || ready) && !shooting)
         {
-            tailArt.GetComponent<SpriteRenderer>().color = new Color(1, 1, Mathf.Sin(2 * Mathf.PI * 5 * Mathf.Abs(cycler - Time.time) + 0), 1f);
+            tailArt.GetComponent<SpriteRenderer>().color = new Color(Mathf.Sin(2 * Mathf.PI * 5 * Mathf.Abs(cycler - Time.time) + 0), Mathf.Sin(2 * Mathf.PI * 5 * Mathf.Abs(cycler - Time.time) + 0), Mathf.Sin(2 * Mathf.PI * 5 * Mathf.Abs(cycler - Time.time) + 0), 1f);
         }
         if (Time.time >= cycler && !shooting && ready)
         {
@@ -95,10 +96,12 @@ public class BossTail : MonoBehaviour {
         {
             if (myBody.position.x > 0)
             {
+                tailAnimation.CrossFadeInFixedTime("TailAnimation", 0.25f, -1, 3.14f);
                 myBody.MovePosition(new Vector2(maxX, maxY));
             }
             else
             {
+                tailAnimation.CrossFadeInFixedTime("TailAnimation", 0.25f, -1, 0f);
                 myBody.MovePosition(new Vector2(minX, maxY));
             }
             movingY = false;
@@ -128,17 +131,19 @@ public class BossTail : MonoBehaviour {
         {
             if (myBody.position.x > 0)
             {
+                tailAnimation.CrossFadeInFixedTime("TailAnimation", 0.25f, -1, 3.14f);
                 myBody.MovePosition(new Vector2(maxX, minY));
             }
             else
             {
+                tailAnimation.CrossFadeInFixedTime("TailAnimation", 0.25f, -1, 0f);
                 myBody.MovePosition(new Vector2(minX, minY));
             }
             movingY = false;
             yDown = false;
             startTime = Time.time;
             shooting = true;
-            tailArt.GetComponent<SpriteRenderer>().color = Color.yellow;
+            tailArt.GetComponent<SpriteRenderer>().color = Color.white;
             spawnNeedles();
             // headed left
             if (myBody.position.x > 0)

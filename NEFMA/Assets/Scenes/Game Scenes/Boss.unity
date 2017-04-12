@@ -6483,6 +6483,11 @@ Prefab:
       propertyPath: needle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114188727081031482, guid: ec292492b05b0c64bbaa3dce77f23143,
+        type: 2}
+      propertyPath: tailAnimation
+      value: 
+      objectReference: {fileID: 211441151}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec292492b05b0c64bbaa3dce77f23143, type: 2}
   m_IsPrefabParent: 0
