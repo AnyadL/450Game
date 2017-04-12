@@ -189,6 +189,11 @@ public class BossController : MonoBehaviour {
         StartCoroutine(fireballHead());
 
         // ROAR
+        if (sfxRoar != null && !sfxRoar.isPlaying)
+        {
+            sfxRoar.pitch = Random.Range(0.8f, 1.4f);
+            sfxRoar.Play();
+        }
 
         for (int i = 0; i < Globals.players.Count; ++i)
         {
@@ -229,6 +234,7 @@ public class BossController : MonoBehaviour {
                 sfxRoar.pitch = Random.Range(0.8f, 1.4f);
                 sfxRoar.Play();
             }
+
         }
     }
 
