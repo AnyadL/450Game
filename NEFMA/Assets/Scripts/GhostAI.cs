@@ -74,8 +74,10 @@ public class GhostAI : MonoBehaviour {
         // done fading out
         if (fade == -1)
         {
-
-            teleport();
+            if (target != null)
+            {
+                teleport();
+            }
             return;
         }
         // done fading in
@@ -146,8 +148,11 @@ public class GhostAI : MonoBehaviour {
 
     void choose()
     {
-        int choice = Random.Range(0, targets.Count);
-        target = targets[choice];
+        while (target == null)
+        {
+            int choice = Random.Range(0, targets.Count);
+            target = targets[choice];
+        }
         targets.Clear();
         myAI.ghostOverride = true;
         //myAI.currentMoveForce = 0;
