@@ -1808,9 +1808,11 @@ MonoBehaviour:
   sittingMilo: {fileID: 0}
   pointingMilo: {fileID: 0}
   visibleMilo: {fileID: 0}
+  miloOnLoafer: {fileID: 0}
   mrFluffy: {fileID: 0}
   monsterList: []
   fadeTexture: {fileID: 0}
+  sfxRoar: {fileID: 0}
 --- !u!1 &583888356
 GameObject:
   m_ObjectHideFlags: 0
@@ -2895,7 +2897,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2acf3002083b8864296f55053afb3e40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
 --- !u!4 &1040371579 stripped
 Transform:
@@ -3128,7 +3130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4adcace17d4f88c47814bc9eac97567f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 1146839312}
 --- !u!82 &1146839312
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5497,6 +5498,7 @@ MonoBehaviour:
   hasWall: 0
   wallRight: 0
   wallFaceRight: 0
+  freeWall: 0
   sfxWallUp: {fileID: 2092567587}
   sfxWallPush: {fileID: 2092567585}
   sfxFist: {fileID: 2092567588}

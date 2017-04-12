@@ -387,6 +387,7 @@ MonoBehaviour:
   sittingMilo: {fileID: 21300000, guid: 8cfcc8d2e8f091c43b426b3340498619, type: 3}
   pointingMilo: {fileID: 21300000, guid: e189fb466f2d71f4fb306293257cc42e, type: 3}
   visibleMilo: {fileID: 21300000, guid: e90d2cad92d532d43ae2633cef47c2c2, type: 3}
+  miloOnLoafer: {fileID: 0}
   mrFluffy: {fileID: 0}
   monsterList: []
   fadeTexture: {fileID: 0}
@@ -1758,7 +1759,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2acf3002083b8864296f55053afb3e40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
 --- !u!1 &1562987044
 GameObject:
