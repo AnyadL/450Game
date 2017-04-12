@@ -17,6 +17,7 @@ public class QuitOnClick : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Globals.gamePaused = false;
+        Globals.bossReset = true;
         Time.timeScale = 1;
         Globals.players.Clear();
         Globals.numPlayers = 0;
