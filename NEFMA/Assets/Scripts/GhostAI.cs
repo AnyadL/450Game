@@ -37,12 +37,11 @@ public class GhostAI : MonoBehaviour {
     void Update () {
         if (fadeTime >= Time.time)
         {
-            teleporting = true;
-            animator.SetBool("teleporting", teleporting);
-
             // fading out
             if (fade == -1)
             {
+                teleporting = true;
+                animator.SetBool("teleporting", teleporting);
 
                 //Debug.Log("Time: " + Mathf.Abs(Time.time - fadeTime) + " Sin(" + 0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime) + ") = " + Mathf.Sin(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
                 gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, Mathf.Sin(0.5f * Mathf.PI * Mathf.Abs(Time.time - fadeTime)));
