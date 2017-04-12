@@ -104,16 +104,16 @@ public class BossController : MonoBehaviour {
     // Boss has more than 75% health
     public void phaseOne()
     {
-        Debug.Log("------------------------------");
-        Debug.Log("Enter Phase 1");
-        printValues();
+        //Debug.Log("------------------------------");
+        //Debug.Log("Enter Phase 1");
+        //printValues();
     }
 
     // Boss health between 50% - 75%
     public void phaseTwo()
     {
-        Debug.Log("------------------------------");
-        Debug.Log("Entering Phase 2");
+        //Debug.Log("------------------------------");
+        //Debug.Log("Entering Phase 2");
         roar();
         Globals.currentCheckpoint.resPlayers();
         myTailScript.attacking = true;
@@ -124,15 +124,15 @@ public class BossController : MonoBehaviour {
         myRightHandScript.downForce += 1;
         myRightHandScript.upForce += 0.1f;
         spawnCooldown -= 2.5f;
-        printValues();
+        //printValues();
         wave2(800, 3500);
     }
 
     // Boss health between 25% - 50%
     public void phaseThree()
     {
-        Debug.Log("------------------------------");
-        Debug.Log("Entering Phase 3");
+        //Debug.Log("------------------------------");
+        //Debug.Log("Entering Phase 3");
         roar();
         Globals.currentCheckpoint.resPlayers();
         myTailScript.numberOfNeedles += 3;
@@ -147,14 +147,14 @@ public class BossController : MonoBehaviour {
         Debug.Log("Destroying Lower Clouds");
         DestroyObject(bottomLeft);
         DestroyObject(bottomRight);
-        printValues();
+        //printValues();
     }
 
     // Boss health between 0% - 25%
     public void phaseFour()
     {
-        Debug.Log("------------------------------");
-        Debug.Log("Entering Phase 4");
+        //Debug.Log("------------------------------");
+        //Debug.Log("Entering Phase 4");
         roar();
         Globals.currentCheckpoint.resPlayers();
         myTailScript.numberOfNeedles += 3;
@@ -169,7 +169,7 @@ public class BossController : MonoBehaviour {
         Debug.Log("Destroying Upper Clouds");
         DestroyObject(topLeft);
         DestroyObject(topRight);
-        printValues();
+        //printValues();
         wave2(1500, 1500);
     }
 

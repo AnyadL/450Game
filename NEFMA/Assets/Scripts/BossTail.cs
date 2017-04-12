@@ -44,6 +44,10 @@ public class BossTail : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if ((cycler - Time.time <= 3.14f) && (attacking || ready) && !shooting)
+        {
+            tailArt.GetComponent<SpriteRenderer>().color = new Color(1, 1, Mathf.Sin(2 * Mathf.PI * 5 * Mathf.Abs(cycler - Time.time) + 0), 1f);
+        }
         if (Time.time >= cycler && !shooting && ready)
         {
             movingY = true;
@@ -101,6 +105,7 @@ public class BossTail : MonoBehaviour {
             yDown = true;
             startTime = Time.time;
             cycler = Time.time + (2 * 3.14f);
+            tailArt.GetComponent<SpriteRenderer>().color = Color.white;
             shooting = false;
             // headed left
             if (myBody.position.x > 0)
@@ -133,6 +138,7 @@ public class BossTail : MonoBehaviour {
             yDown = false;
             startTime = Time.time;
             shooting = true;
+            tailArt.GetComponent<SpriteRenderer>().color = Color.yellow;
             spawnNeedles();
             // headed left
             if (myBody.position.x > 0)
