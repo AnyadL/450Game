@@ -16,6 +16,7 @@ public class DialogueController : MonoBehaviour {
     public Sprite sittingMilo;
     public Sprite pointingMilo;
     public Sprite visibleMilo;
+    public Sprite miloOnLoafer;
 
 
     public GameObject mrFluffy;
@@ -44,6 +45,7 @@ public class DialogueController : MonoBehaviour {
     private bool drGtime = false;
     private float drGmove = 0f;
     private bool monsterTime = false;
+    private bool bossTime = false;
     private bool handsTime = false;
     private bool headTime = false;
     private bool handsUp = true;
@@ -53,7 +55,9 @@ public class DialogueController : MonoBehaviour {
     private float[] schreiHeights = new float[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     
     private Vector3 tempTransform;
-    
+
+
+    public AudioSource sfxRoar;
 
     // Use this for initialization
     public void initialize(string conversationName) {
@@ -438,10 +442,34 @@ public class DialogueController : MonoBehaviour {
             case 0:
                 break;
             case 1:
-                drGmove = -0.05f;
-                currentSpecial = 0;
+                if (timePause == 0)
+                {
 
-                drGtime = true;
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().jumpCharacter(2000f, 1000f);
+                    findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = visibleMilo;
+                    drGmove = -0.05f;
+                    timePause = 1f;
+                    updateTime = Time.time + timePause;
+                    drGtime = true;
+                    monsterTime = true;
+                    headTime = true;
+                    handsTime = false;
+                    handsUp = true;
+
+                    // ROAR
+                    if (sfxRoar != null && !sfxRoar.isPlaying)
+                    {
+                        sfxRoar.pitch = Random.Range(0.8f, 1.4f);
+                        sfxRoar.Play();
+                    }
+
+                }
+                else if (Time.time >= updateTime)
+                {
+                    currentSpecial = 0;
+                    timePause = 0;
+                    findPlayerObject("Milo").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                }
                 break;
 
             case 2:
@@ -453,7 +481,7 @@ public class DialogueController : MonoBehaviour {
                 }
                 else if (timePause == 1.5f && Time.time >= updateTime)
                 {
-                    timePause = 2f;
+                    timePause = 1.85f;
 
                     updateTime = Time.time + timePause;
 
@@ -474,23 +502,38 @@ public class DialogueController : MonoBehaviour {
             case 3:
                 if (timePause == 0)
                 {
-                    timePause = 3f;
+                    timePause = 2f;
 
                     updateTime = Time.time + timePause;
                 }
-                else if (timePause == 3f && Time.time >= updateTime)
+                else if (timePause == 2f && Time.time >= updateTime)
+                {
+                    // jump onto Mr. Fluffy
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().jumpCharacter(-500f, 2000f);
+                    timePause = 0.8f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (timePause == 0.8f && Time.time >= updateTime)
                 {
                     drGmove = -0.3f;
-                    findPlayerObject("Milo").transform.FindChild("EllipsisBubble(Clone)").gameObject.SetActive(false);
-                    mrFluffy.GetComponent<HeroMovement>().moveCharacter(-1, 600f);
-                    findPlayerObject("Milo").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
+                    findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = miloOnLoafer;
 
-                    timePause = 5.5f;
+                    findPlayerObject("Milo").GetComponent<Transform>().localScale = new Vector3(0.45f, 0.45f, 1f);
+                    findPlayerObject("Milo").GetComponent<BoxCollider2D>().size = new Vector2(20f, 17f);
+
+                    findPlayerObject("Milo").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                    findPlayerObject("Milo").transform.FindChild("ExclamationBubble(Clone)").gameObject.SetActive(false);
+                    mrFluffy.SetActive(false);
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().Flip();
+
+                    timePause = 4.4f;
 
                     updateTime = Time.time + timePause;
                     
                 }
-                else if (timePause == 5.5f && Time.time >= updateTime)
+                else if (timePause == 4.4f && Time.time >= updateTime)
                 {
                     
                     findPlayerObject("Ryker").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
@@ -517,6 +560,53 @@ public class DialogueController : MonoBehaviour {
                 drGmove = 0;
             drG.transform.position = new Vector3(drG.transform.position.x + drGmove, 12f + (Mathf.Sin(2 * Time.time) * 2), drG.transform.position.z);
         }
+
+        if (monsterTime)
+        {
+            if (headTime)
+            {
+                GameObject bosshead = findPlayerObject("BossHead");
+                GameObject bosshandright = findPlayerObject("BossHandRight");
+                GameObject bosshandleft = findPlayerObject("BossHandLeft");
+
+                bosshead.transform.position = new Vector3(bosshead.transform.position.x, bosshead.transform.position.y - 0.7f, bosshead.transform.position.z);
+
+                bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y + 0.7f, -1);
+                bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y + 0.7f, -1);
+                if (bosshead.transform.position.y <= -31f)
+                {
+                    headTime = false;
+                    handsTime = true;
+                }
+            }
+            if (handsTime)
+            {
+                GameObject bosshandright = findPlayerObject("BossHandRight");
+                GameObject bosshandleft = findPlayerObject("BossHandLeft");
+
+                if (handsUp)
+                {
+                    bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y + 1f, -1);
+                    bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y + 1f, -1);
+                }
+                else
+                {
+                    bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y - 1f, 1);
+                    bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y - 1f, 1);
+                }
+
+                if (bosshandright.transform.position.y >= -6 && handsUp)
+                {
+                    handsUp = false;
+                }
+                else if (bosshandright.transform.position.y < -20 && !handsUp)
+                {
+                    handsTime = false;
+                    monsterTime = false;
+                }
+            }
+
+        }
     }
 
     void doMonsterAbuse ()
@@ -526,10 +616,34 @@ public class DialogueController : MonoBehaviour {
             case 0:
                 break;
             case 1:
-                drGmove = -0.05f;
-                currentSpecial = 0;
+                if (timePause == 0)
+                {
 
-                drGtime = true;
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().jumpCharacter(2000f, 1000f);
+                    findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = visibleMilo;
+                    drGmove = -0.05f;
+                    timePause = 1f;
+                    updateTime = Time.time + timePause;
+                    drGtime = true;
+                    monsterTime = true;
+                    headTime = true;
+                    handsTime = false;
+                    handsUp = true;
+
+                    // ROAR
+                    if (sfxRoar != null && !sfxRoar.isPlaying)
+                    {
+                        sfxRoar.pitch = Random.Range(0.8f, 1.4f);
+                        sfxRoar.Play();
+                    }
+
+                }
+                else if (Time.time >= updateTime)
+                {
+                    currentSpecial = 0;
+                    timePause = 0;
+                    findPlayerObject("Milo").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                }
                 break;
             case 2:
                 currentSpecial = 0;
@@ -591,7 +705,53 @@ public class DialogueController : MonoBehaviour {
                 drGmove = 0;
             drG.transform.position = new Vector3(drG.transform.position.x + drGmove, 12f + (Mathf.Sin(2 * Time.time) * 2), drG.transform.position.z);
         }
-            
+        if (monsterTime)
+        {
+            if (headTime)
+            {
+                GameObject bosshead = findPlayerObject("BossHead");
+                GameObject bosshandright = findPlayerObject("BossHandRight");
+                GameObject bosshandleft = findPlayerObject("BossHandLeft");
+
+                bosshead.transform.position = new Vector3(bosshead.transform.position.x, bosshead.transform.position.y - 0.7f, bosshead.transform.position.z);
+
+                bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y + 0.7f, -1);
+                bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y + 0.7f, -1);
+                if (bosshead.transform.position.y <= -31f)
+                {
+                    headTime = false;
+                    handsTime = true;
+                }
+            }
+            if (handsTime)
+            {
+                GameObject bosshandright = findPlayerObject("BossHandRight");
+                GameObject bosshandleft = findPlayerObject("BossHandLeft");
+                
+                if (handsUp)
+                {
+                    bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y + 1f, -1);
+                    bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y + 1f, -1);
+                }
+                else
+                {
+                    bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y - 1f, 1);
+                    bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y - 1f, 1);
+                }
+
+                if (bosshandright.transform.position.y >= -6 && handsUp)
+                {
+                    handsUp = false;
+                }
+                else if (bosshandright.transform.position.y < -20 && !handsUp)
+                {
+                    handsTime = false;
+                    monsterTime = false;
+                }
+            }
+
+        }
+
     }
 
     void doNoMonsterAbuse ()
@@ -602,10 +762,34 @@ public class DialogueController : MonoBehaviour {
             case 0:
                 break;
             case 1:
-                drGmove = -0.05f;
-                currentSpecial = 0;
+                if (timePause == 0)
+                {
 
-                drGtime = true;
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().jumpCharacter(2000f, 1000f);
+                    findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = visibleMilo;
+                    drGmove = -0.05f;
+                    timePause = 1f;
+                    updateTime = Time.time + timePause;
+                    drGtime = true;
+                    bossTime = true;
+                    headTime = true;
+                    handsTime = false;
+                    handsUp = true;
+
+                    // ROAR
+                    if (sfxRoar != null && !sfxRoar.isPlaying)
+                    {
+                        sfxRoar.pitch = Random.Range(0.8f, 1.4f);
+                        sfxRoar.Play();
+                    }
+
+                }
+                else if (Time.time >= updateTime)
+                {
+                    currentSpecial = 0;
+                    timePause = 0;
+                    findPlayerObject("Milo").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+                }
                 break;
 
             case 2:
@@ -617,7 +801,7 @@ public class DialogueController : MonoBehaviour {
                 }
                 else if (timePause == 1.5f && Time.time >= updateTime)
                 {
-                    timePause = 2f;
+                    timePause = 1.85f;
 
                     updateTime = Time.time + timePause;
 
@@ -638,15 +822,29 @@ public class DialogueController : MonoBehaviour {
             case 3:
                 if (timePause == 0)
                 {
-                    timePause = 3f;
+                    timePause = 2f;
 
                     updateTime = Time.time + timePause;
                 }
-                else if (timePause == 3f && Time.time >= updateTime)
+                else if (timePause == 2f && Time.time >= updateTime)
+                {
+                    // jump onto Mr. Fluffy
+                    findPlayerObject("Milo").GetComponent<HeroMovement>().jumpCharacter(-500f, 2000f);
+                    timePause = 0.8f;
+
+                    updateTime = Time.time + timePause;
+                }
+                else if (timePause == 0.8f && Time.time >= updateTime)
                 {
                     drGmove = -0.3f;
+                    findPlayerObject("Milo").GetComponent<SpriteRenderer>().sprite = miloOnLoafer;
+
+                    findPlayerObject("Milo").GetComponent<Transform>().localScale = new Vector3(0.45f, 0.45f, 1f);
+                    findPlayerObject("Milo").GetComponent<BoxCollider2D>().size = new Vector2(20f, 17f);
+
+                    findPlayerObject("Milo").GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
                     findPlayerObject("Milo").transform.FindChild("ExclamationBubble(Clone)").gameObject.SetActive(false);
-                    mrFluffy.GetComponent<HeroMovement>().moveCharacter(-1, 600f);
+                    mrFluffy.SetActive(false);
                     findPlayerObject("Milo").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
                     findPlayerObject("Milo").GetComponent<HeroMovement>().Flip();
 
@@ -658,11 +856,11 @@ public class DialogueController : MonoBehaviour {
                 if (timePause == 0)
                 {
                     
-                    timePause = 2.5f;
+                    timePause = 1.5f;
 
                     updateTime = Time.time + timePause;
                 }
-                else if (timePause == 2.5f && Time.time >= updateTime)
+                else if (timePause == 1.5f && Time.time >= updateTime)
                 {
 
                     findPlayerObject("Ryker").GetComponent<HeroMovement>().moveCharacter(-1, 600f);
@@ -689,6 +887,52 @@ public class DialogueController : MonoBehaviour {
             if (drG.transform.position.x <= 45f && drGmove != -0.3f)
                 drGmove = 0;
             drG.transform.position = new Vector3(drG.transform.position.x + drGmove, 12f + (Mathf.Sin(2 * Time.time) * 2), drG.transform.position.z);
+        }
+        if (bossTime)
+        {
+            if (headTime)
+            {
+                GameObject bosshead = findPlayerObject("BossHead");
+                GameObject bosshandright = findPlayerObject("BossHandRight");
+                GameObject bosshandleft = findPlayerObject("BossHandLeft");
+
+                bosshead.transform.position = new Vector3(bosshead.transform.position.x, bosshead.transform.position.y - 0.7f, bosshead.transform.position.z);
+
+                bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y + 0.7f, -1);
+                bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y + 0.7f, -1);
+                if (bosshead.transform.position.y <= -31f)
+                {
+                    headTime = false;
+                    handsTime = true;
+                }
+            }
+            if (handsTime)
+            {
+                GameObject bosshandright = findPlayerObject("BossHandRight");
+                GameObject bosshandleft = findPlayerObject("BossHandLeft");
+
+                if (handsUp)
+                {
+                    bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y + 1f, -1);
+                    bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y + 1f, -1);
+                }
+                else
+                {
+                    bosshandright.transform.position = new Vector3(bosshandright.transform.position.x, bosshandright.transform.position.y - 1f, 1);
+                    bosshandleft.transform.position = new Vector3(bosshandleft.transform.position.x, bosshandleft.transform.position.y - 1f, 1);
+                }
+
+                if (bosshandright.transform.position.y >= -6 && handsUp)
+                {
+                    handsUp = false;
+                }
+                else if (bosshandright.transform.position.y < -20 && !handsUp)
+                {
+                    handsTime = false;
+                    monsterTime = false;
+                }
+            }
+
         }
         if (monsterTime)
         {
