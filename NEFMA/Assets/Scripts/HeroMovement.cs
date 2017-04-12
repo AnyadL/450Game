@@ -111,7 +111,7 @@ public class HeroMovement : MonoBehaviour {
             {
                 if (Mathf.Abs(rb2d.velocity.x) < currentMaxSpeed)
                     moveCharacter(currentSpeed, currentMoveForce);
-                else
+                else if (Mathf.Abs(rb2d.velocity.x) > currentMaxSpeed)
                     rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * currentMaxSpeed, rb2d.velocity.y);
             }
             else if ((rb2d.velocity.x > 1 || rb2d.velocity.x < -1))
@@ -189,7 +189,7 @@ public class HeroMovement : MonoBehaviour {
         if (animator != null)
             animator.SetBool("Walk", walking);
 
-        if (!myAttributes.knockbacked && speedVector * rb2d.velocity.x < currentMaxSpeed)
+        if (!myAttributes.knockbacked)
             rb2d.AddForce(Vector2.right * speedVector * force);
 
         if (speedVector > 0 && !facingRight)

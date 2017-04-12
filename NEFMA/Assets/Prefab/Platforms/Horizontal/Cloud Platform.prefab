@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114389489141115710}
   - component: {fileID: 61478018319067236}
   - component: {fileID: 61438721484917650}
+  - component: {fileID: 60663918897509988}
   m_Layer: 8
   m_Name: Collider Trigger
   m_TagString: Platform
@@ -76,6 +77,28 @@ Transform:
   m_Father: {fileID: 4067096328456276}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60663918897509988
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1066825728343786}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 0.495, y: 0.05}
+      - {x: 0.495, y: 0.14}
+      - {x: 0.51, y: 0.14}
+      - {x: 0.51, y: -0.55}
+      - {x: -0.51, y: -0.55}
+      - {x: -0.51, y: 0.14}
+      - {x: -0.495, y: 0.14}
+      - {x: -0.495, y: 0.05}
 --- !u!61 &61226781345123752
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -96,7 +119,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1066825728343786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -110,7 +133,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1066825728343786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -138,7 +161,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1066825728343786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
