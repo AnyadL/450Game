@@ -6,10 +6,10 @@ public class BossTail : MonoBehaviour {
 
     private Rigidbody2D myBody;
     private BossController myController;
-    public float maxX = 68;
-    public float minX = -68;
-    public float maxY = 70;
-    public float minY = 60;
+    public float maxX = 45;
+    public float minX = -45;
+    public float maxY = 56;
+    public float minY = 56;
     private float startTime = 0;
     public float direction = 1;
     private float oldval = 0;
@@ -33,7 +33,7 @@ public class BossTail : MonoBehaviour {
     // Use this for initialization
     void Start () {
         myBody = this.GetComponent<Rigidbody2D>();
-        myBody.MovePosition(new Vector2(minX, maxY));
+        //myBody.MovePosition(new Vector2(minX, maxY));
         myController = GameObject.FindWithTag("Boss Controller").GetComponent<BossController>();
         myController.registerTail(gameObject);
         startTime = Time.time;
@@ -150,6 +150,10 @@ public class BossTail : MonoBehaviour {
     // maybe change this to just use increasing and decreasing velocities like BossHand?
     public void sway()
     {
+        if (startTime > Time.time)
+        {
+            return;
+        }
         float val = Mathf.Sin(Time.time - startTime) * (Mathf.Abs(maxX - minX) / 100f);
         if ((val > 0 && oldval < 0) || (val < 0 && oldval > 0))
         {

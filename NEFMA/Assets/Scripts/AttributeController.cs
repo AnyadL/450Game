@@ -106,7 +106,7 @@ public class AttributeController : MonoBehaviour {
     }
 
     // responsible for knocking the current gameobject away from whatever hit them
-    private void knockback(float x, float forceX = 20, float forceY = 10)
+    public void knockback(float x, float forceX = 20, float forceY = 10)
     {
         knockbacked = true;
         gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

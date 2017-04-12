@@ -114,6 +114,7 @@ public class BossController : MonoBehaviour {
     {
         Debug.Log("------------------------------");
         Debug.Log("Entering Phase 2");
+        roar();
         Globals.currentCheckpoint.resPlayers();
         myTailScript.attacking = true;
         myLeftHandScript.waitTime = 0.833f;
@@ -132,6 +133,7 @@ public class BossController : MonoBehaviour {
     {
         Debug.Log("------------------------------");
         Debug.Log("Entering Phase 3");
+        roar();
         Globals.currentCheckpoint.resPlayers();
         myTailScript.numberOfNeedles += 3;
         myLeftHandScript.waitTime = 0.667f;
@@ -153,6 +155,7 @@ public class BossController : MonoBehaviour {
     {
         Debug.Log("------------------------------");
         Debug.Log("Entering Phase 4");
+        roar();
         Globals.currentCheckpoint.resPlayers();
         myTailScript.numberOfNeedles += 3;
         myLeftHandScript.waitTime = 0.50f;
@@ -178,6 +181,22 @@ public class BossController : MonoBehaviour {
         Debug.Log("hand upForce: " + myLeftHandScript.upForce);
         Debug.Log("spawnCooldown: " + spawnCooldown);
         //Debug.Log("fireballCooldown: " + fireballCooldown);
+    }
+
+    // Justin put Roar Code here
+    public void roar()
+    {
+        StartCoroutine(fireballHead());
+
+        // ROAR
+
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            if (Globals.players[i].Alive)
+            {
+                Globals.players[i].GO.GetComponent<AttributeController>().knockback(transform.position.x, 40, 20);
+            }
+        }
     }
 
     public void headChange(int num) {
