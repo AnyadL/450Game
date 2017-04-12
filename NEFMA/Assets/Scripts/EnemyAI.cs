@@ -60,10 +60,10 @@ public class EnemyAI : MonoBehaviour {
 
     void Update()
     {
-        //if (!gameObject.GetComponent<Renderer>().isVisible)
-        //{
-        //    return;
-        //}
+        if (!gameObject.GetComponent<Renderer>().isVisible && myBody.velocity.x == 0)
+        {
+            return;
+        }
         isBlocked = Physics2D.Linecast(transform.position, wallCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if (isBlocked)
@@ -92,7 +92,7 @@ public class EnemyAI : MonoBehaviour {
         if (!isGrounded && !ghostOverride && !isBlocked)
         {
             //Debug.Log(groundCheck.position);
-            //Debug.Log(groundCheck.position + (Vector3.right * 16));
+            //Debug.Log(groundCheck.position - (Vector3.right * 3 * facingRight));
             isGrounded = Physics2D.Linecast(transform.position, groundCheck.position - (Vector3.right * 3 * facingRight), 1 << LayerMask.NameToLayer("Ground"));
             if (isGrounded)
             {
@@ -116,10 +116,14 @@ public class EnemyAI : MonoBehaviour {
     // Great for physics updates, use FixedUpdate instead of Update!
     void FixedUpdate()
     {
-        //if (!gameObject.GetComponent<Renderer>().isVisible)
-        //{
-        //    return;
-        //}
+        if (!gameObject.GetComponent<Renderer>().isVisible)
+        {
+            if (myBody.velocity.x != 0)
+            {
+                myBody.velocity = new Vector2(0, myBody.velocity.y);
+            }
+            return;
+        }
         if (currentMoveForce == 0)
         {
             return;
