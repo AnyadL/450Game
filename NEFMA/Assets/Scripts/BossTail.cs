@@ -33,6 +33,7 @@ public class BossTail : MonoBehaviour {
     // Use this for initialization
     void Start () {
         myBody = this.GetComponent<Rigidbody2D>();
+        myBody.MovePosition(new Vector2(minX, maxY));
         myController = GameObject.FindWithTag("Boss Controller").GetComponent<BossController>();
         myController.registerTail(gameObject);
         startTime = Time.time;
