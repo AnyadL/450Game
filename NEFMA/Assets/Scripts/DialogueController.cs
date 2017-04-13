@@ -292,6 +292,7 @@ public class DialogueController : MonoBehaviour {
                     if (playerObject != null && playerObject.name != "Dr. G")
                         playerObject.GetComponent<HeroMovement>().moveCharacter(1, 700);
                 }
+                currentSpecial = 0;
                 break;
             case 7:
                 if (timePause == 0)
