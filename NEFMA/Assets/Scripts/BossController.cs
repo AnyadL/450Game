@@ -144,9 +144,9 @@ public class BossController : MonoBehaviour {
         myRightHandScript.upForce += 0.1f;
         spawnCooldown -= 2.5f;
         //fireballCooldown += 3.14f;
-        Debug.Log("Destroying Lower Clouds");
-        DestroyObject(bottomLeft);
-        DestroyObject(bottomRight);
+        Debug.Log("Destroying Upper Clouds");
+        DestroyObject(topLeft);
+        DestroyObject(topRight);
         //printValues();
     }
 
@@ -166,9 +166,9 @@ public class BossController : MonoBehaviour {
         myRightHandScript.upForce += 0.1f;
         spawnCooldown -= 2.5f;
         //fireballCooldown += 3.14f;
-        Debug.Log("Destroying Upper Clouds");
-        DestroyObject(topLeft);
-        DestroyObject(topRight);
+        Debug.Log("Destroying Lower Clouds");
+        DestroyObject(bottomLeft);
+        DestroyObject(bottomRight);
         //printValues();
         wave2(1500, 1500);
     }
