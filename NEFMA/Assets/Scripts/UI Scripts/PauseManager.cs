@@ -9,6 +9,7 @@ public class PauseManager : MonoBehaviour {
 
     public GameObject pauseMenu;
     public EventSystem eventSys;
+    public Selectable resumeButton;
 
     public Sprite agniPause;
     public Sprite delilahPause;
@@ -34,6 +35,7 @@ public class PauseManager : MonoBehaviour {
         eventSys.GetComponent<StandaloneInputModule>().verticalAxis = "Vertical_"+playerInput;
         eventSys.GetComponent<StandaloneInputModule>().submitButton = "Select_"+playerInput;
         setPauseBackground(playerInput);
+        resumeButton.OnSelect(null);
     }
 
     public void playGame()

@@ -3775,6 +3775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 987183707}
   eventSys: {fileID: 759988363}
+  resumeButton: {fileID: 1899355092}
   agniPause: {fileID: 21300000, guid: 24703fd1f846a474ab014bb31e068591, type: 3}
   delilahPause: {fileID: 21300000, guid: 5fff4693cbafbd1498b169a5e15e5438, type: 3}
   rykerPause: {fileID: 21300000, guid: 86e28ae1de881194884c30bf0be0bdf5, type: 3}

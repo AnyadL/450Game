@@ -17,8 +17,8 @@ public class ClawScript : MonoBehaviour {
 
     private void FixedUpdate()
     {
-
-        transform.position = owner.transform.position + new Vector3(6*velocityDirection, 1, 0);
+        if (transform != null)
+            transform.position = owner.transform.position + new Vector3(6*velocityDirection, 1, 0);
         
     }
     IEnumerator AttackTime()
