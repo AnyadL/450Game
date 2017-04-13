@@ -68,7 +68,7 @@ public class HeroMovement : MonoBehaviour {
 
         if (Input.GetButtonDown("Jump_" + inputNumber) && !Globals.gamePaused)
         {
-            if ((grounded || grounded2) && !myAttributes.knockbacked)
+            if ((grounded || grounded2) && !myAttributes.knockbacked && rb2d.velocity.y == 0)
             {
                 jump = true;
                 jumpCount = 1;
@@ -78,7 +78,7 @@ public class HeroMovement : MonoBehaviour {
                 doublejump = true;
                 jumpCount = 2;
             }
-            else if (isKitty && jumpCount == 0)
+            else if (isKitty && jumpCount == 0 && rb2d.velocity.y == 0)
             {
                 doublejump = true;
                 jumpCount = 2;
