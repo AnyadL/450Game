@@ -23,6 +23,8 @@ public class ConversationRunner : MonoBehaviour {
     protected int currIndex;                 // Tracks which dialogue in the conversation we are on.
     protected bool conversationLoaded;       // True if a conversation has been successfully loaded from disk.
 
+    float _skipTimer = 0.0f;
+
     // Use this for initialization
     void Start () {
         conversationLoaded = false;
@@ -49,6 +51,15 @@ public class ConversationRunner : MonoBehaviour {
 
         // Skip Cutscene
         if (Input.GetButton("Jump_0") || Input.GetButton("Jump_1") || Input.GetButton("Jump_2") || Input.GetButton("Jump_3") || Input.GetButton("Jump_4"))
+        {
+            _skipTimer += Time.deltaTime;
+        }
+        else
+        {
+            _skipTimer = 0.0f;
+        }
+
+        if (_skipTimer > 2.0f)
         {
             end();
             // fade out
