@@ -14012,7 +14012,7 @@ Prefab:
     - target: {fileID: 114594814878284210, guid: 9ff79de26ff0ded42a88c1b245b7d262,
         type: 2}
       propertyPath: spawning
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ff79de26ff0ded42a88c1b245b7d262, type: 2}

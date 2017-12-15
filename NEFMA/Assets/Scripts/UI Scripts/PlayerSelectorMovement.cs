@@ -66,13 +66,13 @@ public class PlayerSelectorMovement : MonoBehaviour {
         inputPressed = getInputPressed("Select");
         if (inputPressed != -1)
         {
-            if(playerNumber <= Globals.numPlayers)
+            if(playerNumber <= Globals.players.Count)
                 selectPressed();
         }
         inputPressed = getInputPressed("Back");
         if (inputPressed != -1)
         {
-            if (playerNumber <= Globals.numPlayers)
+            if (playerNumber <= Globals.players.Count)
                 backPressed();
         }
 
@@ -233,7 +233,6 @@ public class PlayerSelectorMovement : MonoBehaviour {
         else if (joinedGame && !heroSelected && (inputPressed == playerInput))
         {
             Globals.players.Clear();
-            Globals.numPlayers = 0;
             Globals.livingPlayers = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
@@ -260,8 +259,6 @@ public class PlayerSelectorMovement : MonoBehaviour {
                 joinedGame = true;
                 playerSelector.sprite = playerSelectorSprite;
                 playerPanel.sprite = blankPoster;
-                ++Globals.numPlayers;
-
             }
         }
     }
@@ -360,7 +357,7 @@ public class PlayerSelectorMovement : MonoBehaviour {
                 ++namedCount;
         }
 
-        if (namedCount >= Globals.numPlayers)
+        if (namedCount >= Globals.players.Count)
             return true;
         return false;
     }

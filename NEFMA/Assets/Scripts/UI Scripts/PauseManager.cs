@@ -80,7 +80,6 @@ public class PauseManager : MonoBehaviour {
                     Destroy(player.GO);
                 }
                 Globals.players.Remove(player);
-                --Globals.numPlayers;
                 for (int j = i; j < Globals.players.Count; j++)
                 {
                     Globals.players[i].Number = i;

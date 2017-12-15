@@ -10,7 +10,6 @@ public class EndGame : MonoBehaviour {
         Globals.gamePaused = false;
         Time.timeScale = 1;
         Globals.players.Clear();
-        Globals.numPlayers = 0;
         Globals.livingPlayers = 0;
         SceneManager.LoadScene(0);
     }

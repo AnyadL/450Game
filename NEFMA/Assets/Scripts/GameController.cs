@@ -35,7 +35,6 @@ public class GameController : MonoBehaviour {
             if (Globals.players.Count == 0)
             {
                 //Debug.Log("Overriding");
-                Globals.numPlayers = PlayerNumberOverride;
                 Globals.livingPlayers = LivingPlayerNumberOverride;
                 for (int i = 0; i < PresetPlayers.Count; i++)
                 {
@@ -99,12 +98,11 @@ public class GameController : MonoBehaviour {
             rand = Random.Range(0, 4);
         }
 
-        ++Globals.numPlayers;
-        Player player = new Player("", Globals.numPlayers, playerInput, false, null, null);
+        Player player = new Player("", Globals.players.Count, playerInput, false, null, null);
         Globals.players.Add(player);
 
         SetHUDs.updatePlayer(player, SetHUDs.orderedNames[rand]);
 
-        GameObject.Find("HUDCanvas").transform.GetChild(Globals.numPlayers).FindChild("HealthBar").GetComponent<Slider>().value = 0;
+        GameObject.Find("HUDCanvas").transform.GetChild(Globals.players.Count).FindChild("HealthBar").GetComponent<Slider>().value = 0;
     }
 }

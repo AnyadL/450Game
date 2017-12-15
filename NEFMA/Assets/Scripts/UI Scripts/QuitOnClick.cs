@@ -23,7 +23,6 @@ public class QuitOnClick : MonoBehaviour
         Globals.bossReset = true;
         Time.timeScale = 1;
         Globals.players.Clear();
-        Globals.numPlayers = 0;
         Globals.livingPlayers = 0;
         Globals.rykerChosen = false;
         Globals.agniChosen = false;
