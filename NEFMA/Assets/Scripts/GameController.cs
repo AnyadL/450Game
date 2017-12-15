@@ -36,7 +36,6 @@ public class GameController : MonoBehaviour {
             if (Globals.players.Count == 0)
             {
                 //Debug.Log("Overriding");
-                Globals.numPlayers = PlayerNumberOverride;
                 Globals.livingPlayers = LivingPlayerNumberOverride;
                 for (int i = 0; i < PresetPlayers.Count; i++)
                 {
@@ -78,9 +77,54 @@ public class GameController : MonoBehaviour {
             {
                 if (Input.GetButtonDown("Pause_" + i))
                 {
-                    pauser.pauseGame(i);
+                    if (pauser.getPlayer(i) == null)
+                    {
+                        PlayerDropIn(i);
+                    }
+                    else
+                    {
+                        pauser.pauseGame(i);
+                    }
                 }
             }
         }        
+    }
+
+    private string[] orderedNames = new string[4] { "Agni", "Ryker", "Delilah", "Kitty" };
+    void PlayerDropIn(int playerInput)
+    {
+
+        foreach(string name in orderedNames)
+        {
+            if (!isNameInUse(name))
+            {
+                Player player = new Player(name, Globals.players.Count, playerInput, false, null, null);
+                Globals.players.Add(player);
+
+                updatePlayer(player, name);
+
+                Debug.Log("Added Player \n" +player);
+
+                GameObject.Find("HUDCanvas").transform.GetChild(Globals.players.Count - 1).FindChild("HealthBar").GetComponent<Slider>().value = 0;
+                break;
+            }
+        }
+
+    }
+
+    void updatePlayer(Player player, string updatedName)
+    {
+        Globals.players[player.Number].Name = updatedName;
+        Globals.players[player.Number].Prefab = Resources.Load(updatedName) as GameObject;
+    }
+
+    bool isNameInUse(string name)
+    {
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            if (Globals.players[i].Name == name)
+                return true;
+        }
+        return false;
     }
 }

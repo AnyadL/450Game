@@ -32,10 +32,7 @@ public class Checkpoint : MonoBehaviour {
                 //gameObject.SetActive(false);
                 spawning = false;
             }
-            if (Globals.livingPlayers < Globals.numPlayers)
-            {
-                resPlayers();
-            }
+            resPlayers();
         }
 	}
 

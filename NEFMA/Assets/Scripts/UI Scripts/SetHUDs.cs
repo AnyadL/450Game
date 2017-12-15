@@ -54,10 +54,15 @@ public class SetHUDs : MonoBehaviour {
             {
                 if (Globals.players.Count > i)
                 {
+                    child.gameObject.SetActive(true);
                     setImage(i, child);
                     if (!Globals.players[i].Alive)
                         testInput(Globals.players[i]);
 
+                }
+                else
+                {
+                    child.gameObject.SetActive(false);
                 }
                 ++i;
             }

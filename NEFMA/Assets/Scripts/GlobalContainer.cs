@@ -36,7 +36,6 @@ public class Player
 
 public class Globals
 {
-    static public int numPlayers = 0;
     static public int livingPlayers = 0;
     static public float musicVolume = 0.5f;
     static public float soundFXVolume = 0.5f;

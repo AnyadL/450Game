@@ -18,6 +18,8 @@ public class PauseManager : MonoBehaviour {
 
     private Image pauseImage;
 
+    int _pausedPlayer = 0;
+
     void Start()
     {
 
@@ -27,6 +29,8 @@ public class PauseManager : MonoBehaviour {
 
     public void pauseGame(int playerInput)
     {
+        _pausedPlayer = playerInput;
+
         Time.timeScale = 0;
         Globals.gamePaused = true;
         // open pause Menu
@@ -55,7 +59,7 @@ public class PauseManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
-    Player getPlayer(int playerInput)
+    public Player getPlayer(int playerInput)
     {
         for (int i = 0; i < Globals.players.Count; ++i)
         {
@@ -65,8 +69,34 @@ public class PauseManager : MonoBehaviour {
         return null;
     }
 
+    public void PlayerDropOut()
+    {
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            Player player = Globals.players[i];
+
+            if(player.InputNum == _pausedPlayer)
+            {
+                if(player.GO != null)
+                {
+                    Destroy(player.GO);
+                }
+                --Globals.livingPlayers;
+                Globals.players.Remove(player);
+                
+                break;
+            }
+        }
+        for (int j = 0; j < Globals.players.Count; ++j)
+        {
+            Globals.players[j].Number = j;
+        }
+        playGame();
+    }
+
     void setPauseBackground(int playerInput)
     {
+
         Player player = getPlayer(playerInput);
         if (player != null)
         {
