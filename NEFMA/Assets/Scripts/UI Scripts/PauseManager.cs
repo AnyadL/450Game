@@ -18,11 +18,11 @@ public class PauseManager : MonoBehaviour {
 
     private Image pauseImage;
 
+    int _pausedPlayer = 0;
+
     void Start()
     {
-
         pauseImage = pauseMenu.transform.FindChild("PausePanel").GetComponent<Image>();
-
     }
 
     public void pauseGame(int playerInput)
@@ -55,7 +55,7 @@ public class PauseManager : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
-    Player getPlayer(int playerInput)
+    public Player getPlayer(int playerInput)
     {
         for (int i = 0; i < Globals.players.Count; ++i)
         {
@@ -64,10 +64,42 @@ public class PauseManager : MonoBehaviour {
         }
         return null;
     }
+    
+    public void PlayerDropOut()
+    {
+        // Player Drop Out Code
+        Debug.Log("Player Dropped Out");
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            Player player = Globals.players[i];
+            Debug.Log(player + " --- " + _pausedPlayer);
+            if (player.InputNum == _pausedPlayer)
+            {
+                if (player.GO != null)
+                {
+                    Destroy(player.GO);
+                }
+                Globals.players.Remove(player);
+                --Globals.numPlayers;
+                for (int j = i; j < Globals.players.Count; j++)
+                {
+                    Globals.players[i].Number = i;
+                }
+                break;
+            }
+        }
+        Debug.Log("Global List Now:");
+        for (int i = 0; i < Globals.players.Count; ++i)
+        {
+            Debug.Log(Globals.players[i]);
+        }
+        playGame();
+    }
 
     void setPauseBackground(int playerInput)
     {
-        Player player = getPlayer(playerInput);
+        _pausedPlayer = playerInput;
+        Player player = getPlayer(_pausedPlayer);
         if (player != null)
         {
             if (player.Name == "Agni")

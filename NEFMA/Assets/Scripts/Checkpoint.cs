@@ -32,10 +32,7 @@ public class Checkpoint : MonoBehaviour {
                 //gameObject.SetActive(false);
                 spawning = false;
             }
-            if (Globals.livingPlayers < Globals.numPlayers)
-            {
-                resPlayers();
-            }
+            resPlayers();
         }
 	}
 
@@ -46,7 +43,7 @@ public class Checkpoint : MonoBehaviour {
         {
             if (!Globals.players[i].Alive)
             {
-                //Debug.Log("Checkpoint Starting: " + Globals.players[i]);
+                Debug.Log("Checkpoint Starting: " + Globals.players[i]);
                 Vector3 myPosition;
                 float rand = Random.value;
                 float posi = Random.value * 3;
@@ -92,7 +89,6 @@ public class Checkpoint : MonoBehaviour {
             Globals.currentCheckpoint = this;
             if (animator != null)
             {
-                print("Activated");
                 animator.SetBool("Activated", true);
             }
 

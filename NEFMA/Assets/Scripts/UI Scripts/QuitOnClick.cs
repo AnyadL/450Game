@@ -14,8 +14,11 @@ public class QuitOnClick : MonoBehaviour
 #endif
     }
 
-    public void ReturnToMainMenu()
+    public void ReturnToMainMenu(bool checkSinglePlayer)
     {
+        if (checkSinglePlayer && Globals.players.Count > 1)
+            return;
+
         Globals.gamePaused = false;
         Globals.bossReset = true;
         Time.timeScale = 1;

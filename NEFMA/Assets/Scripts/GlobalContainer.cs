@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
 public class Player
 {
     public string Name; // Hero name (Agni)
@@ -42,7 +43,7 @@ public class Globals
     static public float soundFXVolume = 0.5f;
     static public bool gamePaused = false;
     static public Checkpoint currentCheckpoint;
-
+    
     static public List<Player> players = new List<Player>();
 
     static public bool delilahChosen = false;
@@ -61,6 +62,8 @@ public class Globals
 }
 
 public class GlobalContainer : MonoBehaviour {
+    
+    public List<Player> players = Globals.players;
 
     public bool BOSSLEVEL = false;
     //public bool bossReset = false;
@@ -71,12 +74,13 @@ public class GlobalContainer : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        players = Globals.players;
         if (Globals.livingPlayers <= 0)
         {
             // should never happen, means that there is no default spawn point
             if (Globals.currentCheckpoint == null)
             {
-                Debug.Log("COULD NOT FIND CURRENT CHECKPOINT");
+                //Debug.Log("COULD NOT FIND CURRENT CHECKPOINT");
             }
             // the whole team died, respawn them at the last checkpoint
             else if (!BOSSLEVEL)

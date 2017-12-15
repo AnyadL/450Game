@@ -29,7 +29,6 @@ public class GameController : MonoBehaviour {
         Time.timeScale = 1;
 
         Globals.totalEnemies += GameObject.FindGameObjectsWithTag("Enemy").Length;
-        Debug.Log(Globals.totalEnemies);
 
         if (OVERRIDE)
         {
@@ -78,9 +77,34 @@ public class GameController : MonoBehaviour {
             {
                 if (Input.GetButtonDown("Pause_" + i))
                 {
-                    pauser.pauseGame(i);
+                    if (pauser.getPlayer(i) == null)
+                    {
+                        PlayerDropIn(i);
+                    }
+                    else
+                    {
+                        pauser.pauseGame(i);
+                    }
                 }
             }
         }        
+    }
+
+    void PlayerDropIn(int playerInput)
+    {
+        // Player Drop In Code
+        int rand = Random.Range(0, 4);
+        while (SetHUDs.isNameInUse(SetHUDs.orderedNames[rand]))
+        {
+            rand = Random.Range(0, 4);
+        }
+
+        ++Globals.numPlayers;
+        Player player = new Player("", Globals.numPlayers, playerInput, false, null, null);
+        Globals.players.Add(player);
+
+        SetHUDs.updatePlayer(player, SetHUDs.orderedNames[rand]);
+
+        GameObject.Find("HUDCanvas").transform.GetChild(Globals.numPlayers).FindChild("HealthBar").GetComponent<Slider>().value = 0;
     }
 }

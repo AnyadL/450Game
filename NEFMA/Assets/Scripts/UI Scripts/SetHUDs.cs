@@ -18,7 +18,7 @@ public class SetHUDs : MonoBehaviour {
     private Player player;
     private string newName;
     private string tempName = "";
-    private string[] orderedNames = new string[4] { "Agni", "Ryker" , "Delilah", "Kitty"};
+    public static string[] orderedNames = new string[4] { "Agni", "Ryker" , "Delilah", "Kitty"};
 
     private bool HUDactive = true;
 
@@ -52,12 +52,17 @@ public class SetHUDs : MonoBehaviour {
         {
             foreach (Transform child in transform)
             {
-                if (Globals.players.Count > i)
+                if (i < Globals.players.Count)
                 {
+                    child.gameObject.SetActive(true);
                     setImage(i, child);
                     if (!Globals.players[i].Alive)
                         testInput(Globals.players[i]);
 
+                }
+                else
+                {
+                    child.gameObject.SetActive(false);
                 }
                 ++i;
             }
@@ -114,7 +119,7 @@ public class SetHUDs : MonoBehaviour {
         return tempName;
     }
 
-    bool isNameInUse(string name)
+    public static bool isNameInUse(string name)
     {
         for (int i = 0; i < Globals.players.Count; ++i)
         {
@@ -124,10 +129,10 @@ public class SetHUDs : MonoBehaviour {
         return false;
     }
 
-    void updatePlayer(Player player, string updatedName)
+    public static void updatePlayer(Player player, string updatedName)
     {
         Globals.players[player.Number].Name = updatedName;
-        Globals.players[player.Number].Prefab = Resources.Load(newName) as GameObject;
+        Globals.players[player.Number].Prefab = Resources.Load(updatedName) as GameObject;
     }
 
     void setImage(int i, Transform child, bool ignoreDeath = false)
